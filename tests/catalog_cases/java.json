@@ -1,0 +1,1150 @@
+[
+  {
+    "rule_id": "da66f2576db811eea68ffa163e0fa374",
+    "name": "assert",
+    "bad": "class C { void f() { assert true; } }",
+    "good": "class C { void f() { if (!true) { throw new IllegalStateException(); } } }"
+  },
+  {
+    "rule_id": "da66e8186db811eea68ffa163e0fa374",
+    "name": "system_exit",
+    "bad": "class C { void f() { System.exit(0); } }",
+    "good": "class C { void f() { System.out.println(\"exit\"); } }"
+  },
+  {
+    "rule_id": "da756c086db811eea68ffa163e0fa374",
+    "name": "explicit_gc",
+    "bad": "class C { void f() { System.gc(); } }",
+    "good": "class C { void f() { Object x = new Object(); } }"
+  },
+  {
+    "rule_id": "da7562216db811eea68ffa163e0fa374",
+    "name": "finalizer",
+    "bad": "class C { protected void finalize() {} }",
+    "good": "class C { void close() {} }"
+  },
+  {
+    "rule_id": "da6f837d6db811eea68ffa163e0fa374",
+    "name": "identifier",
+    "bad": "class C { int $x; }",
+    "good": "class C { int x; }"
+  },
+  {
+    "rule_id": "da7198d56db811eea68ffa163e0fa374",
+    "name": "class_name",
+    "bad": "class bad_name {}",
+    "good": "class GoodName {}"
+  },
+  {
+    "rule_id": "da71a1736db811eea68ffa163e0fa374",
+    "name": "method_name",
+    "bad": "class C { void Bad_name() {} }",
+    "good": "class C { void goodName() {} }"
+  },
+  {
+    "rule_id": "da71d7e26db811eea68ffa163e0fa374",
+    "name": "variable_name",
+    "bad": "class C { int Bad_name; }",
+    "good": "class C { int goodName; }"
+  },
+  {
+    "rule_id": "da71beb86db811eea68ffa163e0fa374",
+    "name": "constant_name",
+    "bad": "class C { static final int count = 1; }",
+    "good": "class C { static final int COUNT = 1; }"
+  },
+  {
+    "rule_id": "da71c8cf6db811eea68ffa163e0fa374",
+    "name": "negative_boolean",
+    "bad": "class C { boolean isNotValid; }",
+    "good": "class C { boolean isValid; }"
+  },
+  {
+    "rule_id": "da6528806db811eea68ffa163e0fa374",
+    "name": "boolean_name",
+    "bad": "class C { boolean ready; }",
+    "good": "class C { boolean isReady; }"
+  },
+  {
+    "rule_id": "da74df3c6db811eea68ffa163e0fa374",
+    "name": "public_field",
+    "bad": "class C { public int value; }",
+    "good": "class C { public final int value=1; }"
+  },
+  {
+    "rule_id": "da6ff13f6db811eea68ffa163e0fa374",
+    "name": "mutable_constant",
+    "bad": "class C { public static final int[] VALUES = {1}; }",
+    "good": "class C { private static final int[] VALUES = {1}; }"
+  },
+  {
+    "rule_id": "da70aa2c6db811eea68ffa163e0fa374",
+    "name": "logger_modifiers",
+    "bad": "class C { Logger logger; }",
+    "good": "class C { private static final Logger LOGGER = null; }"
+  },
+  {
+    "rule_id": "da74b3986db811eea68ffa163e0fa374",
+    "name": "optional_null",
+    "bad": "class C { Optional<String> value = null; }",
+    "good": "class C { Optional<String> value = Optional.empty(); }"
+  },
+  {
+    "rule_id": "da6fab1d6db811eea68ffa163e0fa374",
+    "name": "c_array",
+    "bad": "class C { int values[]; }",
+    "good": "class C { int[] values; }"
+  },
+  {
+    "rule_id": "da744d836db811eea68ffa163e0fa374",
+    "name": "float_loop",
+    "bad": "class C { void f() { for(double i=0;i<3;i++) {} } }",
+    "good": "class C { void f() { for(int i=0;i<3;i++) {} } }"
+  },
+  {
+    "rule_id": "da67a42a6db811eea68ffa163e0fa374",
+    "name": "generic_bound",
+    "bad": "class C<T> {}",
+    "good": "class C<T extends Number> {}"
+  },
+  {
+    "rule_id": "da721e586db811eea68ffa163e0fa374",
+    "name": "public_javadoc",
+    "bad": "public class C {}",
+    "good": "/** Function. */ public class C {}"
+  },
+  {
+    "rule_id": "da72296b6db811eea68ffa163e0fa374",
+    "name": "class_javadoc",
+    "bad": "/** Description. */ public class C {}",
+    "good": "/** Description.\n * @since 2026-01-01\n */ public class C {}"
+  },
+  {
+    "rule_id": "da7497676db811eea68ffa163e0fa374",
+    "name": "parameter_count",
+    "bad": "class C { void f(int a,int b,int c,int d,int e,int f) {} }",
+    "good": "class C { void f(int a,int b,int c,int d,int e) {} }"
+  },
+  {
+    "rule_id": "da7051436db811eea68ffa163e0fa374",
+    "name": "throws_count",
+    "bad": "class C { void f() throws A,B,C,D,E,F {} }",
+    "good": "class C { void f() throws A,B,C,D,E {} }"
+  },
+  {
+    "rule_id": "da748cd96db811eea68ffa163e0fa374",
+    "name": "method_length",
+    "bad": "class C { void f() {\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\nint a=0;\n} }",
+    "good": "class C { void f() { int a=0; } }"
+  },
+  {
+    "rule_id": "da74bee86db811eea68ffa163e0fa374",
+    "name": "varargs",
+    "bad": "class C { void f(String... values) {} }",
+    "good": "class C { void f(String[] values) {} }"
+  },
+  {
+    "rule_id": "da757fb06db811eea68ffa163e0fa374",
+    "name": "temporary_return",
+    "bad": "class C { int f() { int value=3; return value; } }",
+    "good": "class C { int f() { return 3; } }"
+  },
+  {
+    "rule_id": "da651d776db811eea68ffa163e0fa374",
+    "name": "nesting",
+    "bad": "class C { void f() { if(true) { if(true) { if(true) { if(true) { if(true) {} } } } } } }",
+    "good": "class C { void f() { if(true) { if(true) { if(true) { if(true) {} } } } } }"
+  },
+  {
+    "rule_id": "da7233b26db811eea68ffa163e0fa374",
+    "name": "empty_javadoc",
+    "bad": "class C { /** @return value */ int f() { return 1; } }",
+    "good": "class C { /** Returns one.\n * @return value\n */ int f() { return 1; } }"
+  },
+  {
+    "rule_id": "da72150f6db811eea68ffa163e0fa374",
+    "name": "javadoc_tags",
+    "bad": "class C { /** Adds one.\n * @return sum\n */ int f(int value) { return value+1; } }",
+    "good": "class C { /** Adds one.\n *\n * @param value input\n * @return sum\n */ int f(int value) { return value+1; } }"
+  },
+  {
+    "rule_id": "da64f9ea6db811eea68ffa163e0fa374",
+    "name": "javadoc_blank",
+    "bad": "class C { /** Adds one.\n * @param value input\n */ void f(int value) {} }",
+    "good": "class C { /** Adds one.\n *\n * @param value input\n */ void f(int value) {} }"
+  },
+  {
+    "rule_id": "da6fca696db811eea68ffa163e0fa374",
+    "name": "serializable",
+    "bad": "import java.io.Serializable;\nclass C implements Serializable {}",
+    "good": "import java.io.Serializable;\nclass C {}"
+  },
+  {
+    "rule_id": "da6546306db811eea68ffa163e0fa374",
+    "name": "serial_uid",
+    "bad": "import java.io.Serializable;\nclass C implements Serializable {}",
+    "good": "import java.io.Serializable;\nclass C implements Serializable { private static final long serialVersionUID = 1L; }"
+  },
+  {
+    "rule_id": "da6677216db811eea68ffa163e0fa374",
+    "name": "serial_inner",
+    "bad": "import java.io.Serializable;\nclass C { class Inner implements Serializable {} }",
+    "good": "import java.io.Serializable;\nclass C { static class Inner implements Serializable {} }"
+  },
+  {
+    "rule_id": "da6fc0946db811eea68ffa163e0fa374",
+    "name": "serial_resource",
+    "bad": "import java.io.Serializable;\nclass C implements Serializable { Socket connection; }",
+    "good": "import java.io.Serializable;\nclass C implements Serializable { transient Socket connection; }"
+  },
+  {
+    "rule_id": "da74c9566db811eea68ffa163e0fa374",
+    "name": "equals_hashcode",
+    "bad": "class C { public boolean equals(Object x) { return true; } }",
+    "good": "class C { public boolean equals(Object x) { return true; } public int hashCode() { return 1; } }"
+  },
+  {
+    "rule_id": "da70708e6db811eea68ffa163e0fa374",
+    "name": "class_suppress",
+    "bad": "@SuppressWarnings(\"unchecked\") class C {}",
+    "good": "class C { @SuppressWarnings(\"unchecked\") void f() {} }"
+  },
+  {
+    "rule_id": "da7001396db811eea68ffa163e0fa374",
+    "name": "constructor_override",
+    "bad": "class C { C() { setup(); } void setup() {} }",
+    "good": "class C { C() { setup(); } private void setup() {} }"
+  },
+  {
+    "rule_id": "da5dd5a86db811eea68ffa163e0fa374",
+    "name": "constructor_override",
+    "bad": "class C { C() { setup(); } void setup() {} }",
+    "good": "class C { C() { setup(); } private void setup() {} }"
+  },
+  {
+    "rule_id": "da6533ec6db811eea68ffa163e0fa374",
+    "name": "boxing_overload",
+    "bad": "class C { void f(int x) {} void f(Integer x) {} }",
+    "good": "class C { void f(int x) {} void f(String x) {} }"
+  },
+  {
+    "rule_id": "da750ba66db811eea68ffa163e0fa374",
+    "name": "interface_modifiers",
+    "bad": "interface C { public abstract void f(); }",
+    "good": "interface C { void f(); }"
+  },
+  {
+    "rule_id": "da718f4d6db811eea68ffa163e0fa374",
+    "name": "package_name",
+    "bad": "package Bad.Name; class C {}",
+    "good": "package good.name; class C {}"
+  },
+  {
+    "rule_id": "da6ffe8d6db811eea68ffa163e0fa374",
+    "name": "condition_assignment",
+    "bad": "class C { void f(boolean x) { if(x=true) {} } }",
+    "good": "class C { void f(boolean x) { if(x==true) {} } }"
+  },
+  {
+    "rule_id": "da72ada16db811eea68ffa163e0fa374",
+    "name": "braces",
+    "bad": "class C { void f() { if(true) return; } }",
+    "good": "class C { void f() { if(true) { return; } } }"
+  },
+  {
+    "rule_id": "da6ff2486db811eea68ffa163e0fa374",
+    "name": "final_else",
+    "bad": "class C { void f() { if(true) {} else if(false) {} } }",
+    "good": "class C { void f() { if(true) {} else if(false) {} else {} } }"
+  },
+  {
+    "rule_id": "da650cfd6db811eea68ffa163e0fa374",
+    "name": "switch_default",
+    "bad": "class C { void f(int x) { switch(x) { case 1: break; } } }",
+    "good": "class C { void f(int x) { switch(x) { case 1: break; default: break; } } }"
+  },
+  {
+    "rule_id": "da67caff6db811eea68ffa163e0fa374",
+    "name": "broad_catch",
+    "bad": "class C { void f() { try { f(); } catch(Exception error) { throw error; } } }",
+    "good": "class C { void f() { try { f(); } catch(IOException error) { throw error; } } }"
+  },
+  {
+    "rule_id": "da7065dc6db811eea68ffa163e0fa374",
+    "name": "broad_catch",
+    "bad": "class C { void f() { try { f(); } catch(Exception error) { throw error; } } }",
+    "good": "class C { void f() { try { f(); } catch(IOException error) { throw error; } } }"
+  },
+  {
+    "rule_id": "da67a6726db811eea68ffa163e0fa374",
+    "name": "precheck_catch",
+    "bad": "class C { void f() { try { f(); } catch(NullPointerException error) { throw error; } } }",
+    "good": "class C { void f() { try { f(); } catch(IOException error) { throw error; } } }"
+  },
+  {
+    "rule_id": "da705b686db811eea68ffa163e0fa374",
+    "name": "empty_catch",
+    "bad": "class C { void f() { try { f(); } catch(IOException error) {} } }",
+    "good": "class C { void f() { try { f(); } catch(IOException error) { throw error; } } }"
+  },
+  {
+    "rule_id": "da5da2346db811eea68ffa163e0fa374",
+    "name": "lost_exception",
+    "bad": "class C { void f() { try { f(); } catch(IOException error) { throw new IllegalStateException(\"failed\"); } } }",
+    "good": "class C { void f() { try { f(); } catch(IOException error) { throw new IllegalStateException(\"failed\",error); } } }"
+  },
+  {
+    "rule_id": "da7086536db811eea68ffa163e0fa374",
+    "name": "finally_abrupt",
+    "bad": "class C { int f() { try { return 1; } finally { return 2; } } }",
+    "good": "class C { int f() { try { return 1; } finally { close(); } } }"
+  },
+  {
+    "rule_id": "da66cd7c6db811eea68ffa163e0fa374",
+    "name": "finally_return",
+    "bad": "class C { int f() { try { return 1; } finally { return 2; } } }",
+    "good": "class C { int f() { try { return 1; } finally { close(); } } }"
+  },
+  {
+    "rule_id": "da66d7b66db811eea68ffa163e0fa374",
+    "name": "finally_throw",
+    "bad": "class C { void f() { try { f(); } finally { throw new IllegalStateException(); } } }",
+    "good": "class C { void f() { try { f(); } finally { close(); } } }"
+  },
+  {
+    "rule_id": "da74a0326db811eea68ffa163e0fa374",
+    "name": "null_collection",
+    "bad": "class C { List<String> f() { return null; } }",
+    "good": "class C { List<String> f() { return List.of(); } }"
+  },
+  {
+    "rule_id": "da74a9516db811eea68ffa163e0fa374",
+    "name": "parameter_mutation",
+    "bad": "class C { void f(int value) { value++; } }",
+    "good": "class C { void f(int value) { int copy=value+1; } }"
+  },
+  {
+    "rule_id": "da732adf6db811eea68ffa163e0fa374",
+    "name": "nan_compare",
+    "bad": "class C { boolean f(double value) { return value==Double.NaN; } }",
+    "good": "class C { boolean f(double value) { return Double.isNaN(value); } }"
+  },
+  {
+    "rule_id": "da7320a16db811eea68ffa163e0fa374",
+    "name": "float_equality",
+    "bad": "class C { boolean f(double a,double b) { return a==b; } }",
+    "good": "class C { boolean f(double a,double b) { return Math.abs(a-b)<0.01; } }"
+  },
+  {
+    "rule_id": "da76c8026db811eea68ffa163e0fa374",
+    "name": "string_equality",
+    "bad": "class C { boolean f(String a,String b) { return a==b; } }",
+    "good": "class C { boolean f(String a,String b) { return a.equals(b); } }"
+  },
+  {
+    "rule_id": "da6fde9f6db811eea68ffa163e0fa374",
+    "name": "comparison_order",
+    "bad": "class C { boolean f(int value) { return 3==value; } }",
+    "good": "class C { boolean f(int value) { return value==3; } }"
+  },
+  {
+    "rule_id": "da771bc36db811eea68ffa163e0fa374",
+    "name": "zero_divisor",
+    "bad": "class C { int f(int value) { return value/0; } }",
+    "good": "class C { int f(int value) { return value/2; } }"
+  },
+  {
+    "rule_id": "da6515d96db811eea68ffa163e0fa374",
+    "name": "ternary_types",
+    "bad": "class C { Object f(boolean flag) { return flag ? 1 : \"one\"; } }",
+    "good": "class C { Object f(boolean flag) { return flag ? \"one\" : \"two\"; } }"
+  },
+  {
+    "rule_id": "da72a39b6db811eea68ffa163e0fa374",
+    "name": "long_suffix",
+    "bad": "class C { long value=1l; }",
+    "good": "class C { long value=1L; }"
+  },
+  {
+    "rule_id": "da72ca6d6db811eea68ffa163e0fa374",
+    "name": "empty_block",
+    "bad": "class C { void f() { if(true) {} } }",
+    "good": "class C { void f() { if(true) { return; } } }"
+  },
+  {
+    "rule_id": "da758d1f6db811eea68ffa163e0fa374",
+    "name": "unnecessary_object",
+    "bad": "class C { void f() { Integer value=new Integer(3); } }",
+    "good": "class C { void f() { Integer value=Integer.valueOf(3); } }"
+  },
+  {
+    "rule_id": "da7538686db811eea68ffa163e0fa374",
+    "name": "new_thread",
+    "bad": "class C { void f() { new Thread(task).start(); } }",
+    "good": "class C { void f() { executor.submit(task); } }"
+  },
+  {
+    "rule_id": "da7517796db811eea68ffa163e0fa374",
+    "name": "thread_name",
+    "bad": "class C { void f() { new Thread(task).start(); } }",
+    "good": "class C { void f() { new Thread(task,\"worker\").start(); } }"
+  },
+  {
+    "rule_id": "da6fb66d6db811eea68ffa163e0fa374",
+    "name": "charset",
+    "bad": "class C { void f(String value) { value.getBytes(); } }",
+    "good": "class C { void f(String value) { value.getBytes(StandardCharsets.UTF_8); } }"
+  },
+  {
+    "rule_id": "da67cd506db811eea68ffa163e0fa374",
+    "name": "deserialize",
+    "bad": "class C { void f() { new ObjectInputStream(stream); } }",
+    "good": "class C { void f() { new DataInputStream(stream); } }"
+  },
+  {
+    "rule_id": "da666d106db811eea68ffa163e0fa374",
+    "name": "plain_socket",
+    "bad": "class C { void f() { new Socket(\"localhost\",80); } }",
+    "good": "class C { void f() { SSLSocketFactory.getDefault().createSocket(\"localhost\",443); } }"
+  },
+  {
+    "rule_id": "da6bc9326db811eea68ffa163e0fa374",
+    "name": "weak_random",
+    "bad": "class C { void f() { new Random(); } }",
+    "good": "class C { void f() { new SecureRandom(); } }"
+  },
+  {
+    "rule_id": "da6699076db811eea68ffa163e0fa374",
+    "name": "reused_lock",
+    "bad": "class C { void f(Integer lock) { synchronized(lock) {} } }",
+    "good": "class C { void f(Object lock) { synchronized(lock) {} } }"
+  },
+  {
+    "rule_id": "da668bf86db811eea68ffa163e0fa374",
+    "name": "class_lock",
+    "bad": "class C { void f() { synchronized(C.class) {} } }",
+    "good": "class C { void f() { synchronized(lock) {} } }"
+  },
+  {
+    "rule_id": "da6680f96db811eea68ffa163e0fa374",
+    "name": "concurrent_lock",
+    "bad": "class C { void f(ReentrantLock lock) { synchronized(lock) {} } }",
+    "good": "class C { void f(Object lock) { synchronized(lock) {} } }"
+  },
+  {
+    "rule_id": "da6bbf0e6db811eea68ffa163e0fa374",
+    "name": "instance_static_lock",
+    "bad": "class C { static int value; void f() { synchronized(this) { value++; } } }",
+    "good": "class C { int value; void f() { synchronized(this) { value++; } } }"
+  },
+  {
+    "rule_id": "da701d006db811eea68ffa163e0fa374",
+    "name": "foreach_mutation",
+    "bad": "class C { void f(List<String> items) { for(String item:items) { items.remove(item); } } }",
+    "good": "class C { void f(List<String> items) { items.removeIf(item -> item.isEmpty()); } }"
+  },
+  {
+    "rule_id": "da746c2d6db811eea68ffa163e0fa374",
+    "name": "locale",
+    "bad": "class C { void f(String value) { value.toLowerCase(); } }",
+    "good": "class C { void f(String value) { value.toLowerCase(Locale.ROOT); } }"
+  },
+  {
+    "rule_id": "da6f8dc56db811eea68ffa163e0fa374",
+    "name": "enum_ordinal",
+    "bad": "class C { void f(State state) { int value=state.ordinal(); } }",
+    "good": "class C { void f(State state) { String value=state.name(); } }"
+  },
+  {
+    "rule_id": "da7522ee6db811eea68ffa163e0fa374",
+    "name": "wait_notify",
+    "bad": "class C { void f(Object lock) throws InterruptedException { lock.wait(); } }",
+    "good": "class C { void f() { latch.await(); } }"
+  },
+  {
+    "rule_id": "da66ad556db811eea68ffa163e0fa374",
+    "name": "thread_stop",
+    "bad": "class C { void f(Thread thread) { thread.stop(); } }",
+    "good": "class C { void f(Thread thread) { thread.join(); } }"
+  },
+  {
+    "rule_id": "da66a3866db811eea68ffa163e0fa374",
+    "name": "thread_run",
+    "bad": "class C { void f(Thread thread) { thread.run(); } }",
+    "good": "class C { void f(Thread thread) { thread.start(); } }"
+  },
+  {
+    "rule_id": "da7021046db811eea68ffa163e0fa374",
+    "name": "thread_interrupt",
+    "bad": "class C { void f(Thread thread) { thread.interrupt(); } }",
+    "good": "class C { void f() { flag.set(true); } }"
+  },
+  {
+    "rule_id": "da67a5056db811eea68ffa163e0fa374",
+    "name": "thread_scheduling",
+    "bad": "class C { void f() { Thread.yield(); } }",
+    "good": "class C { void f() { latch.await(); } }"
+  },
+  {
+    "rule_id": "da7541666db811eea68ffa163e0fa374",
+    "name": "typed_toarray",
+    "bad": "class C { void f(List<String> items) { items.toArray(); } }",
+    "good": "class C { void f(List<String> items) { items.toArray(String[]::new); } }"
+  },
+  {
+    "rule_id": "da622cf66db811eea68ffa163e0fa374",
+    "name": "exception_leak",
+    "bad": "class C { void f(Exception error) { error.printStackTrace(); } }",
+    "good": "class C { void f(Exception error) { logger.error(\"failed\",error); } }"
+  },
+  {
+    "rule_id": "da67a19d6db811eea68ffa163e0fa374",
+    "name": "exception_leak",
+    "bad": "class C { void f(Exception error) { error.printStackTrace(); } }",
+    "good": "class C { void f(Exception error) { logger.error(\"failed\",error); } }"
+  },
+  {
+    "rule_id": "da70b2976db811eea68ffa163e0fa374",
+    "name": "logging_facade",
+    "bad": "class C { void f() { System.out.println(\"message\"); } }",
+    "good": "class C { void f() { logger.info(\"message\"); } }"
+  },
+  {
+    "rule_id": "da6c227b6db811eea68ffa163e0fa374",
+    "name": "aes_ecb",
+    "bad": "class C { void f() { Cipher.getInstance(\"AES/ECB/PKCS5Padding\"); } }",
+    "good": "class C { void f() { Cipher.getInstance(\"AES/GCM/NoPadding\"); } }"
+  },
+  {
+    "rule_id": "da6c17c26db811eea68ffa163e0fa374",
+    "name": "rsa_padding",
+    "bad": "class C { void f() { Cipher.getInstance(\"RSA/ECB/NoPadding\"); } }",
+    "good": "class C { void f() { Cipher.getInstance(\"RSA/ECB/OAEPWithSHA-256AndMGF1Padding\"); } }"
+  },
+  {
+    "rule_id": "da6c05db6db811eea68ffa163e0fa374",
+    "name": "weak_cipher",
+    "bad": "class C { void f() { Cipher.getInstance(\"DES/CBC/PKCS5Padding\"); } }",
+    "good": "class C { void f() { Cipher.getInstance(\"AES/GCM/NoPadding\"); } }"
+  },
+  {
+    "rule_id": "da6beabe6db811eea68ffa163e0fa374",
+    "name": "weak_hash",
+    "bad": "class C { void f() { MessageDigest.getInstance(\"MD5\"); } }",
+    "good": "class C { void f() { MessageDigest.getInstance(\"SHA-256\"); } }"
+  },
+  {
+    "rule_id": "da60da8c6db811eea68ffa163e0fa374",
+    "name": "old_tls",
+    "bad": "class C { void f() { SSLContext.getInstance(\"TLSv1.1\"); } }",
+    "good": "class C { void f() { SSLContext.getInstance(\"TLSv1.3\"); } }"
+  },
+  {
+    "rule_id": "da7556596db811eea68ffa163e0fa374",
+    "name": "regex_loop",
+    "bad": "class C { void f() { for(int i=0;i<3;i++) { Pattern.compile(\"a+\"); } } }",
+    "good": "class C { void f() { Pattern p=Pattern.compile(\"a+\"); for(int i=0;i<3;i++) { p.matcher(\"a\"); } } }"
+  },
+  {
+    "rule_id": "da6bd1d96db811eea68ffa163e0fa374",
+    "name": "read_int",
+    "bad": "class C { void f(InputStream stream) { byte value=(byte)stream.read(); } }",
+    "good": "class C { void f(InputStream stream) { int value=stream.read(); } }"
+  },
+  {
+    "rule_id": "da5fbeac6db811eea68ffa163e0fa374",
+    "name": "sql_concat",
+    "bad": "class C { void f(Statement statement,String id) { statement.executeQuery(\"SELECT * FROM t WHERE id=\"+id); } }",
+    "good": "class C { void f(Connection connection) { connection.prepareStatement(\"SELECT * FROM t WHERE id=?\"); } }"
+  },
+  {
+    "rule_id": "da76eeb66db811eea68ffa163e0fa374",
+    "name": "command_input",
+    "bad": "class C { void f(String command) { Runtime.getRuntime().exec(command); } }",
+    "good": "class C { void f() { Runtime.getRuntime().exec(\"date\"); } }"
+  },
+  {
+    "rule_id": "da67c9c46db811eea68ffa163e0fa374",
+    "name": "reflection_input",
+    "bad": "class C { void f(String type) { Class.forName(type); } }",
+    "good": "class C { void f() { Class.forName(\"java.lang.String\"); } }"
+  },
+  {
+    "rule_id": "da6010376db811eea68ffa163e0fa374",
+    "name": "cookie_secure",
+    "bad": "class C { void f(Cookie cookie) { cookie.setSecure(false); } }",
+    "good": "class C { void f(Cookie cookie) { cookie.setSecure(true); } }"
+  },
+  {
+    "rule_id": "da72deaa6db811eea68ffa163e0fa374",
+    "name": "line_length",
+    "bad": "class C { // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n}",
+    "good": "class C { // short\n}"
+  },
+  {
+    "rule_id": "da72c16e6db811eea68ffa163e0fa374",
+    "name": "indentation",
+    "bad": "class C {\n\tint value;\n}",
+    "good": "class C {\n    int value;\n}"
+  },
+  {
+    "rule_id": "da72f5376db811eea68ffa163e0fa374",
+    "name": "blank_lines",
+    "bad": "class C {\n\n\n\nint value;\n}",
+    "good": "class C {\n\nint value;\n}"
+  },
+  {
+    "rule_id": "da7253776db811eea68ffa163e0fa374",
+    "name": "todo",
+    "bad": "class C { // TODO fix\n}",
+    "good": "class C { String note=\"TODO fix\"; }"
+  },
+  {
+    "rule_id": "da725e646db811eea68ffa163e0fa374",
+    "name": "comment_spacing",
+    "bad": "class C { //note\n}",
+    "good": "class C { // note\n}"
+  },
+  {
+    "rule_id": "da723cb36db811eea68ffa163e0fa374",
+    "name": "commented_import",
+    "bad": "// import java.util.List;\nclass C {}",
+    "good": "import java.util.List;\nclass C {}"
+  },
+  {
+    "rule_id": "da7248a86db811eea68ffa163e0fa374",
+    "name": "commented_code",
+    "bad": "class C { // return value;\n}",
+    "good": "class C { // Returns the configured value.\n}"
+  },
+  {
+    "rule_id": "da6503c86db811eea68ffa163e0fa374",
+    "name": "copyright",
+    "bad": "class C {}",
+    "good": "// Copyright 2026 Example\nclass C {}"
+  },
+  {
+    "rule_id": "da7286f26db811eea68ffa163e0fa374",
+    "name": "annotation_lines",
+    "bad": "class C { @Deprecated void f() {} }",
+    "good": "class C { @Deprecated\nvoid f() {} }"
+  },
+  {
+    "rule_id": "da729c186db811eea68ffa163e0fa374",
+    "name": "modifier_order",
+    "bad": "class C { static public final int VALUE=1; }",
+    "good": "class C { public static final int VALUE=1; }"
+  },
+  {
+    "rule_id": "da7268e26db811eea68ffa163e0fa374",
+    "name": "member_order",
+    "bad": "class C { void f() {} int value; }",
+    "good": "class C { int value; void f() {} }"
+  },
+  {
+    "rule_id": "da653cb46db811eea68ffa163e0fa374",
+    "name": "override_annotation",
+    "bad": "class C { public String toString() { return \"C\"; } }",
+    "good": "class C { @Override public String toString() { return \"C\"; } }"
+  },
+  {
+    "rule_id": "da74d41e6db811eea68ffa163e0fa374",
+    "name": "shadowing",
+    "bad": "class C { int value; void f(int value) {} }",
+    "good": "class C { int value; void f(int input) {} }"
+  },
+  {
+    "rule_id": "da6f97d26db811eea68ffa163e0fa374",
+    "name": "declaration_proximity",
+    "bad": "class C { void f() { int value=1;\nf();\nf();\nf();\nf();\nconsume(value); } }",
+    "good": "class C { void f() { f();\nf();\nint value=1;\nconsume(value); } }"
+  },
+  {
+    "rule_id": "da72ff0c6db811eea68ffa163e0fa374",
+    "name": "operator_spaces",
+    "bad": "class C { int f(int a,int b) { return a+b; } }",
+    "good": "class C { int f(int a,int b) { return a + b; } }"
+  },
+  {
+    "rule_id": "da6fd3ed6db811eea68ffa163e0fa374",
+    "name": "explicit_precedence",
+    "bad": "class C { int f(int a,int b,int c) { return a+b*c; } }",
+    "good": "class C { int f(int a,int b,int c) { return a+(b*c); } }"
+  },
+  {
+    "rule_id": "da6fea9c6db811eea68ffa163e0fa374",
+    "name": "multiple_assignment",
+    "bad": "class C { void f() { int a=0; a=(a=2); } }",
+    "good": "class C { void f() { int a=0; a=2; } }"
+  },
+  {
+    "rule_id": "da7461d96db811eea68ffa163e0fa374",
+    "name": "hardcoded_newline",
+    "bad": "class C { void f() { String separator=\"\\n\"; } }",
+    "good": "class C { void f() { String separator=System.lineSeparator(); } }"
+  },
+  {
+    "rule_id": "da7478046db811eea68ffa163e0fa374",
+    "name": "hardcoded_separator",
+    "bad": "class C { void f() { String separator=\"/\"; } }",
+    "good": "class C { void f() { String separator=File.separator; } }"
+  },
+  {
+    "rule_id": "da6bb4986db811eea68ffa163e0fa374",
+    "name": "public_ip",
+    "bad": "class C { void f() { String host=\"8.8.8.8\"; } }",
+    "good": "class C { void f() { String host=\"192.168.1.1\"; } }"
+  },
+  {
+    "rule_id": "da7482f56db811eea68ffa163e0fa374",
+    "name": "downcast_check",
+    "bad": "class C { void f(Object value) { String text=(String)value; } }",
+    "good": "class C { void f(Object value) { if(value instanceof String) { String text=(String)value; } } }"
+  },
+  {
+    "rule_id": "da7574cb6db811eea68ffa163e0fa374",
+    "name": "resource_close",
+    "bad": "class C { void f() { FileInputStream stream=new FileInputStream(\"x\"); } }",
+    "good": "class C { void f() { try(FileInputStream stream=new FileInputStream(\"x\")) { stream.read(); } } }"
+  },
+  {
+    "rule_id": "da5fb1426db811eea68ffa163e0fa374",
+    "name": "resource_close",
+    "bad": "class C { void f() { FileInputStream stream=new FileInputStream(\"x\"); } }",
+    "good": "class C { void f() { try(FileInputStream stream=new FileInputStream(\"x\")) { stream.read(); } } }"
+  },
+  {
+    "rule_id": "da71857f6db811eea68ffa163e0fa374",
+    "name": "chinese_log",
+    "bad": "class C { void f() { logger.info(\"\u5904\u7406\u5b8c\u6210\"); } }",
+    "good": "class C { void f() { logger.info(\"completed\"); } }"
+  },
+  {
+    "rule_id": "da5fd4f06db811eea68ffa163e0fa374",
+    "name": "threadlocal_cleanup",
+    "bad": "class C { void f(ThreadLocal<String> local) { local.set(\"x\"); } }",
+    "good": "class C { void f(ThreadLocal<String> local) { try { local.set(\"x\"); } finally { local.remove(); } } }"
+  },
+  {
+    "rule_id": "da5f954d6db811eea68ffa163e0fa374",
+    "name": "temp_cleanup",
+    "bad": "class C { void f() { Path file=Files.createTempFile(\"x\",\"tmp\"); } }",
+    "good": "class C { void f() { Path file=Files.createTempFile(\"x\",\"tmp\"); try { use(file); } finally { Files.deleteIfExists(file); } } }"
+  },
+  {
+    "rule_id": "da5df7456db811eea68ffa163e0fa374",
+    "name": "regex_redos",
+    "bad": "class C { void f() { Pattern.compile(\"(a+)+$\"); } }",
+    "good": "class C { void f() { Pattern.compile(\"a+$\"); } }"
+  },
+  {
+    "rule_id": "da74f6266db811eea68ffa163e0fa374",
+    "name": "static_receiver",
+    "bad": "class Helper { static void run() {} } class C { void f(Helper helper) { helper.run(); } }",
+    "good": "class Helper { static void run() {} } class C { void f(Helper helper) { Helper.run(); } }"
+  },
+  {
+    "rule_id": "da72d4af6db811eea68ffa163e0fa374",
+    "name": "one_statement",
+    "bad": "class C { void f() { int a=1; int b=2; } }",
+    "good": "class C { void f() {\nint a=1;\nint b=2;\n} }"
+  },
+  {
+    "rule_id": "da6fa2716db811eea68ffa163e0fa374",
+    "name": "one_variable",
+    "bad": "class C { int a,b; }",
+    "good": "class C { int a;\nint b; }"
+  },
+  {
+    "rule_id": "da72b7006db811eea68ffa163e0fa374",
+    "name": "brace_layout",
+    "bad": "class C { void f() { return; } }",
+    "good": "class C {\nvoid f() {\nreturn;\n}\n}"
+  },
+  {
+    "rule_id": "da67d1b56db811eea68ffa163e0fa374",
+    "name": "taint_xpath",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); xpath.evaluate(value,document); } }",
+    "good": "class C { void f() { xpath.evaluate(\"/root\",document); } }"
+  },
+  {
+    "rule_id": "da67d09a6db811eea68ffa163e0fa374",
+    "name": "taint_xml_validation",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); validator.validate(value); } }",
+    "good": "class C { void f() { validator.validate(\"fixed.xml\"); } }"
+  },
+  {
+    "rule_id": "da67cfc16db811eea68ffa163e0fa374",
+    "name": "taint_hash",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); MessageDigest.getInstance(value); } }",
+    "good": "class C { void f() { MessageDigest.getInstance(\"SHA-256\"); } }"
+  },
+  {
+    "rule_id": "da7726f86db811eea68ffa163e0fa374",
+    "name": "taint_header",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.setHeader(\"X-Value\",value); } }",
+    "good": "class C { void f() { response.setHeader(\"X-Value\",\"fixed\"); } }"
+  },
+  {
+    "rule_id": "da5dc9f76db811eea68ffa163e0fa374",
+    "name": "taint_redirect",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.sendRedirect(value); } }",
+    "good": "class C { void f() { response.sendRedirect(\"/home\"); } }"
+  },
+  {
+    "rule_id": "da5dbde96db811eea68ffa163e0fa374",
+    "name": "taint_ognl",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); Ognl.getValue(value,context); } }",
+    "good": "class C { void f() { Ognl.getValue(\"fixed\",context); } }"
+  },
+  {
+    "rule_id": "da76d24b6db811eea68ffa163e0fa374",
+    "name": "taint_code",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); engine.eval(value); } }",
+    "good": "class C { void f() { engine.eval(\"1+2\"); } }"
+  },
+  {
+    "rule_id": "da5d85aa6db811eea68ffa163e0fa374",
+    "name": "taint_ldap",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); context.search(value,filter); } }",
+    "good": "class C { void f() { context.search(\"ou=people\",filter); } }"
+  },
+  {
+    "rule_id": "da76fab36db811eea68ffa163e0fa374",
+    "name": "taint_xss",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.getWriter().write(value); } }",
+    "good": "class C { void f() { response.getWriter().write(\"hello\"); } }"
+  },
+  {
+    "rule_id": "da5d929f6db811eea68ffa163e0fa374",
+    "name": "taint_log",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); logger.info(value); } }",
+    "good": "class C { void f() { logger.info(\"completed\"); } }"
+  },
+  {
+    "rule_id": "da5fe0a26db811eea68ffa163e0fa374",
+    "name": "taint_format",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); String.format(value,item); } }",
+    "good": "class C { void f() { String.format(\"%s\",item); } }"
+  },
+  {
+    "rule_id": "da5ff9c56db811eea68ffa163e0fa374",
+    "name": "taint_xml_concat",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); parser.parse(\"<root>\"+value+\"</root>\"); } }",
+    "good": "class C { void f() { parser.parse(\"<root>fixed</root>\"); } }"
+  },
+  {
+    "rule_id": "da76fab36db811eea68ffa163e0fa374",
+    "name": "taint_xss_sanitized",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.getWriter().write(value); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=StringEscapeUtils.escapeHtml(value); response.getWriter().write(s); } }"
+  },
+  {
+    "rule_id": "da76fab36db811eea68ffa163e0fa374",
+    "name": "taint_xss_partial_mix",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); String safe=StringEscapeUtils.escapeHtml(value); response.getWriter().write(safe+value); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); response.getWriter().write(StringEscapeUtils.escapeHtml(value)+StringEscapeUtils.escapeHtml(value)); } }"
+  },
+  {
+    "rule_id": "da5dc9f76db811eea68ffa163e0fa374",
+    "name": "taint_redirect_sanitized",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.sendRedirect(value); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=URLEncoder.encode(value,\"UTF-8\"); response.sendRedirect(s); } }"
+  },
+  {
+    "rule_id": "da7726f86db811eea68ffa163e0fa374",
+    "name": "taint_header_sanitized",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.setHeader(\"X-V\",value); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=URLEncoder.encode(value,\"UTF-8\"); response.setHeader(\"X-V\",s); } }"
+  },
+  {
+    "rule_id": "da5ff9c56db811eea68ffa163e0fa374",
+    "name": "taint_xml_concat_sanitized",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); parser.parse(\"<root>\"+value+\"</root>\"); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=StringEscapeUtils.escapeXml(value); parser.parse(\"<root>\"+s+\"</root>\"); } }"
+  },
+  {
+    "rule_id": "da6baaea6db811eea68ffa163e0fa374",
+    "name": "taint_path_pathinfo_source",
+    "bad": "class C { void f() { new File(request.getPathInfo()); } }",
+    "good": "class C { void f() { new File(\"fixed.txt\"); } }"
+  },
+  {
+    "rule_id": "da5dc9f76db811eea68ffa163e0fa374",
+    "name": "taint_redirect_requesturi_source",
+    "bad": "class C { void f() { response.sendRedirect(request.getRequestURI()); } }",
+    "good": "class C { void f() { response.sendRedirect(\"/home\"); } }"
+  },
+  {
+    "rule_id": "da76fab36db811eea68ffa163e0fa374",
+    "name": "taint_xss_requesturl_source",
+    "bad": "class C { void f() { response.getWriter().write(request.getRequestURL().toString()); } }",
+    "good": "class C { void f() { response.getWriter().write(\"hello\"); } }"
+  },
+  {
+    "rule_id": "da5fa3c66db811eea68ffa163e0fa374",
+    "name": "taint_resource",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); loader.getResource(value); } }",
+    "good": "class C { void f() { loader.getResource(\"fixed.xml\"); } }"
+  },
+  {
+    "rule_id": "da5fc95a6db811eea68ffa163e0fa374",
+    "name": "taint_trust",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); session.setAttribute(\"role\",value); } }",
+    "good": "class C { void f() { session.setAttribute(\"role\",\"reader\"); } }"
+  },
+  {
+    "rule_id": "da6baaea6db811eea68ffa163e0fa374",
+    "name": "taint_path",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); new File(value); } }",
+    "good": "class C { void f() { new File(\"fixed.txt\"); } }"
+  },
+  {
+    "rule_id": "da67cc6b6db811eea68ffa163e0fa374",
+    "name": "taint_path",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); new File(value); } }",
+    "good": "class C { void f() { new File(\"fixed.txt\"); } }"
+  },
+  {
+    "rule_id": "da6c2aac6db811eea68ffa163e0fa374",
+    "name": "xml_external",
+    "bad": "class C { void f() { factory.setFeature(\"http://xml.org/sax/features/external-general-entities\",true); } }",
+    "good": "class C { void f() { factory.setFeature(\"http://xml.org/sax/features/external-general-entities\",false); } }"
+  },
+  {
+    "rule_id": "da6c34736db811eea68ffa163e0fa374",
+    "name": "xml_expansion",
+    "bad": "class C { void f() { factory.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\",false); } }",
+    "good": "class C { void f() { factory.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\",true); } }"
+  },
+  {
+    "rule_id": "da66bac66db811eea68ffa163e0fa374",
+    "name": "xslt_secure",
+    "bad": "class C { void f() { factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET,\"all\"); } }",
+    "good": "class C { void f() { factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET,\"\"); } }"
+  },
+  {
+    "rule_id": "da6c0e656db811eea68ffa163e0fa374",
+    "name": "key_length",
+    "bad": "class C { void f() { KeyPairGenerator generator=KeyPairGenerator.getInstance(\"RSA\"); generator.initialize(1024); } }",
+    "good": "class C { void f() { KeyPairGenerator generator=KeyPairGenerator.getInstance(\"RSA\"); generator.initialize(2048); } }"
+  },
+  {
+    "rule_id": "da752e1f6db811eea68ffa163e0fa374",
+    "name": "thread_handler",
+    "bad": "class C { void f(Thread thread) { thread.start(); } }",
+    "good": "class C { void f(Thread thread) { thread.setUncaughtExceptionHandler(handler); thread.start(); } }"
+  },
+  {
+    "rule_id": "da6ba2666db811eea68ffa163e0fa374",
+    "name": "process_streams",
+    "bad": "class C { void f(Process process) { process.waitFor(); } }",
+    "good": "class C { void f(Process process) { process.getInputStream().transferTo(output); process.getErrorStream().transferTo(errors); process.waitFor(); } }"
+  },
+  {
+    "rule_id": "da6bfac16db811eea68ffa163e0fa374",
+    "name": "fixed_salt",
+    "bad": "class C { void f() { new PBEKeySpec(password,\"fixed\".getBytes(),20000,256); } }",
+    "good": "class C { void f() { new PBEKeySpec(password,salt,20000,256); } }"
+  },
+  {
+    "rule_id": "da6bf4786db811eea68ffa163e0fa374",
+    "name": "hash_iterations",
+    "bad": "class C { void f() { new PBEKeySpec(password,salt,100,256); } }",
+    "good": "class C { void f() { new PBEKeySpec(password,salt,20000,256); } }"
+  },
+  {
+    "rule_id": "da6b99806db811eea68ffa163e0fa374",
+    "name": "classloader_permissions",
+    "bad": "class C extends SecureClassLoader { PermissionCollection getPermissions(CodeSource source) { return permissions; } }",
+    "good": "class C extends SecureClassLoader { PermissionCollection getPermissions(CodeSource source) { return super.getPermissions(source); } }"
+  },
+  {
+    "rule_id": "da66c40c6db811eea68ffa163e0fa374",
+    "name": "security_method",
+    "bad": "class C { boolean checkPermission() { return true; } }",
+    "good": "class C { private boolean checkPermission() { return true; } }"
+  },
+  {
+    "rule_id": "da6551716db811eea68ffa163e0fa374",
+    "name": "boxed_primitive",
+    "bad": "class C { int f() { return new Integer(3); } }",
+    "good": "class C { int f() { return 3; } }"
+  },
+  {
+    "rule_id": "da773d126db811eea68ffa163e0fa374",
+    "name": "integer_overflow",
+    "bad": "class C { int f() { return 2147483647+1; } }",
+    "good": "class C { long f() { return 2147483647L+1; } }"
+  },
+  {
+    "rule_id": "da7335a56db811eea68ffa163e0fa374",
+    "name": "decimal_precision",
+    "bad": "class C { double price; }",
+    "good": "class C { BigDecimal price; }"
+  },
+  {
+    "rule_id": "da62831f6db811eea68ffa163e0fa374",
+    "name": "null_dereference",
+    "bad": "class C { void f() { String value=null; value.length(); } }",
+    "good": "class C { void f() { String value=null; if(value!=null) { value.length(); } } }"
+  },
+  {
+    "rule_id": "da727db76db811eea68ffa163e0fa374",
+    "name": "fallthrough",
+    "bad": "class C { void f(int value) { switch(value) { case 1: f(3); case 2: break; default: break; } } }",
+    "good": "class C { void f(int value) { switch(value) { case 1: f(3); /* fall-through */ case 2: break; default: break; } } }"
+  },
+  {
+    "rule_id": "da754bd26db811eea68ffa163e0fa374",
+    "name": "array_copy",
+    "bad": "class C { void f(int[] from,int[] to) { for(int i=0;i<from.length;i++) { to[i]=from[i]; } } }",
+    "good": "class C { void f(int[] from,int[] to) { System.arraycopy(from,0,to,0,from.length); } }"
+  },
+  {
+    "rule_id": "da74ea5f6db811eea68ffa163e0fa374",
+    "name": "constructor_reuse",
+    "bad": "class C { C() { initialize(); } C(int value) { initialize(); } }",
+    "good": "class C { C() { initialize(); } C(int value) { this(); } }"
+  },
+  {
+    "rule_id": "da67a81e6db811eea68ffa163e0fa374",
+    "name": "import_order",
+    "bad": "import java.util.List;\nimport com.huawei.Widget;\nclass C {}",
+    "good": "import com.huawei.Widget;\n\nimport java.util.List;\nclass C {}"
+  },
+  {
+    "rule_id": "da72743c6db811eea68ffa163e0fa374",
+    "name": "source_sections",
+    "bad": "package p;\nimport java.util.List;\nclass C {}",
+    "good": "package p;\n\nimport java.util.List;\n\nclass C {}"
+  },
+  {
+    "rule_id": "da730a766db811eea68ffa163e0fa374",
+    "name": "vertical_alignment",
+    "bad": "class C { int value     = 1; }",
+    "good": "class C { int value = 1; }"
+  },
+  {
+    "rule_id": "da72e8dd6db811eea68ffa163e0fa374",
+    "name": "operator_wrap",
+    "bad": "class C { int f(int a,int b) { return a +\n b; } }",
+    "good": "class C { int f(int a,int b) { return a\n + b; } }"
+  },
+  {
+    "rule_id": "da7090006db811eea68ffa163e0fa374",
+    "name": "prefer_collections",
+    "bad": "class C { Object[] values; }",
+    "good": "class C { List<Object> values; }"
+  },
+  {
+    "rule_id": "da655c276db811eea68ffa163e0fa374",
+    "name": "explicit_cast",
+    "bad": "class C { double f() { double value=1/2; return value; } }",
+    "good": "class C { double f() { double value=(double)1/2; return value; } }"
+  },
+  {
+    "rule_id": "da7500456db811eea68ffa163e0fa374",
+    "name": "singleton_constructor",
+    "bad": "class C { private static final C INSTANCE=new C(); public C() {} }",
+    "good": "class C { private static final C INSTANCE=new C(); private C() {} }"
+  },
+  {
+    "rule_id": "da6b8d3e6db811eea68ffa163e0fa374",
+    "name": "deserialize_validation",
+    "bad": "class C { C() { checkPermission(); } private void readObject(ObjectInputStream input) { input.defaultReadObject(); } }",
+    "good": "class C { C() { checkPermission(); } private void readObject(ObjectInputStream input) { input.defaultReadObject(); checkPermission(); } }"
+  },
+  {
+    "rule_id": "da5de2b26db811eea68ffa163e0fa374",
+    "name": "unsafe_override",
+    "bad": "class Base { synchronized void work() {} } class C extends Base { void work() {} }",
+    "good": "class Base { synchronized void work() {} } class C extends Base { synchronized void work() {} }"
+  },
+  {
+    "rule_id": "da77306c6db811eea68ffa163e0fa374",
+    "name": "double_checked_lock",
+    "bad": "class C { private static C instance; C get() { if(instance==null) { synchronized(lock) { if(instance==null) { instance=new C(); } } } return instance; } }",
+    "good": "class C { private static volatile C instance; C get() { if(instance==null) { synchronized(lock) { if(instance==null) { instance=new C(); } } } return instance; } }"
+  },
+  {
+    "rule_id": "da70473b6db811eea68ffa163e0fa374",
+    "name": "security_manager",
+    "bad": "class C { void f() { System.setSecurityManager(null); } }",
+    "good": "class C { void f() { System.setSecurityManager(manager); } }"
+  },
+  {
+    "rule_id": "da709a416db811eea68ffa163e0fa374",
+    "name": "log_level",
+    "bad": "class C { void f() { logger.log(\"message\"); } }",
+    "good": "class C { void f() { logger.info(\"message\"); } }"
+  },
+  {
+    "rule_id": "da6069916db811eea68ffa163e0fa374",
+    "name": "ssh_algorithms",
+    "bad": "class C { void f() { session.setConfig(\"kex\",\"diffie-hellman-group1-sha1\"); } }",
+    "good": "class C { void f() { session.setConfig(\"kex\",\"curve25519-sha256\"); } }"
+  },
+  {
+    "rule_id": "da60a1026db811eea68ffa163e0fa374",
+    "name": "pending_intent",
+    "bad": "class C { void f() { Intent intent=new Intent(\"ACTION\"); PendingIntent.getActivity(context,0,intent,0); } }",
+    "good": "class C { void f() { Intent intent=new Intent(context,Target.class); PendingIntent.getActivity(context,0,intent,0); } }"
+  },
+  {
+    "rule_id": "da67a0aa6db811eea68ffa163e0fa374",
+    "name": "lock_eviction",
+    "bad": "class C { void f() { Lock lock=locks.computeIfAbsent(id,key -> new ReentrantLock()); lock.lock(); try { use(); } finally { lock.unlock(); locks.remove(id); } } }",
+    "good": "class C { void f() { Lock lock=locks.computeIfAbsent(id,key -> new ReentrantLock()); lock.lock(); try { use(); } finally { lock.unlock(); } } }"
+  },
+  {
+    "rule_id": "da6fe6f46db811eea68ffa163e0fa374",
+    "name": "zip_directory_bytes",
+    "bad": "class C { void f(ZipInputStream zip) { while((entry=zip.getNextEntry())!=null) { if(entry.isDirectory()) { continue; } copyLimited(zip); } } }",
+    "good": "class C { void f(ZipInputStream zip) { while((entry=zip.getNextEntry())!=null) { if(entry.isDirectory()) { while(zip.read(buffer)!=-1) { checkLimit(); } continue; } copyLimited(zip); } } }"
+  },
+  {
+    "rule_id": "da77065e6db811eea68ffa163e0fa374",
+    "name": "lock_order",
+    "bad": "class C { Lock first; Lock second; void a() { first.lock(); second.lock(); } void b() { second.lock(); first.lock(); } }",
+    "good": "class C { Lock first; Lock second; void a() { first.lock(); second.lock(); } void b() { first.lock(); second.lock(); } }"
+  },
+  {
+    "rule_id": "da728f456db811eea68ffa163e0fa374",
+    "name": "comment_indent",
+    "bad": "class C {\n /* explanation\n  * detail\n  */\n    int value;\n}",
+    "good": "class C {\n    /* explanation\n     * detail\n     */\n    int value;\n}"
+  },
+  {
+    "rule_id": "da6fe6f46db811eea68ffa163e0fa374",
+    "name": "zip_directory_bytes",
+    "bad": "class C { void f(ZipInputStream zip) { while((entry=zip.getNextEntry())!=null) { if(entry.isDirectory()) { Files.createDirectories(target); } else { copyLimited(zip); } zip.closeEntry(); } } }",
+    "good": "class C { void f(ZipInputStream zip) { while((entry=zip.getNextEntry())!=null) { if(entry.isDirectory()) { while(zip.read(buffer)!=-1) { checkLimit(); } Files.createDirectories(target); } else { copyLimited(zip); } zip.closeEntry(); } } }"
+  },
+  {
+    "rule_id": "da725e646db811eea68ffa163e0fa374",
+    "name": "comment_spacing",
+    "bad": "class C { int value;/* note */int other; }",
+    "good": "class C { int value; /* note */ int other; }"
+  },
+  {
+    "rule_id": "da729c186db811eea68ffa163e0fa374",
+    "name": "modifier_order",
+    "bad": "class C { static public void f(final int value) {} }",
+    "good": "class C { @Annotation(\"private static\") public synchronized void f(final int value) {} }"
+  },
+  {
+    "rule_id": "da7457aa6db811eea68ffa163e0fa374",
+    "name": "input:utf8",
+    "bad": "class C { /* \udcff */ }",
+    "good": "class C {}",
+    "expect_error": true
+  },
+  {
+    "rule_id": "da73142f6db811eea68ffa163e0fa374",
+    "name": "javac-grammar:enum-separators",
+    "bad": "enum C { A B; }",
+    "good": "enum C { A, B; }",
+    "expect_error": true
+  }
+]

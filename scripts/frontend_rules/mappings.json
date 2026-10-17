@@ -1,0 +1,1317 @@
+{
+  "da73b88f6db811eea68ffa163e0fa374": {
+    "detector": "eslint:eqeqeq",
+    "rules": {
+      "eqeqeq": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73b7a36db811eea68ffa163e0fa374": {
+    "detector": "eslint:yoda",
+    "rules": {
+      "yoda": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73b7006db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:finally-completion",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Structural completion analysis reports reachable return/throw/break/continue paths that escape finally, while excluding nested functions and locally consumed loop/switch jumps. It does not execute code or infer dynamic control flow."
+  },
+  "da73b61e6db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-promise-reject-errors",
+    "rules": {
+      "prefer-promise-reject-errors": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73b4886db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-throw-literal",
+    "rules": {
+      "no-throw-literal": "error"
+    },
+    "status": "partial",
+    "reason": "Checks thrown literals only. Export gives the broad instruction to use exceptions properly; exception strategy and recoverability are not fully specified."
+  },
+  "da73d2696db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-arrow-callback",
+    "rules": {
+      "prefer-arrow-callback": "error"
+    },
+    "status": "partial",
+    "reason": "Checks anonymous callbacks with safe arrow conversion. Detecting all saved-this aliases and choosing anonymous-function style is broader than this rule."
+  },
+  "da73b1fe6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:logical-control",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73b2d76db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-cond-assign",
+    "rules": {
+      "no-cond-assign": [
+        "error",
+        "always"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73d0916db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-rest-params",
+    "rules": {
+      "prefer-rest-params": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73cff36db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-param-reassign",
+    "rules": {
+      "no-param-reassign": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ecb86db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-multi-str",
+    "rules": {
+      "no-multi-str": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73cf086db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-new-func",
+    "rules": {
+      "no-new-func": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73eb1c6db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-template",
+    "rules": {
+      "prefer-template": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73afd56db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-case-declarations",
+    "rules": {
+      "no-case-declarations": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ccb66db811eea68ffa163e0fa374": {
+    "detector": "eslint:consistent-return",
+    "rules": {
+      "consistent-return": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ea906db811eea68ffa163e0fa374": {
+    "detector": "eslint:quotes",
+    "rules": {
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73aedf6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-fallthrough",
+    "rules": {
+      "no-fallthrough": "error"
+    },
+    "status": "partial",
+    "reason": "Detects reachable case fallthrough. Return/throw/continue termination is accepted; literal break-only interpretation would reject valid termination paths."
+  },
+  "da73ae3a6db811eea68ffa163e0fa374": {
+    "detector": "eslint:default-case",
+    "rules": {
+      "default-case": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73cc2c6db811eea68ffa163e0fa374": {
+    "detector": "eslint:default-param-last",
+    "rules": {
+      "default-param-last": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f7eb6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-shadow",
+    "rules": {
+      "no-shadow": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73cb556db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-params",
+    "rules": {
+      "max-params": [
+        "error",
+        5
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73e8dc6db811eea68ffa163e0fa374": {
+    "detector": "eslint:use-isnan",
+    "rules": {
+      "use-isnan": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f7576db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-array-constructor,no-object-constructor",
+    "rules": {
+      "no-array-constructor": "error",
+      "no-object-constructor": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ca226db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-depth",
+    "rules": {
+      "max-depth": [
+        "error",
+        4
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73cabd6db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-nested-callbacks",
+    "rules": {
+      "max-nested-callbacks": [
+        "error",
+        4
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73e8066db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-floating-decimal",
+    "rules": {
+      "no-floating-decimal": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73aa3e6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-warning-comments",
+    "rules": {
+      "no-warning-comments": [
+        "error",
+        {
+          "terms": [
+            "todo",
+            "fixme"
+          ],
+          "location": "anywhere"
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f6c86db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-undef-init",
+    "rules": {
+      "no-undef-init": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c9516db811eea68ffa163e0fa374": {
+    "detector": "eslint:complexity",
+    "rules": {
+      "complexity": [
+        "error",
+        20
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73e69f6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-implicit-globals",
+    "rules": {
+      "no-implicit-globals": "error"
+    },
+    "status": "partial",
+    "reason": "Checks globals in scripts. ES modules have module scope; existing platform globals and bundler wrapper semantics need project context."
+  },
+  "da73a87e6db811eea68ffa163e0fa374": {
+    "detector": "eslint:spaced-comment",
+    "rules": {
+      "spaced-comment": [
+        "error",
+        "always"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f5ee6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-multi-assign",
+    "rules": {
+      "no-multi-assign": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c8b76db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-lines-per-function",
+    "rules": {
+      "max-lines-per-function": [
+        "error",
+        {
+          "max": 50,
+          "skipBlankLines": true,
+          "skipComments": true
+        }
+      ]
+    },
+    "status": "partial",
+    "reason": "Export does not specify a numeric maximum. Local policy checks 50 nonblank, noncomment function lines; this is an explicit configurable interpretation."
+  },
+  "da73e5cc6db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-lines",
+    "rules": {
+      "max-lines": [
+        "error",
+        2000
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f5586db811eea68ffa163e0fa374": {
+    "detector": "eslint:one-var",
+    "rules": {
+      "one-var": [
+        "error",
+        "never"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c6646db811eea68ffa163e0fa374": {
+    "detector": "eslint:semi",
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73a29a6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-debugger",
+    "rules": {
+      "no-debugger": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f3fd6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-var",
+    "rules": {
+      "no-var": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c5756db811eea68ffa163e0fa374": {
+    "detector": "eslint:comma-dangle",
+    "rules": {
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c4df6db811eea68ffa163e0fa374": {
+    "detector": "eslint:brace-style",
+    "rules": {
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "message_ids": {
+      "brace-style": [
+        "nextLineOpen"
+      ]
+    }
+  },
+  "da73a2086db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-alert",
+    "rules": {
+      "no-alert": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73a1046db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-console",
+    "rules": {
+      "no-console": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f1b46db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-implicit-coercion",
+    "rules": {
+      "no-implicit-coercion": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c3816db811eea68ffa163e0fa374": {
+    "detector": "eslint:curly",
+    "rules": {
+      "curly": [
+        "error",
+        "all"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da739ff86db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-implied-eval",
+    "rules": {
+      "no-implied-eval": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c2a46db811eea68ffa163e0fa374": {
+    "detector": "eslint:keyword-spacing,space-infix-ops",
+    "rules": {
+      "keyword-spacing": "error",
+      "space-infix-ops": "error"
+    },
+    "status": "partial",
+    "reason": "Checks spacing around keywords and infix operators. The exported instruction is broader than these two explicit spacing policies."
+  },
+  "da73e0326db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-extend-native",
+    "rules": {
+      "no-extend-native": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da739ee36db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-eval",
+    "rules": {
+      "no-eval": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73f0106db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-destructuring",
+    "rules": {
+      "prefer-destructuring": [
+        "error",
+        {
+          "array": true,
+          "object": false
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c1cb6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-multiple-empty-lines",
+    "rules": {
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 2,
+          "maxEOF": 1
+        }
+      ]
+    },
+    "status": "partial",
+    "reason": "Export gives no blank-line policy. Checks an explicit maximum of two consecutive blank lines and one at EOF."
+  },
+  "da73c13b6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:else-catch-line",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73df5b6db811eea68ffa163e0fa374": {
+    "detector": "eslint:guard-for-in",
+    "rules": {
+      "guard-for-in": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73c0666db811eea68ffa163e0fa374": {
+    "detector": "eslint:newline-per-chained-call",
+    "rules": {
+      "newline-per-chained-call": [
+        "error",
+        {
+          "ignoreChainWithDepth": 4
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73de836db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-prototype-builtins",
+    "rules": {
+      "no-prototype-builtins": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73bfd46db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:object-properties-lines",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ddb46db811eea68ffa163e0fa374": {
+    "detector": "eslint:dot-notation",
+    "rules": {
+      "dot-notation": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73bef76db811eea68ffa163e0fa374": {
+    "detector": "eslint:operator-linebreak",
+    "rules": {
+      "operator-linebreak": [
+        "error",
+        "after"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73dcbc6db811eea68ffa163e0fa374": {
+    "detector": "eslint:object-shorthand",
+    "rules": {
+      "object-shorthand": [
+        "error",
+        "always"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73be556db811eea68ffa163e0fa374": {
+    "detector": "eslint:max-len",
+    "rules": {
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "ignoreComments": false
+        }
+      ]
+    },
+    "status": "partial",
+    "reason": "Export does not specify maximum line width. This implementation uses the documented local limit of 120 characters."
+  },
+  "da73db3c6db811eea68ffa163e0fa374": {
+    "detector": "eslint:quote-props",
+    "rules": {
+      "quote-props": [
+        "error",
+        "as-needed"
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73bcd56db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:space-indent",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73dab16db811eea68ffa163e0fa374": {
+    "detector": "eslint:new-parens",
+    "rules": {
+      "new-parens": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73bb656db811eea68ffa163e0fa374": {
+    "detector": "eslint:prefer-named-capture-group",
+    "rules": {
+      "prefer-named-capture-group": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73ba936db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-regex-spaces",
+    "rules": {
+      "no-regex-spaces": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73b9fc6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-mixed-operators",
+    "rules": {
+      "no-mixed-operators": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73d7786db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-shadow-restricted-names",
+    "rules": {
+      "no-shadow-restricted-names": "error"
+    },
+    "status": "partial",
+    "reason": "Valid JavaScript cannot declare reserved keywords; parser failures surface as incomplete scans. This additional rule checks restricted identifiers such as undefined/NaN/arguments, not synonym quality."
+  },
+  "da73b9286db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-nested-ternary",
+    "rules": {
+      "no-nested-ternary": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73d6156db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:variable-camel",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73d4666db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:function-camel",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73d3d66db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:class-pascal",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks class names and named constructor call targets. Inferring intended constructor functions without call sites needs interprocedural usage information."
+  },
+  "da73d6a96db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:negative-boolean",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks boolean-typed bindings with explicit negative prefixes (not/no/non/isNot/hasNo/cannot/disable). Natural-language negation cannot be exhaustively inferred."
+  },
+  "da73d2ff6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:mutable-export",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects reassignable exports and exported object/array literals. Deep immutability of arbitrary imported/user-defined types requires a project-specific immutability policy."
+  },
+  "da73b3ab6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:many-conditions",
+    "rules": {},
+    "status": "partial",
+    "reason": "Export does not define too many. Checks more than four boolean operands in a control condition."
+  },
+  "da73b11f6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:final-else",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73abd26db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:copyright-header",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da73a70d6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:comment-placement",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects orphan trailing comments after the last statement. Association of arbitrary comments to intended code cannot be fully inferred."
+  },
+  "da73e53c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:utf8",
+    "rules": {},
+    "status": "partial",
+    "reason": "Strict UTF-8 decoding is enforced by file discovery. AST additionally flags replacement characters that may indicate earlier lossy decoding; original encoding cannot be reconstructed from already-decoded text."
+  },
+  "da73d87c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:filename",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks uppercase source extensions. Consistency of base filename styles is project-dependent; the export provides no selected naming convention."
+  },
+  "da73e9b06db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:float-equality",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects equality against noninteger number literals and locally inferred fractional initializers. JavaScript numbers do not distinguish integers from floats statically; external values need context."
+  },
+  "da73d1726db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:parameter-destructure",
+    "rules": {},
+    "status": "partial",
+    "reason": "Advisory for parameters used through at least two direct property reads. Applicability and API compatibility require review."
+  },
+  "da73ee666db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:array-traversal",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects typed array for-of traversal. Break/continue/async semantics may justify a loop; other equivalent traversal styles need review."
+  },
+  "da73ed906db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:array-properties",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks statically named nonnumeric array properties excluding standard Array members. Computed keys and aliasing are not proven."
+  },
+  "da73ef3d6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:array-mutation-loop",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects direct and resolvable array alias mutations in for-of, forEach and index loops, including mutating supplied-source function calls. Conditional reassignments, closures, external callees and complete path-sensitive effects remain unsupported."
+  },
+  "da73f0e06db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:array-copy",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects typed array.slice() with no arguments as an alternate copying idiom. Other hand-written copying algorithms require intent analysis."
+  },
+  "da73f2506db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:number-conversion",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects parseInt/parseFloat conversion and Number() results without a local NaN check; full control-flow validation across functions is not implemented."
+  },
+  "da73aca26db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:postmessage-origin",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks missing or wildcard postMessage target origins. Incoming message origin verification and dynamically computed destinations need whole-program analysis."
+  },
+  "da73f9706db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:sensitive-storage",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks storage keys/values with credential names. This is a security review candidate, not taint-flow proof."
+  },
+  "da73fa626db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:persistent-storage",
+    "rules": {},
+    "status": "partial",
+    "reason": "Reports localStorage writes for retention review. Whether data is temporary is an application requirement not present in source syntax."
+  },
+  "da73f8cb6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:sensitive-database",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects sensitive-name literals in direct SQL or IndexedDB put/add calls. No complete database taint tracking is claimed."
+  },
+  "da73e45f6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:public-address",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamically assembled addresses and IPv6 require further analysis."
+  },
+  "da73e2a76db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:personal-information",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects author tags and email-like personal contact strings in comments. Determining personal identity in arbitrary prose is not decidable from syntax alone."
+  },
+  "da73e1d06db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:commented-code",
+    "rules": {},
+    "status": "partial",
+    "reason": "Parses comment content as JavaScript and flags executable declarations/statements. Documentation examples may be intentional and require review."
+  },
+  "da73e0fd6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:weak-random",
+    "rules": {},
+    "status": "partial",
+    "reason": "Reports Math.random as a security review candidate; source syntax alone cannot prove use in a security-sensitive scenario."
+  },
+  "da73da1d6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:sensitive-output",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects credential-named values sent to logging/UI sinks. Full sensitive-data taint tracking and necessity assessment are not implemented."
+  },
+  "da73d92c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:archive-extract",
+    "rules": {},
+    "status": "partial",
+    "reason": "Reports archive extraction API calls for path/size/link review. It cannot prove prior validation or protect every extraction library."
+  },
+  "da6c0bdf6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-eval,no-new-func,no-implied-eval",
+    "rules": {
+      "no-eval": "error",
+      "no-new-func": "error",
+      "no-implied-eval": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c02326db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-extra-non-null-assertion",
+    "rules": {
+      "@typescript-eslint/no-unnecessary-type-assertion": "error",
+      "@typescript-eslint/no-extra-non-null-assertion": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6bf9976db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-useless-assignment",
+    "rules": {
+      "no-useless-assignment": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6be02a6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-dupe-else-if,no-duplicate-case",
+    "rules": {
+      "no-dupe-else-if": "error",
+      "no-duplicate-case": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6f5bd26db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/array-type",
+    "rules": {
+      "@typescript-eslint/array-type": [
+        "error",
+        {
+          "default": "array"
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6f47e06db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-unused-vars",
+    "rules": {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "args": "after-used",
+          "ignoreRestSiblings": true
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6bb2ae6db811eea68ffa163e0fa374": {
+    "detector": "eslint:constructor-super",
+    "rules": {
+      "constructor-super": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d472b6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-useless-catch",
+    "rules": {
+      "no-useless-catch": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6b835f6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-sparse-arrays",
+    "rules": {
+      "no-sparse-arrays": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6caa4f6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:finally-completion",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Structural completion analysis reports reachable return/throw/break/continue paths that escape finally, while excluding nested functions and locally consumed loop/switch jumps. It does not execute code or infer dynamic control flow."
+  },
+  "da6c98ef6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-sequences",
+    "rules": {
+      "no-sequences": [
+        "error",
+        {
+          "allowInParentheses": false
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c90406db811eea68ffa163e0fa374": {
+    "detector": "eslint:use-isnan",
+    "rules": {
+      "use-isnan": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6b5e836db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-redeclare",
+    "rules": {
+      "@typescript-eslint/no-redeclare": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d20fa6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-new-wrappers,@typescript-eslint/no-wrapper-object-types",
+    "rules": {
+      "no-new-wrappers": "error",
+      "@typescript-eslint/no-wrapper-object-types": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c871b6db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-duplicate-type-constituents",
+    "rules": {
+      "@typescript-eslint/no-duplicate-type-constituents": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d17b26db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-constant-condition,@typescript-eslint/no-unnecessary-condition",
+    "rules": {
+      "no-constant-condition": [
+        "error",
+        {
+          "checkLoops": false
+        }
+      ],
+      "@typescript-eslint/no-unnecessary-condition": "error"
+    },
+    "status": "partial",
+    "reason": "Checks type-proven constants and literal conditions. Arbitrary runtime/path-sensitive conditions beyond TypeScript narrowing are not proven."
+  },
+  "da6d0f486db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-empty-pattern",
+    "rules": {
+      "no-empty-pattern": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d05156db811eea68ffa163e0fa374": {
+    "detector": "eslint:default-case-last",
+    "rules": {
+      "default-case-last": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cfc416db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/await-thenable",
+    "rules": {
+      "@typescript-eslint/await-thenable": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c57f16db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-extra-parens",
+    "rules": {
+      "no-extra-parens": [
+        "error",
+        "all",
+        {
+          "nestedBinaryExpressions": false
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cea4c6db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-misused-new",
+    "rules": {
+      "@typescript-eslint/no-misused-new": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6ce1e46db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-self-assign",
+    "rules": {
+      "no-self-assign": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c437e6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-multi-str",
+    "rules": {
+      "no-multi-str": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cd75d6db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-unused-expressions",
+    "rules": {
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true,
+          "allowTernary": true,
+          "allowTaggedTemplates": true
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c3dba6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-extra-semi",
+    "rules": {
+      "no-extra-semi": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cce4e6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-empty",
+    "rules": {
+      "no-empty": [
+        "error",
+        {
+          "allowEmptyCatch": false
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c32e46db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-self-compare",
+    "rules": {
+      "no-self-compare": "error"
+    },
+    "status": "partial",
+    "reason": "ESLint comparisons plus pure identifier/literal arithmetic, logical and bitwise duplicate operands with parentheses unwrapped. Getter/property/call expressions and complete side-effect analysis remain excluded."
+  },
+  "da6c1ff16db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-use-before-define",
+    "rules": {
+      "no-use-before-define": [
+        "error",
+        {
+          "functions": false,
+          "classes": false,
+          "variables": true
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "ESLint resolves use-before-definition bindings; exported var-only policy filters let/const, functions and classes by their actual declaration symbols."
+  },
+  "da6c15206db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-debugger",
+    "rules": {
+      "no-debugger": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cbbe26db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-array-delete",
+    "rules": {
+      "@typescript-eslint/no-array-delete": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d591b6db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/require-array-sort-compare",
+    "rules": {
+      "@typescript-eslint/require-array-sort-compare": [
+        "error",
+        {
+          "ignoreStringArrays": false
+        }
+      ]
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c7d4a6db811eea68ffa163e0fa374": {
+    "detector": "eslint:no-unreachable-loop",
+    "rules": {
+      "no-unreachable-loop": "error"
+    },
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6f79d96db811eea68ffa163e0fa374": {
+    "detector": "eslint:@typescript-eslint/no-wrapper-object-types,@typescript-eslint/no-unsafe-function-type,@typescript-eslint/no-empty-object-type",
+    "rules": {
+      "@typescript-eslint/no-wrapper-object-types": "error",
+      "@typescript-eslint/no-unsafe-function-type": "error",
+      "@typescript-eslint/no-empty-object-type": "error"
+    },
+    "status": "partial",
+    "reason": "Legacy ban-types was removed upstream. Uses the successor default restrictions (wrapper objects, Function, empty object); unspecified historical custom bans cannot be recovered."
+  },
+  "da6f72026db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:interface-prefix",
+    "rules": {},
+    "status": "partial",
+    "reason": "Legacy rule removed upstream. Implements the historical default never-prefix policy for I followed by uppercase; export supplies no options."
+  },
+  "da6f675a6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:member-delimiter",
+    "rules": {},
+    "status": "partial",
+    "reason": "Legacy formatting rule removed upstream. Implements semicolon delimiters for multiline members with a required final delimiter; export supplies no selected style options."
+  },
+  "da6f536a6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:variable-camel",
+    "rules": {},
+    "status": "partial",
+    "reason": "Legacy rule removed upstream. Checks variable/parameter bindings; property interoperability exceptions and historical plugin defaults are not fully reproduced."
+  },
+  "da6bf13e6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:assigned-mutator",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects sort/reverse results assigned to different bindings, including const aliases and assignment expressions; excludes assignment back to the same source array. Escaping state, reassigned aliases and nested expressions remain unsupported."
+  },
+  "da6be83f6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:empty-intersection",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6bd7d46db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:array-in",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6bd0736db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:all-identical-branches",
+    "rules": {},
+    "status": "partial",
+    "reason": "Compares normalized AST text of direct if/else and switch branches. Equivalent implementations expressed with different syntax require semantic analysis."
+  },
+  "da6bc7c46db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:ignored-initial-value",
+    "rules": {},
+    "status": "partial",
+    "reason": "Tracks unread incoming parameter, catch and for-of binding values through bounded branch/return paths and reports their first overwrite. Accounts for arguments object/index reads while excluding arguments.length and nested function arguments. Complex loops, exceptions, closures and full path feasibility remain unsupported."
+  },
+  "da6bbc486db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:void-output",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks TypeScript-inferred void results in assignments, returns, arguments, object/array literals, templates, casts, awaits and conditional values. Discarded comma-left and callback expression results are excluded. Unknown external signatures and full expression paths remain unsupported."
+  },
+  "da6ba9146db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:conditional-newline",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d6e3c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:inverted-boolean",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects negated if conditions with an else branch. Other forms of inversion and domain readability need review."
+  },
+  "da6b9ed86db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:useless-increment",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects returning a postfix update of a local variable. Other dead increments need liveness and escape analysis."
+  },
+  "da6d62106db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:argument-order",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects obvious permutations where call identifiers match a local resolved function signature parameter set. Positional semantics with different names require review."
+  },
+  "da6b955c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:identical-functions",
+    "rules": {},
+    "status": "partial",
+    "reason": "Compares nonempty function structures across supplied source with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependency symbols remain unsupported."
+  },
+  "da6d4f676db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:many-cases",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Counts CaseClause nodes; uses the exported maximum option (30 by default)."
+  },
+  "da6b8b566db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:case-operator",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cb1f36db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:prefer-while",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d3d336db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:invariant-return",
+    "rules": {},
+    "status": "partial",
+    "reason": "Uses structural completion analysis for reachable returns, const aliases, literal conditions, switch fallthrough, loops, throws and finally overrides. Dynamic predicates, implicit effects and values produced by calls remain unknown."
+  },
+  "da6b7ba96db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:collection-overwrite",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects constant-index writes to the iterated array from a for-of loop. Other collection types, indices and aliases need dataflow analysis."
+  },
+  "da6ca06a6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:suspicious-assignment",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d33f06db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:promise-try",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks returned and discarded thenables inside lexical try bodies, follows const aliases and conditional/comma returns, and recognizes safe await/valid rejection handlers. Unknown thenables, handler side effects, interprocedural effects and arbitrary promise variables remain partial."
+  },
+  "da6b717b6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:unused-error",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6d2a466db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:empty-array-use",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects reading or iterating an empty local array before a visible mutation/escape. Interprocedural mutations and arbitrary collection classes are outside this analysis."
+  },
+  "da6b67446db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:collection-size",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6b55d06db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:unused-collection",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects local array bindings whose only references write through mutators/indexes. Escapes, indirect references and custom collections are outside this analysis."
+  },
+  "da6b49c76db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:accessor-field",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks simple backing fields named name or _name for matching accessors. Delegated/computed accessors and unconventional field policies need review."
+  },
+  "da6c73fd6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:ignored-pure-return",
+    "rules": {},
+    "status": "partial",
+    "reason": "Checks an explicit allowlist of pure standard string/array/Math methods with known receiver types. No claim of arbitrary function effect inference."
+  },
+  "da6c6b3c6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:undefined-optional",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c61bb6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:duplicate-branch",
+    "rules": {},
+    "status": "partial",
+    "reason": "Compares normalized direct if/else and switch branch bodies within one construct; semantic equivalence with different syntax is not inferred."
+  },
+  "da6cf3296db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:hardcoded-credentials",
+    "rules": {},
+    "status": "partial",
+    "reason": "Detects nonempty string literals bound to credential-word names using the exported credentialWords option. This is a security review candidate, not proof of a live credential."
+  },
+  "da6c4d9f6db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:multiline-curly",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6cc4b76db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:few-cases",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  },
+  "da6c29276db811eea68ffa163e0fa374": {
+    "detector": "typescript-ast:boolean-compare",
+    "rules": {},
+    "status": "implemented",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence."
+  }
+}

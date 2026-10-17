@@ -1,0 +1,4 @@
+interface:
+  display_name: "Huawei Code Review"
+  short_description: "AI checks Huawei and OpenHarmony coding conventions"
+  default_prompt: "Review the provided source code against the relevant Huawei or OpenHarmony coding rules and report actionable findings."

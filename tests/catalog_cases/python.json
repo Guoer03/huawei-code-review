@@ -1,0 +1,2095 @@
+[
+  {
+    "case_id": "G.TYP.06:positive",
+    "rule_id": "da6b85406db811eea68ffa163e0fa374",
+    "key": "G.TYP.06",
+    "source": "d = {\"a\": 1, \"a\": 2}\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.06:negative",
+    "rule_id": "da6b85406db811eea68ffa163e0fa374",
+    "key": "G.TYP.06",
+    "source": "d = {\"a\": 1, \"b\": 2}\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:取余操作符:positive",
+    "rule_id": "da69e3de6db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:取余操作符",
+    "source": "v = 7%3\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:取余操作符:negative",
+    "rule_id": "da69e3de6db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:取余操作符",
+    "source": "v = 7 % 3\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.01:positive",
+    "rule_id": "da6b0d186db811eea68ffa163e0fa374",
+    "key": "G.CMT.01",
+    "source": "import os\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.01:negative",
+    "rule_id": "da6b0d186db811eea68ffa163e0fa374",
+    "key": "G.CMT.01",
+    "source": "\"\"\"Filesystem helpers.\"\"\"\nimport os\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.LOG.01:positive",
+    "rule_id": "da68cc1f6db811eea68ffa163e0fa374",
+    "key": "G.LOG.01",
+    "source": "import logging\nlogging.debug(\"value %s\" % value)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.LOG.01:negative",
+    "rule_id": "da68cc1f6db811eea68ffa163e0fa374",
+    "key": "G.LOG.01",
+    "source": "import logging\nlogging.debug(\"value %s\", value)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:位运算操作符:positive",
+    "rule_id": "da69da476db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:位运算操作符",
+    "source": "v = a|b\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:位运算操作符:negative",
+    "rule_id": "da69da476db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:位运算操作符",
+    "source": "v = a | b\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:format:positive",
+    "rule_id": "da6b04456db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:format",
+    "source": "class Value:\n    def __format__(self, spec):\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:format:negative",
+    "rule_id": "da6b04456db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:format",
+    "source": "class Value:\n    def __format__(self, spec):\n        return \"value\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.LOG.03:positive",
+    "rule_id": "da68aebe6db811eea68ffa163e0fa374",
+    "key": "G.LOG.03",
+    "source": "import logging\nlogging.info(input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.LOG.03:negative",
+    "rule_id": "da68aebe6db811eea68ffa163e0fa374",
+    "key": "G.LOG.03",
+    "source": "import logging\nlogging.info(\"value: %s\", \"trusted value\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PRJ.04:positive",
+    "rule_id": "da6b844c6db811eea68ffa163e0fa374",
+    "key": "G.PRJ.04",
+    "source": "# coding: latin-1\nvalue = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PRJ.04:negative",
+    "rule_id": "da6b844c6db811eea68ffa163e0fa374",
+    "key": "G.PRJ.04",
+    "source": "# coding: utf-8\nvalue = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:算术操作符:positive",
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:算术操作符",
+    "source": "v = a+b\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:算术操作符:negative",
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:算术操作符",
+    "source": "v = a + b\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.03:positive",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def load():\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.03:negative",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def load():\n    \"\"\"Load a value.\"\"\"\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.06:positive",
+    "rule_id": "da6c7fc26db811eea68ffa163e0fa374",
+    "key": "G.ERR.06",
+    "source": "raise \"broken\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.06:negative",
+    "rule_id": "da6c7fc26db811eea68ffa163e0fa374",
+    "key": "G.ERR.06",
+    "source": "raise ValueError(\"broken\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.03:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls *.txt\", shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:negative",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run([\"/bin/ls\", \"report.txt\"])\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.03:assembled_concat:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls *.txt \" + name, shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:assembled_concat:negative",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls \" + name, shell=True)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.03:assembled_fstring:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(f\"ls {name} *.txt\", shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:assembled_format:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls {} *.txt\".format(name), shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:assembled_format_nested:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"{}\".format(\"ls *.txt \" + name), shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:helper_arg_not_overreached:negative",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(get_cmd(\"*.txt\"), shell=True)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EXP.03:positive",
+    "rule_id": "da6b7a386db811eea68ffa163e0fa374",
+    "key": "G.EXP.03",
+    "source": "f = lambda x: x + 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EXP.03:negative",
+    "rule_id": "da6b7a386db811eea68ffa163e0fa374",
+    "key": "G.EXP.03",
+    "source": "def f(x):\n    return x + 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PSL.02:positive",
+    "rule_id": "da69c6b86db811eea68ffa163e0fa374",
+    "key": "G.PSL.02",
+    "source": "import datetime\nnow = datetime.datetime.now()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PSL.02:negative",
+    "rule_id": "da69c6b86db811eea68ffa163e0fa374",
+    "key": "G.PSL.02",
+    "source": "import datetime\nnow = datetime.datetime.now(datetime.timezone.utc)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:length_hint:positive",
+    "rule_id": "da6afaf16db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:length_hint",
+    "source": "class Value:\n    def __length_hint__(self):\n        return \"1\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:length_hint:negative",
+    "rule_id": "da6afaf16db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:length_hint",
+    "source": "class Value:\n    def __length_hint__(self):\n        return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.IMP.03:positive",
+    "rule_id": "da6c74a06db811eea68ffa163e0fa374",
+    "key": "G.IMP.03",
+    "source": "m = __import__(\"json\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.IMP.03:negative",
+    "rule_id": "da6c74a06db811eea68ffa163e0fa374",
+    "key": "G.IMP.03",
+    "source": "import json\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.DSP.02:positive",
+    "rule_id": "da6873496db811eea68ffa163e0fa374",
+    "key": "G.DSP.02",
+    "source": "import random\ntoken = random.randint(1, 99999)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.DSP.02:negative",
+    "rule_id": "da6873496db811eea68ffa163e0fa374",
+    "key": "G.DSP.02",
+    "source": "import secrets\ntoken = secrets.randbelow(99999)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.01:positive",
+    "rule_id": "da6b79156db811eea68ffa163e0fa374",
+    "key": "G.TYP.01",
+    "source": "from decimal import Decimal\nx = Decimal(0.1)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.01:negative",
+    "rule_id": "da6b79156db811eea68ffa163e0fa374",
+    "key": "G.TYP.01",
+    "source": "from decimal import Decimal\nx = Decimal(\"0.1\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.02:positive",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader:\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.02:negative",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader:\n    \"\"\"Read input.\"\"\"\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.SER.03:positive",
+    "rule_id": "da68579c6db811eea68ffa163e0fa374",
+    "key": "G.SER.03",
+    "source": "import yaml\nx = yaml.load(data)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.SER.03:negative",
+    "rule_id": "da68579c6db811eea68ffa163e0fa374",
+    "key": "G.SER.03",
+    "source": "import yaml\nx = yaml.safe_load(data)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CTL.02:positive",
+    "rule_id": "da6b6fc26db811eea68ffa163e0fa374",
+    "key": "G.CTL.02",
+    "source": "def f():\n    return 1\n    print(\"never\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CTL.02:negative",
+    "rule_id": "da6b6fc26db811eea68ffa163e0fa374",
+    "key": "G.CTL.02",
+    "source": "def f():\n    print(\"now\")\n    return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.09:positive",
+    "rule_id": "da6963406db811eea68ffa163e0fa374",
+    "key": "G.EDV.09",
+    "source": "xml = \"<name>\" + input() + \"</name>\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.09:negative",
+    "rule_id": "da6963406db811eea68ffa163e0fa374",
+    "key": "G.EDV.09",
+    "source": "import xml.etree.ElementTree as ET\nnode = ET.Element(\"name\")\nnode.text = input()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:hash:positive",
+    "rule_id": "da6af09e6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:hash",
+    "source": "class Value:\n    def __hash__(self):\n        return \"1\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:hash:negative",
+    "rule_id": "da6af09e6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:hash",
+    "source": "class Value:\n    def __hash__(self):\n        return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PSL.03:positive",
+    "rule_id": "da6c60396db811eea68ffa163e0fa374",
+    "key": "G.PSL.03",
+    "source": "import sys\nsys.path.insert(0, \"plugins\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PSL.03:negative",
+    "rule_id": "da6c60396db811eea68ffa163e0fa374",
+    "key": "G.PSL.03",
+    "source": "import sys\nprint(sys.path)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.DSP.03:positive",
+    "rule_id": "da683a2f6db811eea68ffa163e0fa374",
+    "key": "G.DSP.03",
+    "source": "import socket\nclient = socket.socket()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.DSP.03:negative",
+    "rule_id": "da683a2f6db811eea68ffa163e0fa374",
+    "key": "G.DSP.03",
+    "source": "import ssl\nclient = ssl.SSLSocket()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.07:positive",
+    "rule_id": "da6b6eb56db811eea68ffa163e0fa374",
+    "key": "G.TYP.07",
+    "source": "d = {\"a\": 1}\nx = d[\"missing\"]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.07:negative",
+    "rule_id": "da6b6eb56db811eea68ffa163e0fa374",
+    "key": "G.TYP.07",
+    "source": "d = {\"a\": 1}\nx = d[\"a\"]\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.10:positive",
+    "rule_id": "da6958bf6db811eea68ffa163e0fa374",
+    "key": "G.EDV.10",
+    "source": "from lxml import etree\np = etree.XMLParser(resolve_entities=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.10:negative",
+    "rule_id": "da6958bf6db811eea68ffa163e0fa374",
+    "key": "G.EDV.10",
+    "source": "from lxml import etree\np = etree.XMLParser(resolve_entities=False)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PRJ.03:positive",
+    "rule_id": "da681b596db811eea68ffa163e0fa374",
+    "key": "G.PRJ.03",
+    "source": "breakpoint()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PRJ.03:negative",
+    "rule_id": "da681b596db811eea68ffa163e0fa374",
+    "key": "G.PRJ.03",
+    "source": "print(\"ready\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.VAR.01:positive",
+    "rule_id": "da6b66266db811eea68ffa163e0fa374",
+    "key": "G.VAR.01",
+    "source": "count = 1\ncount = \"one\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.VAR.01:negative",
+    "rule_id": "da6b66266db811eea68ffa163e0fa374",
+    "key": "G.VAR.01",
+    "source": "count = 1\ncount = 2\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.01:positive",
+    "rule_id": "da6ae94f6db811eea68ffa163e0fa374",
+    "key": "G.NAM.01",
+    "source": "def ReadFile():\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.01:negative",
+    "rule_id": "da6ae94f6db811eea68ffa163e0fa374",
+    "key": "G.NAM.01",
+    "source": "def read_file():\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.03:positive",
+    "rule_id": "da67fa816db811eea68ffa163e0fa374",
+    "key": "G.FIO.03",
+    "source": "import tempfile\np = tempfile.mktemp()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.03:negative",
+    "rule_id": "da67fa816db811eea68ffa163e0fa374",
+    "key": "G.FIO.03",
+    "source": "import tempfile\np = tempfile.TemporaryFile()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CTL.01:positive",
+    "rule_id": "da6b652d6db811eea68ffa163e0fa374",
+    "key": "G.CTL.01",
+    "source": "def f(flag):\n    if flag:\n        return 1\n    return \"no\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CTL.01:negative",
+    "rule_id": "da6b652d6db811eea68ffa163e0fa374",
+    "key": "G.CTL.01",
+    "source": "def f(flag):\n    if flag:\n        return 1\n    return 0\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:bytes:positive",
+    "rule_id": "da6ae6526db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:bytes",
+    "source": "class Value:\n    def __bytes__(self):\n        return \"a\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:bytes:negative",
+    "rule_id": "da6ae6526db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:bytes",
+    "source": "class Value:\n    def __bytes__(self):\n        return b\"a\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.04:positive",
+    "rule_id": "da6b5d0b6db811eea68ffa163e0fa374",
+    "key": "G.NAM.04",
+    "source": "import json\njson = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.04:negative",
+    "rule_id": "da6b5d0b6db811eea68ffa163e0fa374",
+    "key": "G.NAM.04",
+    "source": "import json\ncount = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:str:positive",
+    "rule_id": "da6adb6d6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:str",
+    "source": "class Value:\n    def __str__(self):\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:str:negative",
+    "rule_id": "da6adb6d6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:str",
+    "source": "class Value:\n    def __str__(self):\n        return \"a\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.SER.04:positive",
+    "rule_id": "da67de126db811eea68ffa163e0fa374",
+    "key": "G.SER.04",
+    "source": "import jsonpickle\njsonpickle.decode(data)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.SER.04:negative",
+    "rule_id": "da67de126db811eea68ffa163e0fa374",
+    "key": "G.SER.04",
+    "source": "import json\njson.loads(data)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.05:positive",
+    "rule_id": "da6b5b136db811eea68ffa163e0fa374",
+    "key": "G.FNM.05",
+    "source": "def f():\n    return 1, 2, 3, 4\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.05:negative",
+    "rule_id": "da6b5b136db811eea68ffa163e0fa374",
+    "key": "G.FNM.05",
+    "source": "def f():\n    return {\"red\": 1, \"blue\": 2, \"green\": 3, \"alpha\": 4}\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:repr:positive",
+    "rule_id": "da6ad2b96db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:repr",
+    "source": "class Value:\n    def __repr__(self):\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:repr:negative",
+    "rule_id": "da6ad2b96db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:repr",
+    "source": "class Value:\n    def __repr__(self):\n        return \"a\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TES.01:positive",
+    "rule_id": "da67bd076db811eea68ffa163e0fa374",
+    "key": "G.TES.01",
+    "source": "assert user.active\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TES.01:negative",
+    "rule_id": "da67bd076db811eea68ffa163e0fa374",
+    "key": "G.TES.01",
+    "source": "if not user.active:\n    raise ValueError(\"inactive\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.VAR.03:positive",
+    "rule_id": "da6b52e36db811eea68ffa163e0fa374",
+    "key": "G.VAR.03",
+    "source": "count = 1\ndef f():\n    count = 2\n    return count\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.VAR.03:negative",
+    "rule_id": "da6b52e36db811eea68ffa163e0fa374",
+    "key": "G.VAR.03",
+    "source": "count = 1\ndef f():\n    local_count = 2\n    return local_count\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:index:positive",
+    "rule_id": "da6ac73e6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:index",
+    "source": "class Value:\n    def __index__(self):\n        return \"1\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:index:negative",
+    "rule_id": "da6ac73e6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:index",
+    "source": "class Value:\n    def __index__(self):\n        return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.07:positive",
+    "rule_id": "da679cf46db811eea68ffa163e0fa374",
+    "key": "G.ERR.07",
+    "source": "try:\n    work()\nexcept ValueError:\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.07:negative",
+    "rule_id": "da679cf46db811eea68ffa163e0fa374",
+    "key": "G.ERR.07",
+    "source": "try:\n    work()\nexcept ValueError:\n    raise\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:bool:positive",
+    "rule_id": "da6abcfd6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:bool",
+    "source": "class Value:\n    def __bool__(self):\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:bool:negative",
+    "rule_id": "da6abcfd6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:bool",
+    "source": "class Value:\n    def __bool__(self):\n        return True\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.SER.02:positive",
+    "rule_id": "da677e636db811eea68ffa163e0fa374",
+    "key": "G.SER.02",
+    "source": "import json\njson.dumps({\"password\": password})\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.SER.02:negative",
+    "rule_id": "da677e636db811eea68ffa163e0fa374",
+    "key": "G.SER.02",
+    "source": "import json\njson.dumps({\"count\": count})\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CTL.03:positive",
+    "rule_id": "da6b51ca6db811eea68ffa163e0fa374",
+    "key": "G.CTL.03",
+    "source": "if a and b and c and d and e and f:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CTL.03:negative",
+    "rule_id": "da6b51ca6db811eea68ffa163e0fa374",
+    "key": "G.CTL.03",
+    "source": "if a and b:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:len:positive",
+    "rule_id": "da6ab2a76db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:len",
+    "source": "class Value:\n    def __len__(self):\n        return -1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:len:negative",
+    "rule_id": "da6ab2a76db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:len",
+    "source": "class Value:\n    def __len__(self):\n        return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.LOG.02:positive",
+    "rule_id": "da6767f86db811eea68ffa163e0fa374",
+    "key": "G.LOG.02",
+    "source": "print(\"starting\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.LOG.02:negative",
+    "rule_id": "da6767f86db811eea68ffa163e0fa374",
+    "key": "G.LOG.02",
+    "source": "import logging\nlogging.info(\"starting\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.07:positive",
+    "rule_id": "da6b485c6db811eea68ffa163e0fa374",
+    "key": "G.CLS.07",
+    "source": "class Reader:\n    def count(self):\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.07:negative",
+    "rule_id": "da6b485c6db811eea68ffa163e0fa374",
+    "key": "G.CLS.07",
+    "source": "class Reader:\n    @staticmethod\n    def count():\n        return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:iter:positive",
+    "rule_id": "da6aa8ac6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:iter",
+    "source": "class Value:\n    def __iter__(self):\n        return [1]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:iter:negative",
+    "rule_id": "da6aa8ac6db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:iter",
+    "source": "class Value:\n    def __iter__(self):\n        return iter([1])\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.08:positive",
+    "rule_id": "da6757416db811eea68ffa163e0fa374",
+    "key": "G.ERR.08",
+    "source": "raise ValueError(password)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.08:negative",
+    "rule_id": "da6757416db811eea68ffa163e0fa374",
+    "key": "G.ERR.08",
+    "source": "raise ValueError(\"authentication failed\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.03:positive",
+    "rule_id": "da6b47626db811eea68ffa163e0fa374",
+    "key": "G.FNM.03",
+    "source": "def f(a, b, c, d, e, f, g):\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.03:negative",
+    "rule_id": "da6b47626db811eea68ffa163e0fa374",
+    "key": "G.FNM.03",
+    "source": "def f(options):\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EXP.04:positive",
+    "rule_id": "da6c55ea6db811eea68ffa163e0fa374",
+    "key": "G.EXP.04",
+    "source": "items = [a + b for a in left for b in right]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EXP.04:negative",
+    "rule_id": "da6c55ea6db811eea68ffa163e0fa374",
+    "key": "G.EXP.04",
+    "source": "items = [a + 1 for a in left]\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.03:self:positive",
+    "rule_id": "da6a9f5e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:self",
+    "source": "class Reader:\n    def read(this):\n        return this\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.03:self:negative",
+    "rule_id": "da6a9f5e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:self",
+    "source": "class Reader:\n    def read(self):\n        return self\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.01:positive",
+    "rule_id": "da674bb76db811eea68ffa163e0fa374",
+    "key": "G.OPR.01",
+    "source": "answer = 1 / 0\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.01:negative",
+    "rule_id": "da674bb76db811eea68ffa163e0fa374",
+    "key": "G.OPR.01",
+    "source": "answer = 1 / 2\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.14:positive",
+    "rule_id": "da6b3e126db811eea68ffa163e0fa374",
+    "key": "G.ERR.14",
+    "source": "def f():\n    try:\n        work()\n    finally:\n        return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.14:negative",
+    "rule_id": "da6b3e126db811eea68ffa163e0fa374",
+    "key": "G.ERR.14",
+    "source": "def f():\n    try:\n        work()\n    finally:\n        close()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TES.02:positive",
+    "rule_id": "da6c4b256db811eea68ffa163e0fa374",
+    "key": "G.TES.02",
+    "source": "self.assertTrue(a == b)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TES.02:negative",
+    "rule_id": "da6c4b256db811eea68ffa163e0fa374",
+    "key": "G.TES.02",
+    "source": "self.assertEqual(a, b)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.03:没有参数:positive",
+    "rule_id": "da6a93926db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:没有参数",
+    "source": "class Reader:\n    def read():\n        pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.03:没有参数:negative",
+    "rule_id": "da6a93926db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:没有参数",
+    "source": "class Reader:\n    def read(self):\n        pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.SER.01:positive",
+    "rule_id": "da67413a6db811eea68ffa163e0fa374",
+    "key": "G.SER.01",
+    "source": "import pickle\nx = pickle.loads(input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.SER.01:negative",
+    "rule_id": "da67413a6db811eea68ffa163e0fa374",
+    "key": "G.SER.01",
+    "source": "import json\nx = json.loads(input())\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.04:positive",
+    "rule_id": "da6b3d446db811eea68ffa163e0fa374",
+    "key": "G.FNM.04",
+    "source": "def f():\n    print(\"done\")\nx = f()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.04:negative",
+    "rule_id": "da6b3d446db811eea68ffa163e0fa374",
+    "key": "G.FNM.04",
+    "source": "def f():\n    return 1\nx = f()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.05:positive",
+    "rule_id": "da6c37c36db811eea68ffa163e0fa374",
+    "key": "G.FIO.05",
+    "source": "path = folder + \"/\" + name\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.05:negative",
+    "rule_id": "da6c37c36db811eea68ffa163e0fa374",
+    "key": "G.FIO.05",
+    "source": "import os\npath = os.path.join(folder, name)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.01:positive",
+    "rule_id": "da6738c36db811eea68ffa163e0fa374",
+    "key": "G.FIO.01",
+    "source": "import os\nos.open(\"out\", os.O_CREAT, 0o777)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.01:negative",
+    "rule_id": "da6738c36db811eea68ffa163e0fa374",
+    "key": "G.FIO.01",
+    "source": "import os\nos.open(\"out\", os.O_CREAT, 0o600)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.10:positive",
+    "rule_id": "da6b35536db811eea68ffa163e0fa374",
+    "key": "G.CLS.10",
+    "source": "class Number:\n    def __add__(self, other):\n        raise NotImplementedError\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.10:negative",
+    "rule_id": "da6b35536db811eea68ffa163e0fa374",
+    "key": "G.CLS.10",
+    "source": "class Number:\n    def __add__(self, other):\n        return NotImplemented\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.09:positive",
+    "rule_id": "da6c24446db811eea68ffa163e0fa374",
+    "key": "G.ERR.09",
+    "source": "try:\n    work()\nexcept (ValueError, ValueError):\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.09:negative",
+    "rule_id": "da6c24446db811eea68ffa163e0fa374",
+    "key": "G.ERR.09",
+    "source": "try:\n    work()\nexcept (ValueError, TypeError):\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.14:不支持finally中的continue:positive",
+    "rule_id": "da6a8bc86db811eea68ffa163e0fa374",
+    "key": "G.ERR.14:不支持finally中的continue",
+    "source": "for x in items:\n    try:\n        work()\n    finally:\n        continue\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.14:不支持finally中的continue:negative",
+    "rule_id": "da6a8bc86db811eea68ffa163e0fa374",
+    "key": "G.ERR.14:不支持finally中的continue",
+    "source": "for x in items:\n    try:\n        work()\n    finally:\n        close()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.02:positive",
+    "rule_id": "da67305d6db811eea68ffa163e0fa374",
+    "key": "G.EDV.02",
+    "source": "import os\nos.system(command)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.02:negative",
+    "rule_id": "da67305d6db811eea68ffa163e0fa374",
+    "key": "G.EDV.02",
+    "source": "import subprocess\nsubprocess.run([\"/bin/echo\", value], shell=False)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.02:positive",
+    "rule_id": "da6b349b6db811eea68ffa163e0fa374",
+    "key": "G.ERR.02",
+    "source": "def f():\n    return ValueError(\"bad\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.02:negative",
+    "rule_id": "da6b349b6db811eea68ffa163e0fa374",
+    "key": "G.ERR.02",
+    "source": "def f():\n    raise ValueError(\"bad\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.04:positive",
+    "rule_id": "da6c19bb6db811eea68ffa163e0fa374",
+    "key": "G.ERR.04",
+    "source": "try:\n    work()\nexcept ValueError as err:\n    raise RuntimeError(\"bad\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.04:negative",
+    "rule_id": "da6c19bb6db811eea68ffa163e0fa374",
+    "key": "G.ERR.04",
+    "source": "try:\n    work()\nexcept ValueError as err:\n    raise RuntimeError(\"bad\") from err\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.04:positive",
+    "rule_id": "da6a818b6db811eea68ffa163e0fa374",
+    "key": "G.TYP.04",
+    "source": "if len(items) == 0:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.04:negative",
+    "rule_id": "da6a818b6db811eea68ffa163e0fa374",
+    "key": "G.TYP.04",
+    "source": "if not items:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.03:positive",
+    "rule_id": "da6b2c776db811eea68ffa163e0fa374",
+    "key": "G.ERR.03",
+    "source": "class NetworkError(BaseException):\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.03:negative",
+    "rule_id": "da6b2c776db811eea68ffa163e0fa374",
+    "key": "G.ERR.03",
+    "source": "class NetworkError(Exception):\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.13:positive",
+    "rule_id": "da6c10806db811eea68ffa163e0fa374",
+    "key": "G.ERR.13",
+    "source": "try:\n    work()\nexcept ValueError:\n    raise\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.13:negative",
+    "rule_id": "da6c10806db811eea68ffa163e0fa374",
+    "key": "G.ERR.13",
+    "source": "try:\n    work()\nexcept ValueError:\n    cleanup()\n    raise\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.10:positive",
+    "rule_id": "da6a775d6db811eea68ffa163e0fa374",
+    "key": "G.FMT.10",
+    "source": "x = 1\r\ny = 2\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.10:negative",
+    "rule_id": "da6a775d6db811eea68ffa163e0fa374",
+    "key": "G.FMT.10",
+    "source": "x = 1\r\ny = 2\r\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.01:positive",
+    "rule_id": "da67266a6db811eea68ffa163e0fa374",
+    "key": "G.EDV.01",
+    "source": "result = eval(input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.01:negative",
+    "rule_id": "da67266a6db811eea68ffa163e0fa374",
+    "key": "G.EDV.01",
+    "source": "import ast\nresult = ast.literal_eval(input())\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.01:positive",
+    "rule_id": "da6b2b5d6db811eea68ffa163e0fa374",
+    "key": "G.FNM.01",
+    "source": "def f(items=[]):\n    return items\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.01:negative",
+    "rule_id": "da6b2b5d6db811eea68ffa163e0fa374",
+    "key": "G.FNM.01",
+    "source": "def f(items=None):\n    return items\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.05:positive",
+    "rule_id": "da6c06866db811eea68ffa163e0fa374",
+    "key": "G.ERR.05",
+    "source": "raise Exception(\"bad\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.05:negative",
+    "rule_id": "da6c06866db811eea68ffa163e0fa374",
+    "key": "G.ERR.05",
+    "source": "raise ValueError(\"bad\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.02:positive",
+    "rule_id": "da6a6d696db811eea68ffa163e0fa374",
+    "key": "G.FMT.02",
+    "source": "text = \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.02:negative",
+    "rule_id": "da6a6d696db811eea68ffa163e0fa374",
+    "key": "G.FMT.02",
+    "source": "text = \"short\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.06:positive",
+    "rule_id": "da671b756db811eea68ffa163e0fa374",
+    "key": "G.FNM.06",
+    "source": "def items():\n    yield 1\n    raise StopIteration\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.06:negative",
+    "rule_id": "da671b756db811eea68ffa163e0fa374",
+    "key": "G.FNM.06",
+    "source": "def items():\n    yield 1\n    return\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.10:positive",
+    "rule_id": "da6b216c6db811eea68ffa163e0fa374",
+    "key": "G.ERR.10",
+    "source": "try:\n    work()\nexcept Exception:\n    pass\nexcept ValueError:\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.10:negative",
+    "rule_id": "da6b216c6db811eea68ffa163e0fa374",
+    "key": "G.ERR.10",
+    "source": "try:\n    work()\nexcept ValueError:\n    pass\nexcept Exception:\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FNM.02:positive",
+    "rule_id": "da6bfbcd6db811eea68ffa163e0fa374",
+    "key": "G.FNM.02",
+    "source": "funcs = []\nfor i in range(3):\n    funcs.append(lambda: i)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FNM.02:negative",
+    "rule_id": "da6bfbcd6db811eea68ffa163e0fa374",
+    "key": "G.FNM.02",
+    "source": "funcs = []\nfor i in range(3):\n    funcs.append(lambda i=i: i)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.05:positive",
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.05",
+    "source": "__invented__ = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.05:negative",
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.05",
+    "source": "count = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.05:positive",
+    "rule_id": "da6711926db811eea68ffa163e0fa374",
+    "key": "G.TYP.05",
+    "source": "values = items[::-1]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.05:negative",
+    "rule_id": "da6711926db811eea68ffa163e0fa374",
+    "key": "G.TYP.05",
+    "source": "values = list(reversed(items))\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.07:positive",
+    "rule_id": "da6b206b6db811eea68ffa163e0fa374",
+    "key": "G.FMT.07",
+    "source": "import thirdparty\nimport os\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.07:negative",
+    "rule_id": "da6b206b6db811eea68ffa163e0fa374",
+    "key": "G.FMT.07",
+    "source": "import os\nimport thirdparty\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.VAR.02:positive",
+    "rule_id": "da6bebd06db811eea68ffa163e0fa374",
+    "key": "G.VAR.02",
+    "source": "def f():\n    global missing\n    missing = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.VAR.02:negative",
+    "rule_id": "da6bebd06db811eea68ffa163e0fa374",
+    "key": "G.VAR.02",
+    "source": "count = 0\ndef f():\n    global count\n    count = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.NAM.03:cls:positive",
+    "rule_id": "da6a5adb6db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:cls",
+    "source": "class Reader:\n    @classmethod\n    def read(self):\n        return self\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.03:cls:negative",
+    "rule_id": "da6a5adb6db811eea68ffa163e0fa374",
+    "key": "G.NAM.03:cls",
+    "source": "class Reader:\n    @classmethod\n    def read(cls):\n        return cls\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CNP.01:positive",
+    "rule_id": "da6705e46db811eea68ffa163e0fa374",
+    "key": "G.CNP.01",
+    "source": "import subprocess\np = subprocess.Popen([\"/bin/echo\"])\np.communicate()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CNP.01:negative",
+    "rule_id": "da6705e46db811eea68ffa163e0fa374",
+    "key": "G.CNP.01",
+    "source": "import subprocess\np = subprocess.Popen([\"/bin/echo\"])\np.communicate(timeout=30)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.06:positive",
+    "rule_id": "da694f076db811eea68ffa163e0fa374",
+    "key": "G.FIO.06",
+    "source": "import tarfile\narchive = tarfile.open(\"data.tar\")\narchive.extractall(\"out\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.06:negative",
+    "rule_id": "da694f076db811eea68ffa163e0fa374",
+    "key": "G.FIO.06",
+    "source": "import tarfile\narchive = tarfile.open(\"data.tar\")\narchive.extractall(\"out\", filter=\"data\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.05:positive",
+    "rule_id": "da6be2b86db811eea68ffa163e0fa374",
+    "key": "G.CMT.05",
+    "source": "# TODO: finish this\nx = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.05:negative",
+    "rule_id": "da6be2b86db811eea68ffa163e0fa374",
+    "key": "G.CMT.05",
+    "source": "text = \"TODO: not a comment\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.02:positive",
+    "rule_id": "da6a4e676db811eea68ffa163e0fa374",
+    "key": "G.OPR.02",
+    "source": "if value == None:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.02:negative",
+    "rule_id": "da6a4e676db811eea68ffa163e0fa374",
+    "key": "G.OPR.02",
+    "source": "if value is None:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.IMP.02:positive",
+    "rule_id": "da6167fe6db811eea68ffa163e0fa374",
+    "key": "G.IMP.02",
+    "source": "from module import *\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.IMP.02:negative",
+    "rule_id": "da6167fe6db811eea68ffa163e0fa374",
+    "key": "G.IMP.02",
+    "source": "from module import value\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.07:positive",
+    "rule_id": "da6943f76db811eea68ffa163e0fa374",
+    "key": "G.EDV.07",
+    "source": "template = input()\ntext = template.format(user=user)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.07:negative",
+    "rule_id": "da6943f76db811eea68ffa163e0fa374",
+    "key": "G.EDV.07",
+    "source": "text = \"{user}\".format(user=user)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.03:positive",
+    "rule_id": "da6a3cb06db811eea68ffa163e0fa374",
+    "key": "G.OPR.03",
+    "source": "if value is 7:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.03:negative",
+    "rule_id": "da6a3cb06db811eea68ffa163e0fa374",
+    "key": "G.OPR.03",
+    "source": "if value == 7:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.08:positive",
+    "rule_id": "da6153c06db811eea68ffa163e0fa374",
+    "key": "G.TYP.08",
+    "source": "if type(value) == int:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.08:negative",
+    "rule_id": "da6153c06db811eea68ffa163e0fa374",
+    "key": "G.TYP.08",
+    "source": "if isinstance(value, int):\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.04:positive",
+    "rule_id": "da6939566db811eea68ffa163e0fa374",
+    "key": "G.EDV.04",
+    "source": "import subprocess\nsubprocess.run(command, shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.04:negative",
+    "rule_id": "da6939566db811eea68ffa163e0fa374",
+    "key": "G.EDV.04",
+    "source": "import subprocess\nsubprocess.run([\"/bin/echo\", value])\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PSL.01:positive",
+    "rule_id": "da6bdad06db811eea68ffa163e0fa374",
+    "key": "G.PSL.01",
+    "source": "import imp\nm = imp.load_source(\"x\", \"x.py\")\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PSL.01:negative",
+    "rule_id": "da6bdad06db811eea68ffa163e0fa374",
+    "key": "G.PSL.01",
+    "source": "import importlib\nm = importlib.import_module(\"x\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.05:positive",
+    "rule_id": "da6a32406db811eea68ffa163e0fa374",
+    "key": "G.OPR.05",
+    "source": "if not value is None:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.05:negative",
+    "rule_id": "da6a32406db811eea68ffa163e0fa374",
+    "key": "G.OPR.05",
+    "source": "if value is not None:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.08:positive",
+    "rule_id": "da6147866db811eea68ffa163e0fa374",
+    "key": "G.FMT.08",
+    "source": "if ready: work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.08:negative",
+    "rule_id": "da6147866db811eea68ffa163e0fa374",
+    "key": "G.FMT.08",
+    "source": "if ready:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.05:positive",
+    "rule_id": "da692dcb6db811eea68ffa163e0fa374",
+    "key": "G.EDV.05",
+    "source": "import subprocess\nsubprocess.run([\"echo\", \"ok\"])\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.05:negative",
+    "rule_id": "da692dcb6db811eea68ffa163e0fa374",
+    "key": "G.EDV.05",
+    "source": "import subprocess\nsubprocess.run([\"/bin/echo\", \"ok\"])\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.11:positive",
+    "rule_id": "da6bd2f46db811eea68ffa163e0fa374",
+    "key": "G.ERR.11",
+    "source": "import sys\ndef helper():\n    sys.exit(1)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.11:negative",
+    "rule_id": "da6bd2f46db811eea68ffa163e0fa374",
+    "key": "G.ERR.11",
+    "source": "import sys\nif __name__ == \"__main__\":\n    sys.exit(1)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.06:positive",
+    "rule_id": "da6a299a6db811eea68ffa163e0fa374",
+    "key": "G.OPR.06",
+    "source": "if not value in items:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.06:negative",
+    "rule_id": "da6a299a6db811eea68ffa163e0fa374",
+    "key": "G.OPR.06",
+    "source": "if value not in items:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.06:positive",
+    "rule_id": "da61314e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.06",
+    "source": "import os, sys\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.06:negative",
+    "rule_id": "da61314e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.06",
+    "source": "import os\nimport sys\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.06:positive",
+    "rule_id": "da6922ff6db811eea68ffa163e0fa374",
+    "key": "G.EDV.06",
+    "source": "cursor.execute(\"SELECT * FROM users WHERE name=\" + input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.06:negative",
+    "rule_id": "da6922ff6db811eea68ffa163e0fa374",
+    "key": "G.EDV.06",
+    "source": "cursor.execute(\"SELECT * FROM users WHERE name=?\", (input(),))\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PSL.04:positive",
+    "rule_id": "da6bca446db811eea68ffa163e0fa374",
+    "key": "G.PSL.04",
+    "source": "def decorator(fn):\n    def wrapped(*args, **kwargs):\n        return fn(*args, **kwargs)\n    return wrapped\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PSL.04:negative",
+    "rule_id": "da6bca446db811eea68ffa163e0fa374",
+    "key": "G.PSL.04",
+    "source": "import functools\ndef decorator(fn):\n    @functools.wraps(fn)\n    def wrapped(*args, **kwargs):\n        return fn(*args, **kwargs)\n    return wrapped\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:类内方法空1行:positive",
+    "rule_id": "da6125f96db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类内方法空1行",
+    "source": "class Reader:\n    def a(self):\n        pass\n    def b(self):\n        pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:类内方法空1行:negative",
+    "rule_id": "da6125f96db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类内方法空1行",
+    "source": "class Reader:\n    def a(self):\n        pass\n\n    def b(self):\n        pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.02:positive",
+    "rule_id": "da6bbffc6db811eea68ffa163e0fa374",
+    "key": "G.CLS.02",
+    "source": "class Parent:\n    def read(self, name):\n        pass\nclass Child(Parent):\n    def read(self):\n        pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.02:negative",
+    "rule_id": "da6bbffc6db811eea68ffa163e0fa374",
+    "key": "G.CLS.02",
+    "source": "class Parent:\n    def read(self, name):\n        pass\nclass Child(Parent):\n    def read(self, name):\n        pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.08:定义:positive",
+    "rule_id": "da6a1fcd6db811eea68ffa163e0fa374",
+    "key": "G.FMT.08:定义",
+    "source": "def f(): return 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.08:定义:negative",
+    "rule_id": "da6a1fcd6db811eea68ffa163e0fa374",
+    "key": "G.FMT.08:定义",
+    "source": "def f():\n    return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.04:positive",
+    "rule_id": "da611ba46db811eea68ffa163e0fa374",
+    "key": "G.CMT.04",
+    "source": "x = 1 #bad\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.04:negative",
+    "rule_id": "da611ba46db811eea68ffa163e0fa374",
+    "key": "G.CMT.04",
+    "source": "x = 1  # good\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.DSP.04:positive",
+    "rule_id": "da6910066db811eea68ffa163e0fa374",
+    "key": "G.DSP.04",
+    "source": "import logging\nlogging.info(\"password=%s\", password)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.DSP.04:negative",
+    "rule_id": "da6910066db811eea68ffa163e0fa374",
+    "key": "G.DSP.04",
+    "source": "import logging\nlogging.info(\"login failed\")\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.01:positive",
+    "rule_id": "da6bb6296db811eea68ffa163e0fa374",
+    "key": "G.CLS.01",
+    "source": "class Parent:\n    def __init__(self):\n        self.x = 1\nclass Child(Parent):\n    def __init__(self):\n        self.y = 2\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.01:negative",
+    "rule_id": "da6bb6296db811eea68ffa163e0fa374",
+    "key": "G.CLS.01",
+    "source": "class Parent:\n    def __init__(self):\n        self.x = 1\nclass Child(Parent):\n    def __init__(self):\n        super().__init__()\n        self.y = 2\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.08:分号:positive",
+    "rule_id": "da6a162b6db811eea68ffa163e0fa374",
+    "key": "G.FMT.08:分号",
+    "source": "x = 1; y = 2\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.08:分号:negative",
+    "rule_id": "da6a162b6db811eea68ffa163e0fa374",
+    "key": "G.FMT.08:分号",
+    "source": "x = 1\ny = 2\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PRM.03:positive",
+    "rule_id": "da68fcd26db811eea68ffa163e0fa374",
+    "key": "G.PRM.03",
+    "source": "handle = open(\"data\")\nprint(handle.read())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PRM.03:negative",
+    "rule_id": "da68fcd26db811eea68ffa163e0fa374",
+    "key": "G.PRM.03",
+    "source": "with open(\"data\") as handle:\n    print(handle.read())\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.11:positive",
+    "rule_id": "da6babe46db811eea68ffa163e0fa374",
+    "key": "G.CLS.11",
+    "source": "print(other._internal)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.11:negative",
+    "rule_id": "da6babe46db811eea68ffa163e0fa374",
+    "key": "G.CLS.11",
+    "source": "print(other.public)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:嵌套定义空1行:positive",
+    "rule_id": "da6a0b8a6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:嵌套定义空1行",
+    "source": "def f():\n    x = 1\n    def nested():\n        return x\n    return nested\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:嵌套定义空1行:negative",
+    "rule_id": "da6a0b8a6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:嵌套定义空1行",
+    "source": "def f():\n    x = 1\n\n    def nested():\n        return x\n\n    return nested\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:positive",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "x=1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:negative",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "x = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.08:positive",
+    "rule_id": "da6ba15c6db811eea68ffa163e0fa374",
+    "key": "G.CLS.08",
+    "source": "class Reader:\n    def __init__(self):\n        self.ready = True\n    def read(self):\n        self.extra = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.08:negative",
+    "rule_id": "da6ba15c6db811eea68ffa163e0fa374",
+    "key": "G.CLS.08",
+    "source": "class Reader:\n    def __init__(self):\n        self.extra = 0\n    def read(self):\n        self.extra = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:类间空2行:positive",
+    "rule_id": "da6a008e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类间空2行",
+    "source": "class A:\n    pass\nclass B:\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:类间空2行:negative",
+    "rule_id": "da6a008e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类间空2行",
+    "source": "class A:\n    pass\n\n\nclass B:\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:getnewargs_ex:positive",
+    "rule_id": "da6b17996db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:getnewargs_ex",
+    "source": "class Value:\n    def __getnewargs_ex__(self):\n        return (1, 2)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:getnewargs_ex:negative",
+    "rule_id": "da6b17996db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:getnewargs_ex",
+    "source": "class Value:\n    def __getnewargs_ex__(self):\n        return ((1,), {})\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.01:positive",
+    "rule_id": "da60fec26db811eea68ffa163e0fa374",
+    "key": "G.FMT.01",
+    "source": "if ready:\n  work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.01:negative",
+    "rule_id": "da60fec26db811eea68ffa163e0fa374",
+    "key": "G.FMT.01",
+    "source": "if ready:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.04:positive",
+    "rule_id": "da68f1a56db811eea68ffa163e0fa374",
+    "key": "G.FIO.04",
+    "source": "import tempfile\np = tempfile.NamedTemporaryFile(delete=False)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.04:negative",
+    "rule_id": "da68f1a56db811eea68ffa163e0fa374",
+    "key": "G.FIO.04",
+    "source": "import tempfile\nwith tempfile.NamedTemporaryFile() as p:\n    work(p)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.OPR.04:positive",
+    "rule_id": "da6b97ba6db811eea68ffa163e0fa374",
+    "key": "G.OPR.04",
+    "source": "if (n := len(items)):\n    work(n)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.OPR.04:negative",
+    "rule_id": "da6b97ba6db811eea68ffa163e0fa374",
+    "key": "G.OPR.04",
+    "source": "n = len(items)\nif n:\n    work(n)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:positive",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "if(ready):\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:negative",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "if ready:\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CTL.04:positive",
+    "rule_id": "da6b16226db811eea68ffa163e0fa374",
+    "key": "G.CTL.04",
+    "source": "for i in range(len(items)):\n    print(items[i])\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CTL.04:negative",
+    "rule_id": "da6b16226db811eea68ffa163e0fa374",
+    "key": "G.CTL.04",
+    "source": "for item in items:\n    print(item)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.EDV.08:positive",
+    "rule_id": "da68e7896db811eea68ffa163e0fa374",
+    "key": "G.EDV.08",
+    "source": "import re\nre.search(r\"(a+)+$\", input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.08:negative",
+    "rule_id": "da68e7896db811eea68ffa163e0fa374",
+    "key": "G.EDV.08",
+    "source": "import re\nre.search(r\"a+$\", input())\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.TYP.02:positive",
+    "rule_id": "da6b8fa86db811eea68ffa163e0fa374",
+    "key": "G.TYP.02",
+    "source": "if value == 0.1:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.TYP.02:negative",
+    "rule_id": "da6b8fa86db811eea68ffa163e0fa374",
+    "key": "G.TYP.02",
+    "source": "import math\nif math.isclose(value, 0.1):\n    work()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:分隔符:positive",
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:分隔符",
+    "source": "items = [1,2]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:分隔符:negative",
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:分隔符",
+    "source": "items = [1, 2]\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CLS.09:getnewargs:positive",
+    "rule_id": "da6b0e276db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:getnewargs",
+    "source": "class Value:\n    def __getnewargs__(self):\n        return [1]\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CLS.09:getnewargs:negative",
+    "rule_id": "da6b0e276db811eea68ffa163e0fa374",
+    "key": "G.CLS.09:getnewargs",
+    "source": "class Value:\n    def __getnewargs__(self):\n        return (1,)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FIO.02:positive",
+    "rule_id": "da68dca06db811eea68ffa163e0fa374",
+    "key": "G.FIO.02",
+    "source": "import os\np = input()\nif os.path.exists(p):\n    open(p)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FIO.02:negative",
+    "rule_id": "da68dca06db811eea68ffa163e0fa374",
+    "key": "G.FIO.02",
+    "source": "import os\np = os.path.realpath(input())\nif os.path.exists(p):\n    open(p)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.LOG.03:untrusted-lazy-argument",
+    "rule_id": "da68aebe6db811eea68ffa163e0fa374",
+    "key": "G.LOG.03",
+    "source": "import logging\nlogging.info(\"value: %s\", input())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.01:shebang-encoding-before-doc",
+    "rule_id": "da6b0d186db811eea68ffa163e0fa374",
+    "key": "G.CMT.01",
+    "source": "#!/usr/bin/env python3\n# coding: utf-8\n\"\"\"Module summary.\"\"\"\nimport os\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.01:misplaced-after-import",
+    "rule_id": "da6b0d186db811eea68ffa163e0fa374",
+    "key": "G.CMT.01",
+    "source": "import os\n\"\"\"Module summary.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.02:same-line-doc",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader: \"\"\"Read values.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.02:blank-before-doc",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader:\n\n    \"\"\"Read values.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.02:multiline-bases",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader(\n    BaseReader,\n):\n    \"\"\"Read values.\"\"\"\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.03:same-line-doc",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def read(): \"\"\"Read values.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.03:multiline-signature",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def read(\n    filename: str,\n) -> str:\n    \"\"\"Read values.\"\"\"\n    return filename\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.03:comment-before-doc",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def read():\n    # Delayed docstring.\n    \"\"\"Read values.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.03:private-function-exempt",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "def _read():\n    return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:类间空2行:after-definition",
+    "rule_id": "da6a008e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类间空2行",
+    "source": "class Reader:\n    pass\nvalue = Reader()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:类间空2行:decorated-definitions",
+    "rule_id": "da6a008e6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类间空2行",
+    "source": "class Reader:\n    pass\n\n\n@register\ndef read():\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:类内方法空1行:after-method",
+    "rule_id": "da6125f96db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类内方法空1行",
+    "source": "class Reader:\n    def read(self):\n        pass\n    item = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:类内方法空1行:decorated-method",
+    "rule_id": "da6125f96db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:类内方法空1行",
+    "source": "class Reader:\n    def read(self):\n        pass\n\n    @classmethod\n    def create(cls):\n        pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.03:嵌套定义空1行:after-nested",
+    "rule_id": "da6a0b8a6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:嵌套定义空1行",
+    "source": "def factory():\n    def nested():\n        return 1\n    return nested\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.03:嵌套定义空1行:first-nested",
+    "rule_id": "da6a0b8a6db811eea68ffa163e0fa374",
+    "key": "G.FMT.03:嵌套定义空1行",
+    "source": "def factory():\n    def nested():\n        return 1\n\n    return nested\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.ERR.13:named-rethrow",
+    "rule_id": "da6c10806db811eea68ffa163e0fa374",
+    "key": "G.ERR.13",
+    "source": "try:\n    work()\nexcept ValueError as error:\n    raise error\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.ERR.13:different-exception",
+    "rule_id": "da6c10806db811eea68ffa163e0fa374",
+    "key": "G.ERR.13",
+    "source": "try:\n    work()\nexcept ValueError as error:\n    raise RuntimeError(\"bad\") from error\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:not-before-group",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "if not(ready):\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:await-before-group",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "async def f():\n    await(work())\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:分隔符:dict-colon",
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:分隔符",
+    "source": "data = {\"name\":\"value\"}\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:分隔符:slice-colon",
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:分隔符",
+    "source": "data = items[1:3]\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:算术操作符:unary-minus",
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:算术操作符",
+    "source": "value = -1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:算术操作符:multiline-operator",
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:算术操作符",
+    "source": "value = (first\n         + second)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:位运算操作符:union-annotation",
+    "rule_id": "da69da476db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:位运算操作符",
+    "source": "def f(value: int | str):\n    pass\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:取余操作符:format-string",
+    "rule_id": "da69e3de6db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:取余操作符",
+    "source": "value = \"result=%s\" % result\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.CMT.02:wrong-doc-indent",
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "key": "G.CMT.02",
+    "source": "class Reader:\n        \"\"\"Read values.\"\"\"\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.CMT.03:decorator-header",
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "key": "G.CMT.03",
+    "source": "@decorator(option=True)\ndef read():\n    \"\"\"Read values.\"\"\"\n    return 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:except-star-space",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "try:\n    work()\nexcept* ValueError:\n    recover()\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:关键字后:except-star-missing-space",
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:关键字后",
+    "source": "try:\n    work()\nexcept*ValueError:\n    recover()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:分隔符:slice-and-dictionary-same-line",
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:分隔符",
+    "source": "values = items[1:3]; data = {\"name\":\"value\"}\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.PRJ.04:encoding-alias",
+    "rule_id": "da6b844c6db811eea68ffa163e0fa374",
+    "key": "G.PRJ.04",
+    "source": "# coding: UTF_8\nvalue = 1\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.PRJ.04:non-utf-encoding-second-line",
+    "rule_id": "da6b844c6db811eea68ffa163e0fa374",
+    "key": "G.PRJ.04",
+    "source": "#!/usr/bin/env python3\n# coding: iso-8859-1\nvalue = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:augmented-bitwise",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "mask|=flag\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:augmented-power",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "value**=2\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:membership-before",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "if \"a\"in values:\n    work()\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:keyword-argument",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "result = f(option=1)\n",
+    "expect": false
+  },
+  {
+    "case_id": "G.FMT.04:annotated-default",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "def f(value: int=1):\n    pass\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:keyword-comparison",
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "key": "G.FMT.04",
+    "source": "result = f(option=(a==b))\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.FMT.04:算术操作符:matrix-multiply",
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "key": "G.FMT.04:算术操作符",
+    "source": "value = left@right\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.05:dunder-parameter",
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.05",
+    "source": "def f(__invented__):\n    return __invented__\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.05:dunder-instance-attribute",
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.05",
+    "source": "class Item:\n    def __init__(self):\n        self.__invented__ = 1\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.NAM.05:descriptor-protocol",
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "key": "G.NAM.05",
+    "source": "class Field:\n    def __set_name__(self, owner, name):\n        self.name = name\n",
+    "expect": false
+  }
+]

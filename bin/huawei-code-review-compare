@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# Source-checkout entry point for before/after report comparison.
+set -eu
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PYTHON=${PYTHON:-python3}
+exec "$PYTHON" "$ROOT/scripts/compare_reports.py" "$@"

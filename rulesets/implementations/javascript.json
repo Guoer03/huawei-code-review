@@ -1,0 +1,1145 @@
+[
+  {
+    "rule_id": "da73b88f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.02 判断相等时应使用 === 和 !== ，而不是 == 和 !=",
+    "status": "implemented",
+    "detector": "eslint:eqeqeq",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.02 positive",
+      "G.EXP.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b7a36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.01 表达式的比较，应该遵循左侧倾向于变化、右侧倾向于不变的原则",
+    "status": "implemented",
+    "detector": "eslint:yoda",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.01 positive",
+      "G.EXP.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b7006db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.ERR.03 不要使用return、break、continue或抛出异常使finally块非正常结束",
+    "status": "implemented",
+    "detector": "typescript-ast:finally-completion",
+    "reason": "Structural completion analysis reports reachable return/throw/break/continue paths that escape finally, while excluding nested functions and locally consumed loop/switch jumps. It does not execute code or infer dynamic control flow.",
+    "test_cases": [
+      "G.ERR.03 positive",
+      "G.ERR.03 negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_completion_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da73b61e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.ERR.02 应使用 Error 对象作为 Promise 拒绝的原因",
+    "status": "implemented",
+    "detector": "eslint:prefer-promise-reject-errors",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.ERR.02 positive",
+      "G.ERR.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b4886db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.ERR.01 合理使用异常",
+    "status": "partial",
+    "detector": "eslint:no-throw-literal",
+    "reason": "Checks thrown literals only. Export gives the broad instruction to use exceptions properly; exception strategy and recoverability are not fully specified.",
+    "test_cases": [
+      "G.ERR.01 positive",
+      "G.ERR.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d2696db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.12 用到匿名函数时优先使用箭头函数，替代保存this引用的方式",
+    "status": "partial",
+    "detector": "eslint:prefer-arrow-callback",
+    "reason": "Checks anonymous callbacks with safe arrow conversion. Detecting all saved-this aliases and choosing anonymous-function style is broader than this rule.",
+    "test_cases": [
+      "G.MET.12 positive",
+      "G.MET.12 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b1fe6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.05 避免用逻辑运算符代替控制语句",
+    "status": "implemented",
+    "detector": "typescript-ast:logical-control",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CTL.05 positive",
+      "G.CTL.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b2d76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.06 不要在控制性条件表达式中执行赋值操作",
+    "status": "implemented",
+    "detector": "eslint:no-cond-assign",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CTL.06 positive",
+      "G.CTL.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d0916db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.10 不要使用 arguments，可以选择 rest 语法替代",
+    "status": "implemented",
+    "detector": "eslint:prefer-rest-params",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.10 positive",
+      "G.MET.10 negative"
+    ]
+  },
+  {
+    "rule_id": "da73cff36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.09 不要给函数的入参重新赋值",
+    "status": "implemented",
+    "detector": "eslint:no-param-reassign",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.09 positive",
+      "G.MET.09 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ecb86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.06 不应使用字符串的行连续符号",
+    "status": "implemented",
+    "detector": "eslint:no-multi-str",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.06 positive",
+      "G.TYP.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73cf086db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.08 不要动态创建函数",
+    "status": "implemented",
+    "detector": "eslint:no-new-func",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.08 positive",
+      "G.MET.08 negative"
+    ]
+  },
+  {
+    "rule_id": "da73eb1c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.05 使用模板字符串（`）实现字符串拼接",
+    "status": "implemented",
+    "detector": "eslint:prefer-template",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.05 positive",
+      "G.TYP.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73afd56db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.03 case 语句中需要词法声明时, 大括号{}不能省略",
+    "status": "implemented",
+    "detector": "eslint:no-case-declarations",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CTL.03 positive",
+      "G.CTL.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ccb66db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.07 建议使用一致的 return 语句",
+    "status": "implemented",
+    "detector": "eslint:consistent-return",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.07 positive",
+      "G.MET.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ea906db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.04 建议字符串使用单引号",
+    "status": "implemented",
+    "detector": "eslint:quotes",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.04 positive",
+      "G.TYP.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73aedf6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.02 在 switch 语句的每一个有内容的 case 中都应放置一条 break 语句",
+    "status": "partial",
+    "detector": "eslint:no-fallthrough",
+    "reason": "Detects reachable case fallthrough. Return/throw/continue termination is accepted; literal break-only interpretation would reject valid termination paths.",
+    "test_cases": [
+      "G.CTL.02 positive",
+      "G.CTL.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ae3a6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.01 每个 switch 语句都应包含一个 default 分支",
+    "status": "implemented",
+    "detector": "eslint:default-case",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CTL.01 positive",
+      "G.CTL.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73cc2c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.06 始终将默认参数放在最后",
+    "status": "implemented",
+    "detector": "eslint:default-param-last",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.06 positive",
+      "G.MET.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f7eb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.07 避免当前作用域中的变量覆盖更外层作用域的变量",
+    "status": "implemented",
+    "detector": "eslint:no-shadow",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.07 positive",
+      "G.DCL.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da73cb556db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.05 函数的参数个数不建议超过 5 个",
+    "status": "implemented",
+    "detector": "eslint:max-params",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.05 positive",
+      "G.MET.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e8dc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.02 判断变量是否为NaN时必须使用 isNaN() 方法",
+    "status": "implemented",
+    "detector": "eslint:use-isnan",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.02 positive",
+      "G.TYP.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f7576db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.06 使用字面量风格的声明",
+    "status": "implemented",
+    "detector": "eslint:no-array-constructor,no-object-constructor",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.06 positive",
+      "G.DCL.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ca226db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.03 块语句的最大可嵌套深度不要超过 4 层",
+    "status": "implemented",
+    "detector": "eslint:max-depth",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.03 positive",
+      "G.MET.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73cabd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.04 回调函数嵌套的层数不超过 4 层",
+    "status": "implemented",
+    "detector": "eslint:max-nested-callbacks",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.04 positive",
+      "G.MET.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e8066db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.01 禁止省略浮点数小数点前后的 0",
+    "status": "implemented",
+    "detector": "eslint:no-floating-decimal",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.01 positive",
+      "G.TYP.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73aa3e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CMT.03 正式交付给客户的代码不应包含 TODO/FIXME 注释",
+    "status": "implemented",
+    "detector": "eslint:no-warning-comments",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CMT.03 positive",
+      "G.CMT.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f6c86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.05 不要使用 undefined 初始化变量",
+    "status": "implemented",
+    "detector": "eslint:no-undef-init",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.05 positive",
+      "G.DCL.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c9516db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.02 圈复杂度不超过 20",
+    "status": "implemented",
+    "detector": "eslint:complexity",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.MET.02 positive",
+      "G.MET.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e69f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.SCO.01 避免在全局作用域下声明变量和函数",
+    "status": "partial",
+    "detector": "eslint:no-implicit-globals",
+    "reason": "Checks globals in scripts. ES modules have module scope; existing platform globals and bundler wrapper semantics need project context.",
+    "test_cases": [
+      "G.SCO.01 positive",
+      "G.SCO.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73a87e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CMT.02 注释符和注释内容之间留有一个空格",
+    "status": "implemented",
+    "detector": "eslint:spaced-comment",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CMT.02 positive",
+      "G.CMT.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f5ee6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.04 禁止连续赋值",
+    "status": "implemented",
+    "detector": "eslint:no-multi-assign",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.04 positive",
+      "G.DCL.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c8b76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.01 函数长度不宜过长",
+    "status": "partial",
+    "detector": "eslint:max-lines-per-function",
+    "reason": "Export does not specify a numeric maximum. Local policy checks 50 nonblank, noncomment function lines; this is an explicit configurable interpretation.",
+    "test_cases": [
+      "G.MET.01 positive",
+      "G.MET.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e5cc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.PRJ.03 控制文件的长度，最好不要超过 2000 行",
+    "status": "implemented",
+    "detector": "eslint:max-lines",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.PRJ.03 positive",
+      "G.PRJ.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f5586db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.03 每个语句只声明一个变量",
+    "status": "implemented",
+    "detector": "eslint:one-var",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.03 positive",
+      "G.DCL.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c6646db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.12 每句代码后加分号",
+    "status": "implemented",
+    "detector": "eslint:semi",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.12 positive",
+      "G.FMT.12 negative"
+    ]
+  },
+  {
+    "rule_id": "da73a29a6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.AOD.05 禁止使用 debugger",
+    "status": "implemented",
+    "detector": "eslint:no-debugger",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.AOD.05 positive",
+      "G.AOD.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f3fd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.DCL.01 声明变量时要求使用 const 或 let 而不是 var（ECMAScript 6）",
+    "status": "implemented",
+    "detector": "eslint:no-var",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.DCL.01 positive",
+      "G.DCL.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c5756db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.11 使用拖尾逗号",
+    "status": "implemented",
+    "detector": "eslint:comma-dangle",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.11 positive",
+      "G.FMT.11 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c4df6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.10 大括号 { 和语句在同一行",
+    "status": "implemented",
+    "detector": "eslint:brace-style",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.10 positive",
+      "G.FMT.10 negative"
+    ]
+  },
+  {
+    "rule_id": "da73a2086db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.AOD.04 禁止使用 alert",
+    "status": "implemented",
+    "detector": "eslint:no-alert",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.AOD.04 positive",
+      "G.AOD.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73a1046db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.AOD.03 尽量避免使用console",
+    "status": "implemented",
+    "detector": "eslint:no-console",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.AOD.03 positive",
+      "G.AOD.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f1b46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.14 使用显式的类型转换",
+    "status": "implemented",
+    "detector": "eslint:no-implicit-coercion",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.14 positive",
+      "G.TYP.14 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c3816db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.09 建议 if、for、do、while 等语句的执行体加大括号 {}",
+    "status": "implemented",
+    "detector": "eslint:curly",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.09 positive",
+      "G.FMT.09 negative"
+    ]
+  },
+  {
+    "rule_id": "da739ff86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.AOD.02 禁止使用隐式的 eval()",
+    "status": "implemented",
+    "detector": "eslint:no-implied-eval",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.AOD.02 positive",
+      "G.AOD.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c2a46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.08 用空格突出关键字和重要信息",
+    "status": "partial",
+    "detector": "eslint:keyword-spacing,space-infix-ops",
+    "reason": "Checks spacing around keywords and infix operators. The exported instruction is broader than these two explicit spacing policies.",
+    "test_cases": [
+      "G.FMT.08 positive",
+      "G.FMT.08 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e0326db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.07 不要修改内置对象的原型，或向原型添加方法",
+    "status": "implemented",
+    "detector": "eslint:no-extend-native",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.07 positive",
+      "G.OBJ.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da739ee36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.AOD.01 禁止使用 eval()",
+    "status": "implemented",
+    "detector": "eslint:no-eval",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.AOD.01 positive",
+      "G.AOD.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f0106db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.10 建议使用数组解构",
+    "status": "implemented",
+    "detector": "eslint:prefer-destructuring",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.TYP.10 positive",
+      "G.TYP.10 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c1cb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.07 合理安排空行",
+    "status": "partial",
+    "detector": "eslint:no-multiple-empty-lines",
+    "reason": "Export gives no blank-line policy. Checks an explicit maximum of two consecutive blank lines and one at EOF.",
+    "test_cases": [
+      "G.FMT.07 positive",
+      "G.FMT.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c13b6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.06 把 else/catch 放在 if/try 代码块关闭括号的同一行",
+    "status": "implemented",
+    "detector": "typescript-ast:else-catch-line",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.06 positive",
+      "G.FMT.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73df5b6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.06 需要约束 for-in",
+    "status": "implemented",
+    "detector": "eslint:guard-for-in",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.06 positive",
+      "G.OBJ.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73c0666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.05 链式调用对象方法时，一行最多调用 4 次，否则需要换行",
+    "status": "implemented",
+    "detector": "eslint:newline-per-chained-call",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.05 positive",
+      "G.FMT.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73de836db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.05 禁止在对象实例上直接使用 hasOwnProperty、isPrototypeOf、propertyIsEnumerable方法",
+    "status": "implemented",
+    "detector": "eslint:no-prototype-builtins",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.05 positive",
+      "G.OBJ.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73bfd46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.04 象字面量属性超过 4 个, 需要都换行",
+    "status": "implemented",
+    "detector": "typescript-ast:object-properties-lines",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.04 positive",
+      "G.FMT.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ddb46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.04 优先使用点号来访问对象的属性，只有计算属性使用 []",
+    "status": "implemented",
+    "detector": "eslint:dot-notation",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.04 positive",
+      "G.OBJ.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73bef76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.03 换行时将操作符留在行末",
+    "status": "implemented",
+    "detector": "eslint:operator-linebreak",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.03 positive",
+      "G.FMT.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73dcbc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.03 推荐在对象字面量中使用方法简写和属性简写",
+    "status": "implemented",
+    "detector": "eslint:object-shorthand",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.03 positive",
+      "G.OBJ.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73be556db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.02 行宽不宜过长",
+    "status": "partial",
+    "detector": "eslint:max-len",
+    "reason": "Export does not specify maximum line width. This implementation uses the documented local limit of 120 characters.",
+    "test_cases": [
+      "G.FMT.02 positive",
+      "G.FMT.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73db3c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.02 对象字面量的属性名称使用标识符",
+    "status": "implemented",
+    "detector": "eslint:quote-props",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.02 positive",
+      "G.OBJ.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73bcd56db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.FMT.01 使用空格进行缩进",
+    "status": "implemented",
+    "detector": "typescript-ast:space-indent",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.FMT.01 positive",
+      "G.FMT.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73dab16db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OBJ.01 通过 new 调用构造函数时，应始终使用圆括号",
+    "status": "implemented",
+    "detector": "eslint:new-parens",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.OBJ.01 positive",
+      "G.OBJ.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73bb656db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.06 建议在正则表达式中使用命名捕获组",
+    "status": "implemented",
+    "detector": "eslint:prefer-named-capture-group",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.06 positive",
+      "G.EXP.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ba936db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.05 正则表达式字面量中，应显式指出重复的空白字符个数",
+    "status": "implemented",
+    "detector": "eslint:no-regex-spaces",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.05 positive",
+      "G.EXP.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b9fc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.04 在混合使用不同的操作符时，采用括号明确运算的优先级",
+    "status": "implemented",
+    "detector": "eslint:no-mixed-operators",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.04 positive",
+      "G.EXP.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d7786db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.05 不要用保留字做为变量名，可使用保留字的同义词",
+    "status": "partial",
+    "detector": "eslint:no-shadow-restricted-names",
+    "reason": "Valid JavaScript cannot declare reserved keywords; parser failures surface as incomplete scans. This additional rule checks restricted identifiers such as undefined/NaN/arguments, not synonym quality.",
+    "test_cases": [
+      "G.NAM.05 positive",
+      "G.NAM.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b9286db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.EXP.03 禁止使用嵌套的三元表达式",
+    "status": "implemented",
+    "detector": "eslint:no-nested-ternary",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.EXP.03 positive",
+      "G.EXP.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d6156db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.03 变量应采用小驼峰风格命名",
+    "status": "implemented",
+    "detector": "typescript-ast:variable-camel",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.NAM.03 positive",
+      "G.NAM.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d4666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.02 函数应采用小驼峰风格命名",
+    "status": "implemented",
+    "detector": "typescript-ast:function-camel",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.NAM.02 positive",
+      "G.NAM.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d3d66db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.01 构造器函数、类应采用大驼峰风格命名",
+    "status": "partial",
+    "detector": "typescript-ast:class-pascal",
+    "reason": "Checks class names and named constructor call targets. Inferring intended constructor functions without call sites needs interprocedural usage information.",
+    "test_cases": [
+      "G.NAM.01 positive",
+      "G.NAM.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d6a96db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.04 避免使用否定的布尔变量名",
+    "status": "partial",
+    "detector": "typescript-ast:negative-boolean",
+    "reason": "Checks boolean-typed bindings with explicit negative prefixes (not/no/non/isNot/hasNo/cannot/disable). Natural-language negation cannot be exhaustively inferred.",
+    "test_cases": [
+      "G.NAM.04 positive",
+      "G.NAM.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d2ff6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MOD.01 需要导出的变量必须是不可变的类型",
+    "status": "partial",
+    "detector": "typescript-ast:mutable-export",
+    "reason": "Detects reassignable exports and exported object/array literals. Deep immutability of arbitrary imported/user-defined types requires a project-specific immutability policy.",
+    "test_cases": [
+      "G.MOD.01 positive",
+      "G.MOD.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b3ab6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.07 避免在条件/循环控制语句中包含过多的条件",
+    "status": "partial",
+    "detector": "typescript-ast:many-conditions",
+    "reason": "Export does not define too many. Checks more than four boolean operands in a control condition.",
+    "test_cases": [
+      "G.CTL.07 positive",
+      "G.CTL.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da73b11f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CTL.04 含else if分支的条件判断应在最后加一个else分支",
+    "status": "implemented",
+    "detector": "typescript-ast:final-else",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CTL.04 positive",
+      "G.CTL.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73abd26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CMT.04 文件头注释包含版权说明",
+    "status": "implemented",
+    "detector": "typescript-ast:copyright-header",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "G.CMT.04 positive",
+      "G.CMT.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73a70d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CMT.01 代码注释置于对应代码的上方或右边",
+    "status": "partial",
+    "detector": "typescript-ast:comment-placement",
+    "reason": "Detects orphan trailing comments after the last statement. Association of arbitrary comments to intended code cannot be fully inferred.",
+    "test_cases": [
+      "G.CMT.01 positive",
+      "G.CMT.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e53c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.PRJ.01 源文件编码格式（包括注释）应该是 UTF-8",
+    "status": "partial",
+    "detector": "typescript-ast:utf8",
+    "reason": "Strict UTF-8 decoding is enforced by file discovery. AST additionally flags replacement characters that may indicate earlier lossy decoding; original encoding cannot be reconstructed from already-decoded text.",
+    "test_cases": [
+      "G.PRJ.01 positive",
+      "G.PRJ.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d87c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NAM.07 使用统一的文件命名风格，文件扩展名应小写",
+    "status": "partial",
+    "detector": "typescript-ast:filename",
+    "reason": "Checks uppercase source extensions. Consistency of base filename styles is project-dependent; the export provides no selected naming convention.",
+    "test_cases": []
+  },
+  {
+    "rule_id": "da73e9b06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.03 浮点型数据判断相等不要直接使用== 或===",
+    "status": "partial",
+    "detector": "typescript-ast:float-equality",
+    "reason": "Detects equality against noninteger number literals and locally inferred fractional initializers. JavaScript numbers do not distinguish integers from floats statically; external values need context.",
+    "test_cases": [
+      "G.TYP.03 positive",
+      "G.TYP.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d1726db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.MET.11 建议使用参数的解构",
+    "status": "partial",
+    "detector": "typescript-ast:parameter-destructure",
+    "reason": "Advisory for parameters used through at least two direct property reads. Applicability and API compatibility require review.",
+    "test_cases": [
+      "G.MET.11 positive",
+      "G.MET.11 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ee666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.08 数组遍历优先使用 Array 对象方法",
+    "status": "partial",
+    "detector": "typescript-ast:array-traversal",
+    "reason": "Detects typed array for-of traversal. Break/continue/async semantics may justify a loop; other equivalent traversal styles need review.",
+    "test_cases": [
+      "G.TYP.08 positive",
+      "G.TYP.08 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ed906db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.07 不要在数组上定义或使用非数字属性（length 除外）",
+    "status": "partial",
+    "detector": "typescript-ast:array-properties",
+    "reason": "Checks statically named nonnumeric array properties excluding standard Array members. Computed keys and aliasing are not proven.",
+    "test_cases": [
+      "G.TYP.07 positive",
+      "G.TYP.07 negative"
+    ]
+  },
+  {
+    "rule_id": "da73ef3d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.09 不要在数组遍历中对其进行元素的 remove/add 操作",
+    "status": "partial",
+    "detector": "typescript-ast:array-mutation-loop",
+    "reason": "Detects direct and resolvable array alias mutations in for-of, forEach and index loops, including mutating supplied-source function calls. Conditional reassignments, closures, external callees and complete path-sensitive effects remain unsupported.",
+    "test_cases": [
+      "G.TYP.09 positive",
+      "G.TYP.09 negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da73f0e06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.11 使用展开语法 … 或concat复制数组",
+    "status": "partial",
+    "detector": "typescript-ast:array-copy",
+    "reason": "Detects typed array.slice() with no arguments as an alternate copying idiom. Other hand-written copying algorithms require intent analysis.",
+    "test_cases": [
+      "G.TYP.11 positive",
+      "G.TYP.11 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f2506db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.TYP.15 其它类型转化为数字使用Number()，并且应显式检查返回值是否为NaN",
+    "status": "partial",
+    "detector": "typescript-ast:number-conversion",
+    "reason": "Detects parseInt/parseFloat conversion and Number() results without a local NaN check; full control-flow validation across functions is not implemented.",
+    "test_cases": [
+      "G.TYP.15 positive",
+      "G.TYP.15 negative"
+    ]
+  },
+  {
+    "rule_id": "da73aca26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.CORS.01 使用postMessage方法实现跨域时，应严格校验Origin",
+    "status": "partial",
+    "detector": "typescript-ast:postmessage-origin",
+    "reason": "Checks missing or wildcard postMessage target origins. Incoming message origin verification and dynamically computed destinations need whole-program analysis.",
+    "test_cases": [
+      "G.CORS.01 positive",
+      "G.CORS.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f9706db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.WST.01 禁止在 localStorage和sessionStorage中存储敏感数据",
+    "status": "partial",
+    "detector": "typescript-ast:sensitive-storage",
+    "reason": "Checks storage keys/values with credential names. This is a security review candidate, not taint-flow proof.",
+    "test_cases": [
+      "G.WST.01 positive",
+      "G.WST.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73fa626db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.WST.02 如果数据仅需要临时存储在客户端，使用非持久性会话cookie或者sessionStorage而不是localStorage",
+    "status": "partial",
+    "detector": "typescript-ast:persistent-storage",
+    "reason": "Reports localStorage writes for retention review. Whether data is temporary is an application requirement not present in source syntax.",
+    "test_cases": [
+      "G.WST.02 positive",
+      "G.WST.02 negative"
+    ]
+  },
+  {
+    "rule_id": "da73f8cb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.WSQ.01 禁止在 Web SQL database和Indexed database数据库中存储敏感数据",
+    "status": "partial",
+    "detector": "typescript-ast:sensitive-database",
+    "reason": "Detects sensitive-name literals in direct SQL or IndexedDB put/add calls. No complete database taint tracking is claimed.",
+    "test_cases": [
+      "G.WSQ.01 positive",
+      "G.WSQ.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e45f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OTH.05 禁止代码中包含公网地址",
+    "status": "partial",
+    "detector": "typescript-ast:public-address",
+    "reason": "Detects public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamically assembled addresses and IPv6 require further analysis.",
+    "test_cases": [
+      "G.OTH.05 positive",
+      "G.OTH.05 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e2a76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OTH.04 正式发布的代码及注释内容不应包含开发者个人信息",
+    "status": "partial",
+    "detector": "typescript-ast:personal-information",
+    "reason": "Detects author tags and email-like personal contact strings in comments. Determining personal identity in arbitrary prose is not decidable from syntax alone.",
+    "test_cases": [
+      "G.OTH.04 positive",
+      "G.OTH.04 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e1d06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OTH.03 不用的代码段直接删除，不要注释掉",
+    "status": "partial",
+    "detector": "typescript-ast:commented-code",
+    "reason": "Parses comment content as JavaScript and flags executable declarations/statements. Documentation examples may be intentional and require review.",
+    "test_cases": [
+      "G.OTH.03 positive",
+      "G.OTH.03 negative"
+    ]
+  },
+  {
+    "rule_id": "da73e0fd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OTH.01 安全场景下必须使用密码学意义上的安全随机数",
+    "status": "partial",
+    "detector": "typescript-ast:weak-random",
+    "reason": "Reports Math.random as a security review candidate; source syntax alone cannot prove use in a security-sensitive scenario.",
+    "test_cases": [
+      "G.OTH.01 positive",
+      "G.OTH.01 negative"
+    ]
+  },
+  {
+    "rule_id": "da73da1d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.OTH.06 禁止在用户界面、日志中暴露不必要信息",
+    "status": "partial",
+    "detector": "typescript-ast:sensitive-output",
+    "reason": "Detects credential-named values sent to logging/UI sinks. Full sensitive-data taint tracking and necessity assessment are not implemented.",
+    "test_cases": [
+      "G.OTH.06 positive",
+      "G.OTH.06 negative"
+    ]
+  },
+  {
+    "rule_id": "da73d92c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "title": "G.NOD.04 解压文件必须进行安全检查",
+    "status": "partial",
+    "detector": "typescript-ast:archive-extract",
+    "reason": "Reports archive extraction API calls for path/size/link review. It cannot prove prior validation or protect every extraction library.",
+    "test_cases": [
+      "G.NOD.04 positive",
+      "G.NOD.04 negative"
+    ]
+  }
+]

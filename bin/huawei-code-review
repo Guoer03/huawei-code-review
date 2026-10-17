@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# Source-checkout entry point. ``pip install .`` exposes the same command as
+# a console script; this wrapper is useful before installation and in a skill
+# sandbox where the repository is mounted read-only.
+set -eu
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PYTHON=${PYTHON:-python3}
+exec "$PYTHON" "$ROOT/scripts/check.py" "$@"
+

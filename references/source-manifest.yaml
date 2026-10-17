@@ -1,0 +1,36 @@
+sources:
+  - id: huawei-java-mirror
+    name: 华为 Java 编程规范（公开镜像）
+    status: community-mirror
+    url: https://gitcode.com/Universal-Tool/b13f2
+    retrieved_at: 2026-09-29
+    local_artifact: /tmp/华为_Java编程规范.pdf
+    sha256: 03ea7dd964f76ae0c84fa7d44788f9991586851ba5436676500793c3cbde937d
+    note: Public mirror; no Huawei official public download page was verified.
+  - id: openharmony-javascript
+    name: OpenHarmony JavaScript语言通用编程规范
+    status: official-public
+    url: https://github.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-JavaScript-coding-style-guide.md
+    retrieved_at: 2026-09-29
+    local_artifact: /tmp/OpenHarmony-JavaScript-coding-style-guide.md
+    sha256: 33a794b7eabdc5e4121a1f74a2503b367b19d159cde8bbff5845c19d22ab6aeb
+  - id: openharmony-ts-js
+    name: OpenHarmony应用TS&JS编程指南
+    status: official-public
+    url: https://github.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-Application-Typescript-JavaScript-coding-guide.md
+    retrieved_at: 2026-09-29
+    local_artifact: /tmp/OpenHarmony-Application-Typescript-JavaScript-coding-guide.md
+    sha256: 727fc220bcdd28a89e21a3f120d5e4df55cad91d2233523940fdc9b038dccadf
+  - id: huawei-python-community
+    name: Python编程规范（华为云社区转载文章）
+    status: community
+    url: https://bbs.huaweicloud.com/blogs/379851
+    retrieved_at: 2026-09-29
+    local_artifact: /tmp/华为云社区-Python编程规范.pdf
+    sha256: 0b65dec1b014395b0cd4bb1232549470b50506f9c776916f113d2ac2a464bf2a
+    note: Community article, not an authenticated CodeArts rule export.
+  - id: huawei-codearts-python
+    name: CodeArts Python/华为编码规范规则集
+    status: official-gated
+    url: https://support.huaweicloud.com/usermanual-codecheck/devcloud_hlp_00116.html
+    note: Export requires CodeArts authentication; do not claim these rules were locally verified.

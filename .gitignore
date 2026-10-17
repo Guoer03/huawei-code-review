@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.huawei-review/
+reports/
+node_modules/
+build/
+dist/
+*.egg-info/
+.DS_Store

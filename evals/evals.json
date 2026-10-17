@@ -1,0 +1,9 @@
+{
+  "skill_name": "huawei-code-review",
+  "evals": [
+    {"id": 1, "prompt": "Review this JavaScript file against OpenHarmony JavaScript rules.", "expected_output": "Find var and loose equality with evidence and official-public source.", "files": []},
+    {"id": 2, "prompt": "Review this TypeScript file for Huawei/OpenHarmony rules.", "expected_output": "Find var, any, or dynamic code and label the TS&JS source.", "files": []},
+    {"id": 3, "prompt": "Review this Python file using Huawei Python guidance.", "expected_output": "Report Python findings as community advisory, not official.", "files": []},
+    {"id": 4, "prompt": "Review a binary or unsupported file.", "expected_output": "Report uncovered instead of claiming a pass.", "files": []}
+  ]
+}

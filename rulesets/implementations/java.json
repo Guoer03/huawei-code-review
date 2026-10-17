@@ -1,0 +1,2210 @@
+[
+  {
+    "rule_id": "da7051436db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.07 一个方法不应抛出超过5个异常，并在Javadoc的@throws标签中记录每个抛出的异常及其条件",
+    "status": "partial",
+    "detector": "javac-ast:throws_count",
+    "reason": "Implements >5 thrown exceptions; per-condition semantic documentation cannot be inferred.",
+    "test_cases": [
+      "throws_count:positive",
+      "throws_count:negative"
+    ]
+  },
+  {
+    "rule_id": "da67a0aa6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.01 对共享变量做同步访问控制时需避开同步陷阱",
+    "status": "partial",
+    "detector": "javac-ast:lock_eviction",
+    "reason": "Detects direct eviction of a computeIfAbsent-created lock mapping in finally, the observed lock-splitting hazard. Other shared-state synchronization traps require additional models.",
+    "test_cases": [
+      "lock_eviction:positive",
+      "lock_eviction:negative"
+    ]
+  },
+  {
+    "rule_id": "da6f97d26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.DCL.02 局部变量被声明在接近它们首次使用的行",
+    "status": "partial",
+    "detector": "javac-ast:declaration_proximity",
+    "reason": "Checks literal-initialized locals whose first direct reference is over three lines away; full declaration movement semantics are not inferred.",
+    "test_cases": [
+      "declaration_proximity:positive",
+      "declaration_proximity:negative"
+    ]
+  },
+  {
+    "rule_id": "da7574cb6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.07 进行IO类操作时，必须在try-with-resource或finally里关闭资源",
+    "status": "partial",
+    "detector": "javac-ast:resource_close",
+    "reason": "Checks common resource constructors, direct try resources and same-method finally close; ownership transfer/aliases and exceptional paths require dataflow.",
+    "test_cases": [
+      "resource_close:positive",
+      "resource_close:negative"
+    ]
+  },
+  {
+    "rule_id": "da653cb46db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.07 子类覆写父类方法或实现接口时必须加上@Override注解",
+    "status": "partial",
+    "detector": "javac-ast:override_annotation",
+    "reason": "Resolves supplied-source packages, imports, nested classes, generic inheritance and erased method signatures, with visibility checks and common Object methods. External classpath attribution, generated members and complex bounds remain unsupported.",
+    "test_cases": [
+      "override_annotation:positive",
+      "override_annotation:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da746c2d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.08 字符串大小写转换、数字格式化为西方数字时，必须加上Locale.ROOT或Locale.ENGLISH",
+    "status": "partial",
+    "detector": "javac-ast:locale",
+    "reason": "Checks local String case conversion and String.format; dynamic formatters and allowable locale intent need attribution.",
+    "test_cases": [
+      "locale:positive",
+      "locale:negative"
+    ]
+  },
+  {
+    "rule_id": "da70473b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SEC.04 使用安全管理器来保护敏感操作",
+    "status": "partial",
+    "detector": "javac-ast:security_manager",
+    "reason": "Flags explicit disabling of legacy SecurityManager. Modern JDKs deprecate/remove this facility; no claim that adding it is the appropriate modern security fix.",
+    "test_cases": [
+      "security_manager:positive",
+      "security_manager:negative"
+    ]
+  },
+  {
+    "rule_id": "da66f2576db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.06 代码中不应使用断言（assert）",
+    "status": "implemented",
+    "detector": "javac-ast:assert",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "assert:positive",
+      "assert:negative"
+    ]
+  },
+  {
+    "rule_id": "da6f8dc56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.DCL.04 避免枚举常量序号的产生依赖于ordinal()方法",
+    "status": "partial",
+    "detector": "javac-ast:enum_ordinal",
+    "reason": "Identifies ordinal calls; proving receiver is enum and value persistence requires type resolution.",
+    "test_cases": [
+      "enum_ordinal:positive",
+      "enum_ordinal:negative"
+    ]
+  },
+  {
+    "rule_id": "da756c086db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.08 禁止使用主动GC（除非在密码、RMI等方面），尤其是在频繁/周期性的逻辑中",
+    "status": "partial",
+    "detector": "javac-ast:explicit_gc",
+    "reason": "Identifies explicit System/Runtime GC calls; cannot infer cryptographic or RMI exceptions.",
+    "test_cases": [
+      "explicit_gc:positive",
+      "explicit_gc:negative"
+    ]
+  },
+  {
+    "rule_id": "da6533ec6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.05 避免基本类型与其包装类型的同名重载方法",
+    "status": "implemented",
+    "detector": "javac-ast:boxing_overload",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "boxing_overload:positive",
+      "boxing_overload:negative"
+    ]
+  },
+  {
+    "rule_id": "da7461d96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.07 避免在代码中硬编码用于表示换行、文件路径分隔的字符--不要在代码中硬编码用于表示换行字符",
+    "status": "partial",
+    "detector": "javac-ast:hardcoded_newline",
+    "reason": "Detects standalone newline literals; embedded protocol delimiters require application/protocol context.",
+    "test_cases": [
+      "hardcoded_newline:positive",
+      "hardcoded_newline:negative"
+    ]
+  },
+  {
+    "rule_id": "da66e8186db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.09 不要调用System.exit()终止JVM",
+    "status": "implemented",
+    "detector": "javac-ast:system_exit",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "system_exit:positive",
+      "system_exit:negative"
+    ]
+  },
+  {
+    "rule_id": "da6f837d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.01 标识符应由不超过64字符的字母、数字和下划线组成",
+    "status": "implemented",
+    "detector": "javac-ast:identifier",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "identifier:positive",
+      "identifier:negative"
+    ]
+  },
+  {
+    "rule_id": "da7562216db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.09 禁止使用Finalizer机制",
+    "status": "implemented",
+    "detector": "javac-ast:finalizer",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "finalizer:positive",
+      "finalizer:negative"
+    ]
+  },
+  {
+    "rule_id": "da6528806db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.08 布尔型变量建议以表达是非意义的动词开头",
+    "status": "partial",
+    "detector": "javac-ast:boolean_name",
+    "reason": "Recognizes a documented finite set of boolean verb prefixes; domain vocabulary needs review.",
+    "test_cases": [
+      "boolean_name:positive",
+      "boolean_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da7457aa6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.01 源文件编码格式（包括注释）应该是UTF-8",
+    "status": "implemented",
+    "detector": "input:utf8",
+    "reason": "Enforced by strict UTF-8 input decoding/encoding and javac grammar, respectively; invalid inputs produce structured errors rather than a clean scan.",
+    "test_cases": [
+      "input:utf8:positive",
+      "input:utf8:negative"
+    ]
+  },
+  {
+    "rule_id": "da7021046db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.10 线程中断由业务代码来协作完成，慎用Thread.interrupt方法",
+    "status": "partial",
+    "detector": "javac-ast:thread_interrupt",
+    "reason": "Reports direct interrupt calls for business-coordination review; cannot determine correct cancellation protocol.",
+    "test_cases": [
+      "thread_interrupt:positive",
+      "thread_interrupt:negative"
+    ]
+  },
+  {
+    "rule_id": "da66d7b66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.08 不要使用return、break、continue或抛出异常使finally块非正常结束--在finally块中使用throw语句",
+    "status": "partial",
+    "detector": "javac-ast:finally_throw",
+    "reason": "Explicit throw completion is composed with catch dispatch, project/JDK subtype relationships and overriding nested finally blocks. Unknown or expired-local exception types retain a possible escaping throw. Catch paths from implicit operations/resources are conservatively admitted; precise external subtype relationships and call/resource exception summaries remain unavailable without attribution.",
+    "test_cases": [
+      "finally_throw:positive",
+      "finally_throw:negative",
+      "test_java_control_flow.py:overridden_throw_reports_only_surviving_source_location",
+      "test_java_control_flow.py:structured_completion_and_target_resolution"
+    ]
+  },
+  {
+    "rule_id": "da6c34736db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.06 防止解析来自外部的XML导致的内部实体扩展（XML Entity Expansion）攻击",
+    "status": "partial",
+    "detector": "javac-ast:xml_expansion",
+    "reason": "Detects explicit DOCTYPE enablement; parser limits and complete entity expansion defenses need configuration flow.",
+    "test_cases": [
+      "xml_expansion:positive",
+      "xml_expansion:negative"
+    ]
+  },
+  {
+    "rule_id": "da7556596db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.04 不要对正则表达式进行频繁重复预编译",
+    "status": "implemented",
+    "detector": "javac-ast:regex_loop",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "regex_loop:positive",
+      "regex_loop:negative"
+    ]
+  },
+  {
+    "rule_id": "da651d776db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.01 方法要简短--方法的代码块嵌套深度不应超过4层",
+    "status": "implemented",
+    "detector": "javac-ast:nesting",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "nesting:positive",
+      "nesting:negative"
+    ]
+  },
+  {
+    "rule_id": "da744d836db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.03 禁止使用浮点数作为循环计数器",
+    "status": "implemented",
+    "detector": "javac-ast:float_loop",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "float_loop:positive",
+      "float_loop:negative"
+    ]
+  },
+  {
+    "rule_id": "da701d006db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.COL.04 不要在foreach循环中通过remove()/add()方法更改集合",
+    "status": "partial",
+    "detector": "javac-ast:foreach_mutation",
+    "reason": "Detects same-expression collection modification in foreach; concurrent collections and indirect mutations need type/context.",
+    "test_cases": [
+      "foreach_mutation:positive",
+      "foreach_mutation:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c2aac6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.05 防止解析来自外部的XML导致的外部实体（XML External Entity）攻击",
+    "status": "partial",
+    "detector": "javac-ast:xml_external",
+    "reason": "Detects explicit unsafe external-entity/DTD settings; defaults and effective factory configuration require object flow.",
+    "test_cases": [
+      "xml_external:positive",
+      "xml_external:negative"
+    ]
+  },
+  {
+    "rule_id": "da754bd26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.02 使用System.arraycopy()或Arrays.copyOf()进行数组复制",
+    "status": "partial",
+    "detector": "javac-ast:array_copy",
+    "reason": "Detects direct array-element assignments inside for loops; offset/transform semantics need review before recommending a replacement.",
+    "test_cases": [
+      "array_copy:positive",
+      "array_copy:negative"
+    ]
+  },
+  {
+    "rule_id": "da6515d96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.03 条件表达式?:的第2和第3个操作数应使用相同的类型",
+    "status": "partial",
+    "detector": "javac-ast:ternary_types",
+    "reason": "Compares types from literals, casts and local declarations; inferred generics/calls need type attribution.",
+    "test_cases": [
+      "ternary_types:positive",
+      "ternary_types:negative"
+    ]
+  },
+  {
+    "rule_id": "da7335a56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.04 需要精确计算时使用BigDecimal，不要使用float和double",
+    "status": "partial",
+    "detector": "javac-ast:decimal_precision",
+    "reason": "Flags amount-like float/double variable names for review; determining exact-decimal requirements requires domain knowledge.",
+    "test_cases": [
+      "decimal_precision:positive",
+      "decimal_precision:negative"
+    ]
+  },
+  {
+    "rule_id": "da7001396db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.02 不要在父类的构造方法中调用可能被子类覆写的方法",
+    "status": "partial",
+    "detector": "javac-ast:constructor_override",
+    "reason": "Detects constructor calls to locally declared overridable methods; transitive and inherited calls require call graph.",
+    "test_cases": [
+      "constructor_override:positive",
+      "constructor_override:negative"
+    ]
+  },
+  {
+    "rule_id": "da66cd7c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.08 不要使用return、break、continue或抛出异常使finally块非正常结束--在finally块中使用return语句",
+    "status": "implemented",
+    "detector": "javac-ast:finally_return",
+    "reason": "Detects explicit return completions escaping finally after structured branches, local jumps, catch handlers and nested-finally replacement; expression evaluation includes switch expressions. Unknown value conversions and out-of-scope declarations never prove a branch unreachable. Possible implicit operation/resource exceptions retain catch paths. Calls are conservatively assumed able to complete; no interprocedural reachability proof is claimed.",
+    "test_cases": [
+      "finally_return:positive",
+      "finally_return:negative",
+      "test_java_control_flow.py:structured_completion_and_target_resolution"
+    ]
+  },
+  {
+    "rule_id": "da6c227b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.2 禁止使用私有或者弱加密算法--AES使用不安全的ECB操作模式",
+    "status": "implemented",
+    "detector": "javac-ast:aes_ecb",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "aes_ecb:positive",
+      "aes_ecb:negative"
+    ]
+  },
+  {
+    "rule_id": "da7541666db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.01 将集合转为数组时使用Collection<T>.toArray(T[])方法；Java 11后使用Collection<T>.toArray(IntFunction<T[]>)",
+    "status": "partial",
+    "detector": "javac-ast:typed_toarray",
+    "reason": "Checks locally declared common collection types; inherited/custom collections require type attribution.",
+    "test_cases": [
+      "typed_toarray:positive",
+      "typed_toarray:negative"
+    ]
+  },
+  {
+    "rule_id": "da650cfd6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CTL.03 switch语句要有default分支",
+    "status": "implemented",
+    "detector": "javac-ast:switch_default",
+    "reason": "Uses javac CaseTree DEFAULT_CASE_LABEL identity for both statement and expression switches, including Java 21 pattern cases and combined null/default labels. Does not infer default from absent constant expressions.",
+    "test_cases": [
+      "switch_default:positive",
+      "switch_default:negative",
+      "test_java_control_flow.py:pattern_case_is_not_default",
+      "test_java_control_flow.py:null_and_default",
+      "test_java_control_flow.py:default_keyword_string"
+    ]
+  },
+  {
+    "rule_id": "da732adf6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.06 禁止尝试与NaN进行比较运算，相等操作使用Double或Float的isNaN()方法",
+    "status": "implemented",
+    "detector": "javac-ast:nan_compare",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "nan_compare:positive",
+      "nan_compare:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ffe8d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CTL.01 不要在控制性条件表达式中执行赋值操作或执行复杂的条件判断",
+    "status": "partial",
+    "detector": "javac-ast:condition_assignment",
+    "reason": "Detects assignment in control conditions; complex-condition readability is not fully implemented.",
+    "test_cases": [
+      "condition_assignment:positive",
+      "condition_assignment:negative"
+    ]
+  },
+  {
+    "rule_id": "da727db76db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.16 case语句块结束时如果不加break，需要有注释说明(fall-through)",
+    "status": "partial",
+    "detector": "javac-ast:fallthrough",
+    "reason": "Structured control-flow completion checks normal paths through branches, loops, nested switches and try/catch/finally; lexical comment tokens recognize fall-through annotations without matching strings. Constant booleans/comparisons and literal switch selectors are supported. General constant-expression/value proofs and external call/exception behavior remain conservative and partial.",
+    "test_cases": [
+      "fallthrough:positive",
+      "fallthrough:negative",
+      "test_java_control_flow.py:structured_completion_and_target_resolution"
+    ]
+  },
+  {
+    "rule_id": "da66c40c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SEC.01 进行安全检查的方法必须声明为private或final",
+    "status": "partial",
+    "detector": "javac-ast:security_method",
+    "reason": "Recognizes common security-check method names; semantic classification of arbitrary authorization methods is not implemented.",
+    "test_cases": [
+      "security_method:positive",
+      "security_method:negative"
+    ]
+  },
+  {
+    "rule_id": "da6503c86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.05 文件头注释应该包含版权许可信息",
+    "status": "implemented",
+    "detector": "javac-ast:copyright",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "copyright:positive",
+      "copyright:negative"
+    ]
+  },
+  {
+    "rule_id": "da7320a16db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.05 浮点型数据判断相等不要直接使用==，浮点型包装类型不要用equals()或者 flt.compareTo(another) == 0作相等的比较",
+    "status": "partial",
+    "detector": "javac-ast:float_equality",
+    "reason": "Detects ==/!= using local primitive/wrapper declarations; equals/compareTo and inferred expression types need extension.",
+    "test_cases": [
+      "float_equality:positive",
+      "float_equality:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ff2486db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CTL.02 含else if分支的条件判断应在最后加一个else分支",
+    "status": "implemented",
+    "detector": "javac-ast:final_else",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "final_else:positive",
+      "final_else:negative"
+    ]
+  },
+  {
+    "rule_id": "da72743c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.02 一个源文件按顺序包含版权、package、import、顶层类，且用空行分隔",
+    "status": "partial",
+    "detector": "javac-ast:source_sections",
+    "reason": "javac enforces legal declaration order; detector checks blank separation between package/import/type. Copyright content is checked separately.",
+    "test_cases": [
+      "source_sections:positive",
+      "source_sections:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c17c26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.2 禁止使用私有或者弱加密算法--RSA未使用填充模式",
+    "status": "implemented",
+    "detector": "javac-ast:rsa_padding",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "rsa_padding:positive",
+      "rsa_padding:negative"
+    ]
+  },
+  {
+    "rule_id": "da73142f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.15 枚举常量间用逗号隔开， 换行可选",
+    "status": "implemented",
+    "detector": "javac-grammar:enum-separators",
+    "reason": "Enforced by strict UTF-8 input decoding/encoding and javac grammar, respectively; invalid inputs produce structured errors rather than a clean scan.",
+    "test_cases": [
+      "javac-grammar:enum-separators:positive",
+      "javac-grammar:enum-separators:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ff13f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.DCL.05 禁止将mutable对象声明为public static final",
+    "status": "partial",
+    "detector": "javac-ast:mutable_constant",
+    "reason": "Detects arrays and common mutable collection declarations; custom mutability and aliases require type analysis.",
+    "test_cases": [
+      "mutable_constant:positive",
+      "mutable_constant:negative"
+    ]
+  },
+  {
+    "rule_id": "da7268e26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.04 一个类或接口的声明部分应该按照类变量、静态初始化块、实例变量、实例初始化块、构造器、方法的顺序出现，且用空行分隔",
+    "status": "partial",
+    "detector": "javac-ast:member_order",
+    "reason": "Checks member category order; blank-line separation and nested-type placement are not implemented.",
+    "test_cases": [
+      "member_order:positive",
+      "member_order:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c0e656db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.2 禁止使用私有或者弱加密算法--密钥长度少于指定长度",
+    "status": "partial",
+    "detector": "javac-ast:key_length",
+    "reason": "Locally resolves literal algorithm/key size with an explicit policy (RSA/DSA/DH >=2048, AES >=128); export gives no authoritative thresholds.",
+    "test_cases": [
+      "key_length:positive",
+      "key_length:negative"
+    ]
+  },
+  {
+    "rule_id": "da64f9ea6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.03 方法的Javadoc中应该包含功能说明，根据实际需要按顺序使用@param、@return、@throws标签对参数、返回值、异常进行注释--功能描述和标签之间要有一个空行",
+    "status": "implemented",
+    "detector": "javac-ast:javadoc_blank",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "javadoc_blank:positive",
+      "javadoc_blank:negative"
+    ]
+  },
+  {
+    "rule_id": "da730a766db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.14 不应插入多余空格使代码垂直对齐",
+    "status": "partial",
+    "detector": "javac-ast:vertical_alignment",
+    "reason": "Detects repeated spaces before declaration/assignment equals; visual alignment across all operators requires a full formatter.",
+    "test_cases": [
+      "vertical_alignment:positive",
+      "vertical_alignment:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fea9c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.01 不要在单个表达式中对相同的变量赋值超过一次",
+    "status": "implemented",
+    "detector": "javac-ast:multiple_assignment",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "multiple_assignment:positive",
+      "multiple_assignment:negative"
+    ]
+  },
+  {
+    "rule_id": "da725e646db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.06 注释与代码之间应该有空行或空格，注释符与注释内容之间应该有空格",
+    "status": "implemented",
+    "detector": "javac-ast:comment_spacing",
+    "reason": "Java lexical comment tokens enforce space after introducers and whitespace between comments and adjacent code; string/text-block content is excluded.",
+    "test_cases": [
+      "comment_spacing:positive",
+      "comment_spacing:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c05db6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.2 禁止使用私有或者弱加密算法--弱加密算法",
+    "status": "partial",
+    "detector": "javac-ast:weak_cipher",
+    "reason": "Covers known weak algorithms from literal Cipher.getInstance transformations; custom ciphers need inspection.",
+    "test_cases": [
+      "weak_cipher:positive",
+      "weak_cipher:negative"
+    ]
+  },
+  {
+    "rule_id": "da62831f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.05 禁止直接使用可能为null的对象，防止出现空指针引用",
+    "status": "partial",
+    "detector": "javac-ast:null_dereference",
+    "reason": "Detects explicit local null initialization followed by dereference without direct assignment/guard; full nullability dataflow is not implemented.",
+    "test_cases": [
+      "null_dereference:positive",
+      "null_dereference:negative"
+    ]
+  },
+  {
+    "rule_id": "da72ff0c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.13 用空格突出关键字和重要信息",
+    "status": "partial",
+    "detector": "javac-ast:operator_spaces",
+    "reason": "Checks AST binary operators; unary, keyword, delimiter and generics spacing need further formatting rules.",
+    "test_cases": [
+      "operator_spaces:positive",
+      "operator_spaces:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fe6f46db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.02 从ZipInputStream中解压文件必须进行安全检查",
+    "status": "partial",
+    "detector": "javac-ast:zip_directory_bytes",
+    "reason": "Detects directory paths that skip explicit payload reads before implicit closeEntry/getNextEntry draining. Partial pattern covering observed directory-entry quota bypass; full Zip Slip/size/ownership analysis requires complete flow models.",
+    "test_cases": [
+      "zip_directory_bytes:positive",
+      "zip_directory_bytes:negative"
+    ]
+  },
+  {
+    "rule_id": "da7253776db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.07 正式交付给客户的代码不应包含TODO/FIXME注释",
+    "status": "implemented",
+    "detector": "javac-ast:todo",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "todo:positive",
+      "todo:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bfac16db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.3 基于哈希算法的口令安全存储必须加入盐值（salt）--盐值硬编码",
+    "status": "partial",
+    "detector": "javac-ast:fixed_salt",
+    "reason": "Detects literal/new-array salts and directly initialized array variables; aliases and external secret configuration require dataflow.",
+    "test_cases": [
+      "fixed_salt:positive",
+      "fixed_salt:negative"
+    ]
+  },
+  {
+    "rule_id": "da622cf66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.04 防止通过异常泄露敏感信息",
+    "status": "partial",
+    "detector": "javac-ast:exception_leak",
+    "reason": "Reports direct printStackTrace; actual sensitive information and response sinks need taint/context.",
+    "test_cases": [
+      "exception_leak:positive",
+      "exception_leak:negative"
+    ]
+  },
+  {
+    "rule_id": "da72f5376db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.12 减少不必要的空行，保持代码紧凑",
+    "status": "implemented",
+    "detector": "javac-ast:blank_lines",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "blank_lines:positive",
+      "blank_lines:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fde9f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.04 表达式的比较，应该遵循左侧倾向于变化、右侧倾向于不变的原则--表达式比较左变右不变",
+    "status": "implemented",
+    "detector": "javac-ast:comparison_order",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "comparison_order:positive",
+      "comparison_order:negative"
+    ]
+  },
+  {
+    "rule_id": "da7248a86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OTH.03 不用的代码段包括import，直接删除，不要注释掉--不用的代码段，直接删除，不要注释掉",
+    "status": "partial",
+    "detector": "javac-ast:commented_code",
+    "reason": "Heuristic detection within actual comment tokens; natural-language code examples need human review.",
+    "test_cases": [
+      "commented_code:positive",
+      "commented_code:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bf4786db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.3 基于哈希算法的口令安全存储必须加入盐值（salt）--Hash迭代不充分",
+    "status": "partial",
+    "detector": "javac-ast:hash_iterations",
+    "reason": "Explicit local floor 10000 iterations for PBEKeySpec; actual algorithm-specific current policy must be configured separately.",
+    "test_cases": [
+      "hash_iterations:positive",
+      "hash_iterations:negative"
+    ]
+  },
+  {
+    "rule_id": "da60da8c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则2.6.1 禁止使用SSL2.0、SSL3.0、TLS1.0、TLS1.1协议",
+    "status": "partial",
+    "detector": "javac-ast:old_tls",
+    "reason": "Checks literal SSLContext and enabled protocol arrays; effective provider defaults require runtime configuration.",
+    "test_cases": [
+      "old_tls:positive",
+      "old_tls:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fd3ed6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.02 用括号明确表达式的操作顺序，避免过分依赖默认优先级",
+    "status": "partial",
+    "detector": "javac-ast:explicit_precedence",
+    "reason": "Detects common mixed arithmetic/boolean/bitwise precedence; all operator combinations are not covered.",
+    "test_cases": [
+      "explicit_precedence:positive",
+      "explicit_precedence:negative"
+    ]
+  },
+  {
+    "rule_id": "da723cb36db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OTH.03 不用的代码段包括import，直接删除，不要注释掉--不用的import语句，直接删除，不要注释掉",
+    "status": "implemented",
+    "detector": "javac-ast:commented_import",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "commented_import:positive",
+      "commented_import:negative"
+    ]
+  },
+  {
+    "rule_id": "da6beabe6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-9.2 禁止使用私有或者弱加密算法--不安全的哈希算法",
+    "status": "implemented",
+    "detector": "javac-ast:weak_hash",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "weak_hash:positive",
+      "weak_hash:negative"
+    ]
+  },
+  {
+    "rule_id": "da60a1026db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则6.3 使用PENDINGINTENT触发事件时须传入显式INTENT",
+    "status": "partial",
+    "detector": "javac-ast:pending_intent",
+    "reason": "Tracks direct Intent construction/setClass/setComponent before PendingIntent; aliases and framework factory methods need dataflow.",
+    "test_cases": [
+      "pending_intent:positive",
+      "pending_intent:negative"
+    ]
+  },
+  {
+    "rule_id": "da72e8dd6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.11 建议换行起点在操作符之前",
+    "status": "partial",
+    "detector": "javac-ast:operator_wrap",
+    "reason": "Checks common AST binary operators; chained calls and remaining operators need formatting extension.",
+    "test_cases": [
+      "operator_wrap:positive",
+      "operator_wrap:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fca696db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.01 尽量避免实现Serializable接口",
+    "status": "partial",
+    "detector": "javac-ast:serializable",
+    "reason": "Resolves adoption and inheritance of java.io.Serializable across supplied-source imports and hierarchies, excluding unrelated same-name types. Avoidability remains a design review; external bases need classpath context.",
+    "test_cases": [
+      "serializable:positive",
+      "serializable:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da7233b26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.04 不写空有格式的方法头注释",
+    "status": "implemented",
+    "detector": "javac-ast:empty_javadoc",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "empty_javadoc:positive",
+      "empty_javadoc:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bd1d96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.03 对于从流中读取一个字符或字节的方法，使用int类型的返回值",
+    "status": "partial",
+    "detector": "javac-ast:read_int",
+    "reason": "Detects explicit narrow casts of read(); other flow through wrapper conversions requires type/dataflow analysis.",
+    "test_cases": [
+      "read_int:positive",
+      "read_int:negative"
+    ]
+  },
+  {
+    "rule_id": "da6069916db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "建议2.6.5 SSH协议优先选择ECC密钥交换算法和身份认证公钥算法，优先选择HMAC-SHA2消息认证算法",
+    "status": "partial",
+    "detector": "javac-ast:ssh_algorithms",
+    "reason": "Detects weak explicit JSch-style SSH algorithm lists; default/provider negotiation and relative algorithm preference require configuration context.",
+    "test_cases": [
+      "ssh_algorithms:positive",
+      "ssh_algorithms:negative"
+    ]
+  },
+  {
+    "rule_id": "da72deaa6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.10 行宽不超过120个窄字符",
+    "status": "implemented",
+    "detector": "javac-ast:line_length",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "line_length:positive",
+      "line_length:negative"
+    ]
+  },
+  {
+    "rule_id": "da72296b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.02 顶层public类的Javadoc应该包含功能说明和创建日期/版本信息",
+    "status": "implemented",
+    "detector": "javac-ast:class_javadoc",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "class_javadoc:positive",
+      "class_javadoc:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bc9326db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OTH.01 安全场景下必须使用密码学意义上的安全随机数",
+    "status": "partial",
+    "detector": "javac-ast:weak_random",
+    "reason": "Reports java.util.Random construction; deciding whether randomness is security-sensitive requires dataflow/context.",
+    "test_cases": [
+      "weak_random:positive",
+      "weak_random:negative"
+    ]
+  },
+  {
+    "rule_id": "da6010376db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "建议5.5 为cookie设置secure标志",
+    "status": "partial",
+    "detector": "javac-ast:cookie_secure",
+    "reason": "Detects explicit secure=false; missing secure=true and framework/global cookie policy need lifecycle analysis.",
+    "test_cases": [
+      "cookie_secure:positive",
+      "cookie_secure:negative"
+    ]
+  },
+  {
+    "rule_id": "da72d4af6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.09 每行不超过一个语句",
+    "status": "implemented",
+    "detector": "javac-ast:one_statement",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "one_statement:positive",
+      "one_statement:negative"
+    ]
+  },
+  {
+    "rule_id": "da7538686db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.12 避免不加控制地创建新线程，应该使用线程池来管控资源",
+    "status": "implemented",
+    "detector": "javac-ast:new_thread",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "new_thread:positive",
+      "new_thread:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fc0946db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.04 禁止直接序列化指向系统资源的信息",
+    "status": "partial",
+    "detector": "javac-ast:serial_resource",
+    "reason": "Resolves Serializable inheritance in supplied source and flags a known set of resource field types. Resource wrappers, inherited fields and external dependency types remain unsupported.",
+    "test_cases": [
+      "serial_resource:positive",
+      "serial_resource:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6bbf0e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.01 对共享变量做同步访问控制时需避开同步陷阱--不要使用实例锁来保护静态共享数据",
+    "status": "partial",
+    "detector": "javac-ast:instance_static_lock",
+    "reason": "Detects local static field access inside synchronized(this); aliases and inherited state require interprocedural analysis.",
+    "test_cases": [
+      "instance_static_lock:positive",
+      "instance_static_lock:negative"
+    ]
+  },
+  {
+    "rule_id": "da5ff9c56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.04 禁止直接使用外部数据来拼接XML",
+    "status": "partial",
+    "detector": "javac-ast:taint_xml_concat",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer XML-escaping sanitizers (StringEscapeUtils.escapeXml*, ESAPI encodeForXML) for this XML-concatenation sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_xml_concat:positive",
+      "taint_xml_concat:negative",
+      "taint_xml_concat_sanitized:positive",
+      "taint_xml_concat_sanitized:negative"
+    ]
+  },
+  {
+    "rule_id": "da72ca6d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.07 应该避免空块，必须使用空块时，应采用统一的大括号换行风格",
+    "status": "partial",
+    "detector": "javac-ast:empty_block",
+    "reason": "Detects empty control/initializer blocks; mandatory empty blocks and brace-style exceptions need contextual policy.",
+    "test_cases": [
+      "empty_block:positive",
+      "empty_block:negative"
+    ]
+  },
+  {
+    "rule_id": "da752e1f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.08 使用Thread对象的setUncaughtExceptionHandler方法注册未捕获异常处理者",
+    "status": "partial",
+    "detector": "javac-ast:thread_handler",
+    "reason": "Looks for same-method handler registration before Thread.start; global/default/inherited handlers need lifecycle analysis.",
+    "test_cases": [
+      "thread_handler:positive",
+      "thread_handler:negative"
+    ]
+  },
+  {
+    "rule_id": "da721e586db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.01 public或protected修饰的元素应添加Javadoc注释",
+    "status": "implemented",
+    "detector": "javac-ast:public_javadoc",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "public_javadoc:positive",
+      "public_javadoc:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bb4986db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OTH.04 禁止代码中包含公网地址",
+    "status": "partial",
+    "detector": "javac-ast:public_ip",
+    "reason": "Detects public IPv4 literals; hostnames, IPv6, generated addresses and environment-specific exceptions need extension.",
+    "test_cases": [
+      "public_ip:positive",
+      "public_ip:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fe0a26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.02 禁止直接使用外部数据构造格式化字符串",
+    "status": "partial",
+    "detector": "javac-ast:taint_format",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_format:positive",
+      "taint_format:negative"
+    ]
+  },
+  {
+    "rule_id": "da72c16e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.08 使用空格进行缩进，每次缩进4个空格",
+    "status": "partial",
+    "detector": "javac-ast:indentation",
+    "reason": "Detects tab indentation; continuation/alignment-aware full four-space indentation is not implemented.",
+    "test_cases": [
+      "indentation:positive",
+      "indentation:negative"
+    ]
+  },
+  {
+    "rule_id": "da7522ee6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.06 使用新并发工具代替wait()和notify()",
+    "status": "partial",
+    "detector": "javac-ast:wait_notify",
+    "reason": "Detects wait/notify method call syntax; shadowing custom methods requires type resolution.",
+    "test_cases": [
+      "wait_notify:positive",
+      "wait_notify:negative"
+    ]
+  },
+  {
+    "rule_id": "da72150f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CMT.03 方法的Javadoc中应该包含功能说明，根据实际需要按顺序使用@param、@return、@throws标签对参数、返回值、异常进行注释",
+    "status": "implemented",
+    "detector": "javac-ast:javadoc_tags",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "javadoc_tags:positive",
+      "javadoc_tags:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fd4f06db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.13 线程池中的任务结束后必须清理其自定义的ThreadLocal变量",
+    "status": "partial",
+    "detector": "javac-ast:threadlocal_cleanup",
+    "reason": "Checks same-method finally removal for directly named ThreadLocal; interprocedural task lifecycle and aliases need flow analysis.",
+    "test_cases": [
+      "threadlocal_cleanup:positive",
+      "threadlocal_cleanup:negative"
+    ]
+  },
+  {
+    "rule_id": "da72b7006db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.06 对于非空块状结构，左大括号应该放在行尾，右大括号应该另起一行",
+    "status": "implemented",
+    "detector": "javac-ast:brace_layout",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "brace_layout:positive",
+      "brace_layout:negative"
+    ]
+  },
+  {
+    "rule_id": "da7517796db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.07 创建新线程时必须指定线程名",
+    "status": "partial",
+    "detector": "javac-ast:thread_name",
+    "reason": "Detects constructor naming; setName before start requires local lifecycle tracking.",
+    "test_cases": [
+      "thread_name:positive",
+      "thread_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da71d7e26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.06 变量采用小驼峰命名",
+    "status": "implemented",
+    "detector": "javac-ast:variable_name",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "variable_name:positive",
+      "variable_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da6baaea6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.01 使用外部数据构造的文件路径前必须进行校验，校验前必须对文件路径进行规范化处理",
+    "status": "partial",
+    "detector": "javac-ast:taint_path",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_path:positive",
+      "taint_path:negative"
+    ]
+  },
+  {
+    "rule_id": "da72ada16db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.05 在条件语句和循环块中应该使用大括号",
+    "status": "implemented",
+    "detector": "javac-ast:braces",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "braces:positive",
+      "braces:negative"
+    ]
+  },
+  {
+    "rule_id": "da750ba66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.10 接口定义中去掉多余的修饰词",
+    "status": "implemented",
+    "detector": "javac-ast:interface_modifiers",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "interface_modifiers:positive",
+      "interface_modifiers:negative"
+    ]
+  },
+  {
+    "rule_id": "da71c8cf6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.07 避免使用具有否定含义布尔变量名",
+    "status": "implemented",
+    "detector": "javac-ast:negative_boolean",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "negative_boolean:positive",
+      "negative_boolean:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ba2666db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.04 防止外部进程阻塞在输入输出流上",
+    "status": "partial",
+    "detector": "javac-ast:process_streams",
+    "reason": "Detects waitFor with no same-method stream handling; cannot prove deadlock freedom or independent stream draining.",
+    "test_cases": [
+      "process_streams:positive",
+      "process_streams:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fc95a6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--信任边界场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_trust",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_trust:positive",
+      "taint_trust:negative"
+    ]
+  },
+  {
+    "rule_id": "da72a39b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.20 数字字面量应该设置合适的后缀，long类型应该使用L作为后缀",
+    "status": "implemented",
+    "detector": "javac-ast:long_suffix",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "long_suffix:positive",
+      "long_suffix:negative"
+    ]
+  },
+  {
+    "rule_id": "da7500456db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.08 正确实现单例模式",
+    "status": "partial",
+    "detector": "javac-ast:singleton_constructor",
+    "reason": "Detects exposed constructors in locally identifiable INSTANCE/singleton classes; all serialization, cloning and concurrent singleton hazards need additional models.",
+    "test_cases": [
+      "singleton_constructor:positive",
+      "singleton_constructor:negative"
+    ]
+  },
+  {
+    "rule_id": "da71beb86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.05 常量名采用全大写单词，单词间以下划线分隔",
+    "status": "implemented",
+    "detector": "javac-ast:constant_name",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "constant_name:positive",
+      "constant_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b99806db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SEC.02 自定义类加载器覆写getPermission() 时，必须先调用父类的getPermission() 方法",
+    "status": "partial",
+    "detector": "javac-ast:classloader_permissions",
+    "reason": "Checks direct local ClassLoader subclass methods and super call presence; override attribution and call ordering require complete control flow.",
+    "test_cases": [
+      "classloader_permissions:positive",
+      "classloader_permissions:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fbeac6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.01 禁止直接使用外部数据来拼接SQL语句",
+    "status": "partial",
+    "detector": "javac-ast:sql_concat",
+    "reason": "Detects SQL sink string concatenation; external-input provenance and prepared-statement bind flow need taint analysis.",
+    "test_cases": [
+      "sql_concat:positive",
+      "sql_concat:negative"
+    ]
+  },
+  {
+    "rule_id": "da729c186db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.19 类和成员修饰符（如果存在）按Java语言规范建议的顺序显示",
+    "status": "implemented",
+    "detector": "javac-ast:modifier_order",
+    "reason": "Uses javac ModifiersTree source ranges, removes annotations/comments/literals, and checks JLS declaration modifier order without mixing method parameter modifiers.",
+    "test_cases": [
+      "modifier_order:positive",
+      "modifier_order:negative"
+    ]
+  },
+  {
+    "rule_id": "da74f6266db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.09 使用类名调用静态方法，而不要使用实例或表达式来调用",
+    "status": "partial",
+    "detector": "javac-ast:static_receiver",
+    "reason": "Resolves static methods declared in the same source file and locally typed receivers; dependency classes require attribution.",
+    "test_cases": [
+      "static_receiver:positive",
+      "static_receiver:negative"
+    ]
+  },
+  {
+    "rule_id": "da71a1736db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.04 方法名应采用小驼峰命名",
+    "status": "implemented",
+    "detector": "javac-ast:method_name",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "method_name:positive",
+      "method_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b8d3e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.07 防止反序列化被利用来绕过构造方法中的安全操作",
+    "status": "partial",
+    "detector": "javac-ast:deserialize_validation",
+    "reason": "Compares recognizable validation calls in local constructors and readObject; arbitrary safety invariants and inherited serialization need semantic analysis.",
+    "test_cases": [
+      "deserialize_validation:positive",
+      "deserialize_validation:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fb1426db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.07 进行IO类操作时，必须在try-with-resource或finally里关闭资源",
+    "status": "partial",
+    "detector": "javac-ast:resource_close",
+    "reason": "Checks common resource constructors, direct try resources and same-method finally close; ownership transfer/aliases and exceptional paths require dataflow.",
+    "test_cases": [
+      "resource_close:positive",
+      "resource_close:negative"
+    ]
+  },
+  {
+    "rule_id": "da728f456db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.18 块注释的缩进级别应与上下文代码相同",
+    "status": "partial",
+    "detector": "javac-ast:comment_indent",
+    "reason": "Compares standalone multiline comment indentation to next code line; trailing/end-of-block comments and formatter exceptions need context.",
+    "test_cases": [
+      "comment_indent:positive",
+      "comment_indent:negative"
+    ]
+  },
+  {
+    "rule_id": "da74ea5f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.03 构造方法如果有多个，尽量重用",
+    "status": "partial",
+    "detector": "javac-ast:constructor_reuse",
+    "reason": "Detects identical constructor bodies; semantic common-prefix/suffix factoring requires deeper analysis.",
+    "test_cases": [
+      "constructor_reuse:positive",
+      "constructor_reuse:negative"
+    ]
+  },
+  {
+    "rule_id": "da7198d56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.03 类、枚举和接口名应采用大驼峰命名",
+    "status": "implemented",
+    "detector": "javac-ast:class_name",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "class_name:positive",
+      "class_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da67d1b56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--外部数据控制Xpath",
+    "status": "partial",
+    "detector": "javac-ast:taint_xpath",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_xpath:positive",
+      "taint_xpath:negative"
+    ]
+  },
+  {
+    "rule_id": "da5fa3c66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--资源注入场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_resource",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_resource:positive",
+      "taint_resource:negative"
+    ]
+  },
+  {
+    "rule_id": "da74df3c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.01 应避免定义public且非final的类属性",
+    "status": "implemented",
+    "detector": "javac-ast:public_field",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "public_field:positive",
+      "public_field:negative"
+    ]
+  },
+  {
+    "rule_id": "da718f4d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.NAM.02 包名中的字母应小写，包名以点号分隔层级",
+    "status": "implemented",
+    "detector": "javac-ast:package_name",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "package_name:positive",
+      "package_name:negative"
+    ]
+  },
+  {
+    "rule_id": "da67d09a6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--外部数据控制XML校验",
+    "status": "partial",
+    "detector": "javac-ast:taint_xml_validation",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_xml_validation:positive",
+      "taint_xml_validation:negative"
+    ]
+  },
+  {
+    "rule_id": "da5f954d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.05 临时文件使用完毕必须及时删除",
+    "status": "partial",
+    "detector": "javac-ast:temp_cleanup",
+    "reason": "Checks presence of same-method finally deletion, not all alias/path or ownership cases.",
+    "test_cases": [
+      "temp_cleanup:positive",
+      "temp_cleanup:negative"
+    ]
+  },
+  {
+    "rule_id": "da773d126db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.01 进行数值运算时，避免整数溢出",
+    "status": "partial",
+    "detector": "javac-ast:integer_overflow",
+    "reason": "Checks literal integer arithmetic overflow; symbolic ranges, narrowing and interprocedural values require abstract interpretation.",
+    "test_cases": [
+      "integer_overflow:positive",
+      "integer_overflow:negative"
+    ]
+  },
+  {
+    "rule_id": "da66bac66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.07 禁止使用不安全的XSLT转换XML文件",
+    "status": "partial",
+    "detector": "javac-ast:xslt_secure",
+    "reason": "Detects explicit insecure processing and external-stylesheet access; effective defaults and source trust need type/configuration analysis.",
+    "test_cases": [
+      "xslt_secure:positive",
+      "xslt_secure:negative"
+    ]
+  },
+  {
+    "rule_id": "da7286f26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.17 应用于类、方法、类属性的每个注解独占一行",
+    "status": "implemented",
+    "detector": "javac-ast:annotation_lines",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "annotation_lines:positive",
+      "annotation_lines:negative"
+    ]
+  },
+  {
+    "rule_id": "da71857f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.LOG.04 非仅限于中文区销售产品禁止用中文打印日志",
+    "status": "partial",
+    "detector": "javac-ast:chinese_log",
+    "reason": "Detects CJK literals in common logger calls; region/product-language policy must be supplied.",
+    "test_cases": [
+      "chinese_log:positive",
+      "chinese_log:negative"
+    ]
+  },
+  {
+    "rule_id": "da67cfc16db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--外部数据控制哈希算法",
+    "status": "partial",
+    "detector": "javac-ast:taint_hash",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_hash:positive",
+      "taint_hash:negative"
+    ]
+  },
+  {
+    "rule_id": "da5df7456db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.08 正则表达式要尽量简单，防止ReDos攻击",
+    "status": "partial",
+    "detector": "javac-ast:regex_redos",
+    "reason": "Detects nested unbounded repetition in literal patterns; full regex automata ambiguity analysis is not implemented.",
+    "test_cases": [
+      "regex_redos:positive",
+      "regex_redos:negative"
+    ]
+  },
+  {
+    "rule_id": "da77306c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.04 避免使用不正确形式的双重检查锁",
+    "status": "partial",
+    "detector": "javac-ast:double_checked_lock",
+    "reason": "Detects common same-condition double-check publishing without volatile; aliases and alternative safe-publication schemes need memory-model analysis.",
+    "test_cases": [
+      "double_checked_lock:positive",
+      "double_checked_lock:negative"
+    ]
+  },
+  {
+    "rule_id": "da66ad556db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.11 禁止使用Thread.stop()来终止线程",
+    "status": "implemented",
+    "detector": "javac-ast:thread_stop",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "thread_stop:positive",
+      "thread_stop:negative"
+    ]
+  },
+  {
+    "rule_id": "da74d41e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.04 避免在无关的变量或无关的概念之间重用名字，避免隐藏（hide）、遮蔽（shadow）和遮掩（obscure）",
+    "status": "partial",
+    "detector": "javac-ast:shadowing",
+    "reason": "Detects local/parameter shadowing of same-class fields; inherited names, imports and intentional setter patterns require context.",
+    "test_cases": [
+      "shadowing:positive",
+      "shadowing:negative"
+    ]
+  },
+  {
+    "rule_id": "da70b2976db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.LOG.01 记录日志应该使用Facade模式的日志框架",
+    "status": "partial",
+    "detector": "javac-ast:logging_facade",
+    "reason": "Flags System.out/err printing; verifies neither all logging frameworks nor Facade conformance.",
+    "test_cases": [
+      "logging_facade:positive",
+      "logging_facade:negative"
+    ]
+  },
+  {
+    "rule_id": "da67cd506db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.08 禁止直接将外部数据进行反序列化",
+    "status": "partial",
+    "detector": "javac-ast:deserialize",
+    "reason": "Reports ObjectInputStream construction for source/filter review; does not prove external taint.",
+    "test_cases": [
+      "deserialize:positive",
+      "deserialize:negative"
+    ]
+  },
+  {
+    "rule_id": "da5de2b26db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.05 禁止使用非线程安全的方法来覆写线程安全的方法",
+    "status": "partial",
+    "detector": "javac-ast:unsafe_override",
+    "reason": "Matches supplied-source inherited method signatures and synchronization modifiers, including generic parameter substitution. External classpath overrides, concurrency semantics beyond synchronized and complex generic bounds remain unsupported.",
+    "test_cases": [
+      "unsafe_override:positive",
+      "unsafe_override:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da7726f86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--Header Manipulation场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_header",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode, response.encodeURL) for this header sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_header:positive",
+      "taint_header:negative",
+      "taint_header_sanitized:positive",
+      "taint_header_sanitized:negative"
+    ]
+  },
+  {
+    "rule_id": "da66a3866db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "规则-5.8 禁止调用Thread.run()",
+    "status": "implemented",
+    "detector": "javac-ast:thread_run",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "thread_run:positive",
+      "thread_run:negative"
+    ]
+  },
+  {
+    "rule_id": "da74c9566db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.06 覆写equals方法时，要同时覆写hashCode方法",
+    "status": "partial",
+    "detector": "javac-ast:equals_hashcode",
+    "reason": "Resolves equals(Object), inherited hashCode and custom Object names across supplied-source hierarchies. External classpath methods and behavioral contracts remain unproven.",
+    "test_cases": [
+      "equals_hashcode:positive",
+      "equals_hashcode:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da67cc6b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FIO.01 使用外部数据构造的文件路径前必须进行校验，校验前必须对文件路径进行规范化处理",
+    "status": "partial",
+    "detector": "javac-ast:taint_path",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_path:positive",
+      "taint_path:negative"
+    ]
+  },
+  {
+    "rule_id": "da5dd5a86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OBJ.02 不要在父类的构造方法中调用可能被子类覆写的方法",
+    "status": "partial",
+    "detector": "javac-ast:constructor_override",
+    "reason": "Detects constructor calls to locally declared overridable methods; transitive and inherited calls require call graph.",
+    "test_cases": [
+      "constructor_override:positive",
+      "constructor_override:negative"
+    ]
+  },
+  {
+    "rule_id": "da771bc36db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.02 确保除法运算和模运算中的除数不为0",
+    "status": "partial",
+    "detector": "javac-ast:zero_divisor",
+    "reason": "Detects literal zero divisors; symbolic ranges and path constraints require dataflow analysis.",
+    "test_cases": [
+      "zero_divisor:positive",
+      "zero_divisor:negative"
+    ]
+  },
+  {
+    "rule_id": "da6699076db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.01 对共享变量做同步访问控制时需避开同步陷阱--不要使用可被重用的对象锁",
+    "status": "partial",
+    "detector": "javac-ast:reused_lock",
+    "reason": "Detects string/boxed primitive locks from local declarations and literals; aliases require type resolution.",
+    "test_cases": [
+      "reused_lock:positive",
+      "reused_lock:negative"
+    ]
+  },
+  {
+    "rule_id": "da74bee86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.04 谨慎使用可变数量参数",
+    "status": "partial",
+    "detector": "javac-ast:varargs",
+    "reason": "Reports varargs for review; deciding whether the API use is justified needs context.",
+    "test_cases": [
+      "varargs:positive",
+      "varargs:negative"
+    ]
+  },
+  {
+    "rule_id": "da70aa2c6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.LOG.02 日志工具Logger类的实例必须声明为private static final或者private final",
+    "status": "implemented",
+    "detector": "javac-ast:logger_modifiers",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "logger_modifiers:positive",
+      "logger_modifiers:negative"
+    ]
+  },
+  {
+    "rule_id": "da67caff6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.02 不要直接捕获异常的基类Throwable、Exception、RuntimeException",
+    "status": "implemented",
+    "detector": "javac-ast:broad_catch",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "broad_catch:positive",
+      "broad_catch:negative"
+    ]
+  },
+  {
+    "rule_id": "da5dc9f76db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--未经验证的重定向和转发场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_redirect",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode, response.encodeRedirectURL) for this redirect sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_redirect:positive",
+      "taint_redirect:negative",
+      "taint_redirect_sanitized:positive",
+      "taint_redirect_sanitized:negative"
+    ]
+  },
+  {
+    "rule_id": "da77065e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.03 使用相同的顺序请求和释放锁来避免死锁",
+    "status": "partial",
+    "detector": "javac-ast:lock_order",
+    "reason": "Detects opposite acquisition order of directly named field locks across local methods; aliasing, call graph, releases and conditional lock orders need analysis.",
+    "test_cases": [
+      "lock_order:positive",
+      "lock_order:negative"
+    ]
+  },
+  {
+    "rule_id": "da668bf86db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.01 对共享变量做同步访问控制时需避开同步陷阱--避免使用class这类容易造成歧义的对象锁，而应使用明确的对象",
+    "status": "implemented",
+    "detector": "javac-ast:class_lock",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "class_lock:positive",
+      "class_lock:negative"
+    ]
+  },
+  {
+    "rule_id": "da74b3986db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.06 使用Optional代替null作为返回值或者可能的缺失值；禁止对Optional对象赋值为null",
+    "status": "partial",
+    "detector": "javac-ast:optional_null",
+    "reason": "Checks explicit null assignment/return; does not infer all nullable expressions or Optional API design choices.",
+    "test_cases": [
+      "optional_null:positive",
+      "optional_null:negative"
+    ]
+  },
+  {
+    "rule_id": "da709a416db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.LOG.03 日志必须分等级",
+    "status": "partial",
+    "detector": "javac-ast:log_level",
+    "reason": "Flags known logger.log(String) shape with no level; arbitrary custom logger API semantics need type attribution.",
+    "test_cases": [
+      "log_level:positive",
+      "log_level:negative"
+    ]
+  },
+  {
+    "rule_id": "da5dbde96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--OGNL注入场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_ognl",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_ognl:positive",
+      "taint_ognl:negative"
+    ]
+  },
+  {
+    "rule_id": "da76fab36db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--跨站脚本场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_xss",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer encoding/escaping sanitizers (StringEscapeUtils.escapeHtml*, escapeXml*, ESAPI encodeForHTML/HTMLAttribute) for this XSS sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_xss:positive",
+      "taint_xss:negative",
+      "taint_xss_sanitized:positive",
+      "taint_xss_sanitized:negative",
+      "taint_xss_partial_mix:positive",
+      "taint_xss_partial_mix:negative"
+    ]
+  },
+  {
+    "rule_id": "da6680f96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.01 对共享变量做同步访问控制时需避开同步陷阱--不要使用基于高级并发对象的synchronized块",
+    "status": "partial",
+    "detector": "javac-ast:concurrent_lock",
+    "reason": "Checks known java.util.concurrent synchronizer types, not arbitrary subclasses.",
+    "test_cases": [
+      "concurrent_lock:positive",
+      "concurrent_lock:negative"
+    ]
+  },
+  {
+    "rule_id": "da74a9516db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.03 不应把方法的参数当做临时变量",
+    "status": "implemented",
+    "detector": "javac-ast:parameter_mutation",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "parameter_mutation:positive",
+      "parameter_mutation:negative"
+    ]
+  },
+  {
+    "rule_id": "da7090006db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.COL.02 优先使用泛型集合，而不是数组",
+    "status": "partial",
+    "detector": "javac-ast:prefer_collections",
+    "reason": "Reports reference arrays for API/performance review; arrays may be justified and generic collection design needs context.",
+    "test_cases": [
+      "prefer_collections:positive",
+      "prefer_collections:negative"
+    ]
+  },
+  {
+    "rule_id": "da67c9c46db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.09 禁止直接使用外部数据作为反射操作中的类名/方法名",
+    "status": "partial",
+    "detector": "javac-ast:reflection_input",
+    "reason": "Detects dynamic reflection names; external-input taint and allowlists need interprocedural analysis.",
+    "test_cases": [
+      "reflection_input:positive",
+      "reflection_input:negative"
+    ]
+  },
+  {
+    "rule_id": "da76eeb66db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EDV.03 禁止直接向Runtime.exec() 方法或java.lang.ProcessBuilder 类传递外部数据",
+    "status": "partial",
+    "detector": "javac-ast:command_input",
+    "reason": "Detects dynamic arguments to Runtime.exec; validates neither sanitizers nor complete ProcessBuilder flow.",
+    "test_cases": [
+      "command_input:positive",
+      "command_input:negative"
+    ]
+  },
+  {
+    "rule_id": "da6677216db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.05 禁止序列化非静态的内部类",
+    "status": "implemented",
+    "detector": "javac-ast:serial_inner",
+    "reason": "Resolves Serializable identity/inheritance for nested classes in supplied source and checks non-static inner serialization. External classpath inheritance remains unsupported.",
+    "test_cases": [
+      "serial_inner:positive",
+      "serial_inner:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  },
+  {
+    "rule_id": "da74a0326db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.05 对于返回数组或者容器的方法，应返回长度为0的数组或者容器，代替返回null",
+    "status": "partial",
+    "detector": "javac-ast:null_collection",
+    "reason": "Explicit null returns from arrays and common collection types; nullable dataflow and custom containers are not resolved.",
+    "test_cases": [
+      "null_collection:positive",
+      "null_collection:negative"
+    ]
+  },
+  {
+    "rule_id": "da7086536db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.08 不要使用return、break、continue或抛出异常使finally块非正常结束",
+    "status": "partial",
+    "detector": "javac-ast:finally_abrupt",
+    "reason": "Structured intraprocedural completion analysis composes branches, loops, switch expressions, jump targets, catch dispatch and nested-finally replacement; reports only explicit transfers that can escape a finally. Project/JDK exception hierarchy is resolved where available. Unknown external exception subtypes, implicit call/resource exceptions and arbitrary value constraints remain partial.",
+    "test_cases": [
+      "finally_abrupt:positive",
+      "finally_abrupt:negative",
+      "test_java_control_flow.py:structured_completion_and_target_resolution"
+    ]
+  },
+  {
+    "rule_id": "da67a81e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.FMT.03 import包应该按照先安卓、华为公司、其他商业组织、其他开源第三方、net/org开源组织、最后java的分类顺序出现，并用一个空行分组",
+    "status": "partial",
+    "detector": "javac-ast:import_order",
+    "reason": "Uses documented android/Huawei/com/other/net-org/java prefix categories and blank groups; organizational ownership beyond prefixes needs configuration.",
+    "test_cases": [
+      "import_order:positive",
+      "import_order:negative"
+    ]
+  },
+  {
+    "rule_id": "da5da2346db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.06 在catch块中抛出新异常时，避免丢失原始异常信息",
+    "status": "partial",
+    "detector": "javac-ast:lost_exception",
+    "reason": "Checks direct constructor cause arguments; advanced exception wrapping/initCause needs flow analysis.",
+    "test_cases": [
+      "lost_exception:positive",
+      "lost_exception:negative"
+    ]
+  },
+  {
+    "rule_id": "da666d106db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.OTH.02 必须使用SSLSocket代替Socket来进行安全数据交互",
+    "status": "partial",
+    "detector": "javac-ast:plain_socket",
+    "reason": "Reports plain Socket construction; whether communication is sensitive requires context.",
+    "test_cases": [
+      "plain_socket:positive",
+      "plain_socket:negative"
+    ]
+  },
+  {
+    "rule_id": "da7497676db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.01 方法要简短--方法的参数不应超过5个",
+    "status": "implemented",
+    "detector": "javac-ast:parameter_count",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "parameter_count:positive",
+      "parameter_count:negative"
+    ]
+  },
+  {
+    "rule_id": "da707c426db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.05 方法抛出的异常，应该与本身的抽象层次相对应",
+    "status": "manual",
+    "detector": null,
+    "reason": "Determining the intended abstraction level of a method and whether its exceptions match that domain requires an explicit architecture/domain contract. Source syntax alone cannot establish that contract.",
+    "test_cases": []
+  },
+  {
+    "rule_id": "da67a6726db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.03 不要直接捕获可通过预检查进行处理的RuntimeException ，如NullPointerException 、IndexOutOfBoundsException 等",
+    "status": "implemented",
+    "detector": "javac-ast:precheck_catch",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "precheck_catch:positive",
+      "precheck_catch:negative"
+    ]
+  },
+  {
+    "rule_id": "da5d929f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.LOG.05 禁止直接使用外部数据记录日志",
+    "status": "partial",
+    "detector": "javac-ast:taint_log",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_log:positive",
+      "taint_log:negative"
+    ]
+  },
+  {
+    "rule_id": "da76d24b6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--代码注入场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_code",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_code:positive",
+      "taint_code:negative"
+    ]
+  },
+  {
+    "rule_id": "da748cd96db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.MET.01 方法要简短--方法行数不应超过50行",
+    "status": "implemented",
+    "detector": "javac-ast:method_length",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "method_length:positive",
+      "method_length:negative"
+    ]
+  },
+  {
+    "rule_id": "da70708e6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.10 尽量消除非受检的异常，不应该在整个类上使用SuppressWarning",
+    "status": "implemented",
+    "detector": "javac-ast:class_suppress",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "class_suppress:positive",
+      "class_suppress:negative"
+    ]
+  },
+  {
+    "rule_id": "da67a5056db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.CON.09 不要依赖线程调度器、线程优先级和yield()方法",
+    "status": "implemented",
+    "detector": "javac-ast:thread_scheduling",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "thread_scheduling:positive",
+      "thread_scheduling:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fb66d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.09 字符与字节的互相转换操作，要指明正确的编码方式",
+    "status": "partial",
+    "detector": "javac-ast:charset",
+    "reason": "Checks String.getBytes/new String(byte[]) and basic file reader/writer construction; all charset APIs are not covered.",
+    "test_cases": [
+      "charset:positive",
+      "charset:negative"
+    ]
+  },
+  {
+    "rule_id": "da5d85aa6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "P.05 外部数据使用前必须进行合法性校验--LDAP注入场景",
+    "status": "partial",
+    "detector": "javac-ast:taint_ldap",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; no call graph, path-sensitive sanitizers or framework type attribution. Review candidate, not a proven vulnerability.",
+    "test_cases": [
+      "taint_ldap:positive",
+      "taint_ldap:negative"
+    ]
+  },
+  {
+    "rule_id": "da76c8026db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.EXP.04 表达式的比较，应该遵循左侧倾向于变化、右侧倾向于不变的原则--使用equals方法进行字符串比较",
+    "status": "partial",
+    "detector": "javac-ast:string_equality",
+    "reason": "Detects reference equality where both operand types resolve locally to String.",
+    "test_cases": [
+      "string_equality:positive",
+      "string_equality:negative"
+    ]
+  },
+  {
+    "rule_id": "da655c276db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.12 明确地进行类型转换，避免依赖隐式类型转换",
+    "status": "partial",
+    "detector": "javac-ast:explicit_cast",
+    "reason": "Detects integer division implicitly converted to floating/long declarations; other numeric promotions and generic conversions need attribution.",
+    "test_cases": [
+      "explicit_cast:positive",
+      "explicit_cast:negative"
+    ]
+  },
+  {
+    "rule_id": "da7482f56db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.13 在引用类型向下转换前用instanceof进行判断",
+    "status": "partial",
+    "detector": "javac-ast:downcast_check",
+    "reason": "Checks Object-to-reference casts guarded by an enclosing instanceof condition; flow patterns and assignability need attribution.",
+    "test_cases": [
+      "downcast_check:positive",
+      "downcast_check:negative"
+    ]
+  },
+  {
+    "rule_id": "da7065dc6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.02 不要直接捕获异常的基类Throwable、Exception、RuntimeException",
+    "status": "implemented",
+    "detector": "javac-ast:broad_catch",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "broad_catch:positive",
+      "broad_catch:negative"
+    ]
+  },
+  {
+    "rule_id": "da67a42a6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.COL.03 声明一个泛型类通过限定符限制可用的泛型类型",
+    "status": "implemented",
+    "detector": "javac-ast:generic_bound",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "generic_bound:positive",
+      "generic_bound:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fab1d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.DCL.03 禁止C风格的数组声明",
+    "status": "implemented",
+    "detector": "javac-ast:c_array",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "c_array:positive",
+      "c_array:negative"
+    ]
+  },
+  {
+    "rule_id": "da758d1f6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.05 禁止创建不必要的对象",
+    "status": "partial",
+    "detector": "javac-ast:unnecessary_object",
+    "reason": "Detects redundant String/boxed primitive constructors; arbitrary object lifetime and allocation need dataflow.",
+    "test_cases": [
+      "unnecessary_object:positive",
+      "unnecessary_object:negative"
+    ]
+  },
+  {
+    "rule_id": "da6551716db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.11 基本类型优于包装类型，注意合理使用包装类型",
+    "status": "partial",
+    "detector": "javac-ast:boxed_primitive",
+    "reason": "Detects unnecessary boxed allocation in primitive-return methods; full primitive preference and legitimate nullability require types/context.",
+    "test_cases": [
+      "boxed_primitive:positive",
+      "boxed_primitive:negative"
+    ]
+  },
+  {
+    "rule_id": "da7478046db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.TYP.07 避免在代码中硬编码用于表示换行、文件路径分隔的字符--不要在代码中硬编码用于表示文件路径分隔的字符",
+    "status": "partial",
+    "detector": "javac-ast:hardcoded_separator",
+    "reason": "Detects standalone slash/backslash strings; distinguishing path syntax from URLs/regex needs dataflow.",
+    "test_cases": [
+      "hardcoded_separator:positive",
+      "hardcoded_separator:negative"
+    ]
+  },
+  {
+    "rule_id": "da705b686db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.01 不要通过一个空的catch块忽略异常",
+    "status": "implemented",
+    "detector": "javac-ast:empty_catch",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "empty_catch:positive",
+      "empty_catch:negative"
+    ]
+  },
+  {
+    "rule_id": "da67a19d6db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.ERR.04 防止通过异常泄露敏感信息",
+    "status": "partial",
+    "detector": "javac-ast:exception_leak",
+    "reason": "Reports direct printStackTrace; actual sensitive information and response sinks need taint/context.",
+    "test_cases": [
+      "exception_leak:positive",
+      "exception_leak:negative"
+    ]
+  },
+  {
+    "rule_id": "da6fa2716db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.DCL.01 每行声明一个变量",
+    "status": "implemented",
+    "detector": "javac-ast:one_variable",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "one_variable:positive",
+      "one_variable:negative"
+    ]
+  },
+  {
+    "rule_id": "da757fb06db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.PRM.10 不要创建临时变量作为return语句的返回值",
+    "status": "implemented",
+    "detector": "javac-ast:temporary_return",
+    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "test_cases": [
+      "temporary_return:positive",
+      "temporary_return:negative"
+    ]
+  },
+  {
+    "rule_id": "da6546306db811eea68ffa163e0fa374",
+    "language": "java",
+    "title": "G.SER.02 实现Serializable接口的可序列化类应该显式声明serialVersionUID",
+    "status": "partial",
+    "detector": "javac-ast:serial_uid",
+    "reason": "Resolves Serializable inheritance across supplied-source packages and checks an explicit serialVersionUID. External classpath inheritance and generated members remain unsupported.",
+    "test_cases": [
+      "serial_uid:positive",
+      "serial_uid:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_java_project.py"
+    ]
+  }
+]

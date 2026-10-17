@@ -1,0 +1,1227 @@
+[
+  {
+    "rule_id": "da73b88f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.02",
+    "bad": "if (a == b) run();",
+    "good": "if (a === b) run();"
+  },
+  {
+    "rule_id": "da73b7a36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.01",
+    "bad": "if (5 === value) run();",
+    "good": "if (value === 5) run();"
+  },
+  {
+    "rule_id": "da73b7006db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.ERR.03",
+    "bad": "function f() { try { return 1; } finally { return 2; } }",
+    "good": "function f() { try { return 1; } finally { cleanup(); } }"
+  },
+  {
+    "rule_id": "da73b61e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.ERR.02",
+    "bad": "Promise.reject(\"failed\");",
+    "good": "Promise.reject(new Error(\"failed\"));"
+  },
+  {
+    "rule_id": "da73b4886db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.ERR.01",
+    "bad": "throw \"failed\";",
+    "good": "throw new Error(\"failed\");"
+  },
+  {
+    "rule_id": "da73d2696db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.12",
+    "bad": "const task = [1].map(function (x) { return x + 1; });",
+    "good": "const task = [1].map(x => x + 1);"
+  },
+  {
+    "rule_id": "da73b1fe6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.05",
+    "bad": "enabled && run();",
+    "good": "if (enabled) run();"
+  },
+  {
+    "rule_id": "da73b2d76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.06",
+    "bad": "if (x = value) run();",
+    "good": "if (x === value) run();"
+  },
+  {
+    "rule_id": "da73d0916db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.10",
+    "bad": "function f() { return arguments[0]; }",
+    "good": "function f(...args) { return args[0]; }"
+  },
+  {
+    "rule_id": "da73cff36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.09",
+    "bad": "function f(x) { x = 1; return x; }",
+    "good": "function f(x) { return x + 1; }"
+  },
+  {
+    "rule_id": "da73ecb86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.06",
+    "bad": "const value = 'first\\\nsecond';",
+    "good": "const value = `first\nsecond`;"
+  },
+  {
+    "rule_id": "da73cf086db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.08",
+    "bad": "const f = new Function(\"return 1\");",
+    "good": "const f = () => 1;"
+  },
+  {
+    "rule_id": "da73eb1c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.05",
+    "bad": "const message = \"Hello \" + name;",
+    "good": "const message = `Hello ${name}`;"
+  },
+  {
+    "rule_id": "da73afd56db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.03",
+    "bad": "switch (x) { case 1: let y=2; break; }",
+    "good": "switch (x) { case 1: { let y=2; break; } }"
+  },
+  {
+    "rule_id": "da73ccb66db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.07",
+    "bad": "function f(x) { if (x) return 1; return; }",
+    "good": "function f(x) { if (x) return 1; return 2; }"
+  },
+  {
+    "rule_id": "da73ea906db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.04",
+    "bad": "const word = \"hello\";",
+    "good": "const word = 'hello';"
+  },
+  {
+    "rule_id": "da73aedf6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.02",
+    "bad": "switch (x) { case 1: run(); case 2: stop(); break; }",
+    "good": "switch (x) { case 1: run(); break; case 2: stop(); break; }"
+  },
+  {
+    "rule_id": "da73ae3a6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.01",
+    "bad": "switch (x) { case 1: run(); break; }",
+    "good": "switch (x) { case 1: run(); break; default: stop(); }"
+  },
+  {
+    "rule_id": "da73cc2c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.06",
+    "bad": "function f(x = 1, y) { return x+y; }",
+    "good": "function f(y, x = 1) { return x+y; }"
+  },
+  {
+    "rule_id": "da73f7eb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.07",
+    "bad": "let value=1; function f() { let value=2; return value; }",
+    "good": "let value=1; function f() { let other=2; return other; }"
+  },
+  {
+    "rule_id": "da73cb556db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.05",
+    "bad": "function f(a,b,c,d,e,f) {}",
+    "good": "function f(a,b,c,d,e) {}"
+  },
+  {
+    "rule_id": "da73e8dc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.02",
+    "bad": "if (value === NaN) run();",
+    "good": "if (Number.isNaN(value)) run();"
+  },
+  {
+    "rule_id": "da73f7576db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.06",
+    "bad": "const list = new Array(1,2);",
+    "good": "const list = [1,2];"
+  },
+  {
+    "rule_id": "da73ca226db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.03",
+    "bad": "function f() { if(a) { if(b) { if(c) { if(d) { if(e) { run(); } } } } } }",
+    "good": "function f() { if(a) { if(b) { if(c) { if(d) { run(); } } } } }"
+  },
+  {
+    "rule_id": "da73cabd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.04",
+    "bad": "f(() => { f(() => { f(() => { f(() => { f(() => { run(); }); }); }); }); });",
+    "good": "f(() => { f(() => { f(() => { f(() => { run(); }); }); }); });"
+  },
+  {
+    "rule_id": "da73e8066db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.01",
+    "bad": "const value = .5;",
+    "good": "const value = 0.5;"
+  },
+  {
+    "rule_id": "da73aa3e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CMT.03",
+    "bad": "// TODO: remove workaround\nrun();",
+    "good": "// Completed workaround removal\nrun();"
+  },
+  {
+    "rule_id": "da73f6c86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.05",
+    "bad": "let value = undefined;",
+    "good": "let value;"
+  },
+  {
+    "rule_id": "da73c9516db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.02",
+    "bad": "function f(x) { if(x===0) return 0;if(x===1) return 1;if(x===2) return 2;if(x===3) return 3;if(x===4) return 4;if(x===5) return 5;if(x===6) return 6;if(x===7) return 7;if(x===8) return 8;if(x===9) return 9;if(x===10) return 10;if(x===11) return 11;if(x===12) return 12;if(x===13) return 13;if(x===14) return 14;if(x===15) return 15;if(x===16) return 16;if(x===17) return 17;if(x===18) return 18;if(x===19) return 19;if(x===20) return 20; return -1; }",
+    "good": "function f(x) { if (x) return 1; return 2; }"
+  },
+  {
+    "rule_id": "da73e69f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.SCO.01",
+    "bad": "var shared = 1; function run() {}",
+    "good": "export const shared = 1;"
+  },
+  {
+    "rule_id": "da73a87e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CMT.02",
+    "bad": "//comment\nrun();",
+    "good": "// comment\nrun();"
+  },
+  {
+    "rule_id": "da73f5ee6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.04",
+    "bad": "a = b = 1;",
+    "good": "a = 1; b = 1;"
+  },
+  {
+    "rule_id": "da73c8b76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.01",
+    "bad": "function f() {\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\nrun();\n}",
+    "good": "function f() { run(); }"
+  },
+  {
+    "rule_id": "da73e5cc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.PRJ.03",
+    "bad": "// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n",
+    "good": "// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n// line\n"
+  },
+  {
+    "rule_id": "da73f5586db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.03",
+    "bad": "let a=1, b=2;",
+    "good": "let a=1; let b=2;"
+  },
+  {
+    "rule_id": "da73c6646db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.12",
+    "bad": "const value = 1\n",
+    "good": "const value = 1;\n"
+  },
+  {
+    "rule_id": "da73a29a6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.AOD.05",
+    "bad": "debugger;",
+    "good": "run();"
+  },
+  {
+    "rule_id": "da73f3fd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.DCL.01",
+    "bad": "var value = 1;",
+    "good": "let value = 1;"
+  },
+  {
+    "rule_id": "da73c5756db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.11",
+    "bad": "const list = [\n  1\n];",
+    "good": "const list = [\n  1,\n];"
+  },
+  {
+    "rule_id": "da73c4df6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.10",
+    "bad": "if (ready)\n{\nrun();\n}",
+    "good": "if (ready) {\nrun();\n}"
+  },
+  {
+    "rule_id": "da73a2086db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.AOD.04",
+    "bad": "alert(\"hi\");",
+    "good": "showMessage(\"hi\");"
+  },
+  {
+    "rule_id": "da73a1046db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.AOD.03",
+    "bad": "console.log(\"hi\");",
+    "good": "logger.info(\"hi\");"
+  },
+  {
+    "rule_id": "da73f1b46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.14",
+    "bad": "const value = +input;",
+    "good": "const value = Number(input);"
+  },
+  {
+    "rule_id": "da73c3816db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.09",
+    "bad": "if (ready) run();",
+    "good": "if (ready) { run(); }"
+  },
+  {
+    "rule_id": "da739ff86db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.AOD.02",
+    "bad": "setTimeout(\"run()\", 10);",
+    "good": "setTimeout(() => run(), 10);"
+  },
+  {
+    "rule_id": "da73c2a46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.08",
+    "bad": "if(ready) { let value=1; }",
+    "good": "if (ready) { let value = 1; }"
+  },
+  {
+    "rule_id": "da73e0326db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.07",
+    "bad": "Array.prototype.extra = function () {};",
+    "good": "const extra = function () {};"
+  },
+  {
+    "rule_id": "da739ee36db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.AOD.01",
+    "bad": "eval(code);",
+    "good": "parse(code);"
+  },
+  {
+    "rule_id": "da73f0106db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.10",
+    "bad": "const first = values[0];",
+    "good": "const [first] = values;"
+  },
+  {
+    "rule_id": "da73c1cb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.07",
+    "bad": "run();\n\n\n\nstop();",
+    "good": "run();\n\nstop();"
+  },
+  {
+    "rule_id": "da73c13b6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.06",
+    "bad": "if (ready) {\nrun();\n}\nelse {\nstop();\n}",
+    "good": "if (ready) {\nrun();\n} else {\nstop();\n}"
+  },
+  {
+    "rule_id": "da73df5b6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.06",
+    "bad": "for (const key in value) { run(value[key]); }",
+    "good": "for (const key in value) { if (Object.hasOwn(value,key)) { run(value[key]); } }"
+  },
+  {
+    "rule_id": "da73c0666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.05",
+    "bad": "foo().a().b().c().d().e();",
+    "good": "foo().a().b().c();"
+  },
+  {
+    "rule_id": "da73de836db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.05",
+    "bad": "value.hasOwnProperty(\"x\");",
+    "good": "Object.prototype.hasOwnProperty.call(value,\"x\");"
+  },
+  {
+    "rule_id": "da73bfd46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.04",
+    "bad": "const obj = {a:1,b:2,c:3,d:4,e:5};",
+    "good": "const obj = {\na:1,\nb:2,\nc:3,\nd:4,\ne:5\n};"
+  },
+  {
+    "rule_id": "da73ddb46db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.04",
+    "bad": "const value = obj[\"name\"];",
+    "good": "const value = obj.name;"
+  },
+  {
+    "rule_id": "da73bef76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.03",
+    "bad": "const value = left\n + right;",
+    "good": "const value = left +\n right;"
+  },
+  {
+    "rule_id": "da73dcbc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.03",
+    "bad": "const obj = {name: name};",
+    "good": "const obj = {name};"
+  },
+  {
+    "rule_id": "da73be556db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.02",
+    "bad": "const value = \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\";",
+    "good": "const value = \"short\";"
+  },
+  {
+    "rule_id": "da73db3c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.02",
+    "bad": "const obj = {\"name\":1};",
+    "good": "const obj = {name:1};"
+  },
+  {
+    "rule_id": "da73bcd56db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.FMT.01",
+    "bad": "function f() {\n\treturn 1;\n}",
+    "good": "function f() {\n  return 1;\n}"
+  },
+  {
+    "rule_id": "da73dab16db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OBJ.01",
+    "bad": "const value = new Thing;",
+    "good": "const value = new Thing();"
+  },
+  {
+    "rule_id": "da73bb656db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.06",
+    "bad": "const value = /(ab)/;",
+    "good": "const value = /(?<word>ab)/;"
+  },
+  {
+    "rule_id": "da73ba936db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.05",
+    "bad": "const value = /a   b/;",
+    "good": "const value = /a {3}b/;"
+  },
+  {
+    "rule_id": "da73b9fc6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.04",
+    "bad": "const value = a + b * c;",
+    "good": "const value = a + (b * c);"
+  },
+  {
+    "rule_id": "da73d7786db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NAM.05",
+    "bad": "function f(undefined) { return undefined; }",
+    "good": "function f(value) { return value; }"
+  },
+  {
+    "rule_id": "da73b9286db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.EXP.03",
+    "bad": "const value = a ? b ? c : d : e;",
+    "good": "const value = a ? c : d;"
+  },
+  {
+    "rule_id": "da73d6156db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NAM.03",
+    "bad": "let Bad_name = 1;",
+    "good": "let goodName = 1;"
+  },
+  {
+    "rule_id": "da73d4666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NAM.02",
+    "bad": "function Bad_name() {}",
+    "good": "function goodName() {}"
+  },
+  {
+    "rule_id": "da73d3d66db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NAM.01",
+    "bad": "class lower {}",
+    "good": "class Upper {}"
+  },
+  {
+    "rule_id": "da73d6a96db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NAM.04",
+    "bad": "const isNotReady = true;",
+    "good": "const isReady = true;"
+  },
+  {
+    "rule_id": "da73d2ff6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MOD.01",
+    "bad": "export let value = 1;",
+    "good": "export const value = 1;"
+  },
+  {
+    "rule_id": "da73b3ab6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.07",
+    "bad": "if(a&&b&&c&&d&&e) run();",
+    "good": "if(a&&b&&c&&d) run();"
+  },
+  {
+    "rule_id": "da73b11f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CTL.04",
+    "bad": "if (a) { run(); } else if (b) { stop(); }",
+    "good": "if (a) { run(); } else if (b) { stop(); } else { wait(); }"
+  },
+  {
+    "rule_id": "da73abd26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CMT.04",
+    "bad": "// Utilities\nconst x=1;",
+    "good": "// Copyright 2026 Example\nconst x=1;"
+  },
+  {
+    "rule_id": "da73a70d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CMT.01",
+    "bad": "run();\n// explains the call above",
+    "good": "// explains the call below\nrun();"
+  },
+  {
+    "rule_id": "da73e53c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.PRJ.01",
+    "bad": "const text = \"�\";",
+    "good": "const text = \"hello\";"
+  },
+  {
+    "rule_id": "da73e9b06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.03",
+    "bad": "const value = 0.1; if(value === 0.2) run();",
+    "good": "const value = 0.1; if(Math.abs(value - 0.2) < 1e-8) run();"
+  },
+  {
+    "rule_id": "da73d1726db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.MET.11",
+    "bad": "function f(options) { return options.name + options.age; }",
+    "good": "function f({name, age}) { return name + age; }"
+  },
+  {
+    "rule_id": "da73ee666db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.08",
+    "bad": "const values=[1,2]; for(const value of values) { run(value); }",
+    "good": "const values=[1,2]; values.forEach(value => run(value));"
+  },
+  {
+    "rule_id": "da73ed906db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.07",
+    "bad": "const values=[1,2]; values.name=\"bad\";",
+    "good": "const values=[1,2]; values[0]=2;"
+  },
+  {
+    "rule_id": "da73ef3d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.09",
+    "bad": "const values=[1,2]; for(const value of values) { values.push(value); }",
+    "good": "const values=[1,2]; for(const value of values) { run(value); }"
+  },
+  {
+    "rule_id": "da73f0e06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.11",
+    "bad": "const values=[1,2]; const copy=values.slice();",
+    "good": "const values=[1,2]; const copy=[...values];"
+  },
+  {
+    "rule_id": "da73f2506db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.TYP.15",
+    "bad": "const value=parseInt(input,10);",
+    "good": "const value=Number(input); if(Number.isNaN(value)) throw new Error();"
+  },
+  {
+    "rule_id": "da73aca26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.CORS.01",
+    "bad": "window.postMessage(data,\"*\");",
+    "good": "window.postMessage(data,\"https://example.test\");"
+  },
+  {
+    "rule_id": "da73f9706db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.WST.01",
+    "bad": "localStorage.setItem(\"password\", secret);",
+    "good": "sessionStorage.setItem(\"theme\", preference);"
+  },
+  {
+    "rule_id": "da73fa626db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.WST.02",
+    "bad": "localStorage.setItem(\"theme\", value);",
+    "good": "sessionStorage.setItem(\"theme\", value);"
+  },
+  {
+    "rule_id": "da73f8cb6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.WSQ.01",
+    "bad": "db.executeSql(\"INSERT INTO users(password) VALUES (?)\", [password]);",
+    "good": "db.executeSql(\"SELECT theme FROM settings\", []);"
+  },
+  {
+    "rule_id": "da73e45f6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OTH.05",
+    "bad": "const endpoint=\"https://8.8.8.8/api\";",
+    "good": "const endpoint=\"http://127.0.0.1/api\";"
+  },
+  {
+    "rule_id": "da73e2a76db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OTH.04",
+    "bad": "// author: Jane <jane@company.com>\nrun();",
+    "good": "// Copyright Example Corp\nrun();"
+  },
+  {
+    "rule_id": "da73e1d06db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OTH.03",
+    "bad": "// const unused = 1;\nrun();",
+    "good": "// Explain why this path is used\nrun();"
+  },
+  {
+    "rule_id": "da73e0fd6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OTH.01",
+    "bad": "const token=Math.random();",
+    "good": "const token=crypto.randomUUID();"
+  },
+  {
+    "rule_id": "da73da1d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.OTH.06",
+    "bad": "console.log(password);",
+    "good": "console.log(status);"
+  },
+  {
+    "rule_id": "da73d92c6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "G.NOD.04",
+    "bad": "zip.extractAllTo(destination);",
+    "good": "validateArchive(zip);"
+  },
+  {
+    "rule_id": "da6c0bdf6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Dynamically executing code is security-sensitive",
+    "bad": "eval(code);",
+    "good": "parse(code);"
+  },
+  {
+    "rule_id": "da6c02326db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Redundant casts and non-null assertions should be avoided",
+    "bad": "const value = 1; const same = value!;",
+    "good": "declare const value: number | undefined; const same = value!;"
+  },
+  {
+    "rule_id": "da6bf9976db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Unused assignments should be removed",
+    "bad": "function f(){ let value=1; value=2; return value; }",
+    "good": "function f(){ let value=1; return value; }"
+  },
+  {
+    "rule_id": "da6be02a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Related \"if/else if\" statements should not have the same condition",
+    "bad": "if (a) run(); else if(a) stop();",
+    "good": "if (a) run(); else if(b) stop();"
+  },
+  {
+    "rule_id": "da6f5bd26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/array-type",
+    "bad": "let value: Array<string>;",
+    "good": "let value: string[];"
+  },
+  {
+    "rule_id": "da6f47e06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/no-unused-vars",
+    "bad": "const unused=1;",
+    "good": "export const used=1;"
+  },
+  {
+    "rule_id": "da6bb2ae6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"super()\" should be invoked appropriately",
+    "bad": "class Child extends Parent { constructor() {} }",
+    "good": "class Child extends Parent { constructor() { super(); } }"
+  },
+  {
+    "rule_id": "da6d472b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"catch\" clauses should do more than rethrow",
+    "bad": "try { run(); } catch (error) { throw error; }",
+    "good": "try { run(); } catch (error) { log(error); throw error; }"
+  },
+  {
+    "rule_id": "da6b835f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Sparse arrays should not be declared",
+    "bad": "const values=[1,,3];",
+    "good": "const values=[1,2,3];"
+  },
+  {
+    "rule_id": "da6caa4f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Jump statements should not occur in \"finally\" blocks",
+    "bad": "function f(){ try { return 1; } finally { return 2; } }",
+    "good": "function f(){ try { return 1; } finally { cleanup(); } }"
+  },
+  {
+    "rule_id": "da6c98ef6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Comma operator should not be used",
+    "bad": "const value=(a(),b());",
+    "good": "a(); const value=b();"
+  },
+  {
+    "rule_id": "da6c90406db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"NaN\" should not be used in comparisons",
+    "bad": "if (value===NaN) run();",
+    "good": "if (Number.isNaN(value)) run();"
+  },
+  {
+    "rule_id": "da6b5e836db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Variables and functions should not be redeclared",
+    "bad": "var value=1; var value=2;",
+    "good": "let value=1; value=2;"
+  },
+  {
+    "rule_id": "da6d20fa6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Wrapper objects should not be used for primitive types",
+    "bad": "const value = new Boolean(false);",
+    "good": "const value = false;"
+  },
+  {
+    "rule_id": "da6c871b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Union and intersection types should not be defined with duplicated elements",
+    "bad": "type Value = string | string;",
+    "good": "type Value = string | number;"
+  },
+  {
+    "rule_id": "da6d17b26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Boolean expressions should not be gratuitous",
+    "bad": "if (true) run();",
+    "good": "declare const value:boolean; if(value) run();"
+  },
+  {
+    "rule_id": "da6d0f486db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Destructuring patterns should not be empty",
+    "bad": "const {}=value;",
+    "good": "const {name}=value;"
+  },
+  {
+    "rule_id": "da6d05156db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"default\" clauses should be last",
+    "bad": "switch(x){ default: run(); break; case 1: stop(); }",
+    "good": "switch(x){ case 1: run(); break; default: stop(); }"
+  },
+  {
+    "rule_id": "da6cfc416db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"await\" should only be used with promises",
+    "bad": "async function f(){ await 1; }",
+    "good": "async function f(){ await Promise.resolve(1); }"
+  },
+  {
+    "rule_id": "da6c57f16db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Redundant pairs of parentheses should be removed",
+    "bad": "const value=(1);",
+    "good": "const value=1;"
+  },
+  {
+    "rule_id": "da6cea4c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Constructors should not be declared inside interfaces",
+    "bad": "interface Example { new(): Example; }",
+    "good": "interface Example { create(): Example; }"
+  },
+  {
+    "rule_id": "da6ce1e46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Variables should not be self-assigned",
+    "bad": "value=value;",
+    "good": "value=other;"
+  },
+  {
+    "rule_id": "da6c437e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Multiline string literals should not be used",
+    "bad": "const value='a\\\nb';",
+    "good": "const value=`a\nb`;"
+  },
+  {
+    "rule_id": "da6cd75d6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Non-empty statements should change control flow or have at least one side-effect",
+    "bad": "a + b;",
+    "good": "run(a+b);"
+  },
+  {
+    "rule_id": "da6c3dba6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Extra semicolons should be removed",
+    "bad": "const value=1;;",
+    "good": "const value=1;"
+  },
+  {
+    "rule_id": "da6cce4e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Nested blocks of code should not be left empty",
+    "bad": "if(value) {}",
+    "good": "if(value) { run(); }"
+  },
+  {
+    "rule_id": "da6c32e46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Identical expressions should not be used on both sides of a binary operator",
+    "bad": "if(value===value) run();",
+    "good": "if(value===other) run();"
+  },
+  {
+    "rule_id": "da6c1ff16db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Variables declared with \"var\" should be declared before they are used",
+    "bad": "run(value); var value=1;",
+    "good": "var value=1; run(value);"
+  },
+  {
+    "rule_id": "da6c15206db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Debugger statements should not be used",
+    "bad": "debugger;",
+    "good": "run();"
+  },
+  {
+    "rule_id": "da6cbbe26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"delete\" should not be used on arrays",
+    "bad": "const values=[1,2]; delete values[0];",
+    "good": "const values=[1,2]; values.splice(0,1);"
+  },
+  {
+    "rule_id": "da6d591b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "A compare function should be provided when using \"Array.prototype.sort()\"",
+    "bad": "const values=[10,2]; values.sort();",
+    "good": "const values=[10,2]; values.sort((a,b)=>a-b);"
+  },
+  {
+    "rule_id": "da6c7d4a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Loops with at most one iteration should be refactored",
+    "bad": "for(const value of values) { run(value); break; }",
+    "good": "for(const value of values) { run(value); }"
+  },
+  {
+    "rule_id": "da6f79d96db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/ban-types",
+    "bad": "let value: Function;",
+    "good": "let value: () => void;"
+  },
+  {
+    "rule_id": "da6f72026db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/interface-name-prefix",
+    "bad": "interface IFoo { value: number; }",
+    "good": "interface Foo { value: number; }"
+  },
+  {
+    "rule_id": "da6f675a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/member-delimiter-style",
+    "bad": "interface Foo {\n value: number\n}",
+    "good": "interface Foo {\n value: number;\n}"
+  },
+  {
+    "rule_id": "da6f536a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "eslint_repo:@typescript-eslint/camelcase",
+    "bad": "let bad_name=1;",
+    "good": "let goodName=1;"
+  },
+  {
+    "rule_id": "da6bf13e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Array-mutating methods should not be used misleadingly",
+    "bad": "const values=[1,2]; const sorted=values.sort();",
+    "good": "const values=[1,2]; const sorted=[...values].sort();"
+  },
+  {
+    "rule_id": "da6be83f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Types without members, 'any' and 'never' should not be used in type intersections",
+    "bad": "type Value=string & any;",
+    "good": "type Value={a:string} & {b:number};"
+  },
+  {
+    "rule_id": "da6bd7d46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"in\" should not be used on arrays",
+    "bad": "const values=[1,2]; for(const key in values) { run(key); }",
+    "good": "const values={a:1}; for(const key in values) { run(key); }"
+  },
+  {
+    "rule_id": "da6bd0736db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "All branches in a conditional structure should not have exactly the same implementation",
+    "bad": "if(value) { run(); } else { run(); }",
+    "good": "if(value) { run(); } else { stop(); }"
+  },
+  {
+    "rule_id": "da6bc7c46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Function parameters, caught exceptions and foreach variables' initial values should not be ignored",
+    "bad": "function f(value: number){ value=1; return value; }",
+    "good": "function f(value:number){ return value+1; }"
+  },
+  {
+    "rule_id": "da6bbc486db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "The output of functions that don't return anything should not be used",
+    "bad": "function log():void {} const value=log();",
+    "good": "function get():number { return 1; } const value=get();"
+  },
+  {
+    "rule_id": "da6ba9146db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Conditionals should start on new lines",
+    "bad": "if(a) run(); if(b) stop();",
+    "good": "if(a) run();\nif(b) stop();"
+  },
+  {
+    "rule_id": "da6d6e3c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Boolean checks should not be inverted",
+    "bad": "if(!ready) stop(); else run();",
+    "good": "if(ready) run(); else stop();"
+  },
+  {
+    "rule_id": "da6b9ed86db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Values should not be uselessly incremented",
+    "bad": "function f(){ let value=0; return value++; }",
+    "good": "function f(){ let value=0; return ++value; }"
+  },
+  {
+    "rule_id": "da6d62106db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Parameters should be passed in the correct order",
+    "bad": "function move(source:string,target:string){}; const source=\"a\",target=\"b\"; move(target,source);",
+    "good": "function move(source:string,target:string){}; const source=\"a\",target=\"b\"; move(source,target);"
+  },
+  {
+    "rule_id": "da6b955c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Functions should not have identical implementations",
+    "bad": "function first(){ return 1; } function second(){ return 1; }",
+    "good": "function first(){ return 1; } function second(){ return 2; }"
+  },
+  {
+    "rule_id": "da6d4f676db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"switch\" statements should not have too many \"case\" clauses",
+    "bad": "switch(value){case 0: break;case 1: break;case 2: break;case 3: break;case 4: break;case 5: break;case 6: break;case 7: break;case 8: break;case 9: break;case 10: break;case 11: break;case 12: break;case 13: break;case 14: break;case 15: break;case 16: break;case 17: break;case 18: break;case 19: break;case 20: break;case 21: break;case 22: break;case 23: break;case 24: break;case 25: break;case 26: break;case 27: break;case 28: break;case 29: break;case 30: break;}",
+    "good": "switch(value){case 0: break;case 1: break;case 2: break;case 3: break;case 4: break;case 5: break;case 6: break;case 7: break;case 8: break;case 9: break;case 10: break;case 11: break;case 12: break;case 13: break;case 14: break;case 15: break;case 16: break;case 17: break;case 18: break;case 19: break;case 20: break;case 21: break;case 22: break;case 23: break;case 24: break;case 25: break;case 26: break;case 27: break;case 28: break;case 29: break;}"
+  },
+  {
+    "rule_id": "da6b8b566db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Comma and logical OR operators should not be used in switch cases",
+    "bad": "switch(value){case 1 || 2: run();}",
+    "good": "switch(value){case 1: case 2: run();}"
+  },
+  {
+    "rule_id": "da6cb1f36db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "A \"while\" loop should be used instead of a \"for\" loop",
+    "bad": "for(; ready;) { run(); }",
+    "good": "while(ready) { run(); }"
+  },
+  {
+    "rule_id": "da6d3d336db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Function returns should not be invariant",
+    "bad": "function f(x:boolean){ if(x) return 1; return 1; }",
+    "good": "function f(x:boolean){ if(x) return 1; return 2; }"
+  },
+  {
+    "rule_id": "da6b7ba96db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Collection elements should not be replaced unconditionally",
+    "bad": "const values=[1,2]; for(const value of values) { values[0]=value; }",
+    "good": "const values=[1,2]; for(let i=0;i<values.length;i++){ values[i]=i; }"
+  },
+  {
+    "rule_id": "da6ca06a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Non-existent operators '=+', '=-' and '=!' should not be used",
+    "bad": "value =+ 1;",
+    "good": "value += 1;"
+  },
+  {
+    "rule_id": "da6d33f06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Promise rejections should not be caught by 'try' block",
+    "bad": "function f(){ try { return Promise.reject(new Error()); } catch(e) { log(e); } }",
+    "good": "async function f(){ try { return await Promise.reject(new Error()); } catch(e) { log(e); } }"
+  },
+  {
+    "rule_id": "da6b717b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Errors should not be created without being thrown",
+    "bad": "new Error(\"failed\");",
+    "good": "throw new Error(\"failed\");"
+  },
+  {
+    "rule_id": "da6d2a466db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Empty collections should not be accessed or iterated",
+    "bad": "const values: number[]=[]; const first=values[0];",
+    "good": "const values: number[]=[1]; const first=values[0];"
+  },
+  {
+    "rule_id": "da6b67446db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Collection sizes and array length comparisons should make sense",
+    "bad": "const values=[1,2]; if(values.length < 0) run();",
+    "good": "const values=[1,2]; if(values.length > 0) run();"
+  },
+  {
+    "rule_id": "da6b55d06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Collection and array contents should be used",
+    "bad": "const values:number[]=[]; values.push(1);",
+    "good": "const values:number[]=[]; values.push(1); consume(values);"
+  },
+  {
+    "rule_id": "da6b49c76db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Getters and setters should access the expected fields",
+    "bad": "class Example { _name=\"\"; _age=0; get name(){ return this._age; } }",
+    "good": "class Example { _name=\"\"; get name(){ return this._name; } }"
+  },
+  {
+    "rule_id": "da6c73fd6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Return values from functions without side effects should not be ignored",
+    "bad": "const text=\"hello\"; text.trim();",
+    "good": "const text=\"hello\"; const trimmed=text.trim();"
+  },
+  {
+    "rule_id": "da6c6b3c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"undefined\" should not be passed as the value of optional parameters",
+    "bad": "function f(value?:number){} f(undefined);",
+    "good": "function f(value?:number){} f();"
+  },
+  {
+    "rule_id": "da6c61bb6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Two branches in a conditional structure should not have exactly the same implementation",
+    "bad": "if(a) { run(); } else if(b) { stop(); } else { run(); }",
+    "good": "if(a) { run(); } else if(b) { stop(); } else { wait(); }"
+  },
+  {
+    "rule_id": "da6cf3296db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Hard-coded credentials are security-sensitive",
+    "bad": "const password=\"super-secret\";",
+    "good": "const password=readSecret();"
+  },
+  {
+    "rule_id": "da6c4d9f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Multiline blocks should be enclosed in curly braces",
+    "bad": "if(ready)\n  run();",
+    "good": "if(ready) {\n  run();\n}"
+  },
+  {
+    "rule_id": "da6cc4b76db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "\"switch\" statements should have at least 3 \"case\" clauses",
+    "bad": "switch(value){case 1: run(); break; case 2: stop(); break;}",
+    "good": "switch(value){case 1: run(); break; case 2: stop(); break; case 3: wait(); break;}"
+  },
+  {
+    "rule_id": "da6c29276db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "Boolean literals should not be used in comparisons",
+    "bad": "declare const ready:boolean; if(ready === true) run();",
+    "good": "declare const ready:boolean; if(ready) run();"
+  },
+  {
+    "rule_id": "da73c4df6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "opening braces independent of else placement",
+    "bad": "if (ready)\n{ run(); }",
+    "good": "if (ready) {\nrun();\n}\nelse {\nstop();\n}"
+  },
+  {
+    "rule_id": "da73bcd56db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "tabs inside strings are data",
+    "bad": "\tconst value=1;",
+    "good": "const value=\"a\tb\";"
+  },
+  {
+    "rule_id": "da6cd75d6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "short circuit side effect",
+    "bad": "enabled && value;",
+    "good": "enabled && run();"
+  },
+  {
+    "rule_id": "da6cd75d6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "conditional side effects",
+    "bad": "enabled ? a : b;",
+    "good": "enabled ? run() : stop();"
+  },
+  {
+    "rule_id": "da6b8b566db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "parenthesized switch alternatives",
+    "bad": "switch(value){case (1 || 2): run();}",
+    "good": "switch(value){case (1 + 2): run();}"
+  },
+  {
+    "rule_id": "da6b67446db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "typed receiver boundary",
+    "bad": "const values=new Set<number>(); if(values.size < 0) run();",
+    "good": "const custom={length:-1}; if(custom.length < 0) run();"
+  },
+  {
+    "rule_id": "da6bd7d46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "array membership versus object membership",
+    "bad": "const values=[1,2]; const found=1 in values;",
+    "good": "const values={one:1}; const found=\"one\" in values;"
+  },
+  {
+    "rule_id": "da6c29276db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "boolean versus coercion-sensitive union",
+    "bad": "declare const ready:boolean; if(false === ready) run();",
+    "good": "declare const ready:boolean | undefined; if(ready === false) run();"
+  },
+  {
+    "rule_id": "da6b955c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "string contents remain significant",
+    "bad": "function a(){return \"a b\";} function b(){return \"a b\";}",
+    "good": "function a(){return \"a b\";} function b(){return \"ab\";}"
+  },
+  {
+    "rule_id": "da6d2a466db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "visible mutation removes empty-array warning",
+    "bad": "const items:number[]=[]; for(const item of items) run(item);",
+    "good": "const items:number[]=[]; fill(items); for(const item of items) run(item);"
+  },
+  {
+    "rule_id": "da6cf3296db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "name": "export credentialWords options default",
+    "bad": "const pwd=\"live-value\";",
+    "good": "const password=\"\";"
+  },
+  {
+    "rule_id": "da73aa3e6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "TODO inside string is not comment",
+    "bad": "// FIXME: replace workaround\nrun();",
+    "good": "const value=\"TODO FIXME\";"
+  },
+  {
+    "rule_id": "da73abd26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "copyright text must be header comment",
+    "bad": "const value=\"Copyright 2026\";",
+    "good": "/* Copyright 2026 */\nrun();"
+  },
+  {
+    "rule_id": "da73ef3d6db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "same-spelling shadow does not mutate outer array",
+    "bad": "const values=[1,2]; values.forEach(x=>{values.pop();});",
+    "good": "const values=[1,2]; for(const x of values){const values=[]; values.push(x);}"
+  },
+  {
+    "rule_id": "da73aca26db811eea68ffa163e0fa374",
+    "language": "javascript",
+    "name": "computed literal wildcard target",
+    "bad": "target[\"postMessage\"](value,\"*\");",
+    "good": "target[\"postMessage\"](value,\"https://example.test\");"
+  }
+]

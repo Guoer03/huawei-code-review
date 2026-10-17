@@ -1,0 +1,1610 @@
+[
+  {
+    "rule_id": "da6b85406db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.06 同一个字典表达式中各个键值不要相同",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.TYP.06",
+    "reason": "Constant-evaluable dictionary keys are compared using Python equality/hash semantics; dynamic keys require execution.",
+    "test_cases": [
+      "G.TYP.06:positive",
+      "G.TYP.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da69e3de6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息--取余操作符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.04:取余操作符",
+    "reason": "Checks both sides of parsed binary modulo operators for separating whitespace; string content and comments are excluded.",
+    "test_cases": [
+      "G.FMT.04:取余操作符:positive",
+      "G.FMT.04:取余操作符:negative",
+      "G.FMT.04:取余操作符:format-string"
+    ]
+  },
+  {
+    "rule_id": "da6b0d186db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CMT.01 模块文档字符串写在文件的顶部，Shebang和文件编码声明之后，导入(imports) 部分之前的位置，不需要缩进",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.CMT.01",
+    "reason": "Requires a module docstring as the first AST statement; shebang and encoding comments may precede it. Empty modules are exempt.",
+    "test_cases": [
+      "G.CMT.01:positive",
+      "G.CMT.01:negative",
+      "G.CMT.01:shebang-encoding-before-doc",
+      "G.CMT.01:misplaced-after-import"
+    ]
+  },
+  {
+    "rule_id": "da68cc1f6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.LOG.01 logging模块应尽量使用懒插值的能力记录debug等低级别日志",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.LOG.01",
+    "reason": "Detects eager interpolation for logging module calls and conventional logger/log bindings; arbitrary logger factories and aliases need semantic resolution.",
+    "test_cases": [
+      "G.LOG.01:positive",
+      "G.LOG.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da69da476db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息--位运算操作符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.04:位运算操作符",
+    "reason": "Checks both sides of parsed binary bitwise operators, including shifts and annotation unions; unary operators, comments and literal contents are excluded.",
+    "test_cases": [
+      "G.FMT.04:位运算操作符:positive",
+      "G.FMT.04:位运算操作符:negative",
+      "G.FMT.04:位运算操作符:union-annotation"
+    ]
+  },
+  {
+    "rule_id": "da6b04456db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--format",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:format",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:format:positive",
+      "G.CLS.09:format:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da68aebe6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.LOG.03 禁止直接使用外部数据记录日志",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.LOG.03",
+    "reason": "Tracks direct input/request/environment data into logging format arguments within a file; custom sources and interprocedural sanitizers are not modeled.",
+    "test_cases": [
+      "G.LOG.03:positive",
+      "G.LOG.03:negative",
+      "G.LOG.03:untrusted-lazy-argument"
+    ]
+  },
+  {
+    "rule_id": "da6b844c6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PRJ.04 建议同一项目内的编码方式保持一致，推荐使用UTF-8",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.PRJ.04",
+    "reason": "Validates PEP 263 declarations as UTF-8 including aliases; the CLI reads original bytes as UTF-8 and reports decoding failure as uncovered. UTF-8 BOM is supported without changing input hashes.",
+    "test_cases": [
+      "G.PRJ.04:positive",
+      "G.PRJ.04:negative",
+      "G.PRJ.04:encoding-alias",
+      "G.PRJ.04:non-utf-encoding-second-line"
+    ]
+  },
+  {
+    "rule_id": "da69d1266db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息--算术操作符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.04:算术操作符",
+    "reason": "Checks both sides of parsed binary arithmetic operators; unary signs and continuation-line whitespace are handled by AST/token positions.",
+    "test_cases": [
+      "G.FMT.04:算术操作符:positive",
+      "G.FMT.04:算术操作符:negative",
+      "G.FMT.04:算术操作符:unary-minus",
+      "G.FMT.04:算术操作符:multiline-operator"
+    ]
+  },
+  {
+    "rule_id": "da6b032a6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CMT.03 公共函数的文档字符串写在函数声明(def function_name(param):)所在行的下一行，并向后缩进4个空格",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.CMT.03",
+    "reason": "Requires public-function docstrings as the first statement immediately below the terminating declaration colon, indented four spaces; underscore-prefixed functions are private and exempt.",
+    "test_cases": [
+      "G.CMT.03:positive",
+      "G.CMT.03:negative",
+      "G.CMT.03:same-line-doc",
+      "G.CMT.03:multiline-signature",
+      "G.CMT.03:comment-before-doc",
+      "G.CMT.03:private-function-exempt",
+      "G.CMT.03:decorator-header"
+    ]
+  },
+  {
+    "rule_id": "da6c7fc26db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.06 raise语句必须包含异常实例",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.06",
+    "reason": "Flags directly raised non-exception literals; arbitrary expression types and class-vs-instance intent require type resolution.",
+    "test_cases": [
+      "G.ERR.06:positive",
+      "G.ERR.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.03 避免在命令解析器中使用通配符",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.03",
+    "reason": "Checks literal wildcard shell command strings and commands assembled via +, f-string, or str.format where a literal fragment contains a glob character; non-literal variable content and helper-call results still require data-flow analysis.",
+    "test_cases": [
+      "G.EDV.03:positive",
+      "G.EDV.03:negative",
+      "G.EDV.03:assembled_concat:positive",
+      "G.EDV.03:assembled_concat:negative",
+      "G.EDV.03:assembled_fstring:positive",
+      "G.EDV.03:assembled_format:positive",
+      "G.EDV.03:assembled_format_nested:positive",
+      "G.EDV.03:helper_arg_not_overreached:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b7a386db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.EXP.03",
+    "reason": "Detects assigning lambda expressions to variables, including annotated assignments.",
+    "test_cases": [
+      "G.EXP.03:positive",
+      "G.EXP.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da69c6b86db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PSL.02 在datetime的使用过程中注意时区的影响，时区敏感的场景建议显式指定时区",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PSL.02",
+    "reason": "Detects timezone-omitting datetime now/utcnow calls; deciding which business operations are timezone-sensitive needs context.",
+    "test_cases": [
+      "G.PSL.02:positive",
+      "G.PSL.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6afaf16db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--length_hint",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:length_hint",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:length_hint:positive",
+      "G.CLS.09:length_hint:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6c74a06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.IMP.03 避免使用__import__函数",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.IMP.03",
+    "reason": "Detects explicit __import__ calls; indirect dynamic dispatch is outside static name-based checking.",
+    "test_cases": [
+      "G.IMP.03:positive",
+      "G.IMP.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6873496db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.DSP.02 安全场景下必须使用密码学意义上的安全随机数",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.DSP.02",
+    "reason": "Flags random module generation as a review candidate; security-sensitive use and wrapper APIs require context.",
+    "test_cases": [
+      "G.DSP.02:positive",
+      "G.DSP.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b79156db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.01 需要精确数值计算的场景，应使用decimal模块，且不要用浮点数构造Decimal",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TYP.01",
+    "reason": "Detects Decimal construction from floating-point literals; identifying every precision-sensitive business operation requires context.",
+    "test_cases": [
+      "G.TYP.01:positive",
+      "G.TYP.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6afa026db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CMT.02 类的文档字符串写在类声明(class ClassName:)所在行的下一行，并向后缩进4个空格",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.CMT.02",
+    "reason": "Requires a class docstring as its first statement, exactly one line after the terminating declaration colon and indented four spaces; multiline class headers and decorators are supported.",
+    "test_cases": [
+      "G.CMT.02:positive",
+      "G.CMT.02:negative",
+      "G.CMT.02:same-line-doc",
+      "G.CMT.02:blank-before-doc",
+      "G.CMT.02:multiline-bases",
+      "G.CMT.02:wrong-doc-indent"
+    ]
+  },
+  {
+    "rule_id": "da6c6a446db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.02 命名要有明确含义，以提升代码的可读性",
+    "status": "manual",
+    "detector": null,
+    "reason": "Identifier meaning depends on business vocabulary and cannot be inferred reliably from the exported title; human/AI review must consult domain documentation.",
+    "test_cases": []
+  },
+  {
+    "rule_id": "da68579c6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.SER.03 禁止使用yaml模块的load函数",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.SER.03",
+    "reason": "Detects imported yaml.load calls including import aliases; dynamic reassignment of imported symbols is not resolved.",
+    "test_cases": [
+      "G.SER.03:positive",
+      "G.SER.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b6fc26db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CTL.02 所有的代码都必须是逻辑可达的",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CTL.02",
+    "reason": "Detects statements after unconditional terminators within one suite; exhaustive control-flow feasibility is not proven.",
+    "test_cases": [
+      "G.CTL.02:positive",
+      "G.CTL.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6963406db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.09 禁止直接使用外部数据来拼接XML",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.09",
+    "reason": "Detects direct tainted string concatenation forming XML; template engines and custom sanitizers require interprocedural analysis.",
+    "test_cases": [
+      "G.EDV.09:positive",
+      "G.EDV.09:negative"
+    ]
+  },
+  {
+    "rule_id": "da6af09e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--hash",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:hash",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:hash:positive",
+      "G.CLS.09:hash:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6c60396db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PSL.03 修改sys.path时注意避免模块重名问题",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PSL.03",
+    "reason": "Reports sys.path mutations for collision review; actual runtime environment and installed modules are unavailable.",
+    "test_cases": [
+      "G.PSL.03:positive",
+      "G.PSL.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da683a2f6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.DSP.03 必须使用ssl.SSLSocket代替socket.Socket来进行安全数据交互",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.DSP.03",
+    "reason": "Reports raw socket construction; whether traffic is security-sensitive or subsequently TLS-wrapped requires context.",
+    "test_cases": [
+      "G.DSP.03:positive",
+      "G.DSP.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b6eb56db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.07 使用dict[key]获取 value 时需要注意保证 key 在有效的范围内",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TYP.07",
+    "reason": "Detects missing literal keys in a preceding literal dictionary assignment; alias mutation, branch state and dynamic keys are not proven.",
+    "test_cases": [
+      "G.TYP.07:positive",
+      "G.TYP.07:negative"
+    ]
+  },
+  {
+    "rule_id": "da6958bf6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.10 禁止在处理XML数据时解析不可信的实体",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.10",
+    "reason": "Detects explicit lxml entity enabling and common unsafe XML parsers; parser versions, external trust and custom resolvers require review.",
+    "test_cases": [
+      "G.EDV.10:positive",
+      "G.EDV.10:negative"
+    ]
+  },
+  {
+    "rule_id": "da681b596db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PRJ.03 产品代码不要包含任何调试入口点",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PRJ.03",
+    "reason": "Detects builtin and common pdb/ipdb/debugpy debugging entrypoints; custom entrypoints and production/test deployment boundaries require context.",
+    "test_cases": [
+      "G.PRJ.03:positive",
+      "G.PRJ.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b66266db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.VAR.01 禁止在变量的生命周期内修改其类型",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.VAR.01",
+    "reason": "Checks successive inferable literal type assignments in lexical scopes; union types, reassignment across branches and aliases require type analysis.",
+    "test_cases": [
+      "G.VAR.01:positive",
+      "G.VAR.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ae94f6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.01 使用统一的命名风格",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.NAM.01",
+    "reason": "Checks function snake_case and class CapWords; exported catalog does not specify all project naming conventions.",
+    "test_cases": [
+      "G.NAM.01:positive",
+      "G.NAM.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da67fa816db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.03 禁止使用tempfile.mktemp创建临时文件",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FIO.03",
+    "reason": "Detects tempfile.mktemp including import aliases; indirect dynamically rebound callables are outside static resolution.",
+    "test_cases": [
+      "G.FIO.03:positive",
+      "G.FIO.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b652d6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CTL.01 同一个函数所有分支的返回值类型和个数保持一致",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CTL.01",
+    "reason": "Compares explicit inferable return types and tuple arities; implicit fallthrough and dynamically computed types require control-flow/type analysis.",
+    "test_cases": [
+      "G.CTL.01:positive",
+      "G.CTL.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ae6526db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--bytes",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:bytes",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:bytes:positive",
+      "G.CLS.09:bytes:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6b5d0b6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.04 避免在无关的标识符或无关的概念之间重用名字， 避免因重名而导致的意外赋值和错误引用",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.NAM.04",
+    "reason": "Detects overwriting imported identifiers; deciding whether other reuse represents unrelated concepts requires human review.",
+    "test_cases": [
+      "G.NAM.04:positive",
+      "G.NAM.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6adb6d6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--str",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:str",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:str:positive",
+      "G.CLS.09:str:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da67de126db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.SER.04 禁止使用jsonpickle模块的encode/decode或dumps/loads函数",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.SER.04",
+    "reason": "Detects four forbidden jsonpickle APIs including import aliases; indirect dynamic dispatch is not resolved.",
+    "test_cases": [
+      "G.SER.04:positive",
+      "G.SER.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b5b136db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.05 当函数返回值个数较多时，建议通过class/namedtuple/dataclass等具名形式进行封装",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FNM.05",
+    "reason": "Flags tuple returns above three elements as candidates; exported rule provides no threshold or grouping semantics.",
+    "test_cases": [
+      "G.FNM.05:positive",
+      "G.FNM.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ad2b96db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--repr",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:repr",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:repr:positive",
+      "G.CLS.09:repr:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da67bd076db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TES.01 禁止在生产版本的业务代码中使用assert",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TES.01",
+    "reason": "Detects assertions outside test-like paths; deployment packaging and assertion intent require project configuration.",
+    "test_cases": [
+      "G.TES.01:positive",
+      "G.TES.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b52e36db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.VAR.03",
+    "reason": "Detects direct shadowing of module bindings inside functions; nested closures, class semantics and intentional overrides need review.",
+    "test_cases": [
+      "G.VAR.03:positive",
+      "G.VAR.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ac73e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--index",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:index",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:index:positive",
+      "G.CLS.09:index:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da679cf46db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.07 避免抑制或忽略异常",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.07",
+    "reason": "Detects empty/pass-only exception handlers; indirect suppression and intended recovery require control-flow/context analysis.",
+    "test_cases": [
+      "G.ERR.07:positive",
+      "G.ERR.07:negative"
+    ]
+  },
+  {
+    "rule_id": "da6abcfd6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--bool",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:bool",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:bool:positive",
+      "G.CLS.09:bool:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da677e636db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.SER.02 禁止序列化未加密的敏感数据",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.SER.02",
+    "reason": "Flags serialization of common sensitive identifiers/keys; sensitivity classification and encryption state require business semantics.",
+    "test_cases": [
+      "G.SER.02:positive",
+      "G.SER.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b51ca6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CTL.03 避免在条件/循环控制语句中包含过多的条件",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CTL.03",
+    "reason": "Flags control conditions with more than five boolean leaves; exported rule provides no numeric complexity threshold.",
+    "test_cases": [
+      "G.CTL.03:positive",
+      "G.CTL.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ab2a76db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--len",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:len",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:len:positive",
+      "G.CLS.09:len:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6767f86db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.LOG.02 使用日志记录工具实现日志功能",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.LOG.02",
+    "reason": "Flags print calls outside test-like paths; distinguishing CLI output from logging requires project intent.",
+    "test_cases": [
+      "G.LOG.02:positive",
+      "G.LOG.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b485c6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.07 类的方法不需要访问实例时，建议定义为staticmethod或classmethod",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.07",
+    "reason": "Detects instance methods with no self access (including closures) or super call; override and decorator contracts need cross-module type context.",
+    "test_cases": [
+      "G.CLS.07:positive",
+      "G.CLS.07:negative"
+    ]
+  },
+  {
+    "rule_id": "da6aa8ac6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--iter",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:iter",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:iter:positive",
+      "G.CLS.09:iter:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6757416db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.08 禁止通过异常泄露敏感数据",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.08",
+    "reason": "Flags common sensitive identifiers/keys in raised exceptions; complete sensitivity classification requires business context.",
+    "test_cases": [
+      "G.ERR.08:positive",
+      "G.ERR.08:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b47626db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.03 当函数参数个数较多且有相关性时，建议通过class/namedtuple/dataclass等具名形式进行封装",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FNM.03",
+    "reason": "Flags more than five explicit parameters as candidates; parameter relatedness and required grouping are semantic judgments.",
+    "test_cases": [
+      "G.FNM.03:positive",
+      "G.FNM.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c55ea6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EXP.04",
+    "reason": "Flags multi-generator/multi-filter comprehensions; rule simplicity has no exported numeric definition.",
+    "test_cases": [
+      "G.EXP.04:positive",
+      "G.EXP.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a9f5e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.03 “self”应是实例方法的第一个参数，“cls”应是类方法的第一个参数--self",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.NAM.03:self",
+    "reason": "Checks direct class instance methods, excluding staticmethod and __new__; dynamic decorators may change method binding.",
+    "test_cases": [
+      "G.NAM.03:self:positive",
+      "G.NAM.03:self:negative"
+    ]
+  },
+  {
+    "rule_id": "da674bb76db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.01 对除法运算和模运算中的除数为0的情况做相应保护",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.OPR.01",
+    "reason": "Detects a constant zero divisor; input range proofs and protections require control-flow and interprocedural analysis.",
+    "test_cases": [
+      "G.OPR.01:positive",
+      "G.OPR.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b3e126db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.14 不要使用return、break、continue或抛出异常使finally块非正常结束",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.14",
+    "reason": "Detects lexical abrupt completion in finally, excluding nested functions and loops contained within finally; exception suppression inside nested handlers requires refined control-flow analysis.",
+    "test_cases": [
+      "G.ERR.14:positive",
+      "G.ERR.14:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c4b256db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TES.02 使用对应的方法做值断言",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TES.02",
+    "reason": "Detects equality comparisons in assertTrue/assertFalse calls; custom test assertion contracts require type context.",
+    "test_cases": [
+      "G.TES.02:positive",
+      "G.TES.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a93926db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.03 “self”应是实例方法的第一个参数，“cls”应是类方法的第一个参数--没有参数",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.NAM.03:没有参数",
+    "reason": "Checks direct non-static class methods for a receiver parameter; unknown decorators can alter method binding.",
+    "test_cases": [
+      "G.NAM.03:没有参数:positive",
+      "G.NAM.03:没有参数:negative"
+    ]
+  },
+  {
+    "rule_id": "da67413a6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.SER.01 禁止使用pickle.load、_pickle.load和shelve模块加载外部数据",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.SER.01",
+    "reason": "Flags pickle/_pickle/shelve loading APIs; external-data trust and validated wrappers require context.",
+    "test_cases": [
+      "G.SER.01:positive",
+      "G.SER.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b3d446db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.04 不要将没有返回值的函数调用结果赋值给变量",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FNM.04",
+    "reason": "Detects assigned results of supplied-source functions with only normal None returns, resolving imports, reexports, local aliases and bounded lexical rebinding. Excludes coroutines, generators, mixed/unknown results and replaced decorators. Dynamic module state, external callees and full call-order analysis remain unsupported.",
+    "test_cases": [
+      "G.FNM.04:positive",
+      "G.FNM.04:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6c37c36db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.05 构造文件路径时应屏蔽操作系统的差异，建议使用库函数辅助构造",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FIO.05",
+    "reason": "Detects string concatenation with slash separators; path intent and platform contracts require context.",
+    "test_cases": [
+      "G.FIO.05:positive",
+      "G.FIO.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6738c36db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.01 在多用户系统中创建文件时应根据需要指定合适的权限",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FIO.01",
+    "reason": "Detects explicitly group/world-writable modes on known OS file APIs; effective umask, ACLs, deployment and intended sharing require review.",
+    "test_cases": [
+      "G.FIO.01:positive",
+      "G.FIO.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b35536db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.10 未实现的数值运算类型魔法函数必须返回NotImplemented而不是抛出NotImplementedError",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.CLS.10",
+    "reason": "Detects NotImplementedError in numeric magic methods; dynamic exception aliases are outside static name resolution.",
+    "test_cases": [
+      "G.CLS.10:positive",
+      "G.CLS.10:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c24446db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.09 在单个except代码块内，禁止重复捕获同类异常",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.ERR.09",
+    "reason": "Detects repeated syntactically identical exception classes in a single except tuple; dynamic aliases require type resolution.",
+    "test_cases": [
+      "G.ERR.09:positive",
+      "G.ERR.09:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a8bc86db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.14 不要使用return、break、continue或抛出异常使finally块非正常结束--不支持finally中的continue",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.14:不支持finally中的continue",
+    "reason": "Detects lexical abrupt completion in finally, excluding nested functions and loops contained within finally; exception suppression inside nested handlers requires refined control-flow analysis.",
+    "test_cases": [
+      "G.ERR.14:不支持finally中的continue:positive",
+      "G.ERR.14:不支持finally中的continue:negative"
+    ]
+  },
+  {
+    "rule_id": "da67305d6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.02 禁止使用OS命令解析器或“危险函数”调用系统命令",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.02",
+    "reason": "Detects explicit shell parser APIs; custom wrappers and dynamically bound callables require semantic resolution.",
+    "test_cases": [
+      "G.EDV.02:positive",
+      "G.EDV.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b349b6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.02 用异常来表示异常，而不是用返回值表示异常",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.02",
+    "reason": "Detects returning constructed Error/Exception objects; integer error codes and application failure contracts require context.",
+    "test_cases": [
+      "G.ERR.02:positive",
+      "G.ERR.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c19bb6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.04 对异常做类型转换时要保留原始异常的错误调用栈信息",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.04",
+    "reason": "Flags constructing a new exception in except without explicit cause; Python implicit chaining and intended suppression require review.",
+    "test_cases": [
+      "G.ERR.04:positive",
+      "G.ERR.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a818b6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.04 建议使用if seq或if not seq的方式判断序列是否为空",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TYP.04",
+    "reason": "Detects len comparisons to zero; variable sequence type and exotic len overloads require type context.",
+    "test_cases": [
+      "G.TYP.04:positive",
+      "G.TYP.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b2c776db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.03 异常的类型定义必须继承自Exception",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.03",
+    "reason": "Checks Error/Exception-named classes and raised classes against builtin/supplied-source Exception hierarchies. Dynamic exception types, external dependency classes and instance provenance remain unsupported.",
+    "test_cases": [
+      "G.ERR.03:positive",
+      "G.ERR.03:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6c10806db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.13 捕获异常后避免直接重新抛出",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.ERR.13",
+    "reason": "Detects except suites whose sole statement is a bare re-raise or raising the bound caught-exception variable; changed exception types and handlers performing other work are exempt.",
+    "test_cases": [
+      "G.ERR.13:positive",
+      "G.ERR.13:negative",
+      "G.ERR.13:named-rethrow",
+      "G.ERR.13:different-exception"
+    ]
+  },
+  {
+    "rule_id": "da6a775d6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.10 代码行的行尾结束符LF和CRLF不应该混用",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.10",
+    "reason": "Detects mixed literal LF and CRLF in supplied source text; upstream readers must preserve newlines.",
+    "test_cases": [
+      "G.FMT.10:positive",
+      "G.FMT.10:negative"
+    ]
+  },
+  {
+    "rule_id": "da67266a6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.01 禁止使用eval和exec函数执行不可信代码",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.01",
+    "reason": "Tracks direct input/request/environment data to eval/exec; custom taint sources, aliases and interprocedural flows remain unsupported.",
+    "test_cases": [
+      "G.EDV.01:positive",
+      "G.EDV.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b2b5d6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.01 禁止使用可变对象作为参数默认值",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FNM.01",
+    "reason": "Detects mutable literal and builtin/container-constructor defaults, matching conventional static dangerous-default checks; dynamic factory mutability is unknowable.",
+    "test_cases": [
+      "G.FNM.01:positive",
+      "G.FNM.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6c06866db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.05 使用有明确业务属性的异常类型",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.05",
+    "reason": "Detects explicitly raised Exception/BaseException; whether other types have appropriate business meaning needs context.",
+    "test_cases": [
+      "G.ERR.05:positive",
+      "G.ERR.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a6d696db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.02 行宽不超过120个字符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.02",
+    "reason": "Uses exported max-line-length option (default 120) and counts Unicode source characters.",
+    "test_cases": [
+      "G.FMT.02:positive",
+      "G.FMT.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da671b756db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.06 使用return代替StopIteration来结束生成器",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FNM.06",
+    "reason": "Detects explicit StopIteration raises in generator lexical scope; indirect raising calls require interprocedural analysis.",
+    "test_cases": [
+      "G.FNM.06:positive",
+      "G.FNM.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b216c6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.10 同时使用多个except语句时，要注意异常捕获的顺序",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.10",
+    "reason": "Resolves builtin and supplied-source exception aliases/inheritance for handler ordering. External dependency types, dynamic exception tuples and path feasibility remain unsupported.",
+    "test_cases": [
+      "G.ERR.10:positive",
+      "G.ERR.10:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6bfbcd6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FNM.02 函数和lambda表达式不应该使用外部的循环代码中定义的变量",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FNM.02",
+    "reason": "Detects loop-variable captures in nested functions/lambdas with default binding exemptions; escape timing and transitive captures require data-flow analysis.",
+    "test_cases": [
+      "G.FNM.02:positive",
+      "G.FNM.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a657e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.05 除了需要重写魔法函数、对象之外，不推荐使用双下划线开头且双下划线结尾的标识符来命名一般对象",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.NAM.05",
+    "reason": "Uses a documented magic-name allowlist; Python-version-specific and framework-defined dunders require project configuration.",
+    "test_cases": [
+      "G.NAM.05:positive",
+      "G.NAM.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6711926db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.05 对序列使用切片操作时，不建议使用负步进值进行切片",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.TYP.05",
+    "reason": "Detects constant negative slice steps in parsed subscripts; dynamically computed values require evaluation.",
+    "test_cases": [
+      "G.TYP.05:positive",
+      "G.TYP.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b206b6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FMT.07",
+    "reason": "Checks standard-library imports before external and relative imports; absolute local-vs-third-party grouping needs a project module index.",
+    "test_cases": [
+      "G.FMT.07:positive",
+      "G.FMT.07:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bebd06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.VAR.02 禁止使用global关键字声明不存在的外部变量",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.VAR.02",
+    "reason": "Checks global declarations against direct module bindings; conditional definitions, star imports and runtime module injection require context.",
+    "test_cases": [
+      "G.VAR.02:positive",
+      "G.VAR.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a5adb6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.NAM.03 “self”应是实例方法的第一个参数，“cls”应是类方法的第一个参数--cls",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.NAM.03:cls",
+    "reason": "Checks explicitly decorated classmethods; aliases or custom decorators require semantic resolution.",
+    "test_cases": [
+      "G.NAM.03:cls:positive",
+      "G.NAM.03:cls:negative"
+    ]
+  },
+  {
+    "rule_id": "da6705e46db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CNP.01 建议为communicate传入超时参数来防止子进程死锁或失去响应",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CNP.01",
+    "reason": "Tracks direct Popen assignment receivers and timeout presence; aliases and interprocedural subprocess wrappers are not resolved.",
+    "test_cases": [
+      "G.CNP.01:positive",
+      "G.CNP.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da694f076db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.06 解压文件必须进行安全检查",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FIO.06",
+    "reason": "Flags direct tar/zip extraction without tar data filter; size limits, path checks, symlink policy and trust require context.",
+    "test_cases": [
+      "G.FIO.06:positive",
+      "G.FIO.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da6be2b86db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CMT.05 正式交付给客户的代码不应包含TODO/FIXME注释",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.CMT.05",
+    "reason": "Scans comment tokens only for TODO/FIXME, excluding string literals.",
+    "test_cases": [
+      "G.CMT.05:positive",
+      "G.CMT.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a4e676db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.02 与None作比较要使用is或is not，不要使用等号",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.OPR.02",
+    "reason": "Checks equality/inequality comparisons against None in parsed expressions.",
+    "test_cases": [
+      "G.OPR.02:positive",
+      "G.OPR.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6167fe6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.IMP.02 使用 from ... import ... 语句的注意事项",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.IMP.02",
+    "reason": "Checks star imports; other restrictions in this nonspecific exported title are not available.",
+    "test_cases": [
+      "G.IMP.02:positive",
+      "G.IMP.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da6943f76db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.07 不受信任的外部数据禁止使用.format()进行格式化",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.07",
+    "reason": "Tracks direct tainted format receivers; custom sources, sanitizers and interprocedural aliases require data-flow analysis.",
+    "test_cases": [
+      "G.EDV.07:positive",
+      "G.EDV.07:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a3cb06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.03 禁止使用is或is not运算符在内置类型之间作比较",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.OPR.03",
+    "reason": "Checks identity comparison to non-singleton builtin constants; variable types and cached object identity require type context.",
+    "test_cases": [
+      "G.OPR.03:positive",
+      "G.OPR.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6153c06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.08 必须使用isinstance判断变量类型",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TYP.08",
+    "reason": "Checks explicit type() comparisons; indirect aliases and alternative exact-type intent require review.",
+    "test_cases": [
+      "G.TYP.08:positive",
+      "G.TYP.08:negative"
+    ]
+  },
+  {
+    "rule_id": "da6939566db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.04 禁止使用subprocess模块中的shell=True选项",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.EDV.04",
+    "reason": "Detects literal shell=True on imported subprocess APIs; unknown dynamic keyword dictionaries require runtime resolution.",
+    "test_cases": [
+      "G.EDV.04:positive",
+      "G.EDV.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bdad06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PSL.01 避免使用已经被标记为弃用并有明确替代的方法",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PSL.01",
+    "reason": "Checks a listed set of deprecated standard-library APIs; complete version-dependent deprecation metadata is not in the export.",
+    "test_cases": [
+      "G.PSL.01:positive",
+      "G.PSL.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a32406db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.05 应该使用 is not 运算符而不是not ... is",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.OPR.05",
+    "reason": "Checks negated identity comparisons in AST.",
+    "test_cases": [
+      "G.OPR.05:positive",
+      "G.OPR.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6147866db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.08 一行只写一条语句",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.08",
+    "reason": "Checks simple statements on the same line as compound control-flow headers.",
+    "test_cases": [
+      "G.FMT.08:positive",
+      "G.FMT.08:negative"
+    ]
+  },
+  {
+    "rule_id": "da692dcb6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.05 调用外部可执行程序时建议使用绝对路径",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.05",
+    "reason": "Checks literal executable paths in direct subprocess/OS launches; dynamic PATH resolution and runtime working directories require context.",
+    "test_cases": [
+      "G.EDV.05:positive",
+      "G.EDV.05:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bd2f46db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.ERR.11 避免使用SystemExit和sys.exit()，主进程入口中例外",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.ERR.11",
+    "reason": "Detects SystemExit/sys.exit outside explicit __main__ guards; packaged entrypoints and CLI framework callbacks require project configuration.",
+    "test_cases": [
+      "G.ERR.11:positive",
+      "G.ERR.11:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a299a6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.06 应该使用 not in 测试成员关系",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.OPR.06",
+    "reason": "Checks negated membership comparisons in AST.",
+    "test_cases": [
+      "G.OPR.06:positive",
+      "G.OPR.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da61314e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.06 每行只能导入一个模块",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.06",
+    "reason": "Detects multiple modules in one import statement.",
+    "test_cases": [
+      "G.FMT.06:positive",
+      "G.FMT.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da6922ff6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.06 禁止直接使用外部数据来拼接SQL语句",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.06",
+    "reason": "Tracks direct tainted SQL concatenation/interpolation to execute-like calls; custom sources, query builders and receiver types require data-flow/type analysis.",
+    "test_cases": [
+      "G.EDV.06:positive",
+      "G.EDV.06:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bca446db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PSL.04 建议用functools.wraps定义函数装饰器",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PSL.04",
+    "reason": "Detects returned nested wrapper functions forwarding a function parameter without functools.wraps; class decorators and indirect decorators require analysis.",
+    "test_cases": [
+      "G.PSL.04:positive",
+      "G.PSL.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6125f96db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.03 合理安排空行--类内方法空1行",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.03:类内方法空1行",
+    "reason": "Requires one blank line around direct class methods and nested classes when adjacent class-body statements exist; decorators stay attached to definitions.",
+    "test_cases": [
+      "G.FMT.03:类内方法空1行:positive",
+      "G.FMT.03:类内方法空1行:negative",
+      "G.FMT.03:类内方法空1行:after-method",
+      "G.FMT.03:类内方法空1行:decorated-method"
+    ]
+  },
+  {
+    "rule_id": "da6919d06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.DSP.01 将敏感对象发送出信任区域前进行签名并加密",
+    "status": "manual",
+    "detector": null,
+    "reason": "The export does not identify sensitive objects, trust boundaries, destinations or required signature/encryption schemes; these inputs must be supplied before a sound enforceable policy can be built.",
+    "test_cases": []
+  },
+  {
+    "rule_id": "da6bbffc6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.02 子类重写父类的方法时，方法签名应该和被重写的方法一致",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.02",
+    "reason": "Compares supplied-source inherited signatures using imports/reexports and C3 MRO, including positional-only and keyword-only defaults. Decorator-generated signatures, dynamic bases, overloads and full type variance remain unsupported.",
+    "test_cases": [
+      "G.CLS.02:positive",
+      "G.CLS.02:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6a1fcd6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.08 一行只写一条语句--定义",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.08:定义",
+    "reason": "Checks function/class body statements sharing the declaration line.",
+    "test_cases": [
+      "G.FMT.08:定义:positive",
+      "G.FMT.08:定义:negative"
+    ]
+  },
+  {
+    "rule_id": "da611ba46db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CMT.04 代码的注释位置和格式应该在项目内保持统一",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CMT.04",
+    "reason": "Checks common comment-space and inline separation conventions; project-wide annotation formatting policies are not exported.",
+    "test_cases": [
+      "G.CMT.04:positive",
+      "G.CMT.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6910066db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.DSP.04 禁止在用户界面、日志中暴露不必要信息",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.DSP.04",
+    "reason": "Flags common sensitive names in direct logging/print calls; actual disclosure necessity and data classification require context.",
+    "test_cases": [
+      "G.DSP.04:positive",
+      "G.DSP.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6bb6296db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.01 如果子类和父类中都有__init__方法，则子类中的__init__方法必须正确调用其父类__init__方法",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.01",
+    "reason": "Resolves supplied-source imports and C3 inheritance; tracks initializer calls on bounded normal/return paths through branches, loops and finally, including shadowed super and receiver checks. Dynamic bases, framework initialization and complete exception/path feasibility remain unsupported.",
+    "test_cases": [
+      "G.CLS.01:positive",
+      "G.CLS.01:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da6a162b6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.08 一行只写一条语句--分号",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.08:分号",
+    "reason": "Detects semicolon operator tokens, excluding comments and strings.",
+    "test_cases": [
+      "G.FMT.08:分号:positive",
+      "G.FMT.08:分号:negative"
+    ]
+  },
+  {
+    "rule_id": "da68fcd26db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.PRM.03 资源的申请和释放需要成对使用，包括正常和异常场景",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.PRM.03",
+    "reason": "Flags file acquisition outside with context management; balanced explicit cleanup, exceptional paths and other resource types require control-flow analysis.",
+    "test_cases": [
+      "G.PRM.03:positive",
+      "G.PRM.03:negative"
+    ]
+  },
+  {
+    "rule_id": "da6babe46db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.11 避免在类外或者子类中访问父类受保护的成员",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.11",
+    "reason": "Flags underscore-member access on non-self/cls receivers; inheritance, module privacy and documented friend APIs require type context.",
+    "test_cases": [
+      "G.CLS.11:positive",
+      "G.CLS.11:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a0b8a6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.03 合理安排空行--嵌套定义空1行",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.03:嵌套定义空1行",
+    "reason": "Requires one blank line around nested function/class definitions when adjacent enclosing-function statements exist; first/last statements are handled without artificial boundary blanks.",
+    "test_cases": [
+      "G.FMT.03:嵌套定义空1行:positive",
+      "G.FMT.03:嵌套定义空1行:negative",
+      "G.FMT.03:嵌套定义空1行:after-nested",
+      "G.FMT.03:嵌套定义空1行:first-nested"
+    ]
+  },
+  {
+    "rule_id": "da6110566db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FMT.04",
+    "reason": "Checks assignment/comparison operator spacing; complete keyword/default and continuation exceptions require formatting context.",
+    "test_cases": [
+      "G.FMT.04:positive",
+      "G.FMT.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6ba15c6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.08 避免在__init__方法外定义类实例属性",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.08",
+    "reason": "Compares self stores against __init__ declarations within a class; inherited/dataclass/descriptor-generated attributes require type context.",
+    "test_cases": [
+      "G.CLS.08:positive",
+      "G.CLS.08:negative"
+    ]
+  },
+  {
+    "rule_id": "da6a008e6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.03 合理安排空行--类间空2行",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.03:类间空2行",
+    "reason": "Requires two blank lines on both sides of top-level function/class definitions when adjacent statements exist; decorators are part of the definition and file boundaries are exempt.",
+    "test_cases": [
+      "G.FMT.03:类间空2行:positive",
+      "G.FMT.03:类间空2行:negative",
+      "G.FMT.03:类间空2行:after-definition",
+      "G.FMT.03:类间空2行:decorated-definitions"
+    ]
+  },
+  {
+    "rule_id": "da6b17996db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--getnewargs_ex",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:getnewargs_ex",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:getnewargs_ex:positive",
+      "G.CLS.09:getnewargs_ex:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da60fec26db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.01 程序块应该采用4个空格缩进风格编写",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.01",
+    "reason": "Checks every syntactic INDENT increase is exactly four spaces and rejects tabs; continuation alignment and string/comment content are excluded by tokenize.",
+    "test_cases": [
+      "G.FMT.01:positive",
+      "G.FMT.01:negative"
+    ]
+  },
+  {
+    "rule_id": "da68f1a56db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.04 临时文件使用完毕应及时删除",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FIO.04",
+    "reason": "Flags NamedTemporaryFile(delete=False); explicit cleanup, exceptional paths and additional temporary APIs require lifetime analysis.",
+    "test_cases": [
+      "G.FIO.04:positive",
+      "G.FIO.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b97ba6db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.OPR.04 不建议使用海象运算符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.OPR.04",
+    "reason": "Detects assignment expressions using the AST NamedExpr node.",
+    "test_cases": [
+      "G.OPR.04:positive",
+      "G.OPR.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da69f7986db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息--关键字后",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.04:关键字后",
+    "reason": "Checks separation after expression-leading/control Python keywords, including not, await and except-star syntax; block colons and punctuation are exempt.",
+    "test_cases": [
+      "G.FMT.04:关键字后:positive",
+      "G.FMT.04:关键字后:negative",
+      "G.FMT.04:关键字后:not-before-group",
+      "G.FMT.04:关键字后:await-before-group",
+      "G.FMT.04:关键字后:except-star-space",
+      "G.FMT.04:关键字后:except-star-missing-space"
+    ]
+  },
+  {
+    "rule_id": "da6b16226db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CTL.04 建议使用 for x in iterable 的方式循环处理可迭代对象",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CTL.04",
+    "reason": "Flags range(len(...)) loops for direct-iteration review; legitimate use of indexes requires data-flow/context review.",
+    "test_cases": [
+      "G.CTL.04:positive",
+      "G.CTL.04:negative"
+    ]
+  },
+  {
+    "rule_id": "da68e7896db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.EDV.08 防止正则表达式引起的ReDos攻击",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.EDV.08",
+    "reason": "Parses literal regex structures for nested quantifiers; this is a review signal, not an exhaustive ReDoS complexity proof.",
+    "test_cases": [
+      "G.EDV.08:positive",
+      "G.EDV.08:negative"
+    ]
+  },
+  {
+    "rule_id": "da6b8fa86db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.TYP.02 浮点型数据判断相等不要直接使用==",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.TYP.02",
+    "reason": "Detects equality to explicit floating-point literals; inferred variable types and intentional exact comparisons require type/business context.",
+    "test_cases": [
+      "G.TYP.02:positive",
+      "G.TYP.02:negative"
+    ]
+  },
+  {
+    "rule_id": "da69ed966db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FMT.04 用空格突出关键字和重要信息--分隔符",
+    "status": "implemented",
+    "detector": "python-ast-tokenize:G.FMT.04:分隔符",
+    "reason": "Checks whitespace after comma, semicolon and colon separator tokens, excluding slice colons, closing brackets and end-of-line separators.",
+    "test_cases": [
+      "G.FMT.04:分隔符:positive",
+      "G.FMT.04:分隔符:negative",
+      "G.FMT.04:分隔符:dict-colon",
+      "G.FMT.04:分隔符:slice-colon",
+      "G.FMT.04:分隔符:slice-and-dictionary-same-line"
+    ]
+  },
+  {
+    "rule_id": "da6b0e276db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--getnewargs",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.CLS.09:getnewargs",
+    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "test_cases": [
+      "G.CLS.09:getnewargs:positive",
+      "G.CLS.09:getnewargs:negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_python_project.py"
+    ]
+  },
+  {
+    "rule_id": "da68dca06db811eea68ffa163e0fa374",
+    "language": "python",
+    "title": "G.FIO.02 校验文件路径之前应该先对其进行规范化处理",
+    "status": "partial",
+    "detector": "python-ast-tokenize:G.FIO.02",
+    "reason": "Tracks direct external paths into existence/type checks and basic normalization; canonicalization order, symlinks and custom wrappers require data-flow review.",
+    "test_cases": [
+      "G.FIO.02:positive",
+      "G.FIO.02:negative"
+    ]
+  }
+]

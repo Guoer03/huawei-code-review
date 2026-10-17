@@ -1,0 +1,821 @@
+[
+  {
+    "rule_id": "da6c0bdf6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "动态执行代码存在安全风险",
+    "status": "implemented",
+    "detector": "eslint:no-eval,no-new-func,no-implied-eval",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Dynamically executing code is security-sensitive positive",
+      "Dynamically executing code is security-sensitive negative"
+    ]
+  },
+  {
+    "rule_id": "da6c02326db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应避免冗余转换或非'null’断言",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-extra-non-null-assertion",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Redundant casts and non-null assertions should be avoided positive",
+      "Redundant casts and non-null assertions should be avoided negative"
+    ]
+  },
+  {
+    "rule_id": "da6bf9976db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应删除死存储",
+    "status": "implemented",
+    "detector": "eslint:no-useless-assignment",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Unused assignments should be removed positive",
+      "Unused assignments should be removed negative"
+    ]
+  },
+  {
+    "rule_id": "da6be02a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "相关\"if/else if\"语句和\"switch\"中的\"cases\"不应有相同的条件",
+    "status": "implemented",
+    "detector": "eslint:no-dupe-else-if,no-duplicate-case",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Related \"if/else if\" statements should not have the same condition positive",
+      "Related \"if/else if\" statements should not have the same condition negative"
+    ]
+  },
+  {
+    "rule_id": "da6f5bd26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/array-type",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/array-type",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/array-type positive",
+      "eslint_repo:@typescript-eslint/array-type negative"
+    ]
+  },
+  {
+    "rule_id": "da6f47e06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/no-unused-vars",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-unused-vars",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/no-unused-vars positive",
+      "eslint_repo:@typescript-eslint/no-unused-vars negative"
+    ]
+  },
+  {
+    "rule_id": "da6bb2ae6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"super()\"只能调用一次",
+    "status": "implemented",
+    "detector": "eslint:constructor-super",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"super()\" should be invoked appropriately positive",
+      "\"super()\" should be invoked appropriately negative"
+    ]
+  },
+  {
+    "rule_id": "da6d472b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"catch\"子句的作用不应仅限于重新抛出",
+    "status": "implemented",
+    "detector": "eslint:no-useless-catch",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"catch\" clauses should do more than rethrow positive",
+      "\"catch\" clauses should do more than rethrow negative"
+    ]
+  },
+  {
+    "rule_id": "da6b835f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应声明稀疏数组",
+    "status": "implemented",
+    "detector": "eslint:no-sparse-arrays",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Sparse arrays should not be declared positive",
+      "Sparse arrays should not be declared negative"
+    ]
+  },
+  {
+    "rule_id": "da6caa4f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "在\"finally\"块中不应该出现跳转语句",
+    "status": "implemented",
+    "detector": "typescript-ast:finally-completion",
+    "reason": "Structural completion analysis reports reachable return/throw/break/continue paths that escape finally, while excluding nested functions and locally consumed loop/switch jumps. It does not execute code or infer dynamic control flow.",
+    "test_cases": [
+      "Jump statements should not occur in \"finally\" blocks positive",
+      "Jump statements should not occur in \"finally\" blocks negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_completion_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6c98ef6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用逗号运算符",
+    "status": "implemented",
+    "detector": "eslint:no-sequences",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Comma operator should not be used positive",
+      "Comma operator should not be used negative"
+    ]
+  },
+  {
+    "rule_id": "da6c90406db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"NaN\"不应用于比较运算",
+    "status": "implemented",
+    "detector": "eslint:use-isnan",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"NaN\" should not be used in comparisons positive",
+      "\"NaN\" should not be used in comparisons negative"
+    ]
+  },
+  {
+    "rule_id": "da6b5e836db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应重新声明变量",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-redeclare",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Variables and functions should not be redeclared positive",
+      "Variables and functions should not be redeclared negative"
+    ]
+  },
+  {
+    "rule_id": "da6d20fa6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应对基础类型使用封装对象",
+    "status": "implemented",
+    "detector": "eslint:no-new-wrappers,@typescript-eslint/no-wrapper-object-types",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Wrapper objects should not be used for primitive types positive",
+      "Wrapper objects should not be used for primitive types negative"
+    ]
+  },
+  {
+    "rule_id": "da6c871b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用重复的元素定义并集和交集类型",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-duplicate-type-constituents",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Union and intersection types should not be defined with duplicated elements positive",
+      "Union and intersection types should not be defined with duplicated elements negative"
+    ]
+  },
+  {
+    "rule_id": "da6d17b26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "条件不应总是计算为'true'或'false'",
+    "status": "partial",
+    "detector": "eslint:no-constant-condition,@typescript-eslint/no-unnecessary-condition",
+    "reason": "Checks type-proven constants and literal conditions. Arbitrary runtime/path-sensitive conditions beyond TypeScript narrowing are not proven.",
+    "test_cases": [
+      "Boolean expressions should not be gratuitous positive",
+      "Boolean expressions should not be gratuitous negative"
+    ]
+  },
+  {
+    "rule_id": "da6d0f486db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "解构模式不应为空",
+    "status": "implemented",
+    "detector": "eslint:no-empty-pattern",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Destructuring patterns should not be empty positive",
+      "Destructuring patterns should not be empty negative"
+    ]
+  },
+  {
+    "rule_id": "da6d05156db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"default\"子句应是最后一个",
+    "status": "implemented",
+    "detector": "eslint:default-case-last",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"default\" clauses should be last positive",
+      "\"default\" clauses should be last negative"
+    ]
+  },
+  {
+    "rule_id": "da6cfc416db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"await\"只能与 `Promise`一起使用",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/await-thenable",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"await\" should only be used with promises positive",
+      "\"await\" should only be used with promises negative"
+    ]
+  },
+  {
+    "rule_id": "da6c57f16db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应删除多余的括号对",
+    "status": "implemented",
+    "detector": "eslint:no-extra-parens",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Redundant pairs of parentheses should be removed positive",
+      "Redundant pairs of parentheses should be removed negative"
+    ]
+  },
+  {
+    "rule_id": "da6cea4c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应在`interface`中声明构造函数",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-misused-new",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Constructors should not be declared inside interfaces positive",
+      "Constructors should not be declared inside interfaces negative"
+    ]
+  },
+  {
+    "rule_id": "da6ce1e46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "变量不应该自赋值",
+    "status": "implemented",
+    "detector": "eslint:no-self-assign",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Variables should not be self-assigned positive",
+      "Variables should not be self-assigned negative"
+    ]
+  },
+  {
+    "rule_id": "da6c437e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用多行字符串字面量",
+    "status": "implemented",
+    "detector": "eslint:no-multi-str",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Multiline string literals should not be used positive",
+      "Multiline string literals should not be used negative"
+    ]
+  },
+  {
+    "rule_id": "da6cd75d6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "Non-empty语句应改变控制流或至少有一个副作用",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-unused-expressions",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Non-empty statements should change control flow or have at least one side-effect positive",
+      "Non-empty statements should change control flow or have at least one side-effect negative"
+    ]
+  },
+  {
+    "rule_id": "da6c3dba6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应删除多余的分号",
+    "status": "implemented",
+    "detector": "eslint:no-extra-semi",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Extra semicolons should be removed positive",
+      "Extra semicolons should be removed negative"
+    ]
+  },
+  {
+    "rule_id": "da6cce4e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "嵌套代码块不应该为空",
+    "status": "implemented",
+    "detector": "eslint:no-empty",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Nested blocks of code should not be left empty positive",
+      "Nested blocks of code should not be left empty negative"
+    ]
+  },
+  {
+    "rule_id": "da6c32e46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "二进制运算符两侧不应使用相同表达式",
+    "status": "partial",
+    "detector": "eslint:no-self-compare",
+    "reason": "ESLint comparisons plus pure identifier/literal arithmetic, logical and bitwise duplicate operands with parentheses unwrapped. Getter/property/call expressions and complete side-effect analysis remain excluded.",
+    "test_cases": [
+      "Identical expressions should not be used on both sides of a binary operator positive",
+      "Identical expressions should not be used on both sides of a binary operator negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6c1ff16db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "变量应在使用前声明",
+    "status": "implemented",
+    "detector": "eslint:no-use-before-define",
+    "reason": "ESLint resolves use-before-definition bindings; exported var-only policy filters let/const, functions and classes by their actual declaration symbols.",
+    "test_cases": [
+      "Variables declared with \"var\" should be declared before they are used positive",
+      "Variables declared with \"var\" should be declared before they are used negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6c15206db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用调试器语句",
+    "status": "implemented",
+    "detector": "eslint:no-debugger",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Debugger statements should not be used positive",
+      "Debugger statements should not be used negative"
+    ]
+  },
+  {
+    "rule_id": "da6cbbe26db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"delete\"不能用于数组",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/no-array-delete",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"delete\" should not be used on arrays positive",
+      "\"delete\" should not be used on arrays negative"
+    ]
+  },
+  {
+    "rule_id": "da6d591b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "使用\"Array.prototype.sort()\"时，应提供比较函数",
+    "status": "implemented",
+    "detector": "eslint:@typescript-eslint/require-array-sort-compare",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "A compare function should be provided when using \"Array.prototype.sort()\" positive",
+      "A compare function should be provided when using \"Array.prototype.sort()\" negative"
+    ]
+  },
+  {
+    "rule_id": "da6c7d4a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应重构最多只有一次迭代的循环",
+    "status": "implemented",
+    "detector": "eslint:no-unreachable-loop",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Loops with at most one iteration should be refactored positive",
+      "Loops with at most one iteration should be refactored negative"
+    ]
+  },
+  {
+    "rule_id": "da6f79d96db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/ban-types",
+    "status": "partial",
+    "detector": "eslint:@typescript-eslint/no-wrapper-object-types,@typescript-eslint/no-unsafe-function-type,@typescript-eslint/no-empty-object-type",
+    "reason": "Legacy ban-types was removed upstream. Uses the successor default restrictions (wrapper objects, Function, empty object); unspecified historical custom bans cannot be recovered.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/ban-types positive",
+      "eslint_repo:@typescript-eslint/ban-types negative"
+    ]
+  },
+  {
+    "rule_id": "da6f72026db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/interface-name-prefix",
+    "status": "partial",
+    "detector": "typescript-ast:interface-prefix",
+    "reason": "Legacy rule removed upstream. Implements the historical default never-prefix policy for I followed by uppercase; export supplies no options.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/interface-name-prefix positive",
+      "eslint_repo:@typescript-eslint/interface-name-prefix negative"
+    ]
+  },
+  {
+    "rule_id": "da6f675a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/member-delimiter-style",
+    "status": "partial",
+    "detector": "typescript-ast:member-delimiter",
+    "reason": "Legacy formatting rule removed upstream. Implements semicolon delimiters for multiline members with a required final delimiter; export supplies no selected style options.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/member-delimiter-style positive",
+      "eslint_repo:@typescript-eslint/member-delimiter-style negative"
+    ]
+  },
+  {
+    "rule_id": "da6f536a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "eslint_repo:@typescript-eslint/camelcase",
+    "status": "partial",
+    "detector": "typescript-ast:variable-camel",
+    "reason": "Legacy rule removed upstream. Checks variable/parameter bindings; property interoperability exceptions and historical plugin defaults are not fully reproduced.",
+    "test_cases": [
+      "eslint_repo:@typescript-eslint/camelcase positive",
+      "eslint_repo:@typescript-eslint/camelcase negative"
+    ]
+  },
+  {
+    "rule_id": "da6bf13e6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "数组变异方法需谨慎使用",
+    "status": "partial",
+    "detector": "typescript-ast:assigned-mutator",
+    "reason": "Detects sort/reverse results assigned to different bindings, including const aliases and assignment expressions; excludes assignment back to the same source array. Escaping state, reassigned aliases and nested expressions remain unsupported.",
+    "test_cases": [
+      "Array-mutating methods should not be used misleadingly positive",
+      "Array-mutating methods should not be used misleadingly negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6be83f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "对于没有成员的类型，不应在类型交集中使用'any’和'never’的类型",
+    "status": "implemented",
+    "detector": "typescript-ast:empty-intersection",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Types without members, 'any' and 'never' should not be used in type intersections positive",
+      "Types without members, 'any' and 'never' should not be used in type intersections negative"
+    ]
+  },
+  {
+    "rule_id": "da6bd7d46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应在数组上使用\"in\"",
+    "status": "implemented",
+    "detector": "typescript-ast:array-in",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"in\" should not be used on arrays positive",
+      "\"in\" should not be used on arrays negative"
+    ]
+  },
+  {
+    "rule_id": "da6bd0736db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "条件结构中的所有分支不应出现相同的实现",
+    "status": "partial",
+    "detector": "typescript-ast:all-identical-branches",
+    "reason": "Compares normalized AST text of direct if/else and switch branches. Equivalent implementations expressed with different syntax require semantic analysis.",
+    "test_cases": [
+      "All branches in a conditional structure should not have exactly the same implementation positive",
+      "All branches in a conditional structure should not have exactly the same implementation negative"
+    ]
+  },
+  {
+    "rule_id": "da6bc7c46db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应忽略函数参数、捕获的异常和foreach变量的初始值",
+    "status": "partial",
+    "detector": "typescript-ast:ignored-initial-value",
+    "reason": "Tracks unread incoming parameter, catch and for-of binding values through bounded branch/return paths and reports their first overwrite. Accounts for arguments object/index reads while excluding arguments.length and nested function arguments. Complex loops, exceptions, closures and full path feasibility remain unsupported.",
+    "test_cases": [
+      "Function parameters, caught exceptions and foreach variables' initial values should not be ignored positive",
+      "Function parameters, caught exceptions and foreach variables' initial values should not be ignored negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6bbc486db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用不返回内容的函数的输出结果",
+    "status": "partial",
+    "detector": "typescript-ast:void-output",
+    "reason": "Checks TypeScript-inferred void results in assignments, returns, arguments, object/array literals, templates, casts, awaits and conditional values. Discarded comma-left and callback expression results are excluded. Unknown external signatures and full expression paths remain unsupported.",
+    "test_cases": [
+      "The output of functions that don't return anything should not be used positive",
+      "The output of functions that don't return anything should not be used negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6ba9146db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "条件应从新行开始",
+    "status": "implemented",
+    "detector": "typescript-ast:conditional-newline",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Conditionals should start on new lines positive",
+      "Conditionals should start on new lines negative"
+    ]
+  },
+  {
+    "rule_id": "da6d6e3c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "布尔检查不应反转",
+    "status": "partial",
+    "detector": "typescript-ast:inverted-boolean",
+    "reason": "Detects negated if conditions with an else branch. Other forms of inversion and domain readability need review.",
+    "test_cases": [
+      "Boolean checks should not be inverted positive",
+      "Boolean checks should not be inverted negative"
+    ]
+  },
+  {
+    "rule_id": "da6b9ed86db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "值不能做无用的递增或递减",
+    "status": "partial",
+    "detector": "typescript-ast:useless-increment",
+    "reason": "Detects returning a postfix update of a local variable. Other dead increments need liveness and escape analysis.",
+    "test_cases": [
+      "Values should not be uselessly incremented positive",
+      "Values should not be uselessly incremented negative"
+    ]
+  },
+  {
+    "rule_id": "da6d62106db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应按正确的顺序传递参数",
+    "status": "partial",
+    "detector": "typescript-ast:argument-order",
+    "reason": "Detects obvious permutations where call identifiers match a local resolved function signature parameter set. Positional semantics with different names require review.",
+    "test_cases": [
+      "Parameters should be passed in the correct order positive",
+      "Parameters should be passed in the correct order negative"
+    ]
+  },
+  {
+    "rule_id": "da6b955c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "函数不应有相同的实现",
+    "status": "partial",
+    "detector": "typescript-ast:identical-functions",
+    "reason": "Compares nonempty function structures across supplied source with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependency symbols remain unsupported.",
+    "test_cases": [
+      "Functions should not have identical implementations positive",
+      "Functions should not have identical implementations negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_deep_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6d4f676db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"switch\"语句不应包含过多\"case\"子句",
+    "status": "implemented",
+    "detector": "typescript-ast:many-cases",
+    "reason": "Counts CaseClause nodes; uses the exported maximum option (30 by default).",
+    "test_cases": [
+      "\"switch\" statements should not have too many \"case\" clauses positive",
+      "\"switch\" statements should not have too many \"case\" clauses negative"
+    ]
+  },
+  {
+    "rule_id": "da6b8b566db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "switch case结构不应使用逻辑OR运算符",
+    "status": "implemented",
+    "detector": "typescript-ast:case-operator",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Comma and logical OR operators should not be used in switch cases positive",
+      "Comma and logical OR operators should not be used in switch cases negative"
+    ]
+  },
+  {
+    "rule_id": "da6cb1f36db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"while\"循环应该被用来替代\"for\"循环",
+    "status": "implemented",
+    "detector": "typescript-ast:prefer-while",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "A \"while\" loop should be used instead of a \"for\" loop positive",
+      "A \"while\" loop should be used instead of a \"for\" loop negative"
+    ]
+  },
+  {
+    "rule_id": "da6d3d336db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "函数返回的值不应该是不变的",
+    "status": "partial",
+    "detector": "typescript-ast:invariant-return",
+    "reason": "Uses structural completion analysis for reachable returns, const aliases, literal conditions, switch fallthrough, loops, throws and finally overrides. Dynamic predicates, implicit effects and values produced by calls remain unknown.",
+    "test_cases": [
+      "Function returns should not be invariant positive",
+      "Function returns should not be invariant negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_completion_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6b7ba96db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应无条件替换集合元素",
+    "status": "partial",
+    "detector": "typescript-ast:collection-overwrite",
+    "reason": "Detects constant-index writes to the iterated array from a for-of loop. Other collection types, indices and aliases need dataflow analysis.",
+    "test_cases": [
+      "Collection elements should not be replaced unconditionally positive",
+      "Collection elements should not be replaced unconditionally negative"
+    ]
+  },
+  {
+    "rule_id": "da6ca06a6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应使用不存在的运算符'=+'、'=-'和'=!'",
+    "status": "implemented",
+    "detector": "typescript-ast:suspicious-assignment",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Non-existent operators '=+', '=-' and '=!' should not be used positive",
+      "Non-existent operators '=+', '=-' and '=!' should not be used negative"
+    ]
+  },
+  {
+    "rule_id": "da6d33f06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "Promise rejections不应被'try'块捕获",
+    "status": "partial",
+    "detector": "typescript-ast:promise-try",
+    "reason": "Checks returned and discarded thenables inside lexical try bodies, follows const aliases and conditional/comma returns, and recognizes safe await/valid rejection handlers. Unknown thenables, handler side effects, interprocedural effects and arbitrary promise variables remain partial.",
+    "test_cases": [
+      "Promise rejections should not be caught by 'try' block positive",
+      "Promise rejections should not be caught by 'try' block negative"
+    ],
+    "supplementary_test_files": [
+      "tests/test_frontend_completion_flow.py"
+    ]
+  },
+  {
+    "rule_id": "da6b717b6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应创建 `Error` 而不抛出 `Error`",
+    "status": "implemented",
+    "detector": "typescript-ast:unused-error",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Errors should not be created without being thrown positive",
+      "Errors should not be created without being thrown negative"
+    ]
+  },
+  {
+    "rule_id": "da6d2a466db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应访问或迭代空集合",
+    "status": "partial",
+    "detector": "typescript-ast:empty-array-use",
+    "reason": "Detects reading or iterating an empty local array before a visible mutation/escape. Interprocedural mutations and arbitrary collection classes are outside this analysis.",
+    "test_cases": [
+      "Empty collections should not be accessed or iterated positive",
+      "Empty collections should not be accessed or iterated negative"
+    ]
+  },
+  {
+    "rule_id": "da6b67446db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "集合大小和数组长度比较应该合理",
+    "status": "implemented",
+    "detector": "typescript-ast:collection-size",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Collection sizes and array length comparisons should make sense positive",
+      "Collection sizes and array length comparisons should make sense negative"
+    ]
+  },
+  {
+    "rule_id": "da6b55d06db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "应使用集合和数组内容",
+    "status": "partial",
+    "detector": "typescript-ast:unused-collection",
+    "reason": "Detects local array bindings whose only references write through mutators/indexes. Escapes, indirect references and custom collections are outside this analysis.",
+    "test_cases": [
+      "Collection and array contents should be used positive",
+      "Collection and array contents should be used negative"
+    ]
+  },
+  {
+    "rule_id": "da6b49c76db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "getters和setters应该访问预期的字段",
+    "status": "partial",
+    "detector": "typescript-ast:accessor-field",
+    "reason": "Checks simple backing fields named name or _name for matching accessors. Delegated/computed accessors and unconventional field policies need review.",
+    "test_cases": [
+      "Getters and setters should access the expected fields positive",
+      "Getters and setters should access the expected fields negative"
+    ]
+  },
+  {
+    "rule_id": "da6c73fd6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应忽略无副作用函数的返回值",
+    "status": "partial",
+    "detector": "typescript-ast:ignored-pure-return",
+    "reason": "Checks an explicit allowlist of pure standard string/array/Math methods with known receiver types. No claim of arbitrary function effect inference.",
+    "test_cases": [
+      "Return values from functions without side effects should not be ignored positive",
+      "Return values from functions without side effects should not be ignored negative"
+    ]
+  },
+  {
+    "rule_id": "da6c6b3c6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "不应将\"undefined\"作为可选参数的值传递",
+    "status": "implemented",
+    "detector": "typescript-ast:undefined-optional",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"undefined\" should not be passed as the value of optional parameters positive",
+      "\"undefined\" should not be passed as the value of optional parameters negative"
+    ]
+  },
+  {
+    "rule_id": "da6c61bb6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "条件结构中的两个分支不应有完全相同的实现",
+    "status": "partial",
+    "detector": "typescript-ast:duplicate-branch",
+    "reason": "Compares normalized direct if/else and switch branch bodies within one construct; semantic equivalence with different syntax is not inferred.",
+    "test_cases": [
+      "Two branches in a conditional structure should not have exactly the same implementation positive",
+      "Two branches in a conditional structure should not have exactly the same implementation negative"
+    ]
+  },
+  {
+    "rule_id": "da6cf3296db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "凭证不应硬编码",
+    "status": "partial",
+    "detector": "typescript-ast:hardcoded-credentials",
+    "reason": "Detects nonempty string literals bound to credential-word names using the exported credentialWords option. This is a security review candidate, not proof of a live credential.",
+    "test_cases": [
+      "Hard-coded credentials are security-sensitive positive",
+      "Hard-coded credentials are security-sensitive negative"
+    ]
+  },
+  {
+    "rule_id": "da6c4d9f6db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "多行代码块应用大括号括起来",
+    "status": "implemented",
+    "detector": "typescript-ast:multiline-curly",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Multiline blocks should be enclosed in curly braces positive",
+      "Multiline blocks should be enclosed in curly braces negative"
+    ]
+  },
+  {
+    "rule_id": "da6cc4b76db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "\"switch\" 语句应该有最少3个\"case\" 子句",
+    "status": "implemented",
+    "detector": "typescript-ast:few-cases",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "\"switch\" statements should have at least 3 \"case\" clauses positive",
+      "\"switch\" statements should have at least 3 \"case\" clauses negative"
+    ]
+  },
+  {
+    "rule_id": "da6c29276db811eea68ffa163e0fa374",
+    "language": "typescript",
+    "title": "布尔值文字不应冗余",
+    "status": "implemented",
+    "detector": "typescript-ast:boolean-compare",
+    "reason": "Executable syntax/type rule with positive and negative fixtures. Mapping is to the exported requirement, not proprietary CodeArts engine equivalence.",
+    "test_cases": [
+      "Boolean literals should not be used in comparisons positive",
+      "Boolean literals should not be used in comparisons negative"
+    ]
+  }
+]
