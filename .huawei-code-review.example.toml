@@ -1,0 +1,10 @@
+# Copy to .huawei-code-review.toml in the project, or pass --config explicitly.
+ruleset = "catalog"
+language = "auto"
+fail_on = "warning"
+exclude = [".git", "node_modules", "dist", "build", ".venv", "venv"]
+allow_uncovered = false
+
+# Optional project override; remove this table to use the exported 120 default.
+[rules.da6a6d696db811eea68ffa163e0fa374.options]
+max-line-length = 100
