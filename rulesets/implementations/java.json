@@ -1574,12 +1574,14 @@
     "title": "P.05 外部数据使用前必须进行合法性校验--Header Manipulation场景",
     "status": "partial",
     "detector": "javac-ast:taint_header",
-    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode, response.encodeURL) for this header sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode) for this header sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
     "test_cases": [
       "taint_header:positive",
       "taint_header:negative",
       "taint_header_sanitized:positive",
-      "taint_header_sanitized:negative"
+      "taint_header_sanitized:negative",
+      "taint_header_encodeurl_not_sanitized:positive",
+      "taint_header_encodeurl_not_sanitized:negative"
     ]
   },
   {
@@ -1699,7 +1701,7 @@
     "title": "P.05 外部数据使用前必须进行合法性校验--未经验证的重定向和转发场景",
     "status": "partial",
     "detector": "javac-ast:taint_redirect",
-    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode, response.encodeRedirectURL) for this redirect sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
+    "reason": "Bounded intraprocedural propagation from common servlet/environment sources to this sink; recognizes direct-initializer URL-encoding sanitizers (URLEncoder.encode) for this redirect sink, but no call graph, path-sensitive tracking or framework type attribution. Aliases and reassignments are not tracked, so only a binding's direct sanitizer-call initializer is neutralized. Partial-argument mixes are reported when any tainted fragment remains unsanitized. Review candidate, not a proven vulnerability.",
     "test_cases": [
       "taint_redirect:positive",
       "taint_redirect:negative",

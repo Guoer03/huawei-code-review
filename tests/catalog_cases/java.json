@@ -858,6 +858,12 @@
     "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=URLEncoder.encode(value,\"UTF-8\"); response.setHeader(\"X-V\",s); } }"
   },
   {
+    "rule_id": "da7726f86db811eea68ffa163e0fa374",
+    "name": "taint_header_encodeurl_not_sanitized",
+    "bad": "class C { void f() { String value=request.getParameter(\"q\"); response.setHeader(\"X-V\",response.encodeURL(value)); } }",
+    "good": "class C { void f() { String value=request.getParameter(\"q\"); String s=URLEncoder.encode(value,\"UTF-8\"); response.setHeader(\"X-V\",s); } }"
+  },
+  {
     "rule_id": "da5ff9c56db811eea68ffa163e0fa374",
     "name": "taint_xml_concat_sanitized",
     "bad": "class C { void f() { String value=request.getParameter(\"q\"); parser.parse(\"<root>\"+value+\"</root>\"); } }",

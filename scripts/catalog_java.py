@@ -524,8 +524,10 @@ def _flow_checks(a, emit):
         if name in {'encodeForHTML','encodeForHTMLAttribute'}:return {'taint_xss'}
         if name in {'encodeForXML','encodeForXMLAttribute'}:return {'taint_xss','taint_xml_concat'}
         if name=='encode' and recv_short=='URLEncoder':return {'taint_redirect','taint_header'}
-        if name=='encodeRedirectURL':return {'taint_redirect'}
-        if name=='encodeURL':return {'taint_header'}
+        # NOTE: response.encodeURL / encodeRedirectURL are session-tracking URL
+        # rewriters (add ;jsessionid); they do NOT encode CRLF or validate
+        # redirect targets, so they are NOT security sanitizers and must not
+        # suppress taint_header / taint_redirect (would cause false negatives).
         return set()
     def expr_sanitizers(expr):
         expr=a.unwrap(expr)
@@ -641,7 +643,7 @@ def _flow_checks(a, emit):
                 if not any(word in methodtext for word in ('getInputStream','getErrorStream','inheritIO','redirectOutput','redirectError')):emit('process_streams',n,'等待子进程结束前未找到本方法读取或重定向输出流的路径。')
         if kind=='NEW_CLASS':
             typ=a.src(a.get(n,'type')).split('.')[-1];args=a.many(n,'args')
-            if typ in {'File','FileInputStream','FileOutputStream','RandomAccessFile'} and any(is_tainted(x,method) for x in args):emit('taint_path',n,'外部输入用于构造文件路径，需要规范化并验证允许范围。')
+            if typ in {'File','FileInputStream','FileOutputStream','RandomAccessFile'} and any(arg_unsanitized(x,method,'taint_path') for x in args):emit('taint_path',n,'外部输入用于构造文件路径，需要规范化并验证允许范围。')
             if typ=='PBEKeySpec' and len(args)>=3:
                 salt=args[1];decl=a.declaration(salt,n);init=a.get(decl,'initializer')
                 if salt.get('kind') in {'STRING_LITERAL','NEW_ARRAY'} or init.get('kind')=='NEW_ARRAY' or salt.get('kind')=='METHOD_INVOCATION' and a.call(salt)[1].get('kind')=='STRING_LITERAL':emit('fixed_salt',n,'密码派生使用了固定字节数组或字符串盐值。')

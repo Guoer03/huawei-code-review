@@ -53,7 +53,7 @@ UNKNOWN = object()
 
 
 def wildcard_fragments(node):
-    """Literal string fragments of a command assembled via +, f-string, or
+    """Literal string fragments of a command assembled via +, %, f-string, or
     str.format, without descending into arbitrary helper calls. A wildcard in
     any fragment will appear verbatim in the assembled shell command, so the
     glob will expand even when part of the command is non-literal."""
@@ -62,15 +62,29 @@ def wildcard_fragments(node):
     elif isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
         yield from wildcard_fragments(node.left)
         yield from wildcard_fragments(node.right)
+    elif isinstance(node, ast.BinOp) and isinstance(node.op, ast.Mod):
+        # "fmt %s" % args — the format string and any string-literal args.
+        yield from wildcard_fragments(node.left)
+        rhs = node.right
+        if isinstance(rhs, (ast.Tuple, ast.List)):
+            for elt in rhs.elts:
+                yield from wildcard_fragments(elt)
+        else:
+            yield from wildcard_fragments(rhs)
     elif isinstance(node, ast.JoinedStr):
         for value in node.values:
             if isinstance(value, ast.Constant) and isinstance(value.value, str):
                 yield value.value
+            elif isinstance(value, ast.FormattedValue):
+                # format spec like f"{x:*>10}" holds literal chars in format_spec.
+                yield from wildcard_fragments(value.format_spec)
     elif (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
           and node.func.attr == 'format'):
         yield from wildcard_fragments(node.func.value)
         for arg in node.args:
             yield from wildcard_fragments(arg)
+        for kw in node.keywords:
+            yield from wildcard_fragments(kw.value)
 
 
 def dotted(node):
@@ -641,6 +655,10 @@ class Analyzer:
             if (name.startswith('os.') or literal(kw.get('shell')) is True):
                 if isinstance(command,str):
                     if any(c in command for c in '*?['):self.hit('G.EDV.03',n)
+                elif isinstance(command,(list,tuple)):
+                    # List command with shell=True: the list is joined into one
+                    # shell string, so a wildcard in any literal element expands.
+                    if any(isinstance(e,str) and any(c in e for c in '*?[') for e in command):self.hit('G.EDV.03',n)
                 elif command is UNKNOWN:
                     if any(any(c in frag for c in '*?[') for frag in wildcard_fragments(args[0])):self.hit('G.EDV.03',n)
         if name in {'datetime.datetime.now','datetime.datetime.utcnow','datetime.now','datetime.utcnow'} and not args and 'tz' not in kw:self.hit('G.PSL.02',n)

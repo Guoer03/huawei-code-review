@@ -203,6 +203,27 @@
     "expect": true
   },
   {
+    "case_id": "G.EDV.03:assembled_format_kwarg:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls {x}\".format(x=\"*.txt\"), shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:assembled_mod:positive",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run(\"ls %s\" % \"*.txt\", shell=True)\n",
+    "expect": true
+  },
+  {
+    "case_id": "G.EDV.03:list_command_shell_fire",
+    "rule_id": "da6890366db811eea68ffa163e0fa374",
+    "key": "G.EDV.03",
+    "source": "import subprocess\nsubprocess.run([\"ls\", \"*.txt\"], shell=True)\n",
+    "expect": true
+  },
+  {
     "case_id": "G.EDV.03:helper_arg_not_overreached:negative",
     "rule_id": "da6890366db811eea68ffa163e0fa374",
     "key": "G.EDV.03",

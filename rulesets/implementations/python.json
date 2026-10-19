@@ -154,7 +154,7 @@
     "title": "G.EDV.03 避免在命令解析器中使用通配符",
     "status": "partial",
     "detector": "python-ast-tokenize:G.EDV.03",
-    "reason": "Checks literal wildcard shell command strings and commands assembled via +, f-string, or str.format where a literal fragment contains a glob character; non-literal variable content and helper-call results still require data-flow analysis.",
+    "reason": "Checks literal wildcard shell command strings and commands assembled via +, %, f-string (including format specs) or str.format (positional and keyword args), plus list commands with shell=True; non-literal variable content and helper-call results still require data-flow analysis.",
     "test_cases": [
       "G.EDV.03:positive",
       "G.EDV.03:negative",
@@ -163,7 +163,10 @@
       "G.EDV.03:assembled_fstring:positive",
       "G.EDV.03:assembled_format:positive",
       "G.EDV.03:assembled_format_nested:positive",
-      "G.EDV.03:helper_arg_not_overreached:negative"
+      "G.EDV.03:helper_arg_not_overreached:negative",
+      "G.EDV.03:assembled_format_kwarg:positive",
+      "G.EDV.03:assembled_mod:positive",
+      "G.EDV.03:list_command_shell_fire"
     ]
   },
   {
