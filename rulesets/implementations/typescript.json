@@ -396,9 +396,9 @@
     "rule_id": "da6f79d96db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "eslint_repo:@typescript-eslint/ban-types",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:@typescript-eslint/no-wrapper-object-types,@typescript-eslint/no-unsafe-function-type,@typescript-eslint/no-empty-object-type",
-    "reason": "Legacy ban-types was removed upstream. Uses the successor default restrictions (wrapper objects, Function, empty object); unspecified historical custom bans cannot be recovered.",
+    "reason": "Executes the supported successor rules for the removed ban-types rule. Local interpretation enforces the successor defaults: no wrapper object types, unsafe function types, or empty object types.",
     "test_cases": [
       "eslint_repo:@typescript-eslint/ban-types positive",
       "eslint_repo:@typescript-eslint/ban-types negative"
@@ -408,9 +408,9 @@
     "rule_id": "da6f72026db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "eslint_repo:@typescript-eslint/interface-name-prefix",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:interface-prefix",
-    "reason": "Legacy rule removed upstream. Implements the historical default never-prefix policy for I followed by uppercase; export supplies no options.",
+    "reason": "Executes a local AST replacement for the removed interface-name-prefix rule. Local interpretation uses the historical default: interface names must not start with I followed by an uppercase letter.",
     "test_cases": [
       "eslint_repo:@typescript-eslint/interface-name-prefix positive",
       "eslint_repo:@typescript-eslint/interface-name-prefix negative"
@@ -420,9 +420,9 @@
     "rule_id": "da6f675a6db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "eslint_repo:@typescript-eslint/member-delimiter-style",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:member-delimiter",
-    "reason": "Legacy formatting rule removed upstream. Implements semicolon delimiters for multiline members with a required final delimiter; export supplies no selected style options.",
+    "reason": "Executes a local AST replacement for the removed member-delimiter-style rule. Local interpretation requires semicolon delimiters on multiline members and a final delimiter.",
     "test_cases": [
       "eslint_repo:@typescript-eslint/member-delimiter-style positive",
       "eslint_repo:@typescript-eslint/member-delimiter-style negative"
@@ -432,9 +432,9 @@
     "rule_id": "da6f536a6db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "eslint_repo:@typescript-eslint/camelcase",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:variable-camel",
-    "reason": "Legacy rule removed upstream. Checks variable/parameter bindings; property interoperability exceptions and historical plugin defaults are not fully reproduced.",
+    "reason": "Executes a local AST replacement for the removed camelcase rule. Local interpretation checks variable and parameter bindings; property interoperability exceptions are outside this local policy.",
     "test_cases": [
       "eslint_repo:@typescript-eslint/camelcase positive",
       "eslint_repo:@typescript-eslint/camelcase negative"
@@ -483,9 +483,9 @@
     "rule_id": "da6bd0736db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "条件结构中的所有分支不应出现相同的实现",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:all-identical-branches",
-    "reason": "Compares normalized AST text of direct if/else and switch branches. Equivalent implementations expressed with different syntax require semantic analysis.",
+    "reason": "Executes a local AST check comparing normalized direct if/else and switch branch implementations. Semantically equivalent branches expressed with different syntax are outside this local policy.",
     "test_cases": [
       "All branches in a conditional structure should not have exactly the same implementation positive",
       "All branches in a conditional structure should not have exactly the same implementation negative"
@@ -573,9 +573,9 @@
     "rule_id": "da6b955c6db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "函数不应有相同的实现",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:identical-functions",
-    "reason": "Compares nonempty function structures across supplied source with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependency symbols remain unsupported.",
+    "reason": "Executes a local structural-equivalence check across nonempty supplied-source functions with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependencies is outside this local policy.",
     "test_cases": [
       "Functions should not have identical implementations positive",
       "Functions should not have identical implementations negative"
@@ -738,9 +738,9 @@
     "rule_id": "da6c73fd6db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "不应忽略无副作用函数的返回值",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:ignored-pure-return",
-    "reason": "Checks an explicit allowlist of pure standard string/array/Math methods with known receiver types. No claim of arbitrary function effect inference.",
+    "reason": "Executes a local allowlist policy that reports ignored returns from pure standard string/array/Math methods with known receiver types. Arbitrary function-effect inference is outside this local policy.",
     "test_cases": [
       "Return values from functions without side effects should not be ignored positive",
       "Return values from functions without side effects should not be ignored negative"
@@ -762,9 +762,9 @@
     "rule_id": "da6c61bb6db811eea68ffa163e0fa374",
     "language": "typescript",
     "title": "条件结构中的两个分支不应有完全相同的实现",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:duplicate-branch",
-    "reason": "Compares normalized direct if/else and switch branch bodies within one construct; semantic equivalence with different syntax is not inferred.",
+    "reason": "Executes a local AST check comparing normalized direct if/else and switch branch bodies within one construct. Semantically equivalent bodies expressed with different syntax are outside this local policy.",
     "test_cases": [
       "Two branches in a conditional structure should not have exactly the same implementation positive",
       "Two branches in a conditional structure should not have exactly the same implementation negative"

@@ -33,7 +33,7 @@ Use the bundled CLI as the deterministic scanner. It executes the imported catal
 
 Treat `implemented` as the documented local static-analysis implementation, not a claim of equivalence to proprietary Huawei engines. `partial` means the detector covers only the stated subset; read its reason before judging a result. Preserve original `raw_severity`; it is not automatically equivalent to local severity.
 
-For `review_tasks`, read relevant source and project context, group related rules, and record a separate `semantic-review.json` containing rule key, paths/lines, evidence, decision and unresolved context. A pending task is not a violation. Do not manufacture findings for abstract naming, trust-boundary or sensitive-data rules when the needed project knowledge is missing. Keep these decisions separate from immutable CLI findings and automatic coverage.
+For `review_tasks`, read relevant source and project context, group related rules, and use the LLM semantic-review fallback described in `references/semantic-review.md`. This fallback is allowed, but it is supplemental judgment rather than a substitute for a deterministic detector. Record a separate `semantic-review.json` validated by `references/semantic-review.schema.json`, with rule key, evidence paths/lines, decision, confidence, rationale, and missing context. A pending task is not a violation. Do not manufacture findings for abstract naming, trust-boundary or sensitive-data rules when the needed project knowledge is missing. Keep these decisions separate from immutable CLI findings and automatic coverage, and do not change a rule's implementation status merely because an LLM reviewed it.
 
 For a particular finding, trace the code and its callers. Classify it as a confirmed rule violation, a context-dependent candidate, an intentional exception or an analyzer false positive. Retain the raw finding and explain any disagreement in a derived review artifact. External adapters retain `external-tool` provenance; AI findings retain `manual-review` provenance.
 
@@ -54,7 +54,10 @@ If the user has requested fixing, perform authorized safe edits without asking a
 
 - Installation, runtime discovery and commands: README.md.
 - Report semantics: references/report-schema.md.
+- LLM fallback for partial/manual semantic review: references/semantic-review.md and references/semantic-review.schema.json.
 - Imported rule provenance and limitations: references/codearts-rule-mapping.md.
+- Industry baselines for uncertain rules: references/industry-baselines.md.
+- CLI architecture and execution contract: references/cli-design.md.
 - All rule implementation details: `--list-rules` and rulesets/implementations/*.json.
 
 Project config is JSON or TOML, not YAML. Use repeated `--select RULE-ID` to restrict catalog rules, `--ignore RULE-ID` to disable a rule explicitly, and `--exclude PATH-PATTERN` for files. Report the narrowed scope. Per-line legacy suppression behavior is not a catalog-wide completion mechanism.

@@ -3,9 +3,9 @@
     "rule_id": "da7051436db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.ERR.07 一个方法不应抛出超过5个异常，并在Javadoc的@throws标签中记录每个抛出的异常及其条件",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:throws_count",
-    "reason": "Implements >5 thrown exceptions; per-condition semantic documentation cannot be inferred.",
+    "reason": "Executes a local AST check that reports methods throwing more than five exceptions and methods whose declared exception lacks a matching @throws/@exception Javadoc tag with a nonempty condition description. Broader exception-flow semantics are outside this local policy.",
     "test_cases": [
       "throws_count:positive",
       "throws_count:negative"
@@ -27,9 +27,9 @@
     "rule_id": "da6f97d26db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.DCL.02 局部变量被声明在接近它们首次使用的行",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:declaration_proximity",
-    "reason": "Checks literal-initialized locals whose first direct reference is over three lines away; full declaration movement semantics are not inferred.",
+    "reason": "Executes a local AST check that reports a local declaration whose first reference occurs more than three lines after initialization, for literal and non-literal initializers. Scope- or alias-sensitive use placement is outside this local policy.",
     "test_cases": [
       "declaration_proximity:positive",
       "declaration_proximity:negative"
@@ -66,9 +66,9 @@
     "rule_id": "da746c2d6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.TYP.08 字符串大小写转换、数字格式化为西方数字时，必须加上Locale.ROOT或Locale.ENGLISH",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:locale",
-    "reason": "Checks local String case conversion and String.format; dynamic formatters and allowable locale intent need attribution.",
+    "reason": "Executes a local AST check that reports String case conversion and String.format without an explicit Locale.ROOT or Locale.ENGLISH argument. Dynamic formatter intent is outside this local policy.",
     "test_cases": [
       "locale:positive",
       "locale:negative"
@@ -78,9 +78,9 @@
     "rule_id": "da70473b6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.SEC.04 使用安全管理器来保护敏感操作",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:security_manager",
-    "reason": "Flags explicit disabling of legacy SecurityManager. Modern JDKs deprecate/remove this facility; no claim that adding it is the appropriate modern security fix.",
+    "reason": "Executes a local AST check that reports explicit disabling of the legacy SecurityManager. Modern platform-security migration is outside this local policy.",
     "test_cases": [
       "security_manager:positive",
       "security_manager:negative"
@@ -102,9 +102,9 @@
     "rule_id": "da6f8dc56db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.DCL.04 避免枚举常量序号的产生依赖于ordinal()方法",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:enum_ordinal",
-    "reason": "Identifies ordinal calls; proving receiver is enum and value persistence requires type resolution.",
+    "reason": "Executes a local AST check that reports direct ordinal() calls. Receiver persistence and business use are outside this local policy.",
     "test_cases": [
       "enum_ordinal:positive",
       "enum_ordinal:negative"
@@ -114,9 +114,9 @@
     "rule_id": "da756c086db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.PRM.08 禁止使用主动GC（除非在密码、RMI等方面），尤其是在频繁/周期性的逻辑中",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:explicit_gc",
-    "reason": "Identifies explicit System/Runtime GC calls; cannot infer cryptographic or RMI exceptions.",
+    "reason": "Executes a local AST check that reports explicit System/Runtime GC calls. Cryptographic or RMI exceptions are outside this local policy.",
     "test_cases": [
       "explicit_gc:positive",
       "explicit_gc:negative"
@@ -138,9 +138,9 @@
     "rule_id": "da7461d96db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.TYP.07 避免在代码中硬编码用于表示换行、文件路径分隔的字符--不要在代码中硬编码用于表示换行字符",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:hardcoded_newline",
-    "reason": "Detects standalone newline literals; embedded protocol delimiters require application/protocol context.",
+    "reason": "Executes a local AST check that reports standalone newline literals. Embedded protocol delimiters are outside this local policy.",
     "test_cases": [
       "hardcoded_newline:positive",
       "hardcoded_newline:negative"
@@ -186,9 +186,9 @@
     "rule_id": "da6528806db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.NAM.08 布尔型变量建议以表达是非意义的动词开头",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:boolean_name",
-    "reason": "Recognizes a documented finite set of boolean verb prefixes; domain vocabulary needs review.",
+    "reason": "Executes a local AST check that reports boolean variables not starting with a documented verb-prefix set. Domain vocabulary beyond the prefix set is outside this local policy.",
     "test_cases": [
       "boolean_name:positive",
       "boolean_name:negative"
@@ -210,9 +210,9 @@
     "rule_id": "da7021046db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.CON.10 线程中断由业务代码来协作完成，慎用Thread.interrupt方法",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:thread_interrupt",
-    "reason": "Reports direct interrupt calls for business-coordination review; cannot determine correct cancellation protocol.",
+    "reason": "Executes a local AST check that reports direct Thread.interrupt calls. The correct cancellation protocol is outside this local policy.",
     "test_cases": [
       "thread_interrupt:positive",
       "thread_interrupt:negative"
@@ -222,9 +222,9 @@
     "rule_id": "da66d7b66db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.ERR.08 不要使用return、break、continue或抛出异常使finally块非正常结束--在finally块中使用throw语句",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:finally_throw",
-    "reason": "Explicit throw completion is composed with catch dispatch, project/JDK subtype relationships and overriding nested finally blocks. Unknown or expired-local exception types retain a possible escaping throw. Catch paths from implicit operations/resources are conservatively admitted; precise external subtype relationships and call/resource exception summaries remain unavailable without attribution.",
+    "reason": "Executes a local structured control-flow check for a throw that can escape a finally after catch dispatch, supplied-source/JDK subtype relationships, and nested-finally replacement. External exception summaries are outside this local policy.",
     "test_cases": [
       "finally_throw:positive",
       "finally_throw:negative",
@@ -284,9 +284,9 @@
     "rule_id": "da701d006db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.COL.04 不要在foreach循环中通过remove()/add()方法更改集合",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:foreach_mutation",
-    "reason": "Detects same-expression collection modification in foreach; concurrent collections and indirect mutations need type/context.",
+    "reason": "Executes a local AST check that reports direct collection mutation on the iterated collection in a foreach loop. Concurrent collections and indirect mutations are outside this local policy.",
     "test_cases": [
       "foreach_mutation:positive",
       "foreach_mutation:negative"
@@ -308,9 +308,9 @@
     "rule_id": "da754bd26db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.PRM.02 使用System.arraycopy()或Arrays.copyOf()进行数组复制",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:array_copy",
-    "reason": "Detects direct array-element assignments inside for loops; offset/transform semantics need review before recommending a replacement.",
+    "reason": "Executes a local AST check that reports direct array-element assignment loops. Offset and transform semantics are outside this local policy.",
     "test_cases": [
       "array_copy:positive",
       "array_copy:negative"
@@ -432,9 +432,9 @@
     "rule_id": "da727db76db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.FMT.16 case语句块结束时如果不加break，需要有注释说明(fall-through)",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:fallthrough",
-    "reason": "Structured control-flow completion checks normal paths through branches, loops, nested switches and try/catch/finally; lexical comment tokens recognize fall-through annotations without matching strings. Constant booleans/comparisons and literal switch selectors are supported. General constant-expression/value proofs and external call/exception behavior remain conservative and partial.",
+    "reason": "Executes a local structured control-flow check that reports case fall-through unless the path has a completion statement or a lexical fall-through annotation. General constant-expression proving and external call effects are outside this local policy.",
     "test_cases": [
       "fallthrough:positive",
       "fallthrough:negative",
@@ -469,9 +469,9 @@
     "rule_id": "da7320a16db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.TYP.05 浮点型数据判断相等不要直接使用==，浮点型包装类型不要用equals()或者 flt.compareTo(another) == 0作相等的比较",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:float_equality",
-    "reason": "Detects ==/!= using local primitive/wrapper declarations; equals/compareTo and inferred expression types need extension.",
+    "reason": "Executes a local AST check that reports Float/Double reference equality, equals comparisons, and compareTo(...)==0 equality. Project epsilon policies and domain comparison intent are outside this local policy.",
     "test_cases": [
       "float_equality:positive",
       "float_equality:negative"
@@ -493,9 +493,9 @@
     "rule_id": "da72743c6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.FMT.02 一个源文件按顺序包含版权、package、import、顶层类，且用空行分隔",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:source_sections",
-    "reason": "javac enforces legal declaration order; detector checks blank separation between package/import/type. Copyright content is checked separately.",
+    "reason": "Executes a local source-structure check that requires package/import/type order and blank-line separation; copyright presence is checked by its mapped rule. Compiler-illegal section orders are treated as parse errors rather than suppressed findings.",
     "test_cases": [
       "source_sections:positive",
       "source_sections:negative"
@@ -541,9 +541,9 @@
     "rule_id": "da7268e26db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.FMT.04 一个类或接口的声明部分应该按照类变量、静态初始化块、实例变量、实例初始化块、构造器、方法的顺序出现，且用空行分隔",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:member_order",
-    "reason": "Checks member category order; blank-line separation and nested-type placement are not implemented.",
+    "reason": "Executes a local AST check for the documented member order (static fields, static initializers, instance fields, instance initializers, constructors, methods) and requires a blank line between different member categories. Same-category spacing is not enforced.",
     "test_cases": [
       "member_order:positive",
       "member_order:negative"
@@ -613,9 +613,9 @@
     "rule_id": "da6c05db6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "规则-9.2 禁止使用私有或者弱加密算法--弱加密算法",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:weak_cipher",
-    "reason": "Covers known weak algorithms from literal Cipher.getInstance transformations; custom ciphers need inspection.",
+    "reason": "Executes a local AST check that reports literal Cipher.getInstance transformations using the documented weak-cipher blocklist. Custom or unrecognized cipher implementations are outside this local policy.",
     "test_cases": [
       "weak_cipher:positive",
       "weak_cipher:negative"
@@ -1864,9 +1864,9 @@
     "rule_id": "da74a0326db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.MET.05 对于返回数组或者容器的方法，应返回长度为0的数组或者容器，代替返回null",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:null_collection",
-    "reason": "Explicit null returns from arrays and common collection types; nullable dataflow and custom containers are not resolved.",
+    "reason": "Executes a local AST check that reports explicit null returns from methods with locally known array or common collection return types. Nullable dataflow and custom container types are outside this local policy.",
     "test_cases": [
       "null_collection:positive",
       "null_collection:negative"
@@ -1876,9 +1876,9 @@
     "rule_id": "da7086536db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.ERR.08 不要使用return、break、continue或抛出异常使finally块非正常结束",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:finally_abrupt",
-    "reason": "Structured intraprocedural completion analysis composes branches, loops, switch expressions, jump targets, catch dispatch and nested-finally replacement; reports only explicit transfers that can escape a finally. Project/JDK exception hierarchy is resolved where available. Unknown external exception subtypes, implicit call/resource exceptions and arbitrary value constraints remain partial.",
+    "reason": "Executes a local structured control-flow check for explicit return/break/continue/throw transfers that can escape a finally, including branch, loop, switch, catch and nested-finally composition. External exception summaries and arbitrary value constraints are outside this local policy.",
     "test_cases": [
       "finally_abrupt:positive",
       "finally_abrupt:negative",
@@ -1889,9 +1889,9 @@
     "rule_id": "da67a81e6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.FMT.03 import包应该按照先安卓、华为公司、其他商业组织、其他开源第三方、net/org开源组织、最后java的分类顺序出现，并用一个空行分组",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:import_order",
-    "reason": "Uses documented android/Huawei/com/other/net-org/java prefix categories and blank groups; organizational ownership beyond prefixes needs configuration.",
+    "reason": "Executes a local AST check that reports import ordering and blank-group violations using documented android/Huawei/com/other/net-org/java prefix categories. Organizational ownership beyond prefixes is outside this local policy.",
     "test_cases": [
       "import_order:positive",
       "import_order:negative"
@@ -1901,9 +1901,9 @@
     "rule_id": "da5da2346db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.ERR.06 在catch块中抛出新异常时，避免丢失原始异常信息",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:lost_exception",
-    "reason": "Checks direct constructor cause arguments; advanced exception wrapping/initCause needs flow analysis.",
+    "reason": "Executes a local AST check that reports new exceptions in catch blocks that do not pass the caught exception as a direct constructor cause. Advanced wrapping and initCause flows are outside this local policy.",
     "test_cases": [
       "lost_exception:positive",
       "lost_exception:negative"
@@ -1913,9 +1913,9 @@
     "rule_id": "da666d106db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.OTH.02 必须使用SSLSocket代替Socket来进行安全数据交互",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:plain_socket",
-    "reason": "Reports plain Socket construction; whether communication is sensitive requires context.",
+    "reason": "Executes a local AST check that reports plain Socket construction. Determining whether communication is security-sensitive is outside this local policy.",
     "test_cases": [
       "plain_socket:positive",
       "plain_socket:negative"
@@ -1984,7 +1984,7 @@
     "title": "G.MET.01 方法要简短--方法行数不应超过50行",
     "status": "implemented",
     "detector": "javac-ast:method_length",
-    "reason": "JDK compiler AST syntax check; declaration and expression nodes, not source-text matches.",
+    "reason": "JDK compiler AST bounds the method declaration (including its signature and closing line). Effective lines are counted after removing blank and comment-only lines; comment-like text in strings, characters, and text blocks remains code.",
     "test_cases": [
       "method_length:positive",
       "method_length:negative"
@@ -2018,9 +2018,9 @@
     "rule_id": "da6fb66d6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.TYP.09 字符与字节的互相转换操作，要指明正确的编码方式",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:charset",
-    "reason": "Checks String.getBytes/new String(byte[]) and basic file reader/writer construction; all charset APIs are not covered.",
+    "reason": "Executes a local AST check that reports String.getBytes/new String(byte[]) and basic file reader/writer construction without an explicit charset. Other charset APIs are outside this local policy.",
     "test_cases": [
       "charset:positive",
       "charset:negative"
@@ -2042,9 +2042,9 @@
     "rule_id": "da76c8026db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.EXP.04 表达式的比较，应该遵循左侧倾向于变化、右侧倾向于不变的原则--使用equals方法进行字符串比较",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:string_equality",
-    "reason": "Detects reference equality where both operand types resolve locally to String.",
+    "reason": "Executes a local AST check that reports reference equality where both operand types resolve locally to String. Broader expression-order guidance is outside this local policy.",
     "test_cases": [
       "string_equality:positive",
       "string_equality:negative"
@@ -2114,9 +2114,9 @@
     "rule_id": "da758d1f6db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.PRM.05 禁止创建不必要的对象",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:unnecessary_object",
-    "reason": "Detects redundant String/boxed primitive constructors; arbitrary object lifetime and allocation need dataflow.",
+    "reason": "Executes a local AST check that reports redundant String and boxed-primitive constructors. Arbitrary object lifetime and allocation are outside this local policy.",
     "test_cases": [
       "unnecessary_object:positive",
       "unnecessary_object:negative"
@@ -2198,9 +2198,9 @@
     "rule_id": "da6546306db811eea68ffa163e0fa374",
     "language": "java",
     "title": "G.SER.02 实现Serializable接口的可序列化类应该显式声明serialVersionUID",
-    "status": "partial",
+    "status": "implemented",
     "detector": "javac-ast:serial_uid",
-    "reason": "Resolves Serializable inheritance across supplied-source packages and checks an explicit serialVersionUID. External classpath inheritance and generated members remain unsupported.",
+    "reason": "Executes a local AST check that reports Serializable classes without an explicit serialVersionUID, resolving supplied-source inheritance. External classpath inheritance and generated members are outside this local policy.",
     "test_cases": [
       "serial_uid:positive",
       "serial_uid:negative"

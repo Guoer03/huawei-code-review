@@ -14,7 +14,7 @@ Use Node.js 20.19+ (or a newer supported Node release). `HCR_NODE_MODULES` may p
 
 Exported numeric `severity` is retained as `raw_severity`; its meaning is not guessed. The explicit local policy is ESLint `error` and AST `warning`, recorded as `severity_policy`. Partial checks have low confidence. Security checks based on suspicious APIs or credential names are candidates for review, not proofs of exploitable defects.
 
-The export omits numeric/style options for several prose requirements. The implementation states its chosen interpretation (for example, 120-column lines and 50 nonblank function lines) and marks that mapping partial. Removed legacy TypeScript-ESLint rules are mapped to supported replacements or explicit compatibility AST checks, with differences documented. TypeScript checks use static types; unknown values, aliasing and interprocedural dataflow remain documented limits.
+The export omits numeric/style options for several prose requirements. The implementation states its chosen interpretation (for example, 120-column lines and at most 50 effective function lines including the signature and closing line, excluding blank and comment-only lines) and marks that mapping partial. Removed legacy TypeScript-ESLint rules are mapped to supported replacements or explicit compatibility AST checks, with differences documented. TypeScript checks use static types; unknown values, aliasing and interprocedural dataflow remain documented limits.
 
 Regenerate mappings and fixture data:
 

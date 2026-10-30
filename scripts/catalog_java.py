@@ -144,6 +144,76 @@ class Ast:
 
 
 
+def _effective_java_lines(source: str) -> int:
+    """Count nonblank source lines that contain code outside Java comments.
+
+    The scanner is intentionally lexical, but it distinguishes comments from
+    comment-like text in strings, characters, and Java text blocks.  A line with
+    code plus a trailing comment is still an effective line; a comment-only or
+    blank line is not counted.
+    """
+    state = 'code'
+    effective_lines = 0
+    line_has_code = False
+    i = 0
+    while i < len(source):
+        char = source[i]
+        next_char = source[i + 1] if i + 1 < len(source) else ''
+        if char == '\n':
+            if line_has_code:
+                effective_lines += 1
+            if state == 'line_comment':
+                state = 'code'
+            line_has_code = False
+            i += 1
+            continue
+        if state == 'code':
+            if char == '/' and next_char == '/':
+                state = 'line_comment'
+                i += 2
+                continue
+            if char == '/' and next_char == '*':
+                state = 'block_comment'
+                i += 2
+                continue
+            if source.startswith('"""', i):
+                state = 'text_block'
+                i += 3
+                continue
+            if char == '"':
+                state = 'string'
+                i += 1
+                continue
+            if char == "'":
+                state = 'char'
+                i += 1
+                continue
+            if not char.isspace():
+                line_has_code = True
+        elif state == 'block_comment':
+            if char == '*' and next_char == '/':
+                state = 'code'
+                i += 2
+                continue
+        elif state in {'string', 'char', 'text_block'}:
+            if char == '\\':
+                i += 2
+                continue
+            if state == 'text_block':
+                if source.startswith('"""', i):
+                    state = 'code'
+                    i += 3
+                    continue
+            elif (state == 'string' and char == '"') or (state == 'char' and char == "'"):
+                state = 'code'
+            if not char.isspace():
+                line_has_code = True
+        i += 1
+    if line_has_code:
+        effective_lines += 1
+    return effective_lines
+
+
 def _checks(ast, emit, limits=None):
     a = ast
     a.control_flow=ControlFlow(a)
@@ -201,7 +271,16 @@ def _checks(ast, emit, limits=None):
             params=a.many(n,'params'); body=a.get(n,'body'); throws=a.many(n,'throws')
             if len(params)>limits['parameters']:emit('parameter_count',n,f"方法有{len(params)}个参数，超过{limits['parameters']}个。")
             if len(throws)>5:emit('throws_count',n,f'方法声明抛出{len(throws)}种异常，超过5种。')
-            if body and a.src(body).count('\n')+1>limits['method_length']:emit('method_length',n,f"方法体超过{limits['method_length']}行。")
+            doc=n.get('doc') or ''
+            for thrown in throws:
+                exception=a.src(thrown).split('.')[-1]
+                match=re.search(r'@(?:throws|exception)\s+'+re.escape(exception)+r'\b([^\n]*)',doc)
+                if not match or not match.group(1).strip():
+                    emit('throws_count',thrown,f'异常{exception}缺少带触发条件说明的@throws标签。')
+                    break
+            effective_lines=_effective_java_lines(a.src(n))
+            if effective_lines>limits['method_length']:
+                emit('method_length',n,f"方法有效行数（含签名、结束行，不含空行和注释）为{effective_lines}行，超过{limits['method_length']}行。")
             if name=='finalize' and not params:emit('finalizer',n,'不要使用Finalizer机制。')
             if any('...' in a.src(p) for p in params):emit('varargs',n,'可变参数方法需要评估调用成本和API约束。')
             if body:
@@ -211,7 +290,6 @@ def _checks(ast, emit, limits=None):
                         emit('temporary_return',first,'局部变量声明后立即返回，可直接返回初始化表达式。')
                 nested=max([sum(1 for q in a.ancestors(x) if q['kind'] in {'IF','FOR_LOOP','ENHANCED_FOR_LOOP','WHILE_LOOP','DO_WHILE_LOOP','SWITCH','TRY','SYNCHRONIZED'} and q['start']>=body['start'])+1 for x in a.under(body) if x['kind'] in {'IF','FOR_LOOP','ENHANCED_FOR_LOOP','WHILE_LOOP','DO_WHILE_LOOP','SWITCH','TRY','SYNCHRONIZED'}] or [0])
                 if nested>limits['nesting']:emit('nesting',n,f"控制结构嵌套深度为{nested}，超过{limits['nesting']}层。")
-            doc=n.get('doc')
             if doc is not None:
                 if not re.sub(r'@\w+[^\n]*','',doc).strip():emit('empty_javadoc',n,'Javadoc缺少功能说明。')
                 tags=re.findall(r'@(param|return|throws|exception)\b',doc); order={'param':0,'return':1,'throws':2,'exception':2}
@@ -304,6 +382,14 @@ def _checks(ast, emit, limits=None):
             left,right=a.get(n,'left'),a.get(n,'right');lt,rt=a.type(left,n),a.type(right,n)
             if any(a.src(x) in {'Double.NaN','Float.NaN','java.lang.Double.NaN','java.lang.Float.NaN'} for x in (left,right)):emit('nan_compare',n,'NaN不能通过比较运算判断，使用isNaN()。')
             if kind in {'EQUAL_TO','NOT_EQUAL_TO'} and (lt in {'float','double','Float','Double'} or rt in {'float','double','Float','Double'}):emit('float_equality',n,'浮点数据不应直接判断相等。')
+            if kind=='EQUAL_TO':
+                for operand in (a.get(n,'left'),a.get(n,'right')):
+                    if operand.get('kind')!='METHOD_INVOCATION':
+                        continue
+                    name,recv,args=a.call(operand)
+                    if name=='compareTo' and a.type(recv,n) in {'float','double','Float','Double'}:
+                        emit('float_equality',n,'浮点包装类型不应使用compareTo(...)==0判断相等。')
+                        break
             if kind in {'EQUAL_TO','NOT_EQUAL_TO'} and lt=='String' and rt=='String':emit('string_equality',n,'字符串内容应使用equals比较。')
             if left.get('kind','').endswith('_LITERAL') and not right.get('kind','').endswith('_LITERAL'):emit('comparison_order',n,'比较表达式建议变量在左、常量在右。')
         if kind in {'DIVIDE','REMAINDER'} and a.get(n,'right').get('value')==0:emit('zero_divisor',n,'除数为字面量0。')
@@ -428,8 +514,11 @@ def _more_checks(a, emit):
                 elif x['kind']=='METHOD':rank=4 if x.get('name')=='<init>' else 5
                 else:continue
                 ranked.append((rank,x))
-            for (before,_),(after,node) in zip(ranked,ranked[1:]):
-                if before>after:emit('member_order',node,'成员顺序应为静态字段、静态初始化、实例字段、实例初始化、构造器、方法。')
+            for (before_rank,before),(after_rank,node) in zip(ranked,ranked[1:]):
+                if before_rank>after_rank:
+                    emit('member_order',node,'成员顺序应为静态字段、静态初始化、实例字段、实例初始化、构造器、方法。')
+                elif before_rank!=after_rank and '\n\n' not in a.text[before.get('end',0):node.get('start',0)]:
+                    emit('member_order',node,'不同类别的成员之间应使用空行分隔。')
             symbol=a.project.symbol(a,n)
             for method in a.many(n,'members'):
                 if symbol and method['kind']=='METHOD' and (a.project.overrides(symbol,method) or a.project.object_override(symbol,method)) and not any(t.get('name','').split('.')[-1]=='Override' for t in a.many(method,'annotations')):
@@ -439,8 +528,9 @@ def _more_checks(a, emit):
                 fields=[x for x in a.many(a.clazz(n),'members') if x['kind']=='VARIABLE' and x.get('name')==n.get('name')]
                 if fields:emit('shadowing',n,'局部变量或参数遮蔽了同名字段。')
             parent=a.parent(n)
-            if parent.get('kind')=='BLOCK' and a.get(n,'initializer').get('kind') in {'INT_LITERAL','STRING_LITERAL','BOOLEAN_LITERAL','NULL_LITERAL'}:
-                refs=[q for q in a.under(parent) if q['kind']=='IDENTIFIER' and q.get('name')==n.get('name') and q['start']>n['end']]
+            if parent.get('kind')=='BLOCK':
+                method=a.method(n)
+                refs=[q for q in a.under(method) if q['kind']=='IDENTIFIER' and q.get('name')==n.get('name') and q['start']>n['end']]
                 if refs and min(q['line'] for q in refs)-n['line']>3:emit('declaration_proximity',n,'局部变量声明与首次使用相隔超过3行。')
         if kind in {'PLUS','MINUS','MULTIPLY','DIVIDE','REMAINDER','EQUAL_TO','NOT_EQUAL_TO','LESS_THAN','LESS_THAN_EQUAL','GREATER_THAN','GREATER_THAN_EQUAL','CONDITIONAL_AND','CONDITIONAL_OR','AND','OR','XOR','LEFT_SHIFT','RIGHT_SHIFT','UNSIGNED_RIGHT_SHIFT'}:
             left,right=a.get(n,'left'),a.get(n,'right')
@@ -475,6 +565,7 @@ def _more_checks(a, emit):
         if kind=='METHOD_INVOCATION':
             name,recv,args=a.call(n);receiver=a.src(recv);method=a.method(n)
             if name in {'debug','info','warn','error','trace','fatal','log'} and ('log' in receiver.lower() or a.type(recv,n).endswith('Logger')) and any(q.get('kind')=='STRING_LITERAL' and re.search(r'[\u4e00-\u9fff]',str(q.get('value',''))) for q in args):emit('chinese_log',n,'日志消息包含中文；需要核对产品销售区域。')
+            if name=='equals' and a.type(recv,n) in {'Float','Double'}:emit('float_equality',n,'浮点包装类型不应使用equals判断相等。')
             if name=='set' and a.type(recv,n).startswith('ThreadLocal'):
                 if not any(q['kind']=='TRY' and receiver+'.remove(' in a.src(a.get(q,'finally')).replace(' ','') for q in a.under(method)):emit('threadlocal_cleanup',n,'ThreadLocal.set后未找到本方法finally中的remove清理。')
             if name=='createTempFile' and receiver.split('.')[-1] in {'Files','File'}:
