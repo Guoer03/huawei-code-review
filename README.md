@@ -80,9 +80,9 @@ huawei-code-review src/ --rule-option da6a6d696db811eea68ffa163e0fa374:max-line-
 
 Repeat `--rule-option RULE-ID:OPTION=VALUE` to override project settings. JSON and Excel preserve `exported_options` separately from effective `options`; changing a threshold never counts as a verified repair.
 
-## AI repair
+## AI semantic review and repair
 
-The accompanying SKILL.md drives scan, source review, authorized repair, project tests and identical-scope rescan. `review_tasks` represent unresolved semantic work, not automatic findings. Before/after comparison requires the same language source scope, rule options and analyzer fingerprint. Removed rules or companion source files, changed thresholds, and changed analyzer code cannot establish a verified repair:
+The accompanying SKILL.md drives scan, source review, authorized repair, project tests and identical-scope rescan. `review_tasks` represent unresolved semantic work, not automatic findings. For those tasks the Skill can use an LLM as a bounded fallback, recording decisions in a separate `semantic-review.json`; see `references/semantic-review.md` and `references/semantic-review.schema.json`. Industry baselines for uncertain rules are recorded in [references/industry-baselines.md](references/industry-baselines.md); they are reference material, not an automatic rule upgrade. The CLI architecture and execution contract are documented in [references/cli-design.md](references/cli-design.md). This supplemental review never changes CLI implementation/coverage status by itself. Before/after comparison requires the same language source scope, rule options and analyzer fingerprint. Removed rules or companion source files, changed thresholds, and changed analyzer code cannot establish a verified repair:
 
 ```sh
 huawei-code-review-compare before.json after.json --output delta.json

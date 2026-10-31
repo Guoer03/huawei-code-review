@@ -129,7 +129,7 @@
     "rule_id": "da7051436db811eea68ffa163e0fa374",
     "name": "throws_count",
     "bad": "class C { void f() throws A,B,C,D,E,F {} }",
-    "good": "class C { void f() throws A,B,C,D,E {} }"
+    "good": "class C { /** Runs.\n * @throws A when invalid\n * @throws B when unavailable\n * @throws C when denied\n * @throws D when timed out\n * @throws E when cancelled\n */\nvoid f() throws A,B,C,D,E {} }"
   },
   {
     "rule_id": "da748cd96db811eea68ffa163e0fa374",
@@ -639,7 +639,7 @@
     "rule_id": "da7268e26db811eea68ffa163e0fa374",
     "name": "member_order",
     "bad": "class C { void f() {} int value; }",
-    "good": "class C { int value; void f() {} }"
+    "good": "class C { int value;\n\nvoid f() {} }"
   },
   {
     "rule_id": "da653cb46db811eea68ffa163e0fa374",

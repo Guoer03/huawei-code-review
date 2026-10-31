@@ -539,6 +539,16 @@ class Analyzer:
         if isinstance(n,ast.Raise):
             if getattr(self,'project',None):self.project.raised_exception(self,n)
             if isinstance(n.exc,(ast.Constant,ast.Tuple,ast.List,ast.Dict,ast.Set)):self.hit('G.ERR.06',n)
+            if n.exc is not None and not isinstance(n.exc,ast.Call):
+                expression=n.exc
+                symbol=getattr(self,'project',None).resolve(self,expression) if getattr(self,'project',None) else None
+                if symbol is not None:
+                    raises_class=symbol.kind in {'builtin','class','stdlib'} and self.project.subclass(symbol,self.project.builtin('BaseException')) is not False
+                else:
+                    raw=dotted(expression)
+                    candidate=getattr(builtins,raw,None)
+                    raises_class=isinstance(candidate,type) and issubclass(candidate,BaseException)
+                if raises_class:self.hit('G.ERR.06',n,'Raise an exception instance, not the exception class.')
             if n.exc is not None and self.sensitive(n.exc):self.hit('G.ERR.08',n)
             excname=self.name(n.exc.func if isinstance(n.exc,ast.Call) else n.exc)
             if excname in {'Exception','BaseException'}:self.hit('G.ERR.05',n)

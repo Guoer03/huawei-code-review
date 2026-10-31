@@ -16,7 +16,7 @@ source offsets are translated to Python Unicode offsets before source slicing.
 ## Coverage and interpretation
 
 The 181 original Java rules have an explicit entry in
-`rulesets/implementations/java.json`: 63 implemented, 117 partial, and one manual
+`rulesets/implementations/java.json`: 85 implemented, 95 partial, and one manual
 rule. `implemented` means the stated detector has direct syntax/structure
 semantics and positive/negative cases; it is not a formal guarantee about all
 possible Java programs. The UTF-8 and enum-separator rules are input/grammar
@@ -41,10 +41,13 @@ is made. Findings retain the original exported rule ID and user-exported source.
 No automatic code rewriting is provided by these Java detectors.
 
 Exported `maxParameterNum`, `maxMethodLength`, and `maxMethodNestedDepth` options
-are honored. Security thresholds absent from the export are identified as local
-policies in the corresponding partial manifest entries (for example RSA 2048
-and PBKDF iteration floor 10000). They must not be described as Huawei's exact
-runtime security policy.
+are honored. `maxMethodLength` counts effective declaration lines: the signature,
+body, and closing line are included; blank and comment-only lines are excluded.
+Comment-like text inside strings, characters, and text blocks is still treated as
+code. Security thresholds absent from the export are identified as local policies
+in the corresponding partial manifest entries (for example RSA 2048 and PBKDF
+iteration floor 10000). They must not be described as Huawei's exact runtime
+security policy.
 
 ## Verification
 
@@ -64,11 +67,12 @@ expression evaluation. Fall-through checks ask whether the case can complete
 normally and read real comment tokens. Default detection uses the JDK's
 DEFAULT_CASE_LABEL identity, including Java 21 pattern and null/default labels.
 
-The general finally and fall-through rules remain partial: arbitrary constant
-arithmetic, external method completion, unknown external exception hierarchies,
-and implicit resource-close exceptions are not fully resolved. The throw-specific
-finally rule was corrected from implemented to partial for these boundaries.
-No silent upgrade to complete coverage is made by adding more examples.
+The general finally and throw-specific finally rules, plus fall-through, are
+implemented as structured local control-flow policies. Their boundaries remain
+documented: arbitrary constant arithmetic, external method completion, unknown
+external exception summaries, and implicit resource-close exceptions are not
+modeled. No silent upgrade to proprietary-engine equivalence is made by adding
+more examples.
 
 Run `python3.11 -m unittest discover -s tests -p '*java*.py'` for all Java tests.
 `test_java_control_flow.py` adds 58 source examples; 56 also pass isolated javac

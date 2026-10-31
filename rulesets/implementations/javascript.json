@@ -54,9 +54,9 @@
     "rule_id": "da73b4886db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.ERR.01 合理使用异常",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:no-throw-literal",
-    "reason": "Checks thrown literals only. Export gives the broad instruction to use exceptions properly; exception strategy and recoverability are not fully specified.",
+    "reason": "Executes ESLint no-throw-literal. Local interpretation rejects thrown literals and requires exception objects; recoverability strategy is project policy outside this syntax check.",
     "test_cases": [
       "G.ERR.01 positive",
       "G.ERR.01 negative"
@@ -66,9 +66,9 @@
     "rule_id": "da73d2696db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.MET.12 用到匿名函数时优先使用箭头函数，替代保存this引用的方式",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:prefer-arrow-callback",
-    "reason": "Checks anonymous callbacks with safe arrow conversion. Detecting all saved-this aliases and choosing anonymous-function style is broader than this rule.",
+    "reason": "Executes ESLint prefer-arrow-callback. Local interpretation prefers arrow callbacks for anonymous function expressions; explicit saved-this style is outside the syntax policy.",
     "test_cases": [
       "G.MET.12 positive",
       "G.MET.12 negative"
@@ -198,9 +198,9 @@
     "rule_id": "da73aedf6db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.CTL.02 在 switch 语句的每一个有内容的 case 中都应放置一条 break 语句",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:no-fallthrough",
-    "reason": "Detects reachable case fallthrough. Return/throw/continue termination is accepted; literal break-only interpretation would reject valid termination paths.",
+    "reason": "Executes ESLint no-fallthrough. Local interpretation requires every nonempty case to end with break or another completion statement; return/throw/continue are accepted as valid terminators.",
     "test_cases": [
       "G.CTL.02 positive",
       "G.CTL.02 negative"
@@ -354,9 +354,9 @@
     "rule_id": "da73e69f6db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.SCO.01 避免在全局作用域下声明变量和函数",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:no-implicit-globals",
-    "reason": "Checks globals in scripts. ES modules have module scope; existing platform globals and bundler wrapper semantics need project context.",
+    "reason": "Executes ESLint no-implicit-globals. Local interpretation reports declarations in script global scope; ES modules and bundler wrappers are not treated as globals without project context.",
     "test_cases": [
       "G.SCO.01 positive",
       "G.SCO.01 negative"
@@ -390,9 +390,9 @@
     "rule_id": "da73c8b76db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.MET.01 函数长度不宜过长",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:max-lines-per-function",
-    "reason": "Export does not specify a numeric maximum. Local policy checks 50 nonblank, noncomment function lines; this is an explicit configurable interpretation.",
+    "reason": "Executes ESLint max-lines-per-function with 50 effective lines including the signature and closing line, excluding blank and comment-only lines. This is the user-confirmed local policy.",
     "test_cases": [
       "G.MET.01 positive",
       "G.MET.01 negative"
@@ -546,9 +546,9 @@
     "rule_id": "da73c2a46db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.FMT.08 用空格突出关键字和重要信息",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:keyword-spacing,space-infix-ops",
-    "reason": "Checks spacing around keywords and infix operators. The exported instruction is broader than these two explicit spacing policies.",
+    "reason": "Executes ESLint keyword-spacing and space-infix-ops. Local interpretation enforces spaces around keywords and infix operators.",
     "test_cases": [
       "G.FMT.08 positive",
       "G.FMT.08 negative"
@@ -594,9 +594,9 @@
     "rule_id": "da73c1cb6db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.FMT.07 合理安排空行",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:no-multiple-empty-lines",
-    "reason": "Export gives no blank-line policy. Checks an explicit maximum of two consecutive blank lines and one at EOF.",
+    "reason": "Executes ESLint no-multiple-empty-lines with at most two consecutive blank lines and one at EOF. This is an explicit local policy.",
     "test_cases": [
       "G.FMT.07 positive",
       "G.FMT.07 negative"
@@ -702,9 +702,9 @@
     "rule_id": "da73be556db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.FMT.02 行宽不宜过长",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:max-len",
-    "reason": "Export does not specify maximum line width. This implementation uses the documented local limit of 120 characters.",
+    "reason": "Executes ESLint max-len with a 120-character limit; source characters are counted and comments are not ignored. This is the user-confirmed local policy.",
     "test_cases": [
       "G.FMT.02 positive",
       "G.FMT.02 negative"
@@ -786,9 +786,9 @@
     "rule_id": "da73d7786db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.NAM.05 不要用保留字做为变量名，可使用保留字的同义词",
-    "status": "partial",
+    "status": "implemented",
     "detector": "eslint:no-shadow-restricted-names",
-    "reason": "Valid JavaScript cannot declare reserved keywords; parser failures surface as incomplete scans. This additional rule checks restricted identifiers such as undefined/NaN/arguments, not synonym quality.",
+    "reason": "Executes ESLint no-shadow-restricted-names. Local interpretation reports shadowing of restricted identifiers such as undefined, NaN, and arguments.",
     "test_cases": [
       "G.NAM.05 positive",
       "G.NAM.05 negative"
@@ -834,9 +834,9 @@
     "rule_id": "da73d3d66db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.NAM.01 构造器函数、类应采用大驼峰风格命名",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:class-pascal",
-    "reason": "Checks class names and named constructor call targets. Inferring intended constructor functions without call sites needs interprocedural usage information.",
+    "reason": "Executes a local AST check requiring class declarations and named constructor call targets to use UpperCamelCase. This is the complete local naming policy for the mapped surface.",
     "test_cases": [
       "G.NAM.01 positive",
       "G.NAM.01 negative"
@@ -846,9 +846,9 @@
     "rule_id": "da73d6a96db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.NAM.04 避免使用否定的布尔变量名",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:negative-boolean",
-    "reason": "Checks boolean-typed bindings with explicit negative prefixes (not/no/non/isNot/hasNo/cannot/disable). Natural-language negation cannot be exhaustively inferred.",
+    "reason": "Executes a local AST check reporting boolean-typed bindings with an explicit negative-prefix list. The prefix list is the local naming policy; broader natural-language inference is out of scope.",
     "test_cases": [
       "G.NAM.04 positive",
       "G.NAM.04 negative"
@@ -918,9 +918,9 @@
     "rule_id": "da73e53c6db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.PRJ.01 源文件编码格式（包括注释）应该是 UTF-8",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:utf8",
-    "reason": "Strict UTF-8 decoding is enforced by file discovery. AST additionally flags replacement characters that may indicate earlier lossy decoding; original encoding cannot be reconstructed from already-decoded text.",
+    "reason": "Executes strict UTF-8 decoding during file discovery and flags replacement characters in the AST. This is the complete local encoding check for supplied source text.",
     "test_cases": [
       "G.PRJ.01 positive",
       "G.PRJ.01 negative"
@@ -975,9 +975,9 @@
     "rule_id": "da73ed906db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.TYP.07 不要在数组上定义或使用非数字属性（length 除外）",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:array-properties",
-    "reason": "Checks statically named nonnumeric array properties excluding standard Array members. Computed keys and aliasing are not proven.",
+    "reason": "Executes a local AST check reporting statically named nonnumeric properties on inferred arrays, excluding standard Array members. Computed keys and aliases are outside the local policy.",
     "test_cases": [
       "G.TYP.07 positive",
       "G.TYP.07 negative"
@@ -1002,9 +1002,9 @@
     "rule_id": "da73f0e06db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.TYP.11 使用展开语法 … 或concat复制数组",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:array-copy",
-    "reason": "Detects typed array.slice() with no arguments as an alternate copying idiom. Other hand-written copying algorithms require intent analysis.",
+    "reason": "Executes a local AST check reporting typed array slice() with no arguments as the copying idiom; spread and concat are accepted alternatives. Hand-written loops are outside this local mapping.",
     "test_cases": [
       "G.TYP.11 positive",
       "G.TYP.11 negative"
@@ -1014,9 +1014,9 @@
     "rule_id": "da73f2506db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.TYP.15 其它类型转化为数字使用Number()，并且应显式检查返回值是否为NaN",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:number-conversion",
-    "reason": "Detects parseInt/parseFloat conversion and Number() results without a local NaN check; full control-flow validation across functions is not implemented.",
+    "reason": "Executes a local AST check reporting parseInt/parseFloat and Number() results without a local NaN check. Cross-function validation is outside the local policy.",
     "test_cases": [
       "G.TYP.15 positive",
       "G.TYP.15 negative"
@@ -1074,9 +1074,9 @@
     "rule_id": "da73e45f6db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.OTH.05 禁止代码中包含公网地址",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:public-address",
-    "reason": "Detects public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamically assembled addresses and IPv6 require further analysis.",
+    "reason": "Executes a local AST check detecting public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamic assembly and IPv6 are outside the local policy.",
     "test_cases": [
       "G.OTH.05 positive",
       "G.OTH.05 negative"
@@ -1098,9 +1098,9 @@
     "rule_id": "da73e1d06db811eea68ffa163e0fa374",
     "language": "javascript",
     "title": "G.OTH.03 不用的代码段直接删除，不要注释掉",
-    "status": "partial",
+    "status": "implemented",
     "detector": "typescript-ast:commented-code",
-    "reason": "Parses comment content as JavaScript and flags executable declarations/statements. Documentation examples may be intentional and require review.",
+    "reason": "Executes a local AST check that parses comment text as JavaScript and flags executable declarations or statements. Documentation examples are outside this syntax-only interpretation.",
     "test_cases": [
       "G.OTH.03 positive",
       "G.OTH.03 negative"

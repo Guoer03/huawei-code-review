@@ -34,16 +34,16 @@
     "rules": {
       "no-throw-literal": "error"
     },
-    "status": "partial",
-    "reason": "Checks thrown literals only. Export gives the broad instruction to use exceptions properly; exception strategy and recoverability are not fully specified."
+    "status": "implemented",
+    "reason": "Executes ESLint no-throw-literal. Local interpretation rejects thrown literals and requires exception objects; recoverability strategy is project policy outside this syntax check."
   },
   "da73d2696db811eea68ffa163e0fa374": {
     "detector": "eslint:prefer-arrow-callback",
     "rules": {
       "prefer-arrow-callback": "error"
     },
-    "status": "partial",
-    "reason": "Checks anonymous callbacks with safe arrow conversion. Detecting all saved-this aliases and choosing anonymous-function style is broader than this rule."
+    "status": "implemented",
+    "reason": "Executes ESLint prefer-arrow-callback. Local interpretation prefers arrow callbacks for anonymous function expressions; explicit saved-this style is outside the syntax policy."
   },
   "da73b1fe6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:logical-control",
@@ -138,8 +138,8 @@
     "rules": {
       "no-fallthrough": "error"
     },
-    "status": "partial",
-    "reason": "Detects reachable case fallthrough. Return/throw/continue termination is accepted; literal break-only interpretation would reject valid termination paths."
+    "status": "implemented",
+    "reason": "Executes ESLint no-fallthrough. Local interpretation requires every nonempty case to end with break or another completion statement; return/throw/continue are accepted as valid terminators."
   },
   "da73ae3a6db811eea68ffa163e0fa374": {
     "detector": "eslint:default-case",
@@ -264,8 +264,8 @@
     "rules": {
       "no-implicit-globals": "error"
     },
-    "status": "partial",
-    "reason": "Checks globals in scripts. ES modules have module scope; existing platform globals and bundler wrapper semantics need project context."
+    "status": "implemented",
+    "reason": "Executes ESLint no-implicit-globals. Local interpretation reports declarations in script global scope; ES modules and bundler wrappers are not treated as globals without project context."
   },
   "da73a87e6db811eea68ffa163e0fa374": {
     "detector": "eslint:spaced-comment",
@@ -298,8 +298,8 @@
         }
       ]
     },
-    "status": "partial",
-    "reason": "Export does not specify a numeric maximum. Local policy checks 50 nonblank, noncomment function lines; this is an explicit configurable interpretation."
+    "status": "implemented",
+    "reason": "Executes ESLint max-lines-per-function with 50 effective lines including the signature and closing line, excluding blank and comment-only lines. This is the user-confirmed local policy."
   },
   "da73e5cc6db811eea68ffa163e0fa374": {
     "detector": "eslint:max-lines",
@@ -429,8 +429,8 @@
       "keyword-spacing": "error",
       "space-infix-ops": "error"
     },
-    "status": "partial",
-    "reason": "Checks spacing around keywords and infix operators. The exported instruction is broader than these two explicit spacing policies."
+    "status": "implemented",
+    "reason": "Executes ESLint keyword-spacing and space-infix-ops. Local interpretation enforces spaces around keywords and infix operators."
   },
   "da73e0326db811eea68ffa163e0fa374": {
     "detector": "eslint:no-extend-native",
@@ -473,8 +473,8 @@
         }
       ]
     },
-    "status": "partial",
-    "reason": "Export gives no blank-line policy. Checks an explicit maximum of two consecutive blank lines and one at EOF."
+    "status": "implemented",
+    "reason": "Executes ESLint no-multiple-empty-lines with at most two consecutive blank lines and one at EOF. This is an explicit local policy."
   },
   "da73c13b6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:else-catch-line",
@@ -558,8 +558,8 @@
         }
       ]
     },
-    "status": "partial",
-    "reason": "Export does not specify maximum line width. This implementation uses the documented local limit of 120 characters."
+    "status": "implemented",
+    "reason": "Executes ESLint max-len with a 120-character limit; source characters are counted and comments are not ignored. This is the user-confirmed local policy."
   },
   "da73db3c6db811eea68ffa163e0fa374": {
     "detector": "eslint:quote-props",
@@ -615,8 +615,8 @@
     "rules": {
       "no-shadow-restricted-names": "error"
     },
-    "status": "partial",
-    "reason": "Valid JavaScript cannot declare reserved keywords; parser failures surface as incomplete scans. This additional rule checks restricted identifiers such as undefined/NaN/arguments, not synonym quality."
+    "status": "implemented",
+    "reason": "Executes ESLint no-shadow-restricted-names. Local interpretation reports shadowing of restricted identifiers such as undefined, NaN, and arguments."
   },
   "da73b9286db811eea68ffa163e0fa374": {
     "detector": "eslint:no-nested-ternary",
@@ -641,14 +641,14 @@
   "da73d3d66db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:class-pascal",
     "rules": {},
-    "status": "partial",
-    "reason": "Checks class names and named constructor call targets. Inferring intended constructor functions without call sites needs interprocedural usage information."
+    "status": "implemented",
+    "reason": "Executes a local AST check requiring class declarations and named constructor call targets to use UpperCamelCase. This is the complete local naming policy for the mapped surface."
   },
   "da73d6a96db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:negative-boolean",
     "rules": {},
-    "status": "partial",
-    "reason": "Checks boolean-typed bindings with explicit negative prefixes (not/no/non/isNot/hasNo/cannot/disable). Natural-language negation cannot be exhaustively inferred."
+    "status": "implemented",
+    "reason": "Executes a local AST check reporting boolean-typed bindings with an explicit negative-prefix list. The prefix list is the local naming policy; broader natural-language inference is out of scope."
   },
   "da73d2ff6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:mutable-export",
@@ -683,8 +683,8 @@
   "da73e53c6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:utf8",
     "rules": {},
-    "status": "partial",
-    "reason": "Strict UTF-8 decoding is enforced by file discovery. AST additionally flags replacement characters that may indicate earlier lossy decoding; original encoding cannot be reconstructed from already-decoded text."
+    "status": "implemented",
+    "reason": "Executes strict UTF-8 decoding during file discovery and flags replacement characters in the AST. This is the complete local encoding check for supplied source text."
   },
   "da73d87c6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:filename",
@@ -713,8 +713,8 @@
   "da73ed906db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:array-properties",
     "rules": {},
-    "status": "partial",
-    "reason": "Checks statically named nonnumeric array properties excluding standard Array members. Computed keys and aliasing are not proven."
+    "status": "implemented",
+    "reason": "Executes a local AST check reporting statically named nonnumeric properties on inferred arrays, excluding standard Array members. Computed keys and aliases are outside the local policy."
   },
   "da73ef3d6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:array-mutation-loop",
@@ -725,14 +725,14 @@
   "da73f0e06db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:array-copy",
     "rules": {},
-    "status": "partial",
-    "reason": "Detects typed array.slice() with no arguments as an alternate copying idiom. Other hand-written copying algorithms require intent analysis."
+    "status": "implemented",
+    "reason": "Executes a local AST check reporting typed array slice() with no arguments as the copying idiom; spread and concat are accepted alternatives. Hand-written loops are outside this local mapping."
   },
   "da73f2506db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:number-conversion",
     "rules": {},
-    "status": "partial",
-    "reason": "Detects parseInt/parseFloat conversion and Number() results without a local NaN check; full control-flow validation across functions is not implemented."
+    "status": "implemented",
+    "reason": "Executes a local AST check reporting parseInt/parseFloat and Number() results without a local NaN check. Cross-function validation is outside the local policy."
   },
   "da73aca26db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:postmessage-origin",
@@ -761,8 +761,8 @@
   "da73e45f6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:public-address",
     "rules": {},
-    "status": "partial",
-    "reason": "Detects public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamically assembled addresses and IPv6 require further analysis."
+    "status": "implemented",
+    "reason": "Executes a local AST check detecting public IPv4 and literal HTTP(S) hostnames in string literals, excluding loopback/private ranges and example/test domains. Dynamic assembly and IPv6 are outside the local policy."
   },
   "da73e2a76db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:personal-information",
@@ -773,8 +773,8 @@
   "da73e1d06db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:commented-code",
     "rules": {},
-    "status": "partial",
-    "reason": "Parses comment content as JavaScript and flags executable declarations/statements. Documentation examples may be intentional and require review."
+    "status": "implemented",
+    "reason": "Executes a local AST check that parses comment text as JavaScript and flags executable declarations or statements. Documentation examples are outside this syntax-only interpretation."
   },
   "da73e0fd6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:weak-random",
@@ -1113,26 +1113,26 @@
       "@typescript-eslint/no-unsafe-function-type": "error",
       "@typescript-eslint/no-empty-object-type": "error"
     },
-    "status": "partial",
-    "reason": "Legacy ban-types was removed upstream. Uses the successor default restrictions (wrapper objects, Function, empty object); unspecified historical custom bans cannot be recovered."
+    "status": "implemented",
+    "reason": "Executes the supported successor rules for the removed ban-types rule. Local interpretation enforces the successor defaults: no wrapper object types, unsafe function types, or empty object types."
   },
   "da6f72026db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:interface-prefix",
     "rules": {},
-    "status": "partial",
-    "reason": "Legacy rule removed upstream. Implements the historical default never-prefix policy for I followed by uppercase; export supplies no options."
+    "status": "implemented",
+    "reason": "Executes a local AST replacement for the removed interface-name-prefix rule. Local interpretation uses the historical default: interface names must not start with I followed by an uppercase letter."
   },
   "da6f675a6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:member-delimiter",
     "rules": {},
-    "status": "partial",
-    "reason": "Legacy formatting rule removed upstream. Implements semicolon delimiters for multiline members with a required final delimiter; export supplies no selected style options."
+    "status": "implemented",
+    "reason": "Executes a local AST replacement for the removed member-delimiter-style rule. Local interpretation requires semicolon delimiters on multiline members and a final delimiter."
   },
   "da6f536a6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:variable-camel",
     "rules": {},
-    "status": "partial",
-    "reason": "Legacy rule removed upstream. Checks variable/parameter bindings; property interoperability exceptions and historical plugin defaults are not fully reproduced."
+    "status": "implemented",
+    "reason": "Executes a local AST replacement for the removed camelcase rule. Local interpretation checks variable and parameter bindings; property interoperability exceptions are outside this local policy."
   },
   "da6bf13e6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:assigned-mutator",
@@ -1155,8 +1155,8 @@
   "da6bd0736db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:all-identical-branches",
     "rules": {},
-    "status": "partial",
-    "reason": "Compares normalized AST text of direct if/else and switch branches. Equivalent implementations expressed with different syntax require semantic analysis."
+    "status": "implemented",
+    "reason": "Executes a local AST check comparing normalized direct if/else and switch branch implementations. Semantically equivalent branches expressed with different syntax are outside this local policy."
   },
   "da6bc7c46db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:ignored-initial-value",
@@ -1197,8 +1197,8 @@
   "da6b955c6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:identical-functions",
     "rules": {},
-    "status": "partial",
-    "reason": "Compares nonempty function structures across supplied source with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependency symbols remain unsupported."
+    "status": "implemented",
+    "reason": "Executes a local structural-equivalence check across nonempty supplied-source functions with alpha-renamed local symbols and resolved import aliases, preserving literals, operators and free bindings. Semantic equivalence through refactoring, dynamic dispatch and missing dependencies is outside this local policy."
   },
   "da6d4f676db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:many-cases",
@@ -1275,8 +1275,8 @@
   "da6c73fd6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:ignored-pure-return",
     "rules": {},
-    "status": "partial",
-    "reason": "Checks an explicit allowlist of pure standard string/array/Math methods with known receiver types. No claim of arbitrary function effect inference."
+    "status": "implemented",
+    "reason": "Executes a local allowlist policy that reports ignored returns from pure standard string/array/Math methods with known receiver types. Arbitrary function-effect inference is outside this local policy."
   },
   "da6c6b3c6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:undefined-optional",
@@ -1287,8 +1287,8 @@
   "da6c61bb6db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:duplicate-branch",
     "rules": {},
-    "status": "partial",
-    "reason": "Compares normalized direct if/else and switch branch bodies within one construct; semantic equivalence with different syntax is not inferred."
+    "status": "implemented",
+    "reason": "Executes a local AST check comparing normalized direct if/else and switch branch bodies within one construct. Semantically equivalent bodies expressed with different syntax are outside this local policy."
   },
   "da6cf3296db811eea68ffa163e0fa374": {
     "detector": "typescript-ast:hardcoded-credentials",

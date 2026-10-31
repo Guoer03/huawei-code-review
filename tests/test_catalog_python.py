@@ -35,6 +35,18 @@ class CatalogPythonTests(unittest.TestCase):
         entry=copy.deepcopy(next(e for e in ENTRIES if e['rule']['nameCn'].startswith('G.FMT.02 ')))
         entry['rule']['options'][0]['optionValue']='80'
         self.assertEqual(len(scan([('sample.py','x = "'+'a'*90+'"\n')],[entry])['findings']),1)
+    def test_raise_class_and_instance_variable_are_distinguished(self):
+        self.assertTrue(self.findings_for('G.ERR.06','raise ValueError\n'))
+        self.assertFalse(self.findings_for('G.ERR.06','raise ValueError("broken")\n'))
+        self.assertFalse(self.findings_for('G.ERR.06','error = ValueError("broken")\nraise error\n'))
+        self.assertFalse(self.findings_for('G.ERR.06','class NotAnError:\n    pass\nraise NotAnError\n'))
+
+    def test_finally_nested_function_and_outer_continue_are_distinguished(self):
+        source='try:\n    work()\nfinally:\n    def cleanup():\n        return "value"\n'
+        self.assertFalse(self.findings_for('G.ERR.14',source))
+        source='for item in items:\n    try:\n        work(item)\n    finally:\n        continue\n'
+        self.assertTrue(self.findings_for('G.ERR.14',source))
+
     def test_finally_inner_loop_break_is_not_abrupt_exit(self):
         self.assertFalse(self.findings_for('G.ERR.14','try:\n    work()\nfinally:\n    for item in items:\n        if item:\n            break\n'))
     def test_scope_boundaries_do_not_confuse_return_and_loop_captures(self):

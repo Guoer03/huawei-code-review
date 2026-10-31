@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/huawei-code-review/semantic-review.schema.json",
+  "title": "Huawei Code Review semantic review fallback",
+  "type": "object",
+  "required": [
+    "decisions",
+    "review",
+    "schema_version",
+    "source_report",
+    "source_report_sha256"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "source_report": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "provenance",
+        "method"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "provenance": {
+          "const": "manual-review"
+        },
+        "method": {
+          "const": "skill-llm-semantic-review"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_key",
+          "rule_id",
+          "language",
+          "decision",
+          "confidence",
+          "rationale",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rule_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language": {
+            "enum": [
+              "java",
+              "python",
+              "javascript",
+              "typescript"
+            ]
+          },
+          "decision": {
+            "enum": [
+              "confirmed_violation",
+              "context_candidate",
+              "intentional_exception",
+              "analyzer_false_positive",
+              "unresolved"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "lines",
+                "observation"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "lines": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "observation": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "related_findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "missing_context": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "recommended_action": {
+            "enum": [
+              "none",
+              "review",
+              "repair",
+              "request_more_context"
+            ]
+          },
+          "repair_plan": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source_report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

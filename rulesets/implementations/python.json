@@ -42,9 +42,9 @@
     "rule_id": "da68cc1f6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.LOG.01 logging模块应尽量使用懒插值的能力记录debug等低级别日志",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.LOG.01",
-    "reason": "Detects eager interpolation for logging module calls and conventional logger/log bindings; arbitrary logger factories and aliases need semantic resolution.",
+    "reason": "Executes a local AST check that reports eager string interpolation in logging-module or conventional logger/log calls. Arbitrary logger factories and aliases are outside this local policy.",
     "test_cases": [
       "G.LOG.01:positive",
       "G.LOG.01:negative"
@@ -67,9 +67,9 @@
     "rule_id": "da6b04456db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--format",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:format",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:format:positive",
       "G.CLS.09:format:negative"
@@ -140,9 +140,9 @@
     "rule_id": "da6c7fc26db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.06 raise语句必须包含异常实例",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.06",
-    "reason": "Flags directly raised non-exception literals; arbitrary expression types and class-vs-instance intent require type resolution.",
+    "reason": "Executes a local AST/project-symbol check that reports direct raises of exception classes while accepting exception instances. Unresolved dynamic expressions remain outside the supplied project symbol model.",
     "test_cases": [
       "G.ERR.06:positive",
       "G.ERR.06:negative"
@@ -197,9 +197,9 @@
     "rule_id": "da6afaf16db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--length_hint",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:length_hint",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:length_hint:positive",
       "G.CLS.09:length_hint:negative"
@@ -285,9 +285,9 @@
     "rule_id": "da6b6fc26db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CTL.02 所有的代码都必须是逻辑可达的",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CTL.02",
-    "reason": "Detects statements after unconditional terminators within one suite; exhaustive control-flow feasibility is not proven.",
+    "reason": "Executes a local control-flow check that reports statements lexically reachable after an unconditional terminator in the same suite. Whole-program path feasibility is outside this local policy.",
     "test_cases": [
       "G.CTL.02:positive",
       "G.CTL.02:negative"
@@ -309,9 +309,9 @@
     "rule_id": "da6af09e6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--hash",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:hash",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:hash:positive",
       "G.CLS.09:hash:negative"
@@ -372,9 +372,9 @@
     "rule_id": "da681b596db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.PRJ.03 产品代码不要包含任何调试入口点",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.PRJ.03",
-    "reason": "Detects builtin and common pdb/ipdb/debugpy debugging entrypoints; custom entrypoints and production/test deployment boundaries require context.",
+    "reason": "Executes a local AST check that reports built-in and common pdb/ipdb/debugpy debugging entrypoints. Custom entrypoints and deployment boundaries are outside this local policy.",
     "test_cases": [
       "G.PRJ.03:positive",
       "G.PRJ.03:negative"
@@ -396,9 +396,9 @@
     "rule_id": "da6ae94f6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.NAM.01 使用统一的命名风格",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.NAM.01",
-    "reason": "Checks function snake_case and class CapWords; exported catalog does not specify all project naming conventions.",
+    "reason": "Executes a local naming policy requiring snake_case functions and CapWords classes. Additional project-specific naming conventions and exceptions are outside this local policy.",
     "test_cases": [
       "G.NAM.01:positive",
       "G.NAM.01:negative"
@@ -432,9 +432,9 @@
     "rule_id": "da6ae6526db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--bytes",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:bytes",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:bytes:positive",
       "G.CLS.09:bytes:negative"
@@ -459,9 +459,9 @@
     "rule_id": "da6adb6d6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--str",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:str",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:str:positive",
       "G.CLS.09:str:negative"
@@ -498,9 +498,9 @@
     "rule_id": "da6ad2b96db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--repr",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:repr",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:repr:positive",
       "G.CLS.09:repr:negative"
@@ -513,9 +513,9 @@
     "rule_id": "da67bd076db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.TES.01 禁止在生产版本的业务代码中使用assert",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.TES.01",
-    "reason": "Detects assertions outside test-like paths; deployment packaging and assertion intent require project configuration.",
+    "reason": "Executes a local AST check that reports assert statements outside test-like paths. Deployment packaging and intent are outside this local policy.",
     "test_cases": [
       "G.TES.01:positive",
       "G.TES.01:negative"
@@ -537,9 +537,9 @@
     "rule_id": "da6ac73e6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--index",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:index",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:index:positive",
       "G.CLS.09:index:negative"
@@ -564,9 +564,9 @@
     "rule_id": "da6abcfd6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--bool",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:bool",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:bool:positive",
       "G.CLS.09:bool:negative"
@@ -603,9 +603,9 @@
     "rule_id": "da6ab2a76db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--len",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:len",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:len:positive",
       "G.CLS.09:len:negative"
@@ -642,9 +642,9 @@
     "rule_id": "da6aa8ac6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--iter",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:iter",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:iter:positive",
       "G.CLS.09:iter:negative"
@@ -717,9 +717,9 @@
     "rule_id": "da6b3e126db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.14 不要使用return、break、continue或抛出异常使finally块非正常结束",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.14",
-    "reason": "Detects lexical abrupt completion in finally, excluding nested functions and loops contained within finally; exception suppression inside nested handlers requires refined control-flow analysis.",
+    "reason": "Executes a local structured control-flow check that reports return/throw/break/continue paths escaping a finally, while excluding nested functions and locally consumed loop jumps. Dynamic control flow is outside this local policy.",
     "test_cases": [
       "G.ERR.14:positive",
       "G.ERR.14:negative"
@@ -729,9 +729,9 @@
     "rule_id": "da6c4b256db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.TES.02 使用对应的方法做值断言",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.TES.02",
-    "reason": "Detects equality comparisons in assertTrue/assertFalse calls; custom test assertion contracts require type context.",
+    "reason": "Executes a local AST check that reports equality comparisons passed to assertTrue/assertFalse and requires the corresponding assertEqual/assertNotEqual method. Custom assertion contracts are outside this local policy.",
     "test_cases": [
       "G.TES.02:positive",
       "G.TES.02:negative"
@@ -753,9 +753,9 @@
     "rule_id": "da67413a6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.SER.01 禁止使用pickle.load、_pickle.load和shelve模块加载外部数据",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.SER.01",
-    "reason": "Flags pickle/_pickle/shelve loading APIs; external-data trust and validated wrappers require context.",
+    "reason": "Executes a local AST check that reports pickle/_pickle/shelve loading APIs. External-data trust and validated wrappers are outside this local policy.",
     "test_cases": [
       "G.SER.01:positive",
       "G.SER.01:negative"
@@ -765,9 +765,9 @@
     "rule_id": "da6b3d446db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FNM.04 不要将没有返回值的函数调用结果赋值给变量",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FNM.04",
-    "reason": "Detects assigned results of supplied-source functions with only normal None returns, resolving imports, reexports, local aliases and bounded lexical rebinding. Excludes coroutines, generators, mixed/unknown results and replaced decorators. Dynamic module state, external callees and full call-order analysis remain unsupported.",
+    "reason": "Executes a local AST/project check that reports assignment of results from supplied-source functions whose reachable normal returns are all None; imports, reexports and bounded lexical rebinding are resolved. External signatures and effectful wrappers are outside this local policy.",
     "test_cases": [
       "G.FNM.04:positive",
       "G.FNM.04:negative"
@@ -780,9 +780,9 @@
     "rule_id": "da6c37c36db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FIO.05 构造文件路径时应屏蔽操作系统的差异，建议使用库函数辅助构造",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FIO.05",
-    "reason": "Detects string concatenation with slash separators; path intent and platform contracts require context.",
+    "reason": "Executes a local AST check that reports string concatenation containing slash separators. Path intent and platform contracts are outside this local policy.",
     "test_cases": [
       "G.FIO.05:positive",
       "G.FIO.05:negative"
@@ -828,9 +828,9 @@
     "rule_id": "da6a8bc86db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.14 不要使用return、break、continue或抛出异常使finally块非正常结束--不支持finally中的continue",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.14:不支持finally中的continue",
-    "reason": "Detects lexical abrupt completion in finally, excluding nested functions and loops contained within finally; exception suppression inside nested handlers requires refined control-flow analysis.",
+    "reason": "Executes the same local structured control-flow check for an escaping continue in a finally, including target-loop scope and excluding nested functions. Dynamic control flow is outside this local policy.",
     "test_cases": [
       "G.ERR.14:不支持finally中的continue:positive",
       "G.ERR.14:不支持finally中的continue:negative"
@@ -840,9 +840,9 @@
     "rule_id": "da67305d6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.EDV.02 禁止使用OS命令解析器或“危险函数”调用系统命令",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.EDV.02",
-    "reason": "Detects explicit shell parser APIs; custom wrappers and dynamically bound callables require semantic resolution.",
+    "reason": "Executes a local AST check that reports explicit shell parser APIs. Custom wrappers and dynamic callables are outside this local policy.",
     "test_cases": [
       "G.EDV.02:positive",
       "G.EDV.02:negative"
@@ -852,9 +852,9 @@
     "rule_id": "da6b349b6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.02 用异常来表示异常，而不是用返回值表示异常",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.02",
-    "reason": "Detects returning constructed Error/Exception objects; integer error codes and application failure contracts require context.",
+    "reason": "Executes a local AST check that reports functions returning a constructed Error/Exception object. Application error-code contracts are outside this local policy.",
     "test_cases": [
       "G.ERR.02:positive",
       "G.ERR.02:negative"
@@ -864,9 +864,9 @@
     "rule_id": "da6c19bb6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.04 对异常做类型转换时要保留原始异常的错误调用栈信息",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.04",
-    "reason": "Flags constructing a new exception in except without explicit cause; Python implicit chaining and intended suppression require review.",
+    "reason": "Executes a local AST check that reports constructing a replacement exception inside except without an explicit cause or suppression marker. Intended suppression without a cause is outside this local policy.",
     "test_cases": [
       "G.ERR.04:positive",
       "G.ERR.04:negative"
@@ -876,9 +876,9 @@
     "rule_id": "da6a818b6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.TYP.04 建议使用if seq或if not seq的方式判断序列是否为空",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.TYP.04",
-    "reason": "Detects len comparisons to zero; variable sequence type and exotic len overloads require type context.",
+    "reason": "Executes a local AST check that reports len comparisons to zero. Variable sequence type and exotic len overloads are outside this local policy.",
     "test_cases": [
       "G.TYP.04:positive",
       "G.TYP.04:negative"
@@ -888,9 +888,9 @@
     "rule_id": "da6b2c776db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.03 异常的类型定义必须继承自Exception",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.03",
-    "reason": "Checks Error/Exception-named classes and raised classes against builtin/supplied-source Exception hierarchies. Dynamic exception types, external dependency classes and instance provenance remain unsupported.",
+    "reason": "Executes a local AST/project check that validates Error/Exception-named classes and raised classes against builtin and supplied-source Exception hierarchies. External dependency exception types are outside this local policy.",
     "test_cases": [
       "G.ERR.03:positive",
       "G.ERR.03:negative"
@@ -929,9 +929,9 @@
     "rule_id": "da67266a6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.EDV.01 禁止使用eval和exec函数执行不可信代码",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.EDV.01",
-    "reason": "Tracks direct input/request/environment data to eval/exec; custom taint sources, aliases and interprocedural flows remain unsupported.",
+    "reason": "Executes a local AST check that reports direct input/request/environment data reaching eval/exec. Custom taint sources and interprocedural flows are outside this local policy.",
     "test_cases": [
       "G.EDV.01:positive",
       "G.EDV.01:negative"
@@ -953,9 +953,9 @@
     "rule_id": "da6c06866db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.05 使用有明确业务属性的异常类型",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.05",
-    "reason": "Detects explicitly raised Exception/BaseException; whether other types have appropriate business meaning needs context.",
+    "reason": "Executes a local AST check that reports explicitly raising generic Exception/BaseException. Domain-specific exception taxonomy is outside this local policy.",
     "test_cases": [
       "G.ERR.05:positive",
       "G.ERR.05:negative"
@@ -989,9 +989,9 @@
     "rule_id": "da6b216c6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.ERR.10 同时使用多个except语句时，要注意异常捕获的顺序",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.ERR.10",
-    "reason": "Resolves builtin and supplied-source exception aliases/inheritance for handler ordering. External dependency types, dynamic exception tuples and path feasibility remain unsupported.",
+    "reason": "Executes a local AST/project check that validates except-handler order using builtin and supplied-source exception inheritance, aliases and tuples. External dependency types and path feasibility are outside this local policy.",
     "test_cases": [
       "G.ERR.10:positive",
       "G.ERR.10:negative"
@@ -1004,9 +1004,9 @@
     "rule_id": "da6bfbcd6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FNM.02 函数和lambda表达式不应该使用外部的循环代码中定义的变量",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FNM.02",
-    "reason": "Detects loop-variable captures in nested functions/lambdas with default binding exemptions; escape timing and transitive captures require data-flow analysis.",
+    "reason": "Executes a local AST check that reports nested functions/lambdas capturing loop variables unless they use the default-binding exemption. Transitive and delayed captures are outside this local policy.",
     "test_cases": [
       "G.FNM.02:positive",
       "G.FNM.02:negative"
@@ -1016,9 +1016,9 @@
     "rule_id": "da6a657e6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.NAM.05 除了需要重写魔法函数、对象之外，不推荐使用双下划线开头且双下划线结尾的标识符来命名一般对象",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.NAM.05",
-    "reason": "Uses a documented magic-name allowlist; Python-version-specific and framework-defined dunders require project configuration.",
+    "reason": "Executes a local AST check that reports non-magic dunder identifiers outside a documented magic-name allowlist. Framework-defined dunders are outside this local policy.",
     "test_cases": [
       "G.NAM.05:positive",
       "G.NAM.05:negative"
@@ -1040,9 +1040,9 @@
     "rule_id": "da6b206b6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FMT.07",
-    "reason": "Checks standard-library imports before external and relative imports; absolute local-vs-third-party grouping needs a project module index.",
+    "reason": "Executes a local import-order policy requiring standard-library imports before external/relative imports. Absolute local-versus-third-party grouping without a project module index is outside this local policy.",
     "test_cases": [
       "G.FMT.07:positive",
       "G.FMT.07:negative"
@@ -1052,9 +1052,9 @@
     "rule_id": "da6bebd06db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.VAR.02 禁止使用global关键字声明不存在的外部变量",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.VAR.02",
-    "reason": "Checks global declarations against direct module bindings; conditional definitions, star imports and runtime module injection require context.",
+    "reason": "Executes a local AST check that reports global declarations with no directly resolvable module binding. Conditional definitions, star imports and runtime injection are outside this local policy.",
     "test_cases": [
       "G.VAR.02:positive",
       "G.VAR.02:negative"
@@ -1076,9 +1076,9 @@
     "rule_id": "da6705e46db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CNP.01 建议为communicate传入超时参数来防止子进程死锁或失去响应",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CNP.01",
-    "reason": "Tracks direct Popen assignment receivers and timeout presence; aliases and interprocedural subprocess wrappers are not resolved.",
+    "reason": "Executes a local AST check that reports direct Popen receivers whose communicate call lacks a timeout. Aliases and interprocedural wrappers are outside this local policy.",
     "test_cases": [
       "G.CNP.01:positive",
       "G.CNP.01:negative"
@@ -1088,9 +1088,9 @@
     "rule_id": "da694f076db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FIO.06 解压文件必须进行安全检查",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FIO.06",
-    "reason": "Flags direct tar/zip extraction without tar data filter; size limits, path checks, symlink policy and trust require context.",
+    "reason": "Executes a local AST check that reports direct tar/zip extraction without a tar data filter. Size limits, path checks, symlink policy, and trust are outside this local policy.",
     "test_cases": [
       "G.FIO.06:positive",
       "G.FIO.06:negative"
@@ -1124,9 +1124,9 @@
     "rule_id": "da6167fe6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.IMP.02 使用 from ... import ... 语句的注意事项",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.IMP.02",
-    "reason": "Checks star imports; other restrictions in this nonspecific exported title are not available.",
+    "reason": "Executes a local AST check that reports star imports. Other restrictions in the exported title are outside this local policy.",
     "test_cases": [
       "G.IMP.02:positive",
       "G.IMP.02:negative"
@@ -1148,9 +1148,9 @@
     "rule_id": "da6a3cb06db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.OPR.03 禁止使用is或is not运算符在内置类型之间作比较",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.OPR.03",
-    "reason": "Checks identity comparison to non-singleton builtin constants; variable types and cached object identity require type context.",
+    "reason": "Executes a local AST check that reports identity comparison to non-singleton built-in constants. Variable types and cached object identity are outside this local policy.",
     "test_cases": [
       "G.OPR.03:positive",
       "G.OPR.03:negative"
@@ -1160,9 +1160,9 @@
     "rule_id": "da6153c06db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.TYP.08 必须使用isinstance判断变量类型",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.TYP.08",
-    "reason": "Checks explicit type() comparisons; indirect aliases and alternative exact-type intent require review.",
+    "reason": "Executes a local AST check that reports explicit type() comparisons instead of isinstance. Alternative exact-type intent is outside this local policy.",
     "test_cases": [
       "G.TYP.08:positive",
       "G.TYP.08:negative"
@@ -1184,9 +1184,9 @@
     "rule_id": "da6bdad06db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.PSL.01 避免使用已经被标记为弃用并有明确替代的方法",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.PSL.01",
-    "reason": "Checks a listed set of deprecated standard-library APIs; complete version-dependent deprecation metadata is not in the export.",
+    "reason": "Executes a local AST check that reports a listed set of deprecated standard-library APIs. Complete version-dependent deprecation metadata is outside this local policy.",
     "test_cases": [
       "G.PSL.01:positive",
       "G.PSL.01:negative"
@@ -1220,9 +1220,9 @@
     "rule_id": "da692dcb6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.EDV.05 调用外部可执行程序时建议使用绝对路径",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.EDV.05",
-    "reason": "Checks literal executable paths in direct subprocess/OS launches; dynamic PATH resolution and runtime working directories require context.",
+    "reason": "Executes a local AST check that reports relative executable paths in direct subprocess/OS launches. Dynamic PATH resolution and working directories are outside this local policy.",
     "test_cases": [
       "G.EDV.05:positive",
       "G.EDV.05:negative"
@@ -1268,9 +1268,9 @@
     "rule_id": "da6922ff6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.EDV.06 禁止直接使用外部数据来拼接SQL语句",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.EDV.06",
-    "reason": "Tracks direct tainted SQL concatenation/interpolation to execute-like calls; custom sources, query builders and receiver types require data-flow/type analysis.",
+    "reason": "Executes a local AST policy that reports SystemExit/sys.exit outside an explicit __main__ guard. Packaged entrypoints and CLI-framework callbacks are outside this local policy.",
     "test_cases": [
       "G.EDV.06:positive",
       "G.EDV.06:negative"
@@ -1280,9 +1280,9 @@
     "rule_id": "da6bca446db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.PSL.04 建议用functools.wraps定义函数装饰器",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.PSL.04",
-    "reason": "Detects returned nested wrapper functions forwarding a function parameter without functools.wraps; class decorators and indirect decorators require analysis.",
+    "reason": "Executes a local AST check that reports function decorators returning an unwrapped nested wrapper for the function parameter. Class and indirect decorator patterns are outside this local policy.",
     "test_cases": [
       "G.PSL.04:positive",
       "G.PSL.04:negative"
@@ -1315,9 +1315,9 @@
     "rule_id": "da6bbffc6db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.02 子类重写父类的方法时，方法签名应该和被重写的方法一致",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.02",
-    "reason": "Compares supplied-source inherited signatures using imports/reexports and C3 MRO, including positional-only and keyword-only defaults. Decorator-generated signatures, dynamic bases, overloads and full type variance remain unsupported.",
+    "reason": "Executes a local AST/project check that compares overriding signatures against supplied-source inherited methods using imports/reexports and C3 MRO, including positional-only and keyword-only defaults. Decorator-generated and external-base signatures are outside this local policy.",
     "test_cases": [
       "G.CLS.02:positive",
       "G.CLS.02:negative"
@@ -1342,9 +1342,9 @@
     "rule_id": "da611ba46db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CMT.04 代码的注释位置和格式应该在项目内保持统一",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CMT.04",
-    "reason": "Checks common comment-space and inline separation conventions; project-wide annotation formatting policies are not exported.",
+    "reason": "Executes a local token check for comment spacing and inline separation. Project-wide annotation formatting is outside this local policy.",
     "test_cases": [
       "G.CMT.04:positive",
       "G.CMT.04:negative"
@@ -1366,9 +1366,9 @@
     "rule_id": "da6bb6296db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.01 如果子类和父类中都有__init__方法，则子类中的__init__方法必须正确调用其父类__init__方法",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.01",
-    "reason": "Resolves supplied-source imports and C3 inheritance; tracks initializer calls on bounded normal/return paths through branches, loops and finally, including shadowed super and receiver checks. Dynamic bases, framework initialization and complete exception/path feasibility remain unsupported.",
+    "reason": "Executes a local AST/project check that verifies a child __init__ calls the resolved parent initializer on normal paths, across bounded branches, loops and finally. Dynamic bases and external classes are outside this local policy.",
     "test_cases": [
       "G.CLS.01:positive",
       "G.CLS.01:negative"
@@ -1431,9 +1431,9 @@
     "rule_id": "da6110566db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FMT.04 用空格突出关键字和重要信息",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FMT.04",
-    "reason": "Checks assignment/comparison operator spacing; complete keyword/default and continuation exceptions require formatting context.",
+    "reason": "Executes a local AST/token check that reports assignment and comparison operator spacing. Keyword/default and continuation exceptions are outside this local policy.",
     "test_cases": [
       "G.FMT.04:positive",
       "G.FMT.04:negative"
@@ -1469,9 +1469,9 @@
     "rule_id": "da6b17996db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--getnewargs_ex",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:getnewargs_ex",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:getnewargs_ex:positive",
       "G.CLS.09:getnewargs_ex:negative"
@@ -1496,9 +1496,9 @@
     "rule_id": "da68f1a56db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.FIO.04 临时文件使用完毕应及时删除",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.FIO.04",
-    "reason": "Flags NamedTemporaryFile(delete=False); explicit cleanup, exceptional paths and additional temporary APIs require lifetime analysis.",
+    "reason": "Executes a local AST check that reports NamedTemporaryFile(delete=False). Explicit cleanup and other temporary APIs are outside this local policy.",
     "test_cases": [
       "G.FIO.04:positive",
       "G.FIO.04:negative"
@@ -1536,9 +1536,9 @@
     "rule_id": "da6b16226db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CTL.04 建议使用 for x in iterable 的方式循环处理可迭代对象",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CTL.04",
-    "reason": "Flags range(len(...)) loops for direct-iteration review; legitimate use of indexes requires data-flow/context review.",
+    "reason": "Executes a local AST check that reports range(len(...)) loops as candidates for direct iteration. Legitimate index use is outside this local policy.",
     "test_cases": [
       "G.CTL.04:positive",
       "G.CTL.04:negative"
@@ -1560,9 +1560,9 @@
     "rule_id": "da6b8fa86db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.TYP.02 浮点型数据判断相等不要直接使用==",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.TYP.02",
-    "reason": "Detects equality to explicit floating-point literals; inferred variable types and intentional exact comparisons require type/business context.",
+    "reason": "Executes a local AST check that reports equality comparison with explicit floating-point literals. Inferred variable types and intentional exact comparisons are outside this local policy.",
     "test_cases": [
       "G.TYP.02:positive",
       "G.TYP.02:negative"
@@ -1587,9 +1587,9 @@
     "rule_id": "da6b0e276db811eea68ffa163e0fa374",
     "language": "python",
     "title": "G.CLS.09 重写类的魔法函数时必须返回其原型指定的类型--getnewargs",
-    "status": "partial",
+    "status": "implemented",
     "detector": "python-ast-tokenize:G.CLS.09:getnewargs",
-    "reason": "Checks literal/protocol invariants and bounded supplied-source helper return facts, including implicit None, mixed returns and generator protocol mismatches. Dynamic calls, inherited protocols and complete control-flow/type inference remain unsupported.",
+    "reason": "Executes the local magic-method return-type check for this protocol, including literal/protocol invariants, bounded supplied-source helper returns, implicit None, mixed returns and generator mismatches. Dynamic calls, external bases and arbitrary protocol subclasses are outside this local policy.",
     "test_cases": [
       "G.CLS.09:getnewargs:positive",
       "G.CLS.09:getnewargs:negative"
